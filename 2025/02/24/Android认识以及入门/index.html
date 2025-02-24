@@ -6,15 +6,15 @@
   <meta name="keywords" content="">
   <meta name="description" content="Android认识以及入门 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="系统架构1.Linux内核层:提供底层驱动2.系统运行库层:提供主要的特性支持(通过C&#x2F;C++库)，同样这一层也有Android运行时库，提供了一些核心库，能允许开发者使用Java来编写应用。3.应用框架层:提供了各种API4.应用层:安装到手机上的应用程序都属于这一层">
+<meta name="description" content="系统架构1.Linux内核层:提供底层驱动2.系统运行库层:提供主要的特性支持(通过C&#x2F;C++库)，同样这一层也有Android运行时库，提供了一些核心库，能允许开发者使用Java来编写应用。3.应用框架层:提供了各种API4.应用层:安装到手机上的应用程序都属于这一层  Android应用开发特色1.四大组件:活动，服务，广播接收器，内容提供器。2.丰富的系统控件3.SQLite数据库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android认识以及入门">
 <meta property="og:url" content="http://example.com/2025/02/24/Android%E8%AE%A4%E8%AF%86%E4%BB%A5%E5%8F%8A%E5%85%A5%E9%97%A8/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="系统架构1.Linux内核层:提供底层驱动2.系统运行库层:提供主要的特性支持(通过C&#x2F;C++库)，同样这一层也有Android运行时库，提供了一些核心库，能允许开发者使用Java来编写应用。3.应用框架层:提供了各种API4.应用层:安装到手机上的应用程序都属于这一层">
+<meta property="og:description" content="系统架构1.Linux内核层:提供底层驱动2.系统运行库层:提供主要的特性支持(通过C&#x2F;C++库)，同样这一层也有Android运行时库，提供了一些核心库，能允许开发者使用Java来编写应用。3.应用框架层:提供了各种API4.应用层:安装到手机上的应用程序都属于这一层  Android应用开发特色1.四大组件:活动，服务，广播接收器，内容提供器。2.丰富的系统控件3.SQLite数据库">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-02-24T12:28:01.000Z">
-<meta property="article:modified_time" content="2025-02-24T12:30:29.610Z">
+<meta property="article:modified_time" content="2025-02-24T12:50:05.895Z">
 <meta property="article:author" content="buyu6">
 <meta name="twitter:card" content="summary">
 
@@ -201,7 +201,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-02-24 20:30:29'>2025-02-24 20:28</time>
+            Created At : <time class="date" title='Updated At: 2025-02-24 20:50:05'>2025-02-24 20:28</time>
         
     </div>
     <div class="article-meta">
@@ -223,7 +223,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84"><span class="toc-text">系统架构</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84"><span class="toc-text">系统架构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Android%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E7%89%B9%E8%89%B2"><span class="toc-text">Android应用开发特色</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E4%B8%AD%E5%90%84%E4%B8%AA%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">项目中各个文件的作用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#app%E7%9B%AE%E5%BD%95%E8%AF%A6%E8%A7%A3"><span class="toc-text">app目录详解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BB%E6%B4%BB%E5%8A%A8%E7%9A%84%E8%AE%BE%E5%AE%9A"><span class="toc-text">主活动的设定</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">引用的方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E5%B7%A5%E5%85%B7"><span class="toc-text">日志工具</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -240,6 +240,21 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="系统架构"><a href="#系统架构" class="headerlink" title="系统架构"></a>系统架构</h1><p>1.Linux内核层:提供底层驱动<br>2.系统运行库层:提供主要的特性支持(通过C&#x2F;C++库)，同样这一层也有Android运行时库，提供了一些核心库，能允许开发者使用Java来编写应用。<br>3.应用框架层:提供了各种API<br>4.应用层:安装到手机上的应用程序都属于这一层</p>
+<hr>
+<h1 id="Android应用开发特色"><a href="#Android应用开发特色" class="headerlink" title="Android应用开发特色"></a>Android应用开发特色</h1><p>1.四大组件:活动，服务，广播接收器，内容提供器。<br>2.丰富的系统控件<br>3.SQLite数据库:让存储数据和读取数据变得更为方便<br>4.强大的多媒体<br>5.地理位置定位</p>
+<hr>
+<h1 id="项目中各个文件的作用"><a href="#项目中各个文件的作用" class="headerlink" title="项目中各个文件的作用"></a>项目中各个文件的作用</h1><p>1.gradle:里面含有gradle wrapper配置文件，需要打开的话必须手动按照“导航栏<del>File</del>Settings<del>Bulid,Execution,Deployment</del>Gradle”这个步骤进行<br>2..gitignore:将指定的目录或文件排除在版本控制之外。<br>3.gradle.properties:这个文件是全局的gradle配置文件，在这里配置的属性将会影响到项目中所有的gradle编译脚本。<br>4.gradlew和gradlew.bat:用来在命令行界面中执行gradle命令的，其中gradle是在Linux或Mac系统使用，gradlew.bat在Windows系统使用</p>
+<hr>
+<h1 id="app目录详解"><a href="#app目录详解" class="headerlink" title="app目录详解"></a>app目录详解</h1><p>1.libs:jar包存放的地方<br>2.Androidtest:编写测试用例，对项目进行自动化测试<br>3.Java:放置Java代码的地方<br>4.res:<br>①图片放在drawable中<br>②布局放在layout中<br>③字符串，样式，颜色等配置放在values中<br>④mipmap中放置一些图标<br>5.AndroidManifest.xml:整个Android项目配置文件，四大组件和活动等都需要在这里注册，经常会使用到这个文件。<br>6.test:编写测试用例，是对项目自动化测试的另一种方式<br>7.build.gradle:这个文件中会指定很多项目构建相关的配置<br>8.proguard-rules.pro:指定项目代码的混淆规则</p>
+<hr>
+<h1 id="主活动的设定"><a href="#主活动的设定" class="headerlink" title="主活动的设定"></a>主活动的设定</h1><p>即首先启动的活动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;intent-filter&gt;</span><br><span class="line">    &lt;action android:name=&quot;android.intent.action.MAIN&quot;/&gt;</span><br><span class="line">    &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot;/&gt;</span><br><span class="line">&lt;/intent-filter&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="引用的方法"><a href="#引用的方法" class="headerlink" title="引用的方法"></a>引用的方法</h1><p>1.R.string.hello_world<br>2.@string&#x2F;hello_world<br>如果在@和string之间添上一个+就变成了定义<br>其中的string可以替换</p>
+<hr>
+<h1 id="日志工具"><a href="#日志工具" class="headerlink" title="日志工具"></a>日志工具</h1><p>从小到大的顺序<br>Log.v:打印意义最小的信息<br>Log.d:打印调试信息<br>Log.i:比较重要的数据<br>Log.w:警告信息<br>Log.e:错误信息<br>传入两个参数:第一个参数是tag，一般传入类名就好主要用于对打印信息的过滤<br>第二个参数是msg，即想要打印的内容<br>一般与logcat结合使用</p>
+<hr>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 3072420788@qq.com </span>
