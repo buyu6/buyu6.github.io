@@ -6,20 +6,17 @@
   <meta name="keywords" content="">
   <meta name="description" content="广播机制 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="广播机制简介标准广播 有序广播  接收系统广播动态注册监听网络变化简易版首先先创建一个类，按例子来是建立一个内部类，并在里面重写父类的onReceive()方法。 然后在onCreate()方法中首先创建一个IntentFilter的实例，并给他添加一个值为”android.net.conn.CONNECTIVITY_CHANGE”的action，为什么添加这个值，就是因为当网络状态发生变化时，系">
+<meta name="description" content="在 Java 中，try、catch 和 finally 是异常处理机制的核心部分。它们用于捕获、处理异常，并确保无论是否发生异常，某些代码都会被执行。下面是对它们的详细解释： try块try 块用于包含可能会抛出异常的代码。如果 try 块中的代码抛出了异常，程序会立即跳转到匹配的 catch 块进行处理。 123try&#123;    &#x2F;&#x2F;可能抛出异常的代码&#125;   try 中的代码">
 <meta property="og:type" content="article">
-<meta property="og:title" content="广播机制">
-<meta property="og:url" content="http://example.com/2025/03/03/%E5%B9%BF%E6%92%AD%E6%9C%BA%E5%88%B6/index.html">
+<meta property="og:title" content="try,catch和finally">
+<meta property="og:url" content="http://example.com/2025/03/07/try-catch%E5%92%8Cfinally/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="广播机制简介标准广播 有序广播  接收系统广播动态注册监听网络变化简易版首先先创建一个类，按例子来是建立一个内部类，并在里面重写父类的onReceive()方法。 然后在onCreate()方法中首先创建一个IntentFilter的实例，并给他添加一个值为”android.net.conn.CONNECTIVITY_CHANGE”的action，为什么添加这个值，就是因为当网络状态发生变化时，系">
+<meta property="og:description" content="在 Java 中，try、catch 和 finally 是异常处理机制的核心部分。它们用于捕获、处理异常，并确保无论是否发生异常，某些代码都会被执行。下面是对它们的详细解释： try块try 块用于包含可能会抛出异常的代码。如果 try 块中的代码抛出了异常，程序会立即跳转到匹配的 catch 块进行处理。 123try&#123;    &#x2F;&#x2F;可能抛出异常的代码&#125;   try 中的代码">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/img/img42.jpg">
-<meta property="og:image" content="http://example.com/img/img43.jpg">
-<meta property="article:published_time" content="2025-03-03T12:42:38.000Z">
-<meta property="article:modified_time" content="2025-03-05T15:54:39.212Z">
+<meta property="article:published_time" content="2025-03-07T15:02:39.000Z">
+<meta property="article:modified_time" content="2025-03-07T15:46:56.481Z">
 <meta property="article:author" content="Pick">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/img42.jpg">
 
 
 <link rel="icon" href="/img/picture.png">
@@ -94,7 +91,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(5)</small>
+                <small>(7)</small>
             
         </div>
     </li>
@@ -112,8 +109,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="5">
-<input type="hidden" id="yelog_site_word_count" value="8.6k">
+<input type="hidden" id="yelog_site_posts_number" value="7">
+<input type="hidden" id="yelog_site_word_count" value="11.8k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -164,6 +161,24 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2025/03/07/try-catch%E5%92%8Cfinally/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="try,catch和finally">try,catch和finally</span>
+            <span class="post-date" title="2025-03-07 23:02:39">2025/03/07</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/06/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="数据存储">数据存储</span>
+            <span class="post-date" title="2025-03-06 19:32:12">2025/03/06</span>
+        </a>
         
         
         <a  class="All "
