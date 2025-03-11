@@ -6,17 +6,19 @@
   <meta name="keywords" content="">
   <meta name="description" content="广播机制 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="在 Java 中，try、catch 和 finally 是异常处理机制的核心部分。它们用于捕获、处理异常，并确保无论是否发生异常，某些代码都会被执行。下面是对它们的详细解释： try块try 块用于包含可能会抛出异常的代码。如果 try 块中的代码抛出了异常，程序会立即跳转到匹配的 catch 块进行处理。 123try&#123;    &#x2F;&#x2F;可能抛出异常的代码&#125;   try 中的代码">
+<meta name="description" content="运行时权限危险权限表格 运行时申请权限(以打电话为例)1.先借助ContextCompat.checkSelfPermission()方法判断用户是否进行了授权。 checkSelfPermission()接收两个参数，第一个是Context，第二个是具体的权限名 2.使用方法的返回值和PackageManager.PERMISSION_GRANTED作比较，不等表示未授权，相等表示已授权 3.把">
 <meta property="og:type" content="article">
-<meta property="og:title" content="try,catch和finally">
-<meta property="og:url" content="http://example.com/2025/03/07/try-catch%E5%92%8Cfinally/index.html">
+<meta property="og:title" content="内容提供器">
+<meta property="og:url" content="http://example.com/2025/03/11/%E5%86%85%E5%AE%B9%E6%8F%90%E4%BE%9B%E5%99%A8/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="在 Java 中，try、catch 和 finally 是异常处理机制的核心部分。它们用于捕获、处理异常，并确保无论是否发生异常，某些代码都会被执行。下面是对它们的详细解释： try块try 块用于包含可能会抛出异常的代码。如果 try 块中的代码抛出了异常，程序会立即跳转到匹配的 catch 块进行处理。 123try&#123;    &#x2F;&#x2F;可能抛出异常的代码&#125;   try 中的代码">
+<meta property="og:description" content="运行时权限危险权限表格 运行时申请权限(以打电话为例)1.先借助ContextCompat.checkSelfPermission()方法判断用户是否进行了授权。 checkSelfPermission()接收两个参数，第一个是Context，第二个是具体的权限名 2.使用方法的返回值和PackageManager.PERMISSION_GRANTED作比较，不等表示未授权，相等表示已授权 3.把">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-03-07T15:02:39.000Z">
-<meta property="article:modified_time" content="2025-03-07T15:46:56.481Z">
+<meta property="og:image" content="http://example.com/img/img45.jpg">
+<meta property="article:published_time" content="2025-03-11T06:56:45.000Z">
+<meta property="article:modified_time" content="2025-03-11T13:56:59.688Z">
 <meta property="article:author" content="Pick">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/img45.jpg">
 
 
 <link rel="icon" href="/img/picture.png">
@@ -91,7 +93,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(7)</small>
+                <small>(9)</small>
             
         </div>
     </li>
@@ -109,8 +111,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="7">
-<input type="hidden" id="yelog_site_word_count" value="11.8k">
+<input type="hidden" id="yelog_site_posts_number" value="9">
+<input type="hidden" id="yelog_site_word_count" value="13.6k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -161,6 +163,24 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2025/03/11/%E5%86%85%E5%AE%B9%E6%8F%90%E4%BE%9B%E5%99%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="内容提供器">内容提供器</span>
+            <span class="post-date" title="2025-03-11 14:56:45">2025/03/11</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/11/Git/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Git">Git</span>
+            <span class="post-date" title="2025-03-11 14:56:07">2025/03/11</span>
+        </a>
         
         
         <a  class="All "
@@ -255,12 +275,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-03-05 23:54:39'>2025-03-03 20:42</time>
+            Created At : <time class="date" title='Updated At: 2025-03-11 14:59:49'>2025-03-03 20:42</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:1.4k</span>
+        <span>Count:1.2k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -279,7 +299,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B9%BF%E6%92%AD%E6%9C%BA%E5%88%B6%E7%AE%80%E4%BB%8B"><span class="toc-text">广播机制简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E5%87%86%E5%B9%BF%E6%92%AD"><span class="toc-text">标准广播</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E5%BA%8F%E5%B9%BF%E6%92%AD"><span class="toc-text">有序广播</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%A5%E6%94%B6%E7%B3%BB%E7%BB%9F%E5%B9%BF%E6%92%AD"><span class="toc-text">接收系统广播</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E6%B3%A8%E5%86%8C%E7%9B%91%E5%90%AC%E7%BD%91%E7%BB%9C%E5%8F%98%E5%8C%96"><span class="toc-text">动态注册监听网络变化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%80%E6%98%93%E7%89%88"><span class="toc-text">简易版</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E7%89%88"><span class="toc-text">优化版</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E6%B3%A8%E5%86%8C%E5%AE%9E%E7%8E%B0%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8"><span class="toc-text">静态注册实现开机启动</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B9%BF%E6%92%AD"><span class="toc-text">自定义广播</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E9%80%81%E6%A0%87%E5%87%86%E5%B9%BF%E6%92%AD"><span class="toc-text">发送标准广播</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E9%80%81%E6%9C%89%E5%BA%8F%E5%B9%BF%E6%92%AD"><span class="toc-text">发送有序广播</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%B9%BF%E6%92%AD"><span class="toc-text">本地广播</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Git"><span class="toc-text">Git</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93"><span class="toc-text">创建代码仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E4%BA%A4%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81"><span class="toc-text">提交本地代码</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B9%BF%E6%92%AD%E6%9C%BA%E5%88%B6%E7%AE%80%E4%BB%8B"><span class="toc-text">广播机制简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E5%87%86%E5%B9%BF%E6%92%AD"><span class="toc-text">标准广播</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E5%BA%8F%E5%B9%BF%E6%92%AD"><span class="toc-text">有序广播</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%A5%E6%94%B6%E7%B3%BB%E7%BB%9F%E5%B9%BF%E6%92%AD"><span class="toc-text">接收系统广播</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E6%B3%A8%E5%86%8C%E7%9B%91%E5%90%AC%E7%BD%91%E7%BB%9C%E5%8F%98%E5%8C%96"><span class="toc-text">动态注册监听网络变化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%80%E6%98%93%E7%89%88"><span class="toc-text">简易版</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E7%89%88"><span class="toc-text">优化版</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E6%B3%A8%E5%86%8C%E5%AE%9E%E7%8E%B0%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8"><span class="toc-text">静态注册实现开机启动</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B9%BF%E6%92%AD"><span class="toc-text">自定义广播</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E9%80%81%E6%A0%87%E5%87%86%E5%B9%BF%E6%92%AD"><span class="toc-text">发送标准广播</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E9%80%81%E6%9C%89%E5%BA%8F%E5%B9%BF%E6%92%AD"><span class="toc-text">发送有序广播</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%B9%BF%E6%92%AD"><span class="toc-text">本地广播</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -347,20 +367,6 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AppCompatActivity</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> IntentFilter intentFilter;</span><br><span class="line">    <span class="keyword">private</span> LocalReceiver localReceiver;</span><br><span class="line">    <span class="keyword">private</span> LocalBroadcastManager localBroadcastManager;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        localBroadcastManager = LocalBroadcastManager.getInstance(<span class="built_in">this</span>);</span><br><span class="line">        <span class="type">Button</span> <span class="variable">button</span> <span class="operator">=</span> (Button) findViewById(R.id.button);</span><br><span class="line">        button.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">                <span class="type">Intent</span> <span class="variable">intent</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Intent</span>(<span class="string">&quot;com.example.broadcasttest.LOCAL_BROADCAST&quot;</span>);</span><br><span class="line">                localBroadcastManager.sendBroadcast(intent);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        intentFilter = <span class="keyword">new</span> <span class="title class_">IntentFilter</span>();</span><br><span class="line">        intentFilter.addAction(<span class="string">&quot;com.example.broadcasttest.LOCAL_BROADCAST&quot;</span>);</span><br><span class="line">        localReceiver = <span class="keyword">new</span> <span class="title class_">LocalReceiver</span>();</span><br><span class="line">        localBroadcastManager.registerReceiver(localReceiver, intentFilter);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onDestroy</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onDestroy();</span><br><span class="line">        localBroadcastManager.unregisterReceiver(localReceiver);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">LocalReceiver</span> <span class="keyword">extends</span> <span class="title class_">BroadcastReceiver</span> &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onReceive</span><span class="params">(Context context, Intent intent)</span> &#123;</span><br><span class="line">            Toast.makeText(context, <span class="string">&quot;received local broadcast&quot;</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <hr>
-<h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><h3 id="创建代码仓库"><a href="#创建代码仓库" class="headerlink" title="创建代码仓库"></a>创建代码仓库</h3><p>首先配置身份，利用：</p>
-<p>git config –global user.name  “  “</p>
-<p>git config –global user.email  “  “</p>
-<p>可以利用git config –list对配置信息进行查看</p>
-<p>然后进入到想要创建仓库的相应项目文件中利用 cd </p>
-<p>然后在该目录中输入git init</p>
-<p>项目创建完成后会在目录中生成一个隐藏的**.git<strong>文件夹，这个文件夹用来记录本地所有的Git操作，可以通过</strong>ls -al**命令来查看</p>
-<p>如果想删除该仓库，只需删除这个文件夹即可</p>
-<h3 id="提交本地代码"><a href="#提交本地代码" class="headerlink" title="提交本地代码"></a>提交本地代码</h3><p>可以使用<strong>add</strong>和<strong>commit</strong>提交</p>
-<p>add是先将想要提交的代码添加进来，commit则是真正的去执行提交操作</p>
-<p>添加单个文件：git add+文件名</p>
-<p>添加目录：git add+目录名</p>
-<p>添加所有文件：git add .</p>
-<p>提交：git commit -m “First commit.”一定要有-m加上提交的描述信息。</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 QQ邮箱3072420788@qq.com处。 </span>

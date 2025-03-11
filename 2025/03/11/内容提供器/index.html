@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>内容提供器 | Hexo</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="内容提供器 | Hexo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="运行时权限危险权限表格 运行时申请权限(以打电话为例)1.先借助ContextCompat.checkSelfPermission()方法判断用户是否进行了授权。 checkSelfPermission()接收两个参数，第一个是Context，第二个是具体的权限名 2.使用方法的返回值和PackageManager.PERMISSION_GRANTED作比较，不等表示未授权，相等表示已授权 3.把">
+<meta property="og:type" content="article">
+<meta property="og:title" content="内容提供器">
+<meta property="og:url" content="http://example.com/2025/03/11/%E5%86%85%E5%AE%B9%E6%8F%90%E4%BE%9B%E5%99%A8/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="运行时权限危险权限表格 运行时申请权限(以打电话为例)1.先借助ContextCompat.checkSelfPermission()方法判断用户是否进行了授权。 checkSelfPermission()接收两个参数，第一个是Context，第二个是具体的权限名 2.使用方法的返回值和PackageManager.PERMISSION_GRANTED作比较，不等表示未授权，相等表示已授权 3.把">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/img45.jpg">
+<meta property="article:published_time" content="2025-03-11T06:56:45.000Z">
+<meta property="article:modified_time" content="2025-03-11T13:56:59.688Z">
+<meta property="article:author" content="Pick">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/img45.jpg">
+
+
+<link rel="icon" href="/img/picture.png">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/picture.png"/>
+</a>
+<div class="author">
+    <span>Pick</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://buyu6.github.io/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(9)</small>
+            
+        </div>
+    </li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="9">
+<input type="hidden" id="yelog_site_word_count" value="13.6k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="/null">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="search shortcut key i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="switch to outline view shortcut key w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="return"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="case sensitive"></i>
+            <i class="iconfont icon-tag" data-title="label"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">outline</div>
+            <i class="iconfont icon-list" data-title="switch to article list"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2025/03/11/%E5%86%85%E5%AE%B9%E6%8F%90%E4%BE%9B%E5%99%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="内容提供器">内容提供器</span>
+            <span class="post-date" title="2025-03-11 14:56:45">2025/03/11</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/11/Git/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Git">Git</span>
+            <span class="post-date" title="2025-03-11 14:56:07">2025/03/11</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/07/try-catch%E5%92%8Cfinally/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="try,catch和finally">try,catch和finally</span>
+            <span class="post-date" title="2025-03-07 23:02:39">2025/03/07</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/06/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="数据存储">数据存储</span>
+            <span class="post-date" title="2025-03-06 19:32:12">2025/03/06</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/03/%E5%B9%BF%E6%92%AD%E6%9C%BA%E5%88%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="广播机制">广播机制</span>
+            <span class="post-date" title="2025-03-03 20:42:38">2025/03/03</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/26/%E7%A2%8E%E7%89%87/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="碎片">碎片</span>
+            <span class="post-date" title="2025-02-26 21:53:56">2025/02/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/25/UI%E5%BC%80%E5%8F%91/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="UI开发">UI开发</span>
+            <span class="post-date" title="2025-02-25 20:25:49">2025/02/25</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/24/%E6%B4%BB%E5%8A%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="活动">活动</span>
+            <span class="post-date" title="2025-02-24 21:02:42">2025/02/24</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/24/Android%E8%AE%A4%E8%AF%86%E4%BB%A5%E5%8F%8A%E5%85%A5%E9%97%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Android认识以及入门">Android认识以及入门</span>
+            <span class="post-date" title="2025-02-24 20:28:01">2025/02/24</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="Toggle full screen shortcut key s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-内容提供器" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">内容提供器</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2025-03-11 21:56:59'>2025-03-11 14:56</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>Count:1.5k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E6%9D%83%E9%99%90"><span class="toc-text">运行时权限</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%B1%E9%99%A9%E6%9D%83%E9%99%90%E8%A1%A8%E6%A0%BC"><span class="toc-text">危险权限表格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E7%94%B3%E8%AF%B7%E6%9D%83%E9%99%90-%E4%BB%A5%E6%89%93%E7%94%B5%E8%AF%9D%E4%B8%BA%E4%BE%8B"><span class="toc-text">运行时申请权限(以打电话为例)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E5%85%B6%E4%BB%96%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="toc-text">访问其他程序的数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ContentResolver%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="toc-text">ContentResolver的基本用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Query"><span class="toc-text">Query( )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Insert"><span class="toc-text">Insert( )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#update"><span class="toc-text">update( )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#delete"><span class="toc-text">delete( )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E7%B3%BB%E7%BB%9F%E8%81%94%E7%B3%BB%E4%BA%BA"><span class="toc-text">读取系统联系人</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%86%85%E5%AE%B9%E6%8F%90%E4%BE%9B%E5%99%A8"><span class="toc-text">创建内容提供器</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="运行时权限"><a href="#运行时权限" class="headerlink" title="运行时权限"></a>运行时权限</h1><h3 id="危险权限表格"><a href="#危险权限表格" class="headerlink" title="危险权限表格"></a>危险权限表格</h3><p><img src="/../img/img45.jpg"></p>
+<h3 id="运行时申请权限-以打电话为例"><a href="#运行时申请权限-以打电话为例" class="headerlink" title="运行时申请权限(以打电话为例)"></a>运行时申请权限(以打电话为例)</h3><p>1.先借助ContextCompat.checkSelfPermission()方法判断用户是否进行了授权。</p>
+<p>checkSelfPermission()接收两个参数，第一个是Context，第二个是具体的权限名</p>
+<p>2.使用方法的返回值和PackageManager.PERMISSION_GRANTED作比较，不等表示未授权，相等表示已授权</p>
+<p>3.把打电话的逻辑封装在**call()<strong>方法当中如果授权直接执行该方法，如果未授权，利用</strong>ActivityCompat.requestPermissions()<strong>方法向用户申请授权，</strong>requestPermissions()**接收三个参数，第一个是Activity实例，第二个是String数组，把权限名放入其中，第三个是请求码，只要是唯一值就行。</p>
+<p>4.调用<strong>requestPermissions()<strong>方法后最终会回调到</strong>onRequestPermissionResult()<strong>方法，而授权结果会封装在</strong>grantResults</strong>参数中，判断最后的授权结果</p>
+<p><strong>完整的实例：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AppCompatActivity</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        Button makeCall=(Button) findViewById(R.id.make_call);</span><br><span class="line">        makeCall.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">                <span class="keyword">if</span>(ContextCompat.checkSelfPermission(MainActivity.<span class="built_in">this</span>,Manifest.permission.CALL_PHONE)!= PackageManager.PERMISSION_GRANTED)&#123;</span><br><span class="line">                    ActivityCompat.requestPermissions(MainActivity.<span class="built_in">this</span>,<span class="keyword">new</span> <span class="title class_">String</span>[]&#123;Manifest.permission.CALL_PHONE&#125;,<span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    call();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">call</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            Intent intent=<span class="keyword">new</span> <span class="title class_">Intent</span>(Intent.ACTION_CALL);</span><br><span class="line">            intent.setData(Uri.parse(<span class="string">&quot;tel:10086&quot;</span>));</span><br><span class="line">            startActivity(intent);</span><br><span class="line">        &#125;<span class="keyword">catch</span> (SecurityException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@SuppressLint(&quot;MissingSuperCall&quot;)</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onRequestPermissionsResult</span><span class="params">(<span class="type">int</span> requestCode,String[] permissions,<span class="type">int</span>[] grantResults)</span>&#123;</span><br><span class="line">        <span class="keyword">switch</span>(requestCode)&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">if</span>(grantResults.length&gt;<span class="number">0</span> &amp;&amp; grantResults[<span class="number">0</span>]== PERMISSION_GRANTED)&#123;</span><br><span class="line">                    call();</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    Toast.makeText(<span class="built_in">this</span>, <span class="string">&quot;You denied the permission&quot;</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h1 id="访问其他程序的数据"><a href="#访问其他程序的数据" class="headerlink" title="访问其他程序的数据"></a>访问其他程序的数据</h1><h3 id="ContentResolver的基本用法"><a href="#ContentResolver的基本用法" class="headerlink" title="ContentResolver的基本用法"></a>ContentResolver的基本用法</h3><p>通过getContentResolver()方法获取ContentResolver实例ContentResolver提供了一系列方法，用于对数据进行CRUD和SQLite相似但参数上略有一些区别。</p>
+<p>不同于数据库的是表名参数被Uri参数代替，主要由两部分组成authority和path，authority一般以程序包名进行命名，path则对同一程序不同表进行区分，标准格式为：content:&#x2F;&#x2F;com.example.app.provider&#x2F;table1,还需要将其解析才可以作为参数传入，</p>
+<p><code>Uri uri=Uri.parse(&quot;content://com.example.app.provider/table1&quot;)</code></p>
+<h3 id="Query"><a href="#Query" class="headerlink" title="Query( )"></a>Query( )</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Cursor cursor=getContentResolver().query(uri,projection,selection,selectionArgs,sortOrder);</span><br><span class="line"><span class="keyword">if</span>(cursor!=<span class="literal">null</span>)&#123;</span><br><span class="line">    <span class="keyword">while</span>(cursor.moveToNext())&#123;</span><br><span class="line">        String column1=cursor.getString(cursor.getColumnIndex(<span class="string">&quot;column1&quot;</span>));</span><br><span class="line">         <span class="type">int</span> column2=cursor.getInt(cursor.getColumnIndex(<span class="string">&quot;column2&quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    cursor.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Insert"><a href="#Insert" class="headerlink" title="Insert( )"></a>Insert( )</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ContentValues values=<span class="keyword">new</span> <span class="title class_">ContentValues</span>();</span><br><span class="line">values.put(<span class="string">&quot;column1&quot;</span>,<span class="string">&quot;text&quot;</span>);</span><br><span class="line">values.put(<span class="string">&quot;column2&quot;</span>,<span class="number">1</span>);</span><br><span class="line">getContentResolver().insert(uri,values);</span><br></pre></td></tr></table></figure>
+
+<h3 id="update"><a href="#update" class="headerlink" title="update( )"></a>update( )</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ContentValues values=<span class="keyword">new</span> <span class="title class_">ContentValues</span>();</span><br><span class="line">values.put(<span class="string">&quot;column1&quot;</span>,<span class="string">&quot;&quot;</span>);</span><br><span class="line">getContentResolver().update(uri,values,<span class="string">&quot;column1=? and column2=?&quot;</span>,<span class="keyword">new</span> <span class="title class_">String</span>[]&#123;<span class="string">&quot;text&quot;</span>,<span class="string">&quot;1&quot;</span>&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="delete"><a href="#delete" class="headerlink" title="delete( )"></a>delete( )</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getContentResolver().delete(uri,<span class="string">&quot;column2=?&quot;</span>,<span class="keyword">new</span> <span class="title class_">String</span>[]&#123;<span class="string">&quot;1&quot;</span>&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="读取系统联系人"><a href="#读取系统联系人" class="headerlink" title="读取系统联系人"></a>读取系统联系人</h3><p><strong>完整实例：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AppCompatActivity</span> &#123;</span><br><span class="line">    ArrayAdapter&lt;String&gt;adapter;</span><br><span class="line">    List&lt;String&gt;contactsList=<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        ListView contactsView=(ListView) findViewById(R.id.contacts_view);</span><br><span class="line">        adapter=<span class="keyword">new</span> <span class="title class_">ArrayAdapter</span>&lt;String&gt;(<span class="built_in">this</span>,android.R.layout.simple_list_item_1,contactsList);</span><br><span class="line">        contactsView.setAdapter(adapter);</span><br><span class="line">        <span class="keyword">if</span>(ContextCompat.checkSelfPermission(<span class="built_in">this</span>, Manifest.permission.READ_CONTACTS)!= PackageManager.PERMISSION_GRANTED)&#123;</span><br><span class="line">            ActivityCompat.requestPermissions(<span class="built_in">this</span>,<span class="keyword">new</span> <span class="title class_">String</span>[]&#123;Manifest.permission.READ_CONTACTS&#125;,<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            readContacts();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">readContacts</span><span class="params">()</span> &#123;</span><br><span class="line">        Cursor cursor=<span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            cursor=getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,<span class="literal">null</span>,<span class="literal">null</span>,<span class="literal">null</span>,<span class="literal">null</span>);</span><br><span class="line">            <span class="keyword">if</span>(cursor!=<span class="literal">null</span>)&#123;</span><br><span class="line">                <span class="keyword">while</span>(cursor.moveToNext())&#123;</span><br><span class="line">                    <span class="meta">@SuppressLint(&quot;Range&quot;)</span> String displayName=cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));</span><br><span class="line">                    <span class="meta">@SuppressLint(&quot;Range&quot;)</span> String number=cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));</span><br><span class="line">                    contactsList.add(displayName+<span class="string">&quot;\n&quot;</span>+number);</span><br><span class="line">                &#125;</span><br><span class="line">                adapter.notifyDataSetChanged();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(cursor!=<span class="literal">null</span>)&#123;</span><br><span class="line">                cursor.close();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@SuppressLint(&quot;MissingSuperCall&quot;)</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onRequestPermissionsResult</span><span class="params">(<span class="type">int</span> requestCode, <span class="meta">@NonNull</span> String[] permissions, <span class="meta">@NonNull</span> <span class="type">int</span>[] grantResults)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(requestCode==<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(grantResults.length&gt;<span class="number">0</span>&amp;&amp;grantResults[<span class="number">0</span>]==PackageManager.PERMISSION_GRANTED)&#123;</span><br><span class="line">                readContacts();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                Toast.makeText(<span class="built_in">this</span>, <span class="string">&quot;You denied the permission&quot;</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>重点看readContacts()方法 里面的uri与前面讲的不太一样，这是为什么呢？这是因为ContactsContract.CommonDataKinds.Phone类已经帮我们做好了封装，提供另一个CONTENT_URI常量，而这个常量就是Uri.parse解析出来的结果。</p>
+<hr>
+<h1 id="创建内容提供器"><a href="#创建内容提供器" class="headerlink" title="创建内容提供器"></a>创建内容提供器</h1><p>1.利用Android Studio创建一个Content Provider，已经在在AndroidManifest.xml中自动注册。</p>
+<p>onCraete():返回true表示创建成功，返回false表示创建失败。</p>
+<p>query():返回值为Cursor类型</p>
+<p>insert():返回一个表示这条新记录的URI</p>
+<p>update():更新已有数据</p>
+<p>delete():被删除的行数将作为返回值返回</p>
+<p>getType():根据传入的URI来返回相应的MIME类型。</p>
+<p>使用通配符表示两种格式的URI：</p>
+<p><em><strong>：</strong>表示匹配任意长度的任意字符。例子content:&#x2F;&#x2F;com.example.app.provider&#x2F;</em></p>
+<p><strong>#：</strong>表示匹配任意长度的数字。例子content:&#x2F;&#x2F;com.example.app.provider&#x2F;table1&#x2F;#</p>
+<p>2.可以借助UriMatcher这个类实现匹配内容URI的功能，利用UriMatcher中的addURI（）方法，接受三个参数，第一个是authority第二个是path第三个是自定义代码，这样当调用match()方法时就能匹配相应的表数据。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> TABLE1_DIR=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> TABLE1_ITEM=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> TABLE2_DIR=<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> TABLE2_ITEM=<span class="number">3</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> UriMatcher uriMatcher;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        uriMatcher=<span class="keyword">new</span> <span class="title class_">UriMatcher</span>(UriMatcher.NO_MATCH);</span><br><span class="line">        uriMatcher.addURI(<span class="string">&quot;com.example.app.provider&quot;</span>,<span class="string">&quot;table1&quot;</span>,TABLE1_DIR);</span><br><span class="line">        uriMatcher.addURI(<span class="string">&quot;com.example.app.provider&quot;</span>,<span class="string">&quot;table1&quot;</span>,TABLE1_DIR);</span><br><span class="line">        uriMatcher.addURI(<span class="string">&quot;com.example.app.provider&quot;</span>,<span class="string">&quot;table1&quot;</span>,TABLE1_DIR);</span><br><span class="line">        uriMatcher.addURI(<span class="string">&quot;com.example.app.provider&quot;</span>,<span class="string">&quot;table1&quot;</span>,TABLE1_DIR);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Cursor <span class="title function_">query</span><span class="params">(<span class="meta">@NonNull</span> Uri uri, <span class="meta">@Nullable</span> String[] strings, <span class="meta">@Nullable</span> String s, <span class="meta">@Nullable</span> String[] strings1, <span class="meta">@Nullable</span> String s1)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(uriMatcher.match(uri)==TABLE1_DIR)&#123;</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (uriMatcher.match(uri)==TABLE1_ITEM) &#123;</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (uriMatcher.match(uri)==TABLE2_DIR) &#123;</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (uriMatcher.match(uri) == TABLE2_ITEM) &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>3.getType()方法一个URI内容对应的MIME字符由三部分组成：</p>
+<p>&lt;必须以vnd开头&gt;</p>
+<p>&lt;如果内容以路径结尾，则后接android.cursor.dir&#x2F;，如果以id结尾则后接android.cursor.item&#x2F;.&gt;</p>
+<p>&lt;最后接上vnd.<authority>.<path>&gt;</p>
+<p>URI为“content:&#x2F;&#x2F;com.example.app.provider&#x2F;table1”对应的MIME类型为“vnd.android.cursor.dir&#x2F;vnd.com.example.app.provider.table1”</p>
+<p>URI为“content:&#x2F;&#x2F;com.example.app.provider&#x2F;table1&#x2F;1”对应的MIME类型为“vnd.android.cursor.item&#x2F;vnd.com.example.app.provider.table1”</p>
+<p>实例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">   <span class="keyword">public</span> String <span class="title function_">getType</span><span class="params">(<span class="meta">@NonNull</span> Uri uri)</span> &#123;</span><br><span class="line">       <span class="keyword">if</span>(uriMatcher.match(uri)==TABLE1_DIR)&#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="string">&quot;vnd.android.cursor.dir/vnd.com.example.app.provider.table1&quot;</span>;</span><br><span class="line">       &#125; <span class="keyword">else</span> <span class="keyword">if</span> (uriMatcher.match(uri)==TABLE1_ITEM) &#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="string">&quot;vnd.android.cursor.item/vnd.com.example.app.provider.table1&quot;</span>;</span><br><span class="line">       &#125; <span class="keyword">else</span> <span class="keyword">if</span> (uriMatcher.match(uri)==TABLE2_DIR) &#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="string">&quot;vnd.android.cursor.dir/vnd.com.example.app.provider.table2&quot;</span>;</span><br><span class="line">       &#125; <span class="keyword">else</span> <span class="keyword">if</span> (uriMatcher.match(uri) == TABLE2_ITEM) &#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="string">&quot;vnd.android.cursor.item/vnd.com.example.app.provider.table2&quot;</span>;</span><br><span class="line">       &#125; </span><br><span class="line">       <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 QQ邮箱3072420788@qq.com处。 </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©BUYU2024
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="Toggle full screen shortcut key s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    #post {
+        background: url(/img/picture3.jpg);
+    }
+    
+    
+    #post .index {
+        background: url(/img/picture3.jpg);
+    }
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("/img/picture1.jpg");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

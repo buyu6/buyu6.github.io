@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Hexo</title>
+  <title>Git | Hexo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Hexo">
+  <meta name="description" content="Git | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="运行时权限危险权限表格 运行时申请权限(以打电话为例)1.先借助ContextCompat.checkSelfPermission()方法判断用户是否进行了授权。 checkSelfPermission()接收两个参数，第一个是Context，第二个是具体的权限名 2.使用方法的返回值和PackageManager.PERMISSION_GRANTED作比较，不等表示未授权，相等表示已授权 3.把">
 <meta property="og:type" content="article">
@@ -58,7 +58,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/"
    class="avatar_target">
@@ -255,18 +255,51 @@
 
     </div>
     <div class="hide-list">
-        <div class="semicircle" data-title="切换全屏 快捷键 s">
+        <div class="semicircle" data-title="Toggle full screen shortcut key s">
             <div class="brackets first"><</div>
             <div class="brackets">&gt;</div>
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-Git" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Why-Blog"><span class="toc-text">Why Blog</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-text">对博客的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2"><span class="toc-text">关于我的博客</span></a></li></ol></li></ol>
+        <h1 class="article-title">Git</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2025-03-11 22:18:45'>2025-03-11 14:56</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>Count:557</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93"><span class="toc-text">创建代码仓库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8F%90%E4%BA%A4%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81"><span class="toc-text">提交本地代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6"><span class="toc-text">忽略文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E4%BF%AE%E6%94%B9%E5%86%85%E5%AE%B9"><span class="toc-text">查看修改内容</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%92%A4%E9%94%80%E6%9C%AA%E6%8F%90%E4%BA%A4%E7%9A%84%E4%BF%AE%E6%94%B9"><span class="toc-text">撤销未提交的修改</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E8%AE%B0%E5%BD%95"><span class="toc-text">查看提交记录</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -279,13 +312,65 @@
     }
 </style>
 </div>
-            <h1 id="Why-Blog"><a href="#Why-Blog" class="headerlink" title="Why Blog"></a>Why Blog</h1><h2 id="对博客的理解"><a href="#对博客的理解" class="headerlink" title="对博客的理解"></a>对博客的理解</h2><p>​       <strong>这个博客是在2024年12月份完成的，起初只是组长要求，是我们入组以来的第一个任务，完成之后也没再使用过了，原本并没有深入了解，以为在博客上上传文章有点复杂一直未启用我的博客，由于我主要学习的android方向的知识，android更新速度很快，需要学习的知识更是数不胜数，所以笔记是很重要的，在之前我的笔记一直是记录在我手机便签本上的，但害怕之后换手机或手机丢失导致笔记丢失，这是十分令人痛心的，所以为了避免这种情况，我思来想去决定启用博客，之后的笔记尽数记在博客上，这样看起来方便且笔记不易丢失。也欢迎大家观看我的笔记，如何有哪里记的有错误，也欢迎大家指出。</strong></p>
-<h2 id="关于我的博客"><a href="#关于我的博客" class="headerlink" title="关于我的博客"></a>关于我的博客</h2><p>到目前为止已经写了<code class="article_number"></code>篇文章， 共<code class="site_word_count"></code>字。</p>
-<p>本站访问人数：<code class="site_uv"></code>人次 ， 访问量：<code class="site_pv"></code>次</p>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="创建代码仓库"><a href="#创建代码仓库" class="headerlink" title="创建代码仓库"></a>创建代码仓库</h1><p>首先配置身份，利用：</p>
+<p><code>git config --global user.name  &quot;  &quot;</code></p>
+<p><code>git config --global user.email  &quot;  &quot;</code></p>
+<p>可以利用<code>git config --list</code>对配置信息进行查看</p>
+<p>然后进入到想要创建仓库的相应项目文件中利用 cd </p>
+<p>然后在该目录中输入<code>git init</code></p>
+<p>项目创建完成后会在目录中生成一个隐藏的**.git<strong>文件夹，这个文件夹用来记录本地所有的Git操作，可以通过</strong>ls -al**命令来查看</p>
+<p>如果想删除该仓库，只需删除这个文件夹即可</p>
+<hr>
+<h1 id="提交本地代码"><a href="#提交本地代码" class="headerlink" title="提交本地代码"></a>提交本地代码</h1><p>可以使用<strong>add</strong>和<strong>commit</strong>提交</p>
+<p>add是先将想要提交的代码添加进来，commit则是真正的去执行提交操作</p>
+<p>添加单个文件：git add+文件名</p>
+<p>添加目录：git add+目录名</p>
+<p>添加所有文件：<code>git add .</code></p>
+<p>提交：<code>git commit -m &quot;First commit.&quot;</code>一定要有-m加上提交的描述信息。</p>
+<hr>
+<h1 id="忽略文件"><a href="#忽略文件" class="headerlink" title="忽略文件"></a>忽略文件</h1><p>如果不想把app文件下的内容添加到版本控制中，那么可以修改<strong>app&#x2F;.gitignore</strong>文件中的内容：</p>
+<p>&#x2F;build</p>
+<p>&#x2F;src&#x2F;test</p>
+<p>&#x2F;src&#x2F;androidTest</p>
+<p>现在就可以提交代码：</p>
+<p><code>git add .</code></p>
+<p><code>git commit -m &quot;First commit.&quot;</code></p>
+<hr>
+<h1 id="查看修改内容"><a href="#查看修改内容" class="headerlink" title="查看修改内容"></a>查看修改内容</h1><p>1.在项目根目录下输入以下指令：</p>
+<p><em>git status</em></p>
+<p>2.修改数据后再次使用该指令可以发现文件已更改</p>
+<p>3.利用git diff app&#x2F;src&#x2F;main&#x2F;java&#x2F;com&#x2F;example&#x2F;providertest&#x2F;MainActivity.java查看更改的内容</p>
+<hr>
+<h1 id="撤销未提交的修改"><a href="#撤销未提交的修改" class="headerlink" title="撤销未提交的修改"></a>撤销未提交的修改</h1><p>1.利用git checkout app&#x2F;src&#x2F;main&#x2F;java&#x2F;com&#x2F;example&#x2F;providertest&#x2F;MainActivity.java指令可以使一切修改撤销</p>
+<p>2.输入<em>git status</em>进行检查</p>
+<!--不过这种撤销方式只适合于那些没有执行过add添加的文件-->
 
-        </article>
-        
-        
+<p>如果是已经添加过的文件需要先使用<code>git reset app/src/main/java/com/example/providertest/MainActivity.java</code>指令取消添加</p>
+<hr>
+<h1 id="查看提交记录"><a href="#查看提交记录" class="headerlink" title="查看提交记录"></a>查看提交记录</h1><p>1.用git log查看历史提交信息</p>
+<p>2.若只想查其中一条记录，可以在命令中指定该条记录的id并加上**-1**参数表示只想看到这一行</p>
+<p>3.如果想看这条记录具体修改了什么可以加个 <strong>-p</strong>，其中减号代表删除，加号代表添加的部分。</p>
+<hr>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 QQ邮箱3072420788@qq.com处。 </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">
@@ -294,11 +379,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="Toggle full screen shortcut key s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="Toggle full screen shortcut key s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 </body>
