@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Kotlin标准函数 | Hexo</title>
+  <title>Kotlin定义静态方法 | Hexo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Kotlin标准函数 | Hexo">
+  <meta name="description" content="Kotlin定义静态方法 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Toast1.一种提醒方式 2.用法 1234val button1: Button &#x3D; findViewById(R.id.button1)           button1.setOnClickListener &#123;               Toast.makeText(this,&quot;You clicked out&quot;,Toast.LENGTH_SHORT).sh">
 <meta property="og:type" content="article">
@@ -407,9 +407,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Kotlin标准函数" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Kotlin定义静态方法" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Kotlin标准函数</h1>
+        <h1 class="article-title">Kotlin定义静态方法</h1>
     
     <div class="article-meta">
         
@@ -427,12 +427,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-04-20 22:51:09'>2025-04-19 21:56</time>
+            Created At : <time class="date" title='Updated At: 2025-04-20 23:06:57'>2025-04-20 22:51</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:335</span>
+        <span>Count:252</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -451,7 +451,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#with"><span class="toc-text">with</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#run"><span class="toc-text">run</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#apply"><span class="toc-text">apply</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B1%BB%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="toc-text">类静态方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E4%BE%8B%E7%B1%BB"><span class="toc-text">单例类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="toc-text">静态方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E8%A7%A3%E6%B3%95%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89"><span class="toc-text">注解法（不常用）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B6%E5%B1%82%E6%96%B9%E6%B3%95"><span class="toc-text">顶层方法</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -467,36 +467,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="with"><a href="#with" class="headerlink" title="with"></a>with</h1><p>作用：可以在连续调用同一个对象的多个方法时让代码变得更简便</p>
-<p>标准形式：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> result = with (obj)&#123;</span><br><span class="line">    <span class="comment">//这里是obj的上下文</span></span><br><span class="line">    <span class="string">&quot;value&quot;</span><span class="comment">//with函数返回值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h1 id="类静态方法"><a href="#类静态方法" class="headerlink" title="类静态方法"></a>类静态方法</h1><p>kotlin特有，有与静态方法同样的语法特点但并非静态方法</p>
+<p>静态方法特点是可以直接使用(<strong>类.方法</strong>)的形式调用</p>
+<h3 id="单例类"><a href="#单例类" class="headerlink" title="单例类"></a>单例类</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">object</span> Util&#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">doAction</span><span class="params">()</span></span>&#123;</span><br><span class="line">        println(<span class="string">&quot;do action&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>实例：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list= listOf(<span class="string">&quot;Apple&quot;</span>,<span class="string">&quot;Banana&quot;</span>,<span class="string">&quot;Pear&quot;</span>)</span><br><span class="line">    <span class="keyword">val</span> result=with(StringBuilder())&#123;</span><br><span class="line">        append(<span class="string">&quot;Start eating fruits.\n&quot;</span>)</span><br><span class="line">        <span class="keyword">for</span>(fruit <span class="keyword">in</span> list)&#123;</span><br><span class="line">            append(fruit).append(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        append(<span class="string">&quot;Ate all Fruits&quot;</span>)</span><br><span class="line">        toString()</span><br><span class="line">    &#125;</span><br><span class="line">    println(result)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h1 id="run"><a href="#run" class="headerlink" title="run"></a>run</h1><p>作用：同with相同只是通常不会直接调用而是在对象的基础上调用</p>
-<p>标准形式：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> result =obj.run&#123;</span><br><span class="line">    <span class="comment">//这里是obj的上下文</span></span><br><span class="line">    <span class="string">&quot;value&quot;</span><span class="comment">//run函数返回值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>实例：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list= listOf(<span class="string">&quot;Apple&quot;</span>,<span class="string">&quot;Banana&quot;</span>,<span class="string">&quot;Pear&quot;</span>)</span><br><span class="line">    <span class="keyword">val</span> result=StringBuilder().run&#123;</span><br><span class="line">        append(<span class="string">&quot;Start eating fruits.\n&quot;</span>)</span><br><span class="line">        <span class="keyword">for</span>(fruit <span class="keyword">in</span> list)&#123;</span><br><span class="line">            append(fruit).append(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        append(<span class="string">&quot;Ate all Fruits&quot;</span>)</span><br><span class="line">        toString()</span><br><span class="line">    &#125;</span><br><span class="line">    println(result)</span><br></pre></td></tr></table></figure>
-
-
+<p>单例类中所以方法皆可以视为静态方法</p>
+<p>如果只想某一方法变为静态方法可以使用<strong>companion object{}</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Util</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">doAction1</span><span class="params">()</span></span>&#123;</span><br><span class="line">        println(<span class="string">&quot;do action1&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span>&#123;</span><br><span class="line">     <span class="function"><span class="keyword">fun</span> <span class="title">doAction2</span><span class="params">()</span></span>&#123;</span><br><span class="line">        println(<span class="string">&quot;do action2&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <hr>
-<h1 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h1><p>作用：作用和run类似只是无法指定返回值</p>
-<p>标准形式：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> result =obj.apply&#123;</span><br><span class="line">    <span class="comment">//这里是obj的上下文</span></span><br><span class="line">&#125;</span><br><span class="line">result==obj</span><br></pre></td></tr></table></figure>
+<h1 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h1><h3 id="注解法（不常用）"><a href="#注解法（不常用）" class="headerlink" title="注解法（不常用）"></a>注解法（不常用）</h3><p>使用@JvmStatic注解(只能加在单例类或companion object{}中的方法上)</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Util</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">doAction1</span><span class="params">()</span></span>&#123;</span><br><span class="line">        println(<span class="string">&quot;do action1&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span>&#123;</span><br><span class="line">        <span class="meta">@JvmStatic</span></span><br><span class="line">     <span class="function"><span class="keyword">fun</span> <span class="title">doAction2</span><span class="params">()</span></span>&#123;</span><br><span class="line">        println(<span class="string">&quot;do action2&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>实例：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list= listOf(<span class="string">&quot;Apple&quot;</span>,<span class="string">&quot;Banana&quot;</span>,<span class="string">&quot;Pear&quot;</span>)</span><br><span class="line"><span class="keyword">val</span> result=StringBuilder().apply&#123;</span><br><span class="line">    append(<span class="string">&quot;Start eating fruits.\n&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span>(fruit <span class="keyword">in</span> list)&#123;</span><br><span class="line">        append(fruit).append(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    append(<span class="string">&quot;Ate all Fruits&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line">println(result.toString())</span><br></pre></td></tr></table></figure>
-
-<p><strong>利用Intent传递数据时也可以使用apply函数</strong></p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> intent=Intent(context,SecondActivity::<span class="keyword">class</span>.java).apply&#123;</span><br><span class="line">    putExtra(<span class="string">&quot;param1&quot;</span>,<span class="string">&quot;data1&quot;</span>)</span><br><span class="line">    putExtra(<span class="string">&quot;param2&quot;</span>,<span class="string">&quot;data2&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line">context.startActivity(intent)</span><br></pre></td></tr></table></figure>
-
-
-
+<h3 id="顶层方法"><a href="#顶层方法" class="headerlink" title="顶层方法"></a>顶层方法</h3><p>1.定义：Kotlin编译器会将所有顶层方法编译成静态方法</p>
+<p>2.建立一个kotlin文件：</p>
+<p>任意包名-&gt;New-&gt;Kotlin File&#x2F;Class在弹窗中选择File类型，该文件中的方法全都是顶层方法</p>
 <hr>
 
       

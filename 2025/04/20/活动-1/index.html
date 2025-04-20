@@ -6,15 +6,22 @@
   <meta name="keywords" content="">
   <meta name="description" content="活动(Kotlin) | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="Toast1.一种提醒方式 2.用法 1234val button1: Button &#x3D; findViewById(R.id.button1)           button1.setOnClickListener &#123;               Toast.makeText(this,&quot;You clicked out&quot;,Toast.LENGTH_SHORT).sh">
 <meta property="og:type" content="article">
 <meta property="og:title" content="活动(Kotlin)">
 <meta property="og:url" content="http://example.com/2025/04/20/%E6%B4%BB%E5%8A%A8-1/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Toast1.一种提醒方式 2.用法 1234val button1: Button &#x3D; findViewById(R.id.button1)           button1.setOnClickListener &#123;               Toast.makeText(this,&quot;You clicked out&quot;,Toast.LENGTH_SHORT).sh">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/img53.jpg">
+<meta property="og:image" content="http://example.com/img/img13.jpg">
+<meta property="og:image" content="http://example.com/img/img11.jpg">
+<meta property="og:image" content="http://example.com/img/img12.jpg">
 <meta property="article:published_time" content="2025-04-20T01:55:22.000Z">
-<meta property="article:modified_time" content="2025-04-20T01:58:00.106Z">
+<meta property="article:modified_time" content="2025-04-20T14:35:43.557Z">
 <meta property="article:author" content="Pick">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/img53.jpg">
 
 
 <link rel="icon" href="/img/picture.png">
@@ -89,7 +96,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(17)</small>
+                <small>(18)</small>
             
         </div>
     </li>
@@ -131,7 +138,22 @@
         <div data-rel="Kotlin">
             
             Kotlin
-            <small>(2)</small>
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Android(Kotlin版)">
+            
+            Android(Kotlin版)
+            <small>(1)</small>
         </div>
         
     </li>
@@ -152,8 +174,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="17">
-<input type="hidden" id="yelog_site_word_count" value="28.4k">
+<input type="hidden" id="yelog_site_posts_number" value="18">
+<input type="hidden" id="yelog_site_word_count" value="30.7k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -206,7 +228,16 @@
     <nav id="title-list-nav">
         
         
-        <a  class="All "
+        <a  class="All Kotlin "
+           href="/2025/04/20/Kotlin%E5%AE%9A%E4%B9%89%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Kotlin定义静态方法">Kotlin定义静态方法</span>
+            <span class="post-date" title="2025-04-20 22:51:42">2025/04/20</span>
+        </a>
+        
+        
+        <a  class="All Android(Kotlin版) "
            href="/2025/04/20/%E6%B4%BB%E5%8A%A8-1/"
            data-tag=""
            data-author="" >
@@ -384,16 +415,24 @@
         
         
         
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Android(Kotlin版)">Android(Kotlin版)</a>
+            
+        </span>
+        
         
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-04-20 09:58:00'>2025-04-20 09:55</time>
+            Created At : <time class="date" title='Updated At: 2025-04-20 22:35:43'>2025-04-20 09:55</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:0</span>
+        <span>Count:1.8k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -412,7 +451,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Toast"><span class="toc-text">Toast</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ViewBinding"><span class="toc-text">ViewBinding</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Menu"><span class="toc-text">Menu</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Intent"><span class="toc-text">Intent</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%BE%E5%BC%8FIntent"><span class="toc-text">显式Intent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%90%E5%BC%8FIntent"><span class="toc-text">隐式Intent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%90%E5%BC%8FIntent%E7%94%A8%E6%B3%95"><span class="toc-text">隐式Intent用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%91%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%B4%BB%E5%8A%A8%E4%BC%A0%E9%80%92%E6%95%B0%E6%8D%AE"><span class="toc-text">向下一个活动传递数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%91%E4%B8%8A%E4%B8%80%E6%B4%BB%E5%8A%A8%E8%BF%94%E5%9B%9E%E6%95%B0%E6%8D%AE"><span class="toc-text">向上一活动返回数据</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Activity%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">Activity生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E5%AD%98%E6%9C%9F"><span class="toc-text">生存期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E5%AD%98%E6%9C%9F%E7%B1%BB%E5%88%AB"><span class="toc-text">生存期类别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Activity%E8%A2%AB%E5%9B%9E%E6%94%B6%E4%BA%86%E5%92%8B%E5%8A%9E"><span class="toc-text">Activity被回收了咋办</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Activity%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F"><span class="toc-text">Activity启动模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#standard"><span class="toc-text">standard</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#singleTop"><span class="toc-text">singleTop</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#singleTask"><span class="toc-text">singleTask</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#singleInstance"><span class="toc-text">singleInstance</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Activity%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="toc-text">Activity最佳实践</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E6%99%93%E5%BD%93%E5%89%8D%E6%98%AF%E5%93%AA%E4%B8%AA%E6%B4%BB%E5%8A%A8"><span class="toc-text">知晓当前是哪个活动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%8F%E6%97%B6%E9%9A%8F%E5%9C%B0%E9%80%80%E5%87%BA%E7%A8%8B%E5%BA%8F"><span class="toc-text">随时随地退出程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8Activity%E6%9C%80%E4%BD%B3%E5%86%99%E6%B3%95"><span class="toc-text">启动Activity最佳写法</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -428,7 +467,143 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="Toast"><a href="#Toast" class="headerlink" title="Toast"></a>Toast</h1><p>1.一种提醒方式</p>
+<p>2.用法</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> button1: Button = findViewById(R.id.button1)</span><br><span class="line">           button1.setOnClickListener &#123;</span><br><span class="line">               Toast.makeText(<span class="keyword">this</span>,<span class="string">&quot;You clicked out&quot;</span>,Toast.LENGTH_SHORT).show()</span><br><span class="line">           &#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="ViewBinding"><a href="#ViewBinding" class="headerlink" title="ViewBinding"></a>ViewBinding</h1><p>1.先在build.gradle.kts(app)中导入ViewBinding</p>
+<p>2.声明该类型</p>
+<p>3.绑定布局</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">    <span class="comment">// 启用 ViewBinding</span></span><br><span class="line">    viewBinding &#123;</span><br><span class="line">        enable = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">FirstActivity</span> : <span class="type">BaseActivity</span>() &#123;</span><br><span class="line">          <span class="comment">//声明变量</span></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> myBinding:FirstActivityBinding</span><br><span class="line">        <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">            <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">            <span class="comment">//绑定布局</span></span><br><span class="line">            myBinding=FirstActivityBinding.inflate(layoutInflater)</span><br><span class="line">            setContentView(myBinding.root)</span><br><span class="line">            <span class="comment">//使用</span></span><br><span class="line">            myBinding.button1.setOnClickListener &#123;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="Menu"><a href="#Menu" class="headerlink" title="Menu"></a>Menu</h1><p>1.创建<strong>menu</strong>文件夹并创建<strong>Menu resource file</strong></p>
+<p>2.重写**onCreateOptionsMenu()**方法对菜单完成创建</p>
+<p>3.重写**onOptionsItemSelected()**方法设计点击事件</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreateOptionsMenu</span><span class="params">(menu: <span class="type">Menu</span>?)</span></span>: <span class="built_in">Boolean</span> &#123;</span><br><span class="line">            menuInflater.inflate(R.menu.main, menu)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onOptionsItemSelected</span><span class="params">(item: <span class="type">MenuItem</span>)</span></span>: <span class="built_in">Boolean</span> &#123;</span><br><span class="line">            <span class="keyword">when</span> (item.itemId) &#123;</span><br><span class="line">                R.id.add_item -&gt; Toast.makeText(<span class="keyword">this</span>, <span class="string">&quot;you clicked add&quot;</span>, Toast.LENGTH_SHORT).show()</span><br><span class="line">                R.id.remove_item -&gt; Toast.makeText(<span class="keyword">this</span>, <span class="string">&quot;you clicked remove&quot;</span>, Toast.LENGTH_SHORT)</span><br><span class="line">                    .show()</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="Intent"><a href="#Intent" class="headerlink" title="Intent"></a>Intent</h1><h3 id="显式Intent"><a href="#显式Intent" class="headerlink" title="显式Intent"></a>显式Intent</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> intent=Intent(<span class="keyword">this</span>,SecondActivity::<span class="keyword">class</span>.java)<span class="comment">//SecondActivity::class.java相当于Java中的SecondActivity.class </span></span><br><span class="line">startActivity(intent)</span><br></pre></td></tr></table></figure>
+
+<h3 id="隐式Intent"><a href="#隐式Intent" class="headerlink" title="隐式Intent"></a>隐式Intent</h3><p>1.在<intent-filter>标签下配置<action>和<category></p>
+<p>2.直接将action传入Intent构造函数中</p>
+<p>3只有<action>和<category>同时匹配才能响应</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity</span><br><span class="line">    android:name=<span class="string">&quot;.SecondActivity&quot;</span></span><br><span class="line">    android:exported=<span class="string">&quot;false&quot;</span>&gt;</span><br><span class="line">    &lt;intent-filter&gt;</span><br><span class="line">        &lt;action android:name=<span class="string">&quot;com.example.activitytest.ACTION_START&quot;</span> /&gt;</span><br><span class="line">        &lt;category android:name=<span class="string">&quot;android.intent.category.DEFAULT&quot;</span> /&gt;</span><br><span class="line">        &lt;category android:name=<span class="string">&quot;com.example.activitytest.MY_CATEGORY&quot;</span> /&gt;</span><br><span class="line">    &lt;/intent-filter&gt;</span><br><span class="line">&lt;/activity&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> intent=Intent(<span class="string">&quot;com.example.activitytest.ACTION_START&quot;</span>)</span><br><span class="line"><span class="comment">//添加category(action只有一个category可以有多个)</span></span><br><span class="line">intent.addCategory(<span class="string">&quot;com.example.activitytest.MY_CATEGORY&quot;</span>)</span><br><span class="line">startActivity(intent)</span><br></pre></td></tr></table></figure>
+
+<h3 id="隐式Intent用法"><a href="#隐式Intent用法" class="headerlink" title="隐式Intent用法"></a>隐式Intent用法</h3><p>1.调用系统浏览器</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> intent=Intent(Intent.ACTION_VIEW)</span><br><span class="line">intent.<span class="keyword">data</span>= Uri.parse(<span class="string">&quot;https://www.baidu.com&quot;</span>)</span><br><span class="line">startActivity(intent)</span><br></pre></td></tr></table></figure>
+
+<p>2.调用电话</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> intent=Intent(Intent.ACTION_DIAL)</span><br><span class="line">intent.<span class="keyword">data</span>= Uri.parse(<span class="string">&quot;tel:10086&quot;</span>)</span><br><span class="line">startActivity(intent)</span><br></pre></td></tr></table></figure>
+
+<h3 id="向下一个活动传递数据"><a href="#向下一个活动传递数据" class="headerlink" title="向下一个活动传递数据"></a>向下一个活动传递数据</h3><p>利用putExtra传入一个键值对</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> <span class="keyword">data</span>=<span class="string">&quot;Hello SecondActivity&quot;</span></span><br><span class="line"><span class="keyword">val</span> intent=Intent(<span class="keyword">this</span>,SecondActivity::<span class="keyword">class</span>.java)</span><br><span class="line">intent.putExtra(<span class="string">&quot;extra_data&quot;</span>,<span class="keyword">data</span>)</span><br><span class="line">startActivity(intent)</span><br></pre></td></tr></table></figure>
+
+<p>利用getStringExtra接收数据传入“键”</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> extraData=intent.getStringExtra(<span class="string">&quot;extra_data&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="向上一活动返回数据"><a href="#向上一活动返回数据" class="headerlink" title="向上一活动返回数据"></a>向上一活动返回数据</h3><p>1.第一个活动中通过startActivityForResult启动活动</p>
+<p>2.第二个活动构建要传输的数据</p>
+<p>3.在第一个活动中重onActivityResult方法得到返回数据</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">myBinding.button1.setOnClickListener &#123;</span><br><span class="line">    <span class="keyword">val</span> intent=Intent(<span class="keyword">this</span>,SecondActivity::<span class="keyword">class</span>.java)</span><br><span class="line">            startActivityForResult(intent,<span class="number">1</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">button2.setOnClickListener &#123;</span><br><span class="line"><span class="keyword">val</span> intent= Intent()</span><br><span class="line"> intent.putExtra(<span class="string">&quot;data_return&quot;</span>,<span class="string">&quot;Hello FirstActivity!!!&quot;</span>)</span><br><span class="line"> setResult(RESULT_OK,intent)</span><br><span class="line"> finish()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onActivityResult</span><span class="params">(requestCode: <span class="type">Int</span>, resultCode: <span class="type">Int</span>, <span class="keyword">data</span>: <span class="type">Intent</span>?)</span></span> &#123;</span><br><span class="line">            <span class="keyword">super</span>.onActivityResult(requestCode, resultCode, <span class="keyword">data</span>)</span><br><span class="line">            <span class="keyword">when</span> (requestCode) &#123;</span><br><span class="line">                <span class="number">1</span> -&gt; <span class="keyword">if</span> (resultCode == RESULT_OK) &#123;</span><br><span class="line">                    <span class="keyword">val</span> returnData = <span class="keyword">data</span>?.getStringExtra(<span class="string">&quot;data_return&quot;</span>)</span><br><span class="line">                    Log.d(<span class="string">&quot;FirstActivity&quot;</span>, <span class="string">&quot;returned data is <span class="variable">$returnData</span> &quot;</span>)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果通过back键返回：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onBackPressed</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">val</span> intent= Intent()</span><br><span class="line">        intent.putExtra(<span class="string">&quot;data_return&quot;</span>,<span class="string">&quot;Hello FirstActivity&quot;</span>)</span><br><span class="line">        setResult(RESULT_OK,intent)</span><br><span class="line">        finish()</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="Activity生命周期"><a href="#Activity生命周期" class="headerlink" title="Activity生命周期"></a>Activity生命周期</h1><h3 id="生存期"><a href="#生存期" class="headerlink" title="生存期"></a>生存期</h3><p><strong>1. onCreate()</strong></p>
+<p>作用：</p>
+<p>当 Activity 第一次被创建时调用。在这个方法中，你通常会完成以下工作：</p>
+<ul>
+<li>设置布局文件（例如调用 <code>setContentView()</code>）</li>
+<li>初始化控件、变量和数据</li>
+<li>配置基本组件（如 Toolbar、Fragment 等）</li>
+</ul>
+<p><strong>2.onStart()</strong></p>
+<p>作用：</p>
+<p>在 <code>onCreate()</code> 之后调用，此时 Activity 已经对用户可见，但还未获得焦点，也就是还不能进行用户交互。通常在这里启动一些即将进入前台的操作。</p>
+<p><strong>3.onResume()</strong></p>
+<p>作用：</p>
+<p>在 <code>onStart()</code> 之后调用，此时 Activity 已经位于前台，并且可以接收用户的输入和交互。这也是应用处于“运行”状态的主要阶段。</p>
+<p><strong>4.onPause()</strong></p>
+<p>作用：</p>
+<p>当系统准备启动或恢复另一个 Activity 时调用，此时当前 Activity 仍然部分可见，但失去了用户焦点。通常在这里进行轻量级的保存工作，比如暂停动画、保存数据或释放一些占用较多资源的操作。</p>
+<p><strong>5.onStop()</strong></p>
+<p>作用：</p>
+<p>当 Activity 完全对用户不可见时调用，可能是因为新的 Activity 覆盖在上面或 Activity 被销毁。通常在这里释放不再需要的资源，并执行较重的保存工作。</p>
+<p><strong>6.onDestroy()</strong></p>
+<p>作用：</p>
+<p>在 Activity 被完全销毁之前调用。这可能是因为用户主动关闭 Activity 或系统由于资源不足而销毁 Activity。在此方法中需要清理所有占用的资源，确保内存没有泄漏。</p>
+<p><strong>7.onRestart()</strong></p>
+<p>作用：</p>
+<p>当一个已停止的 Activity 将要重新启动时调用，此方法紧接在 <code>onStop()</code> 之后调用，然后进入 <code>onStart()</code>。常用于重新初始化在 <code>onStop()</code> 中释放的资源或状态恢复。</p>
+<h3 id="生存期类别"><a href="#生存期类别" class="headerlink" title="生存期类别"></a>生存期类别</h3><p>**1.完整生存期： **</p>
+<p> onCreate()，onStart()，onResume()，onPause()，onStop()，onDestroy()</p>
+<p><strong>2.可见生存期：</strong></p>
+<p>onStart()，onResume()，onPause()，onStop()</p>
+<p><strong>3.前台生存期：</strong></p>
+<p>onResume()，onPause()</p>
+<p><img src="/../img/img53.jpg"></p>
+<h3 id="Activity被回收了咋办"><a href="#Activity被回收了咋办" class="headerlink" title="Activity被回收了咋办"></a>Activity被回收了咋办</h3><p>1.重写onSaveInstanceState()方法保存数据</p>
+<p>2.利用onCreate()方法中的Bundle类型读取数据</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onSaveInstanceState</span><span class="params">(outState: <span class="type">Bundle</span>)</span></span> &#123;</span><br><span class="line">       <span class="keyword">super</span>.onSaveInstanceState(outState)</span><br><span class="line">       <span class="keyword">val</span> tempData=<span class="string">&quot;Something you just typed&quot;</span></span><br><span class="line">       outState.putString(<span class="string">&quot;data_key&quot;</span>,tempData)</span><br><span class="line">   &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        setContentView(R.layout.activity_main)</span><br><span class="line">        <span class="keyword">if</span>(savedInstanceState!=<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">val</span> tempData=savedInstanceState.getString(<span class="string">&quot;data_key&quot;</span>)</span><br><span class="line">            Log.d(TAG, <span class="string">&quot;tempData is <span class="variable">$tempData</span>&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="Activity启动模式"><a href="#Activity启动模式" class="headerlink" title="Activity启动模式"></a>Activity启动模式</h1><h3 id="standard"><a href="#standard" class="headerlink" title="standard"></a>standard</h3><p>默认设置，每点击一次按钮均会生成一个新的活动，不管这个活动是否存在</p>
+<h3 id="singleTop"><a href="#singleTop" class="headerlink" title="singleTop"></a>singleTop</h3><p>1.在<activity>标签中添加android:launchMode属性更改</p>
+<p>2.作用：</p>
+<p>创建活动时会先检查栈顶的是否是该活动，如果栈顶的活动是该活动则直接调用如果不是创建新活动</p>
+<p>3.原理图</p>
+<p><img src="/../img/img13.jpg"></p>
+<h3 id="singleTask"><a href="#singleTask" class="headerlink" title="singleTask"></a>singleTask</h3><p>1.在<activity>标签中添加android:launchMode属性更改</p>
+<p>2.作用：</p>
+<p>每次启动该活动时会先检查栈中是否有该活动如果有会直接调用并将该活动上方其他活动直接出栈，如果没有则创建新活动</p>
+<p>3.原理图：</p>
+<p><img src="/../img/img11.jpg"></p>
+<h3 id="singleInstance"><a href="#singleInstance" class="headerlink" title="singleInstance"></a>singleInstance</h3><p>1.在<activity>标签中添加android:launchMode属性更改</p>
+<p>2.作用：</p>
+<p>会启用一个新的返回栈来管理该活动，可以实现不同程序之间共享Activity实例</p>
+<p>3.原理图：</p>
+<p><img src="/../img/img12.jpg"></p>
+<hr>
+<h1 id="Activity最佳实践"><a href="#Activity最佳实践" class="headerlink" title="Activity最佳实践"></a>Activity最佳实践</h1><h3 id="知晓当前是哪个活动"><a href="#知晓当前是哪个活动" class="headerlink" title="知晓当前是哪个活动"></a>知晓当前是哪个活动</h3><p>1.建立BaseActivity类</p>
+<p>2.在该类onCreate方法中打印一行日志打印当前类名</p>
+<p>3.其余所以活动继承该类</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="keyword">class</span> <span class="title class_">BaseActivity</span>:<span class="type">AppCompatActivity</span>() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        Log.d(<span class="string">&quot;BaseActivity&quot;</span>, javaClass.simpleName)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="随时随地退出程序"><a href="#随时随地退出程序" class="headerlink" title="随时随地退出程序"></a>随时随地退出程序</h3><p>1.新建一个单例类管理所有活动</p>
+<p>2.修改BaseActivity类中方法实现添加删除</p>
+<p>3.调用方法退出程序</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">object</span> ActivityCollector &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> activities=ArrayList&lt;Activity&gt;()</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">addActivity</span><span class="params">(activity:<span class="type">Activity</span>)</span></span>&#123;</span><br><span class="line">        activities.add(activity)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">removeActivity</span><span class="params">(activity: <span class="type">Activity</span>)</span></span>&#123;</span><br><span class="line">        activities.remove(activity)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">finishAll</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(activity <span class="keyword">in</span> activities)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!activity.isFinishing) &#123;</span><br><span class="line">                activity.finish()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        activities.clear()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="keyword">class</span> <span class="title class_">BaseActivity</span>:<span class="type">AppCompatActivity</span>() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        Log.d(<span class="string">&quot;BaseActivity&quot;</span>, javaClass.simpleName)</span><br><span class="line">        ActivityCollector.addActivity(<span class="keyword">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onDestroy</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onDestroy()</span><br><span class="line">        ActivityCollector.removeActivity(<span class="keyword">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ActivityCollector.finishAll()</span><br></pre></td></tr></table></figure>
+
+<p>也可以在最后加一个杀掉当前进程的代码，来保证完全退出程序</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android.os.Process.killProcess(android.os.Process.myPid())</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="启动Activity最佳写法"><a href="#启动Activity最佳写法" class="headerlink" title="启动Activity最佳写法"></a>启动Activity最佳写法</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在要启动的活动内添加该静态方法</span></span><br><span class="line"><span class="keyword">companion</span> <span class="keyword">object</span> &#123;</span><br><span class="line">    <span class="comment">// 封装启动 SecondActivity 的静态方法</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">actionStart</span><span class="params">(context: <span class="type">Context</span>, <span class="keyword">data</span>: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">        <span class="comment">// 创建一个 Intent 对象，指定从当前上下文启动 SecondActivity</span></span><br><span class="line">        <span class="keyword">val</span> intent = Intent(context, SecondActivity::<span class="keyword">class</span>.java)</span><br><span class="line">        <span class="comment">// 将传入的字符串数据作为额外参数存入 Intent，</span></span><br><span class="line">        <span class="comment">// &quot;extra_data&quot; 为键，用于在 SecondActivity 中提取该数据</span></span><br><span class="line">        intent.putExtra(<span class="string">&quot;extra_data&quot;</span>, <span class="keyword">data</span>)</span><br><span class="line">        <span class="comment">// 通过上下文启动 SecondActivity</span></span><br><span class="line">        context.startActivity(intent)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  button1.setOnClickListener &#123;</span><br><span class="line">        SecondActivity.actionStart(<span class="keyword">this</span>, <span class="string">&quot;data&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 QQ邮箱3072420788@qq.com处。 </span>
     </div>
