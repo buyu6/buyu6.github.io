@@ -6,15 +6,24 @@
   <meta name="keywords" content="">
   <meta name="description" content="UI开发(Kotlin) | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="常用控件TextView123456789&lt;TextView        android:id&#x3D;&quot;@+id&#x2F;textView&quot;&#x2F;&#x2F;定义唯一标识符        android:layout_width&#x3D;&quot;match_parent&quot;&#x2F;&#x2F;控件宽度        android:layout_height&#x3D;&quot;wrap_content&quot;&#x2F;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UI开发(Kotlin)">
 <meta property="og:url" content="http://example.com/2025/04/24/UI%E5%BC%80%E5%8F%91-Kotlin/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="常用控件TextView123456789&lt;TextView        android:id&#x3D;&quot;@+id&#x2F;textView&quot;&#x2F;&#x2F;定义唯一标识符        android:layout_width&#x3D;&quot;match_parent&quot;&#x2F;&#x2F;控件宽度        android:layout_height&#x3D;&quot;wrap_content&quot;&#x2F;">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/img15.jpg">
+<meta property="og:image" content="http://example.com/img/img16.jpg">
+<meta property="og:image" content="http://example.com/img/img17.jpg">
+<meta property="og:image" content="http://example.com/img/img18.jpg">
+<meta property="og:image" content="http://example.com/img/img19.jpg">
+<meta property="og:image" content="http://example.com/img/img20.jpg">
 <meta property="article:published_time" content="2025-04-24T11:35:30.000Z">
-<meta property="article:modified_time" content="2025-04-24T11:35:46.782Z">
+<meta property="article:modified_time" content="2025-04-24T14:04:02.644Z">
 <meta property="article:author" content="Pick">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/img15.jpg">
 
 
 <link rel="icon" href="/img/picture.png">
@@ -168,7 +177,7 @@
     </div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="19">
-<input type="hidden" id="yelog_site_word_count" value="30.7k">
+<input type="hidden" id="yelog_site_word_count" value="31.7k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -429,12 +438,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-04-24 19:35:46'>2025-04-24 19:35</time>
+            Created At : <time class="date" title='Updated At: 2025-04-24 22:04:02'>2025-04-24 19:35</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:0</span>
+        <span>Count:915</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -453,7 +462,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%8E%A7%E4%BB%B6"><span class="toc-text">常用控件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TextView"><span class="toc-text">TextView</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Button"><span class="toc-text">Button</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EditText"><span class="toc-text">EditText</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ImageView"><span class="toc-text">ImageView</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ProgressBar"><span class="toc-text">ProgressBar</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AlertDialog"><span class="toc-text">AlertDialog</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%83%E5%B1%80"><span class="toc-text">布局</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LinearLayout"><span class="toc-text">LinearLayout</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RelativeLayout"><span class="toc-text">RelativeLayout</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FrameLayout"><span class="toc-text">FrameLayout</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6"><span class="toc-text">自定义控件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5%E5%B8%83%E5%B1%80"><span class="toc-text">引入布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6"><span class="toc-text">创建自定义控件</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -469,7 +478,74 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="常用控件"><a href="#常用控件" class="headerlink" title="常用控件"></a>常用控件</h1><h3 id="TextView"><a href="#TextView" class="headerlink" title="TextView"></a>TextView</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;TextView</span><br><span class="line">        android:id=<span class="string">&quot;@+id/textView&quot;</span><span class="comment">//定义唯一标识符</span></span><br><span class="line">        android:layout_width=<span class="string">&quot;match_parent&quot;</span><span class="comment">//控件宽度</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;wrap_content&quot;</span><span class="comment">//控件高度</span></span><br><span class="line">        android:gravity=<span class="string">&quot;center&quot;</span><span class="comment">//文字位置</span></span><br><span class="line">        android:textColor=<span class="string">&quot;@color/red&quot;</span><span class="comment">//文字颜色</span></span><br><span class="line">        android:textSize=<span class="string">&quot;24sp&quot;</span><span class="comment">//文字大小</span></span><br><span class="line">        android:text=<span class="string">&quot;This is TextView&quot;</span><span class="comment">//文字内容</span></span><br><span class="line">       /&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Button"><a href="#Button" class="headerlink" title="Button"></a>Button</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;Button</span><br><span class="line">        android:id=<span class="string">&quot;@+id/button&quot;</span></span><br><span class="line">        android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">        android:text=<span class="string">&quot;Button&quot;</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>点击事件：</strong></p>
+<p>(1)</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">myBinding.button.setOnClickListener &#123;</span><br><span class="line">    <span class="comment">//代码逻辑</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>(2)接口法</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MainActivity</span> : <span class="type">AppCompatActivity</span>(),View.OnClickListener &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">                   ......</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onClick</span><span class="params">(v: <span class="type">View</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">when</span>(v?.id)&#123;</span><br><span class="line">            R.id.button-&gt;&#123;</span><br><span class="line">                <span class="comment">//在此处添加逻辑</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="EditText"><a href="#EditText" class="headerlink" title="EditText"></a>EditText</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;EditText</span><br><span class="line">        android:id=<span class="string">&quot;@+id/editText&quot;</span></span><br><span class="line">        android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">        android:textSize=<span class="string">&quot;26dp&quot;</span></span><br><span class="line">        android:hint=<span class="string">&quot;Type something here&quot;</span><span class="comment">//提示性文字</span></span><br><span class="line">        android:maxLines=<span class="string">&quot;2&quot;</span><span class="comment">//最大行数</span></span><br><span class="line">        /&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="ImageView"><a href="#ImageView" class="headerlink" title="ImageView"></a>ImageView</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ImageView</span><br><span class="line">        android:id=<span class="string">&quot;@+id/imageView&quot;</span></span><br><span class="line">        android:layout_width=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">        android:src=<span class="string">&quot;@drawable/ic_launcher_background&quot;</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>动态变化ImageView中图片</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">myBinding.button.setOnClickListener &#123;</span><br><span class="line">           myBinding.imageView.setImageResource(R.drawable.b)</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="ProgressBar"><a href="#ProgressBar" class="headerlink" title="ProgressBar"></a>ProgressBar</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;ProgressBar</span><br><span class="line">        android:id=<span class="string">&quot;@+id/progressBar&quot;</span></span><br><span class="line">        android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">        style=<span class="string">&quot;?android:attr/progressBarStyleHorizontal&quot;</span><span class="comment">//进度条样式</span></span><br><span class="line">        android:max=<span class="string">&quot;100&quot;</span>/&gt;<span class="comment">//进度条最大值</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="AlertDialog"><a href="#AlertDialog" class="headerlink" title="AlertDialog"></a>AlertDialog</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">AlertDialog.Builder(<span class="keyword">this</span>).apply &#123;</span><br><span class="line">                setTitle(<span class="string">&quot;This is Dialog&quot;</span>)</span><br><span class="line">                setMessage(<span class="string">&quot;Something important&quot;</span>)</span><br><span class="line">                setCancelable(<span class="literal">false</span>)<span class="comment">//点击别的地方是否可以取消弹出框</span></span><br><span class="line">                setPositiveButton(<span class="string">&quot;OK&quot;</span>)&#123;</span><br><span class="line">                    dialog,which-&gt;</span><br><span class="line">                &#125;</span><br><span class="line">                setNegativeButton(<span class="string">&quot;Cancel&quot;</span>)&#123;</span><br><span class="line">                    dialog,which-&gt;</span><br><span class="line">                &#125;</span><br><span class="line">                show()</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h1 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h1><h3 id="LinearLayout"><a href="#LinearLayout" class="headerlink" title="LinearLayout"></a>LinearLayout</h3><p><img src="/../img/img15.jpg"></p>
+<p>android:layout_weight这个属性允许我们使用比例的方式来指定控件的大小。使用这个时要把layout_width的值设为“0dp”</p>
+<p><img src="/../img/img16.jpg"></p>
+<h3 id="RelativeLayout"><a href="#RelativeLayout" class="headerlink" title="RelativeLayout"></a>RelativeLayout</h3><p><strong>相对父布局</strong></p>
+<p><img src="/../img/img17.jpg"></p>
+<p><img src="/../img/img18.jpg"></p>
+<p><strong>相对其他控件</strong></p>
+<p><strong>注：</strong>引用控件放在前面</p>
+<p><img src="/../img/img19.jpg"></p>
+<p><img src="/../img/img20.jpg"></p>
+<p><strong>其他定位属性:</strong><br>android:layout_alignLeft表示让一个控件的左边缘同另一个控件左边缘对齐<br>android:layout_alignRight表示让一个控件的右边缘同另一个控件右边缘对齐<br>android:layout_alignTop<br>android:layout_alignBottom</p>
+<h3 id="FrameLayout"><a href="#FrameLayout" class="headerlink" title="FrameLayout"></a>FrameLayout</h3><p>FrameLayout又叫帧布局，应用场景较少，所有控件都会默认摆在布局左上角，也可以使用android:layout_gravity进行对齐操作，此方法应用场景过少，不做过多赘述</p>
+<hr>
+<h1 id="自定义控件"><a href="#自定义控件" class="headerlink" title="自定义控件"></a>自定义控件</h1><h3 id="引入布局"><a href="#引入布局" class="headerlink" title="引入布局"></a>引入布局</h3><p>1.创建一个子项布局</p>
+<p>2.在相应活动布局中引用该布局</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span>?&gt;</span><br><span class="line">&lt;LinearLayout xmlns:android=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="line">    android:orientation=<span class="string">&quot;horizontal&quot;</span></span><br><span class="line">    android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">    android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">    android:background=<span class="string">&quot;@drawable/title_bg&quot;</span>&gt;</span><br><span class="line">    &lt;Button</span><br><span class="line">        android:id=<span class="string">&quot;@+id/titleBack&quot;</span></span><br><span class="line">        android:layout_width=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">        android:text=<span class="string">&quot;Back&quot;</span></span><br><span class="line">        android:layout_gravity=<span class="string">&quot;center&quot;</span></span><br><span class="line">        android:layout_margin=<span class="string">&quot;5dp&quot;</span></span><br><span class="line">        android:textColor=<span class="string">&quot;#fff&quot;</span></span><br><span class="line">        android:background=<span class="string">&quot;@drawable/back_bg&quot;</span>/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:id=<span class="string">&quot;@+id/titleText&quot;</span></span><br><span class="line">        android:layout_width=<span class="string">&quot;0dp&quot;</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">        android:layout_weight=<span class="string">&quot;1&quot;</span></span><br><span class="line">        android:text=<span class="string">&quot;Title Text&quot;</span></span><br><span class="line">        android:gravity=<span class="string">&quot;center&quot;</span></span><br><span class="line">        android:layout_gravity=<span class="string">&quot;center&quot;</span></span><br><span class="line">        android:textColor=<span class="string">&quot;@color/black&quot;</span></span><br><span class="line">        android:textSize=<span class="string">&quot;24sp&quot;</span></span><br><span class="line">        /&gt;</span><br><span class="line">    &lt;Button</span><br><span class="line">        android:id=<span class="string">&quot;@+id/titleEdit&quot;</span></span><br><span class="line">        android:layout_width=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">        android:text=<span class="string">&quot;Edit&quot;</span></span><br><span class="line">        android:layout_gravity=<span class="string">&quot;center&quot;</span></span><br><span class="line">        android:layout_margin=<span class="string">&quot;5dp&quot;</span></span><br><span class="line">        android:textColor=<span class="string">&quot;#fff&quot;</span></span><br><span class="line">        android:background=<span class="string">&quot;@drawable/edit_bg&quot;</span>/&gt;</span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;include layout=<span class="string">&quot;@layout/title&quot;</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>因为建立的是标题栏需要将系统自带的隐藏</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">supportActionBar?.hind()</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建自定义控件"><a href="#创建自定义控件" class="headerlink" title="创建自定义控件"></a>创建自定义控件</h3><p>1.新建一个自定义类继承LinearLayout作为控件</p>
+<p>2.在布局文件中添加这个控件</p>
+<p>3.在自定义类中添加点击事件</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">TitleLayout</span>(context: Context,attrs:AttributeSet):LinearLayout(context,attrs) &#123;</span><br><span class="line">    <span class="keyword">init</span> &#123;</span><br><span class="line">        <span class="comment">//动态加载标题栏布局</span></span><br><span class="line">        LayoutInflater.from(context).inflate(R.layout.title,<span class="keyword">this</span>)</span><br><span class="line">        <span class="keyword">val</span> titleBack=findViewById&lt;Button&gt;(R.id.titleBack)</span><br><span class="line">        <span class="keyword">val</span> titleEdit=findViewById&lt;Button&gt;(R.id.titleEdit)</span><br><span class="line">        titleBack.setOnClickListener &#123;</span><br><span class="line">            <span class="keyword">val</span> activity =context <span class="keyword">as</span> Activity</span><br><span class="line">            activity.finish()</span><br><span class="line">        &#125;</span><br><span class="line">        titleEdit.setOnClickListener &#123;</span><br><span class="line">            Toast.makeText(context,<span class="string">&quot;You clicked edit button&quot;</span>,Toast.LENGTH_SHORT).show()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> &lt;com.example.uicustomviews.TitleLayout</span><br><span class="line">        android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 QQ邮箱3072420788@qq.com处。 </span>
     </div>
@@ -589,33 +665,33 @@
     
     
     .nav {
-        width: 542px;
+        width: 622px;
     }
     .nav.fullscreen {
-        margin-left: -542px;
+        margin-left: -622px;
     }
     .nav-left {
-        width: 120px;
+        width: 200px;
     }
     
     
     @media screen and (max-width: 1468px) {
         .nav {
-            width: 492px;
+            width: 1468px392px;
         }
         .nav.fullscreen {
-            margin-left: -492px;
+            margin-left: -1468px392px;
         }
         .nav-left {
-            width: 100px;
+            width: 1468pxpx;
         }
     }
     
     
     @media screen and (max-width: 1024px) {
         .nav {
-            width: 492px;
-            margin-left: -492px
+            width: 1468px392px;
+            margin-left: -1468px392px
         }
         .nav.fullscreen {
             margin-left: 0;
