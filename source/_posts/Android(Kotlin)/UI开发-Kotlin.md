@@ -261,7 +261,21 @@ class TitleLayout(context: Context,attrs:AttributeSet):LinearLayout(context,attr
 />
 ```
 
-
-
 ------
+
+# ListView
+
+1.在布局中添加该控件
+
+2.
+
+
+
+
+
+
+
+
+
+
 
