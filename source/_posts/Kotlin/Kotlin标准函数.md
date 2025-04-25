@@ -109,3 +109,9 @@ context.startActivity(intent)
 
 ------
 
+# repeat
+
+传入一个值n然后lambda表达式中的内容执行n遍
+
+------
+

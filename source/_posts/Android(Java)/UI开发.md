@@ -435,6 +435,11 @@ public class TitleLayout extends LinearLayout {
 
 增强版的ListView
 使用时也需要提前添加依赖库
+
+```kotlin
+implementation ("androidx.recyclerview:recyclerview:1.3.2")
+```
+
 1.首先创建一个新的类作为适配类型，创建一个子项布局
 2.创建一个适配器让这个适配器继承自RecyclerView.Adapter,并把泛型指定为FruitAdapter.ViewHolder.
 先建立一个内部类，传入一个参数 这个参数通常是子项的最外层布局，通过findViewById获取实例，然后通过其中的构造函数将数据源传入并赋值给一个全局变量，由于其继承自RecyclerView.Adapter所以要重写onCreateViewHolder,onBindViewHolder,getItemCount三个方法，第一个用于创建ViewHolder实例，第二个用于对数据进行赋值，第三个得到有多少个子项
