@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>try,catch和finally | Hexo</title>
+  <title>Android认识以及入门 | Hexo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="try,catch和finally | Hexo">
+  <meta name="description" content="Android认识以及入门 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="系统架构1.Linux内核层:提供底层驱动2.系统运行库层:提供主要的特性支持(通过C&#x2F;C++库)，同样这一层也有Android运行时库，提供了一些核心库，能允许开发者使用Java来编写应用。3.应用框架层:提供了各种API4.应用层:安装到手机上的应用程序都属于这一层  Android应用开发特色1.四大组件:活动，服务，广播接收器，内容提供器。2.丰富的系统控件3.SQLite数据库">
 <meta property="og:type" content="website">
@@ -420,9 +420,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-try-catch和finally" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">try,catch和finally</h1>
+        <h1 class="article-title">Android认识以及入门</h1>
     
     <div class="article-meta">
         
@@ -432,7 +432,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Android(Java版)">Android(Java版)</a>
+            <a  data-rel=""></a>
             
         </span>
         
@@ -440,12 +440,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-04-15 20:57:23'>2025-03-07 23:02</time>
+            Created At : <time class="date" title='Updated At: 2025-04-15 20:36:00'>2025-02-24 20:28</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:1k</span>
+        <span>Count:674</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -464,7 +464,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#try%E5%9D%97"><span class="toc-text">try块</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#catch%E5%9D%97"><span class="toc-text">catch块</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#finally%E5%9D%97"><span class="toc-text">finally块</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#try-catch-finally-%E7%9A%84%E5%AE%8C%E6%95%B4%E6%B5%81%E7%A8%8B"><span class="toc-text">try-catch-finally 的完整流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%8C%E6%95%B4%E7%9A%84%E8%AF%AD%E6%B3%95%E5%AE%9E%E4%BE%8B%EF%BC%9A"><span class="toc-text">完整的语法实例：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E8%BF%87%E7%A8%8B%EF%BC%9A"><span class="toc-text">运行过程：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="toc-text">总结：</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84"><span class="toc-text">系统架构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Android%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E7%89%B9%E8%89%B2"><span class="toc-text">Android应用开发特色</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E4%B8%AD%E5%90%84%E4%B8%AA%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">项目中各个文件的作用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#app%E7%9B%AE%E5%BD%95%E8%AF%A6%E8%A7%A3"><span class="toc-text">app目录详解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BB%E6%B4%BB%E5%8A%A8%E7%9A%84%E8%AE%BE%E5%AE%9A"><span class="toc-text">主活动的设定</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">引用的方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E5%B7%A5%E5%85%B7"><span class="toc-text">日志工具</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -480,72 +480,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在 Java 中，<code>try</code>、<code>catch</code> 和 <code>finally</code> 是异常处理机制的核心部分。它们用于捕获、处理异常，并确保无论是否发生异常，某些代码都会被执行。下面是对它们的详细解释：</p>
-<h1 id="try块"><a href="#try块" class="headerlink" title="try块"></a>try块</h1><p><code>try</code> 块用于包含可能会抛出异常的代码。如果 <code>try</code> 块中的代码抛出了异常，程序会立即跳转到匹配的 <code>catch</code> 块进行处理。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    <span class="comment">//可能抛出异常的代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p><code>try</code> 中的代码是你认为可能会发生异常的部分。例如，读取文件、连接数据库等操作可能会抛出异常。</p>
+        <h1 id="系统架构"><a href="#系统架构" class="headerlink" title="系统架构"></a>系统架构</h1><p>1.Linux内核层:提供底层驱动<br>2.系统运行库层:提供主要的特性支持(通过C&#x2F;C++库)，同样这一层也有Android运行时库，提供了一些核心库，能允许开发者使用Java来编写应用。<br>3.应用框架层:提供了各种API<br>4.应用层:安装到手机上的应用程序都属于这一层</p>
 <hr>
-</li>
-</ul>
-<h1 id="catch块"><a href="#catch块" class="headerlink" title="catch块"></a>catch块</h1><p><code>catch</code> 块用于捕获和处理异常。如果 <code>try</code> 块中的代码抛出了异常，程序会跳转到与异常类型匹配的 <code>catch</code> 块来处理这个异常。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// 可能抛出异常的代码</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (ExceptionType1 e1) &#123;</span><br><span class="line">    <span class="comment">// 处理异常类型 1</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (ExceptionType2 e2) &#123;</span><br><span class="line">    <span class="comment">// 处理异常类型 2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>你可以有多个 <code>catch</code> 块来处理不同类型的异常。<code>catch</code> 块中传入的参数（如 <code>ExceptionType1 e1</code>）是捕获到的异常对象，你可以通过它来访问异常的详细信息（如异常的消息、堆栈跟踪等）。</li>
-<li>如果 <code>try</code> 块抛出的异常类型与某个 <code>catch</code> 块中的异常类型匹配，那么该 <code>catch</code> 块将会被执行。</li>
-</ul>
+<h1 id="Android应用开发特色"><a href="#Android应用开发特色" class="headerlink" title="Android应用开发特色"></a>Android应用开发特色</h1><p>1.四大组件:活动，服务，广播接收器，内容提供器。<br>2.丰富的系统控件<br>3.SQLite数据库:让存储数据和读取数据变得更为方便<br>4.强大的多媒体<br>5.地理位置定位</p>
 <hr>
-<h1 id="finally块"><a href="#finally块" class="headerlink" title="finally块"></a>finally块</h1><p><code>finally</code> 块中的代码总会在 <code>try-catch</code> 执行完后执行，无论是否发生异常。这使得 <code>finally</code> 块非常适合用于清理资源、关闭流等操作。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// 可能抛出异常的代码</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (ExceptionType e) &#123;</span><br><span class="line">    <span class="comment">// 处理异常</span></span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="comment">// 总会执行的代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p><code>finally</code> 块中的代码不受是否发生异常的影响，无论 <code>try</code> 块中的代码是否抛出异常，<code>finally</code> 块都会执行，除非程序被强制中断（如调用 <code>System.exit()</code>，或者发生严重的错误）。</p>
-</li>
-<li><p><code>finally</code> 常用于关闭资源（如文件流、数据库连接等），确保即使在出现异常时资源也能被正确释放。</p>
-</li>
-<li><p><strong>例子：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="type">FileReader</span> <span class="variable">reader</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileReader</span>(<span class="string">&quot;somefile.txt&quot;</span>);</span><br><span class="line">    <span class="comment">// 处理文件</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;文件操作失败: &quot;</span> + e.getMessage());</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="comment">// 确保文件流关闭</span></span><br><span class="line">    System.out.println(<span class="string">&quot;关闭文件流&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="项目中各个文件的作用"><a href="#项目中各个文件的作用" class="headerlink" title="项目中各个文件的作用"></a>项目中各个文件的作用</h1><p>1.gradle:里面含有gradle wrapper配置文件，需要打开的话必须手动按照“导航栏<del>File</del>Settings<del>Bulid,Execution,Deployment</del>Gradle”这个步骤进行<br>2..gitignore:将指定的目录或文件排除在版本控制之外。<br>3.gradle.properties:这个文件是全局的gradle配置文件，在这里配置的属性将会影响到项目中所有的gradle编译脚本。<br>4.gradlew和gradlew.bat:用来在命令行界面中执行gradle命令的，其中gradle是在Linux或Mac系统使用，gradlew.bat在Windows系统使用</p>
+<hr>
+<h1 id="app目录详解"><a href="#app目录详解" class="headerlink" title="app目录详解"></a>app目录详解</h1><p>1.libs:jar包存放的地方<br>2.Androidtest:编写测试用例，对项目进行自动化测试<br>3.Java:放置Java代码的地方<br>4.res:<br>①图片放在drawable中<br>②布局放在layout中<br>③字符串，样式，颜色等配置放在values中<br>④mipmap中放置一些图标<br>5.AndroidManifest.xml:整个Android项目配置文件，四大组件和活动等都需要在这里注册，经常会使用到这个文件。<br>6.test:编写测试用例，是对项目自动化测试的另一种方式<br>7.build.gradle:这个文件中会指定很多项目构建相关的配置<br>8.proguard-rules.pro:指定项目代码的混淆规则</p>
+<hr>
+<h1 id="主活动的设定"><a href="#主活动的设定" class="headerlink" title="主活动的设定"></a>主活动的设定</h1><p>即首先启动的活动</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;intent-filter&gt;</span><br><span class="line">    &lt;action android:name=<span class="string">&quot;android.intent.action.MAIN&quot;</span>/&gt;</span><br><span class="line">    &lt;category android:name=<span class="string">&quot;android.intent.category.LAUNCHER&quot;</span>/&gt;</span><br><span class="line">&lt;/intent-filter&gt;</span><br></pre></td></tr></table></figure>
 
 <hr>
-<h1 id="try-catch-finally-的完整流程"><a href="#try-catch-finally-的完整流程" class="headerlink" title="try-catch-finally 的完整流程"></a>try-catch-finally 的完整流程</h1><ol>
-<li><p>执行 <code>try</code> 块：</p>
-<ul>
-<li>如果 <code>try</code> 块中的代码没有抛出异常，<code>catch</code> 块会被跳过，接着执行 <code>finally</code> 块。</li>
-<li>如果 <code>try</code> 块中的代码抛出了异常，程序会跳转到匹配的 <code>catch</code> 块执行，<code>finally</code> 块会被执行。</li>
-</ul>
-</li>
-<li><p>执行 <code>catch</code> 块：</p>
-<ul>
-<li>如果有异常发生并且与某个 <code>catch</code> 块中的异常类型匹配，该 <code>catch</code> 块会处理异常。多个 <code>catch</code> 块可以用来捕获不同类型的异常。</li>
-</ul>
-</li>
-<li><p>执行 <code>finally</code> 块：</p>
-<ul>
-<li><code>finally</code> 块会在 <code>try</code> 和 <code>catch</code> 完成后执行，无论是否发生异常。即使在 <code>try</code> 或 <code>catch</code> 块中调用了 <code>return</code> 语句，<code>finally</code> 也会执行。</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-<h3 id="完整的语法实例："><a href="#完整的语法实例：" class="headerlink" title="完整的语法实例："></a>完整的语法实例：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// 可能抛出异常的代码</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> <span class="number">10</span> / <span class="number">0</span>; <span class="comment">// 这里会抛出 ArithmeticException</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (ArithmeticException e) &#123;</span><br><span class="line">    <span class="comment">// 捕获并处理 ArithmeticException</span></span><br><span class="line">    System.out.println(<span class="string">&quot;发生异常: &quot;</span> + e.getMessage());</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="comment">// 无论是否发生异常，都会执行的代码</span></span><br><span class="line">    System.out.println(<span class="string">&quot;最终执行：无论异常与否都执行&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="运行过程："><a href="#运行过程：" class="headerlink" title="运行过程："></a>运行过程：</h3><ul>
-<li>执行 <code>try</code> 块，抛出 <code>ArithmeticException</code>。</li>
-<li>跳到 <code>catch</code> 块，处理该异常。</li>
-<li>无论是否发生异常，<code>finally</code> 块都将被执行。</li>
-</ul>
-<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a><strong>总结：</strong></h3><ul>
-<li><code>try</code>：用于包含可能抛出异常的代码。</li>
-<li><code>catch</code>：用于捕获并处理异常。如果 <code>try</code> 块抛出异常，程序跳到合适的 <code>catch</code> 块处理异常。</li>
-<li><code>finally</code>：用于包含必须执行的代码，通常用于资源清理或关闭文件等操作。它无论是否发生异常都会执行。</li>
-</ul>
-<p>这种异常处理机制帮助开发者处理程序中可能出现的错误，并保证程序在发生错误时不会崩溃，还能执行一些必要的清理工作。</p>
+<h1 id="引用的方法"><a href="#引用的方法" class="headerlink" title="引用的方法"></a>引用的方法</h1><p>1.R.string.hello_world<br>2.@string&#x2F;hello_world<br>如果在@和string之间添上一个+就变成了定义<br>其中的string可以替换</p>
 <hr>
-<blockquote>
-<p>​     内容源于github用户11111-beep的Android学习笔记&#96;&#96;</p>
-</blockquote>
+<h1 id="日志工具"><a href="#日志工具" class="headerlink" title="日志工具"></a>日志工具</h1><p>从小到大的顺序<br>Log.v:打印意义最小的信息<br>Log.d:打印调试信息<br>Log.i:比较重要的数据<br>Log.w:警告信息<br>Log.e:错误信息<br>传入两个参数:第一个参数是tag，一般传入类名就好主要用于对打印信息的过滤<br>第二个参数是msg，即想要打印的内容<br>一般与logcat结合使用</p>
+<hr>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 QQ邮箱3072420788@qq.com处。 </span>
