@@ -103,4 +103,4 @@ theme: hexo-theme-3-hexo-master
 deploy:
   type: git
   repository: git@github.com:buyu6/buyu6.github.io.git
-  branch: master
+  branch: main
