@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Kotlin延迟初始化和密封类 | Hexo</title>
+  <title>Kotlin标准函数 | Hexo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Kotlin延迟初始化和密封类 | Hexo">
+  <meta name="description" content="Kotlin标准函数 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="在 Java 中，try、catch 和 finally 是异常处理机制的核心部分。它们用于捕获、处理异常，并确保无论是否发生异常，某些代码都会被执行。下面是对它们的详细解释： try块try 块用于包含可能会抛出异常的代码。如果 try 块中的代码抛出了异常，程序会立即跳转到匹配的 catch 块进行处理。 123try&#123;    &#x2F;&#x2F;可能抛出异常的代码&#125;   try 中的代码">
 <meta property="og:type" content="website">
@@ -420,9 +420,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Kotlin延迟初始化和密封类" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Kotlin延迟初始化和密封类</h1>
+        <h1 class="article-title">Kotlin标准函数</h1>
     
     <div class="article-meta">
         
@@ -432,7 +432,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Kotlin">Kotlin</a>
+            <a  data-rel=""></a>
             
         </span>
         
@@ -440,12 +440,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-04-28 21:32:04'>2025-04-25 21:41</time>
+            Created At : <time class="date" title='Updated At: 2025-04-25 20:36:52'>2025-04-19 21:56</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:263</span>
+        <span>Count:353</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -464,7 +464,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E5%BB%B6%E8%BF%9F%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">变量延迟初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-text">关键字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-text">作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F"><span class="toc-text">注意</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%86%E5%B0%81%E7%B1%BB"><span class="toc-text">密封类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97-1"><span class="toc-text">关键字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8-1"><span class="toc-text">作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B"><span class="toc-text">实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F-1"><span class="toc-text">注意</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#with"><span class="toc-text">with</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#run"><span class="toc-text">run</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#apply"><span class="toc-text">apply</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#repeat"><span class="toc-text">repeat</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -480,20 +480,38 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="变量延迟初始化"><a href="#变量延迟初始化" class="headerlink" title="变量延迟初始化"></a>变量延迟初始化</h1><h3 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h3><p><strong>lateinit</strong></p>
-<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>如果一个变量是全局变量且初始化在后面的过程中进行时该变量不得不赋值为null，但如果这样进行后面调用其任何方法都需要进行判空处理相对麻烦，所以这里可以使用延迟初始化，就不需要将其赋值为null了</p>
-<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>使用延迟初始化时一定要保证后续某处对其完成了初始化</p>
-<p>还可以通过代码进行判断是否完成了初始化</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//::adapter.isInitialized表示已经初始化</span></span><br><span class="line"><span class="keyword">if</span>(!::adapter.isInitialized)&#123;</span><br><span class="line">    adapter=MsgAdapter(msgList)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h1 id="with"><a href="#with" class="headerlink" title="with"></a>with</h1><p>作用：可以在连续调用同一个对象的多个方法时让代码变得更简便</p>
+<p>标准形式：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> result = with (obj)&#123;</span><br><span class="line">    <span class="comment">//这里是obj的上下文</span></span><br><span class="line">    <span class="string">&quot;value&quot;</span><span class="comment">//with函数返回值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实例：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list= listOf(<span class="string">&quot;Apple&quot;</span>,<span class="string">&quot;Banana&quot;</span>,<span class="string">&quot;Pear&quot;</span>)</span><br><span class="line">    <span class="keyword">val</span> result=with(StringBuilder())&#123;</span><br><span class="line">        append(<span class="string">&quot;Start eating fruits.\n&quot;</span>)</span><br><span class="line">        <span class="keyword">for</span>(fruit <span class="keyword">in</span> list)&#123;</span><br><span class="line">            append(fruit).append(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        append(<span class="string">&quot;Ate all Fruits&quot;</span>)</span><br><span class="line">        toString()</span><br><span class="line">    &#125;</span><br><span class="line">    println(result)</span><br></pre></td></tr></table></figure>
 
 <hr>
-<h1 id="密封类"><a href="#密封类" class="headerlink" title="密封类"></a>密封类</h1><h3 id="关键字-1"><a href="#关键字-1" class="headerlink" title="关键字"></a>关键字</h3><p><strong>sealed class</strong></p>
-<h3 id="作用-1"><a href="#作用-1" class="headerlink" title="作用"></a>作用</h3><p>解决因语法原因导致的多余分支问题</p>
-<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sealed</span> <span class="keyword">class</span> <span class="title class_">Result</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Success</span>(<span class="keyword">val</span> msg:String):Result()</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Failure</span>(<span class="keyword">val</span> error:Exception):Result()</span><br></pre></td></tr></table></figure>
+<h1 id="run"><a href="#run" class="headerlink" title="run"></a>run</h1><p>作用：同with相同只是通常不会直接调用而是在对象的基础上调用</p>
+<p>标准形式：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> result =obj.run&#123;</span><br><span class="line">    <span class="comment">//这里是obj的上下文</span></span><br><span class="line">    <span class="string">&quot;value&quot;</span><span class="comment">//run函数返回值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">getResultMsg</span><span class="params">(result:<span class="type">Result</span>)</span></span>=<span class="keyword">when</span>(result)&#123;</span><br><span class="line">    <span class="keyword">is</span> Success -&gt; result.msg</span><br><span class="line">    <span class="keyword">is</span> Failure -&gt; <span class="string">&quot;Error is <span class="subst">$&#123;result.error.message&#125;</span>&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>实例：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list= listOf(<span class="string">&quot;Apple&quot;</span>,<span class="string">&quot;Banana&quot;</span>,<span class="string">&quot;Pear&quot;</span>)</span><br><span class="line">    <span class="keyword">val</span> result=StringBuilder().run&#123;</span><br><span class="line">        append(<span class="string">&quot;Start eating fruits.\n&quot;</span>)</span><br><span class="line">        <span class="keyword">for</span>(fruit <span class="keyword">in</span> list)&#123;</span><br><span class="line">            append(fruit).append(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        append(<span class="string">&quot;Ate all Fruits&quot;</span>)</span><br><span class="line">        toString()</span><br><span class="line">    &#125;</span><br><span class="line">    println(result)</span><br></pre></td></tr></table></figure>
 
-<h3 id="注意-1"><a href="#注意-1" class="headerlink" title="注意"></a>注意</h3><p>密封类及其子类只能定义在同一文件的顶层位置，不能嵌套在其他类中</p>
+
+
+<hr>
+<h1 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h1><p>作用：作用和run类似只是无法指定返回值</p>
+<p>标准形式：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> result =obj.apply&#123;</span><br><span class="line">    <span class="comment">//这里是obj的上下文</span></span><br><span class="line">&#125;</span><br><span class="line">result==obj</span><br></pre></td></tr></table></figure>
+
+<p>实例：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list= listOf(<span class="string">&quot;Apple&quot;</span>,<span class="string">&quot;Banana&quot;</span>,<span class="string">&quot;Pear&quot;</span>)</span><br><span class="line"><span class="keyword">val</span> result=StringBuilder().apply&#123;</span><br><span class="line">    append(<span class="string">&quot;Start eating fruits.\n&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span>(fruit <span class="keyword">in</span> list)&#123;</span><br><span class="line">        append(fruit).append(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    append(<span class="string">&quot;Ate all Fruits&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line">println(result.toString())</span><br></pre></td></tr></table></figure>
+
+<p><strong>利用Intent传递数据时也可以使用apply函数</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> intent=Intent(context,SecondActivity::<span class="keyword">class</span>.java).apply&#123;</span><br><span class="line">    putExtra(<span class="string">&quot;param1&quot;</span>,<span class="string">&quot;data1&quot;</span>)</span><br><span class="line">    putExtra(<span class="string">&quot;param2&quot;</span>,<span class="string">&quot;data2&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line">context.startActivity(intent)</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h1 id="repeat"><a href="#repeat" class="headerlink" title="repeat"></a>repeat</h1><p>传入一个值n然后lambda表达式中的内容执行n遍</p>
 <hr>
 
       
