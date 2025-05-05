@@ -2,28 +2,24 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Git | Hexo</title>
+  <title>Kotlin扩展函数和运算符重载 | Hexo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Git | Hexo">
+  <meta name="description" content="Kotlin扩展函数和运算符重载 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="常用控件TextView123456789&lt;TextView        android:id&#x3D;&quot;@+id&#x2F;textView&quot;&#x2F;&#x2F;定义唯一标识符        android:layout_width&#x3D;&quot;match_parent&quot;&#x2F;&#x2F;控件宽度        android:layout_height&#x3D;&quot;wrap_content&quot;&#x2F;">
-<meta property="og:type" content="website">
-<meta property="og:title" content="UI开发(Kotlin)">
-<meta property="og:url" content="http://example.com/Android(Kotlin)/UI%E5%BC%80%E5%8F%91-Kotlin.html">
+<meta name="description" content="高阶函数函数类型(String,Int)-&gt;Unit 左边是函数接收参数类型，右边是返回值类型 定义含有函数类型的就叫高阶函数 实例1123456789101112131415161718fun num1Andnum2(num1:Int,num2:Int,operation: (Int,Int)-&gt;Int):Int&#123;    val result&#x3D;operation(num1,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin高阶函数">
+<meta property="og:url" content="http://example.com/2025/05/05/Kotlin%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="常用控件TextView123456789&lt;TextView        android:id&#x3D;&quot;@+id&#x2F;textView&quot;&#x2F;&#x2F;定义唯一标识符        android:layout_width&#x3D;&quot;match_parent&quot;&#x2F;&#x2F;控件宽度        android:layout_height&#x3D;&quot;wrap_content&quot;&#x2F;">
+<meta property="og:description" content="高阶函数函数类型(String,Int)-&gt;Unit 左边是函数接收参数类型，右边是返回值类型 定义含有函数类型的就叫高阶函数 实例1123456789101112131415161718fun num1Andnum2(num1:Int,num2:Int,operation: (Int,Int)-&gt;Int):Int&#123;    val result&#x3D;operation(num1,">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/img/img15.jpg">
-<meta property="og:image" content="http://example.com/img/img16.jpg">
-<meta property="og:image" content="http://example.com/img/img17.jpg">
-<meta property="og:image" content="http://example.com/img/img18.jpg">
-<meta property="og:image" content="http://example.com/img/img19.jpg">
-<meta property="og:image" content="http://example.com/img/img20.jpg">
-<meta property="article:published_time" content="2025-04-24T11:35:30.000Z">
-<meta property="article:modified_time" content="2025-04-28T14:14:02.810Z">
+<meta property="og:image" content="http://example.com/img/img54.jpg">
+<meta property="og:image" content="http://example.com/img/img55.jpg">
+<meta property="article:published_time" content="2025-05-05T14:05:41.000Z">
+<meta property="article:modified_time" content="2025-05-05T15:26:14.363Z">
 <meta property="article:author" content="Pick">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/img15.jpg">
+<meta name="twitter:image" content="http://example.com/img/img54.jpg">
 
 
 <link rel="icon" href="/img/picture.png">
@@ -98,7 +94,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(20)</small>
+                <small>(24)</small>
             
         </div>
     </li>
@@ -140,7 +136,7 @@
         <div data-rel="Kotlin">
             
             Kotlin
-            <small>(4)</small>
+            <small>(6)</small>
         </div>
         
     </li>
@@ -155,7 +151,7 @@
         <div data-rel="Android(Kotlin版)">
             
             Android(Kotlin版)
-            <small>(2)</small>
+            <small>(4)</small>
         </div>
         
     </li>
@@ -176,8 +172,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="20">
-<input type="hidden" id="yelog_site_word_count" value="33.3k">
+<input type="hidden" id="yelog_site_posts_number" value="24">
+<input type="hidden" id="yelog_site_word_count" value="36.8k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -228,6 +224,42 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All Kotlin "
+           href="/2025/05/05/Kotlin%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Kotlin高阶函数">Kotlin高阶函数</span>
+            <span class="post-date" title="2025-05-05 22:05:41">2025/05/05</span>
+        </a>
+        
+        
+        <a  class="All Android(Kotlin版) "
+           href="/2025/05/05/%E5%B9%BF%E6%92%AD%E6%9C%BA%E5%88%B6-Kotlin/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="广播机制(Kotlin)">广播机制(Kotlin)</span>
+            <span class="post-date" title="2025-05-05 20:44:19">2025/05/05</span>
+        </a>
+        
+        
+        <a  class="All Kotlin "
+           href="/2025/05/01/Kotlin%E6%89%A9%E5%B1%95%E5%87%BD%E6%95%B0%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Kotlin扩展函数和运算符重载">Kotlin扩展函数和运算符重载</span>
+            <span class="post-date" title="2025-05-01 16:13:13">2025/05/01</span>
+        </a>
+        
+        
+        <a  class="All Android(Kotlin版) "
+           href="/2025/05/01/%E7%A2%8E%E7%89%87-1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="碎片(Kotlin)">碎片(Kotlin)</span>
+            <span class="post-date" title="2025-05-01 14:22:24">2025/05/01</span>
+        </a>
         
         
         <a  class="All Kotlin "
@@ -427,9 +459,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+        <article id="post-Kotlin扩展函数和运算符重载" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Git</h1>
+        <h1 class="article-title">Kotlin扩展函数和运算符重载</h1>
     
     <div class="article-meta">
         
@@ -439,7 +471,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel=""></a>
+            <a  data-rel="Kotlin">Kotlin</a>
             
         </span>
         
@@ -447,12 +479,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-04-28 22:14:02'>2025-03-11 14:56</time>
+            Created At : <time class="date" title='Updated At: 2025-05-01 16:32:43'>2025-05-01 16:13</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:583</span>
+        <span>Count:295</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -471,7 +503,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93"><span class="toc-text">创建代码仓库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8F%90%E4%BA%A4%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81"><span class="toc-text">提交本地代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6"><span class="toc-text">忽略文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E4%BF%AE%E6%94%B9%E5%86%85%E5%AE%B9"><span class="toc-text">查看修改内容</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%92%A4%E9%94%80%E6%9C%AA%E6%8F%90%E4%BA%A4%E7%9A%84%E4%BF%AE%E6%94%B9"><span class="toc-text">撤销未提交的修改</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E8%AE%B0%E5%BD%95"><span class="toc-text">查看提交记录</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E5%87%BD%E6%95%B0"><span class="toc-text">扩展函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%E7%BB%93%E6%9E%84"><span class="toc-text">语法结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B"><span class="toc-text">实例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-text">运算符重载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%E7%BB%93%E6%9E%84-%E5%8F%AF%E4%BB%A5%E5%AE%9E%E7%8E%B0%E5%90%8C%E4%B8%80%E4%B8%AA%E8%BF%90%E7%AE%97%E7%AC%A6%E5%A4%9A%E9%87%8D%E9%87%8D%E8%BD%BD"><span class="toc-text">语法结构(可以实现同一个运算符多重重载)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B-1"><span class="toc-text">实例</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -487,43 +519,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="创建代码仓库"><a href="#创建代码仓库" class="headerlink" title="创建代码仓库"></a>创建代码仓库</h1><p>首先配置身份，利用：</p>
-<p><code>git config --global user.name  &quot;  &quot;</code></p>
-<p><code>git config --global user.email  &quot;  &quot;</code></p>
-<p>可以利用<code>git config --list</code>对配置信息进行查看</p>
-<p>然后进入到想要创建仓库的相应项目文件中利用 cd </p>
-<p>然后在该目录中输入<code>git init</code></p>
-<p>项目创建完成后会在目录中生成一个隐藏的**.git<strong>文件夹，这个文件夹用来记录本地所有的Git操作，可以通过</strong>ls -al**命令来查看</p>
-<p>如果想删除该仓库，只需删除这个文件夹即可</p>
+        <h1 id="扩展函数"><a href="#扩展函数" class="headerlink" title="扩展函数"></a>扩展函数</h1><h3 id="语法结构"><a href="#语法结构" class="headerlink" title="语法结构"></a>语法结构</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> ClassName.<span class="title">methodName</span><span class="params">(param1:<span class="type">Int</span>,param2:<span class="type">Int</span>)</span></span>:<span class="built_in">Int</span>&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//构建扩展函数</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> String.<span class="title">lettersCount</span><span class="params">()</span></span>:<span class="built_in">Int</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> count=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span>(char <span class="keyword">in</span> <span class="keyword">this</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(char.isLetter())&#123;</span><br><span class="line">            count++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//调用</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">val</span> cnt=<span class="string">&quot;ABC123xyz!@#&quot;</span>.lettersCount()</span><br><span class="line">    println(cnt)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <hr>
-<h1 id="提交本地代码"><a href="#提交本地代码" class="headerlink" title="提交本地代码"></a>提交本地代码</h1><p>可以使用<strong>add</strong>和<strong>commit</strong>提交</p>
-<p>add是先将想要提交的代码添加进来，commit则是真正的去执行提交操作</p>
-<p>添加单个文件：git add+文件名</p>
-<p>添加目录：git add+目录名</p>
-<p>添加所有文件：<code>git add .</code></p>
-<p>提交：<code>git commit -m &quot;First commit.&quot;</code>一定要有-m加上提交的描述信息。</p>
-<hr>
-<h1 id="忽略文件"><a href="#忽略文件" class="headerlink" title="忽略文件"></a>忽略文件</h1><p>如果不想把app文件下的内容添加到版本控制中，那么可以修改<strong>app&#x2F;.gitignore</strong>文件中的内容：</p>
-<p>&#x2F;build</p>
-<p>&#x2F;src&#x2F;test</p>
-<p>&#x2F;src&#x2F;androidTest</p>
-<p>现在就可以提交代码：</p>
-<p><code>git add .</code></p>
-<p><code>git commit -m &quot;First commit.&quot;</code></p>
-<hr>
-<h1 id="查看修改内容"><a href="#查看修改内容" class="headerlink" title="查看修改内容"></a>查看修改内容</h1><p>1.在项目根目录下输入以下指令：</p>
-<p><em>git status</em></p>
-<p>2.修改数据后再次使用该指令可以发现文件已更改</p>
-<p>3.利用git diff app&#x2F;src&#x2F;main&#x2F;java&#x2F;com&#x2F;example&#x2F;providertest&#x2F;MainActivity.java查看更改的内容</p>
-<hr>
-<h1 id="撤销未提交的修改"><a href="#撤销未提交的修改" class="headerlink" title="撤销未提交的修改"></a>撤销未提交的修改</h1><p>1.利用git checkout app&#x2F;src&#x2F;main&#x2F;java&#x2F;com&#x2F;example&#x2F;providertest&#x2F;MainActivity.java指令可以使一切修改撤销</p>
-<p>2.输入<em>git status</em>进行检查</p>
-<p>3.不过这种撤销方式只适合于那些没有执行过add添加的文件</p>
-<p>如果是已经添加过的文件需要先使用<code>git reset app/src/main/java/com/example/providertest/MainActivity.java</code>指令取消添加</p>
-<hr>
-<h1 id="查看提交记录"><a href="#查看提交记录" class="headerlink" title="查看提交记录"></a>查看提交记录</h1><p>1.用git log查看历史提交信息</p>
-<p>2.若只想查其中一条记录，可以在命令中指定该条记录的id并加上**-1**参数表示只想看到这一行</p>
-<p>3.如果想看这条记录具体修改了什么可以加个 <strong>-p</strong>，其中减号代表删除，加号代表添加的部分。</p>
+<h1 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h1><h3 id="语法结构-可以实现同一个运算符多重重载"><a href="#语法结构-可以实现同一个运算符多重重载" class="headerlink" title="语法结构(可以实现同一个运算符多重重载)"></a>语法结构(可以实现同一个运算符多重重载)</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//重载</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">obj</span>&#123;</span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">plus</span><span class="params">(obj:<span class="type">Obj</span>)</span></span>:Obj&#123;</span><br><span class="line">        <span class="comment">//处理相加的逻辑</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//调用</span></span><br><span class="line"><span class="keyword">val</span> obj1=Obj()</span><br><span class="line"><span class="keyword">val</span> obj2=Obj()</span><br><span class="line"><span class="keyword">val</span> obj3=obj1+obj2</span><br></pre></td></tr></table></figure>
+
+<h3 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h3><p>1.Money实例</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Money</span>(<span class="keyword">val</span> value: <span class="built_in">Int</span>) &#123;</span><br><span class="line">    <span class="comment">//对象和对象相加</span></span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">plus</span><span class="params">(money:<span class="type">Money</span>)</span></span>:Money&#123;</span><br><span class="line">        <span class="keyword">val</span> sum=value+money.value</span><br><span class="line">        <span class="keyword">return</span> Money(sum)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//对象和数字相加</span></span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">plus</span><span class="params">(newValue: <span class="type">Int</span>)</span></span>:Money&#123;</span><br><span class="line">        <span class="keyword">val</span> sum=value+newValue</span><br><span class="line">        <span class="keyword">return</span> Money(sum)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">val</span> m1=Money(<span class="number">5</span>)</span><br><span class="line">    <span class="keyword">val</span> m2=Money(<span class="number">10</span>)</span><br><span class="line">    <span class="keyword">val</span> m3=m1+m2</span><br><span class="line">    <span class="keyword">val</span> m4=m3+<span class="number">20</span></span><br><span class="line">println(m4.value)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.<strong>a in b</strong>实例</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//判断hello中有没有he</span></span><br><span class="line"><span class="keyword">if</span>(<span class="string">&quot;he&quot;</span> <span class="keyword">in</span> <span class="string">&quot;hello&quot;</span>)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3.扩展函数和运算符重载综合使用实例</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//重载</span></span><br><span class="line"><span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> String.<span class="title">times</span><span class="params">(n:<span class="type">Int</span>)</span></span>:String&#123;</span><br><span class="line">    <span class="keyword">val</span> builder=StringBuilder()</span><br><span class="line">  repeat(n)&#123;</span><br><span class="line">      builder.append(<span class="keyword">this</span>)</span><br><span class="line">  &#125;</span><br><span class="line">    <span class="keyword">return</span> builder.toString()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//重载简化</span></span><br><span class="line"><span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> String.<span class="title">times</span><span class="params">(n:<span class="type">Int</span>)</span></span>= repeat(n)</span><br><span class="line"><span class="comment">//调用</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">val</span> str=<span class="string">&quot;abc&quot;</span>*<span class="number">3</span></span><br><span class="line">    println(str)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <hr>
 
       
