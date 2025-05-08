@@ -6,15 +6,15 @@
   <meta name="keywords" content="">
   <meta name="description" content="Kotlin高阶函数的应用 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="简化SharedPreference的用法 简化ContentValues的用法">
+<meta name="description" content="简化SharedPreferences的用法 通过扩展函数方式像其中添加open函数  接收函数类型 12345fun SharedPreferences.open(block:SharedPreferences.Editor.()-&gt;Unit)&#123;    val editor&#x3D;edit()    editor.block()    editor.apply()&#125;  123">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Kotlin高阶函数的应用">
 <meta property="og:url" content="http://example.com/2025/05/08/Kotlin%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%E7%9A%84%E5%BA%94%E7%94%A8/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="简化SharedPreference的用法 简化ContentValues的用法">
+<meta property="og:description" content="简化SharedPreferences的用法 通过扩展函数方式像其中添加open函数  接收函数类型 12345fun SharedPreferences.open(block:SharedPreferences.Editor.()-&gt;Unit)&#123;    val editor&#x3D;edit()    editor.block()    editor.apply()&#125;  123">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-05-07T16:06:10.000Z">
-<meta property="article:modified_time" content="2025-05-07T16:07:25.454Z">
+<meta property="article:modified_time" content="2025-05-08T14:55:44.217Z">
 <meta property="article:author" content="Pick">
 <meta name="twitter:card" content="summary">
 
@@ -170,7 +170,7 @@
     </div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="26">
-<input type="hidden" id="yelog_site_word_count" value="36.9k">
+<input type="hidden" id="yelog_site_word_count" value="38.9k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -494,12 +494,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-05-08 00:07:25'>2025-05-08 00:06</time>
+            Created At : <time class="date" title='Updated At: 2025-05-08 22:55:44'>2025-05-08 00:06</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:12</span>
+        <span>Count:474</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -518,7 +518,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E5%8C%96SharedPreference%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-text">简化SharedPreference的用法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E5%8C%96ContentValues%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-text">简化ContentValues的用法</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E5%8C%96SharedPreferences%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-text">简化SharedPreferences的用法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E5%8C%96ContentValues%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-text">简化ContentValues的用法</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -534,8 +534,39 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="简化SharedPreference的用法"><a href="#简化SharedPreference的用法" class="headerlink" title="简化SharedPreference的用法"></a>简化SharedPreference的用法</h1><hr>
-<h1 id="简化ContentValues的用法"><a href="#简化ContentValues的用法" class="headerlink" title="简化ContentValues的用法"></a>简化ContentValues的用法</h1><hr>
+        <h1 id="简化SharedPreferences的用法"><a href="#简化SharedPreferences的用法" class="headerlink" title="简化SharedPreferences的用法"></a>简化SharedPreferences的用法</h1><ul>
+<li><p>通过扩展函数方式像其中添加open函数</p>
+</li>
+<li><p>接收函数类型</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> SharedPreferences.<span class="title">open</span><span class="params">(block:<span class="type">SharedPreferences</span>.<span class="type">Editor</span>.()-&gt;<span class="type">Unit</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">val</span> editor=edit()</span><br><span class="line">    editor.block()</span><br><span class="line">    editor.apply()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//调用</span></span><br><span class="line">getSharedPreferences(<span class="string">&quot;data&quot;</span>,Context.MODE_PRIVATE).<span class="keyword">open</span>&#123;</span><br><span class="line">    putString(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;Tom&quot;</span>)</span><br><span class="line">    putInt(<span class="string">&quot;age&quot;</span>,<span class="number">19</span>)</span><br><span class="line">    putBoolean(<span class="string">&quot;married&quot;</span>,<span class="literal">false</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>Android Studio自带扩展可以直接使用：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">getSharedPreferences(<span class="string">&quot;data&quot;</span>,Context.MODE_PRIVATE).edit&#123;</span><br><span class="line">    putString(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;Tom&quot;</span>)</span><br><span class="line">    putInt(<span class="string">&quot;age&quot;</span>,<span class="number">19</span>)</span><br><span class="line">    putBoolean(<span class="string">&quot;married&quot;</span>,<span class="literal">false</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="简化ContentValues的用法"><a href="#简化ContentValues的用法" class="headerlink" title="简化ContentValues的用法"></a>简化ContentValues的用法</h1><ul>
+<li><p>定义cvOf方法</p>
+</li>
+<li><p>获取ContentValues对象</p>
+</li>
+<li><p>遍历pairs列表</p>
+</li>
+<li><p>利用when语句意义判断数值类型</p>
+<p><strong>varage关键字：</strong>对应java的可变参数列表</p>
+<p><strong>Pair：</strong>键值对数据结构，由于数值类型多所以指定为<strong>Any?<strong>相当于java中的</strong>Object</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">cvOf</span><span class="params">(<span class="keyword">vararg</span> pairs:<span class="type">Pair</span>&lt;<span class="type">String</span>,Any?&gt;)</span></span>:ContentValues&#123;</span><br><span class="line">    <span class="keyword">val</span> cv=ContentValues()</span><br><span class="line">    <span class="keyword">for</span>(pair <span class="keyword">in</span> pairs)&#123;</span><br><span class="line">        <span class="keyword">val</span> key=pair.first</span><br><span class="line">        <span class="keyword">val</span> value=pair.second</span><br><span class="line">        <span class="keyword">when</span>(value)&#123;</span><br><span class="line">            <span class="keyword">is</span> <span class="built_in">Int</span>-&gt;cv.put(key, value)</span><br><span class="line">            <span class="keyword">is</span> <span class="built_in">Long</span>-&gt;cv.put(key, value)</span><br><span class="line">            <span class="keyword">is</span> <span class="built_in">Short</span>-&gt;cv.put(key, value)</span><br><span class="line">            <span class="keyword">is</span> <span class="built_in">Float</span>-&gt;cv.put(key, value)</span><br><span class="line">            <span class="keyword">is</span> <span class="built_in">Double</span>-&gt;cv.put(key, value)</span><br><span class="line">            <span class="keyword">is</span> <span class="built_in">Boolean</span>-&gt;cv.put(key, value)</span><br><span class="line">            <span class="keyword">is</span> String-&gt;cv.put(key, value)</span><br><span class="line">            <span class="keyword">is</span> <span class="built_in">Byte</span>-&gt;cv.put(key, value)</span><br><span class="line">            <span class="keyword">is</span> ByteArray-&gt;cv.put(key, value)</span><br><span class="line">            <span class="literal">null</span>-&gt;cv.putNull(key)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cv</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//调用</span></span><br><span class="line"><span class="keyword">val</span> values=cvOf(<span class="string">&quot;name&quot;</span> to <span class="string">&quot;Game of Thrones&quot;</span>,<span class="string">&quot;author&quot;</span> to <span class="string">&quot;George Martin&quot;</span>,<span class="string">&quot;pages&quot;</span> to <span class="number">720</span>,<span class="string">&quot;price&quot;</span> to <span class="number">20.85</span>)</span><br><span class="line">db.insert(<span class="string">&quot;Book&quot;</span>,<span class="literal">null</span>,values)</span><br></pre></td></tr></table></figure>
+
+<p><strong>利用apply简化</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">cvOf</span><span class="params">(<span class="keyword">vararg</span> pairs:<span class="type">Pair</span>&lt;<span class="type">String</span>,Any?&gt;)</span></span>=ContentValues().apply&#123;</span><br><span class="line">    <span class="keyword">for</span>(pair <span class="keyword">in</span> pairs)&#123;</span><br><span class="line">        <span class="keyword">val</span> key=pair.first</span><br><span class="line">        <span class="keyword">val</span> value=pair.second</span><br><span class="line">        <span class="keyword">when</span>(value)&#123;</span><br><span class="line">            <span class="keyword">is</span> <span class="built_in">Int</span>-&gt;put(key, value)</span><br><span class="line">            <span class="keyword">is</span> <span class="built_in">Long</span>-&gt;put(key, value)</span><br><span class="line">            <span class="keyword">is</span> <span class="built_in">Short</span>-&gt;put(key, value)</span><br><span class="line">            <span class="keyword">is</span> <span class="built_in">Float</span>-&gt;put(key, value)</span><br><span class="line">            <span class="keyword">is</span> <span class="built_in">Double</span>-&gt;put(key, value)</span><br><span class="line">            <span class="keyword">is</span> <span class="built_in">Boolean</span>-&gt;put(key, value)</span><br><span class="line">            <span class="keyword">is</span> String-&gt;put(key, value)</span><br><span class="line">            <span class="keyword">is</span> <span class="built_in">Byte</span>-&gt;put(key, value)</span><br><span class="line">            <span class="keyword">is</span> ByteArray-&gt;put(key, value)</span><br><span class="line">            <span class="literal">null</span>-&gt;putNull(key)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>KTX库提供同样功能的contentValuesOf方法</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> values=contentValuesOf(<span class="string">&quot;name&quot;</span> to <span class="string">&quot;Game of Thrones&quot;</span>,<span class="string">&quot;author&quot;</span> to <span class="string">&quot;George Martin&quot;</span>,<span class="string">&quot;pages&quot;</span> to <span class="number">720</span>,<span class="string">&quot;price&quot;</span> to <span class="number">20.85</span>)</span><br><span class="line">db.insert(<span class="string">&quot;Book&quot;</span>,<span class="literal">null</span>,values)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 QQ邮箱3072420788@qq.com处。 </span>
