@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Kotlin标准函数 | Hexo</title>
+  <title>数据存储(Kotlin) | Hexo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Kotlin标准函数 | Hexo">
+  <meta name="description" content="数据存储(Kotlin) | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="文件存储存储数据读取数据 SharedPreferences存储数据读取数据 SQLite数据库创建和升级添加，更新，删除，查询SQL操作数据库使用事务升级数据库最佳写法">
 <meta property="og:type" content="article">
@@ -474,9 +474,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Kotlin标准函数" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-数据存储-Kotlin" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Kotlin标准函数</h1>
+        <h1 class="article-title">数据存储(Kotlin)</h1>
     
     <div class="article-meta">
         
@@ -486,7 +486,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Kotlin">Kotlin</a>
+            <a  data-rel="Android(Kotlin版)">Android(Kotlin版)</a>
             
         </span>
         
@@ -494,12 +494,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-04-28 22:29:21'>2025-04-19 21:56</time>
+            Created At : <time class="date" title='Updated At: 2025-05-08 00:05:40'>2025-05-08 00:01</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:353</span>
+        <span>Count:57</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -518,7 +518,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#with"><span class="toc-text">with</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#run"><span class="toc-text">run</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#apply"><span class="toc-text">apply</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#repeat"><span class="toc-text">repeat</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8"><span class="toc-text">文件存储</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE"><span class="toc-text">存储数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="toc-text">读取数据</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SharedPreferences"><span class="toc-text">SharedPreferences</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE-1"><span class="toc-text">存储数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE-1"><span class="toc-text">读取数据</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SQLite%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">SQLite数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%92%8C%E5%8D%87%E7%BA%A7"><span class="toc-text">创建和升级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%EF%BC%8C%E6%9B%B4%E6%96%B0%EF%BC%8C%E5%88%A0%E9%99%A4%EF%BC%8C%E6%9F%A5%E8%AF%A2"><span class="toc-text">添加，更新，删除，查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">SQL操作数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E4%BA%8B%E5%8A%A1"><span class="toc-text">使用事务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%87%E7%BA%A7%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9C%80%E4%BD%B3%E5%86%99%E6%B3%95"><span class="toc-text">升级数据库最佳写法</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -534,39 +534,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="with"><a href="#with" class="headerlink" title="with"></a>with</h1><p>作用：可以在连续调用同一个对象的多个方法时让代码变得更简便</p>
-<p>标准形式：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> result = with (obj)&#123;</span><br><span class="line">    <span class="comment">//这里是obj的上下文</span></span><br><span class="line">    <span class="string">&quot;value&quot;</span><span class="comment">//with函数返回值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>实例：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list= listOf(<span class="string">&quot;Apple&quot;</span>,<span class="string">&quot;Banana&quot;</span>,<span class="string">&quot;Pear&quot;</span>)</span><br><span class="line">    <span class="keyword">val</span> result=with(StringBuilder())&#123;</span><br><span class="line">        append(<span class="string">&quot;Start eating fruits.\n&quot;</span>)</span><br><span class="line">        <span class="keyword">for</span>(fruit <span class="keyword">in</span> list)&#123;</span><br><span class="line">            append(fruit).append(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        append(<span class="string">&quot;Ate all Fruits&quot;</span>)</span><br><span class="line">        toString()</span><br><span class="line">    &#125;</span><br><span class="line">    println(result)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h1 id="run"><a href="#run" class="headerlink" title="run"></a>run</h1><p>作用：同with相同只是通常不会直接调用而是在对象的基础上调用</p>
-<p>标准形式：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> result =obj.run&#123;</span><br><span class="line">    <span class="comment">//这里是obj的上下文</span></span><br><span class="line">    <span class="string">&quot;value&quot;</span><span class="comment">//run函数返回值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>实例：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list= listOf(<span class="string">&quot;Apple&quot;</span>,<span class="string">&quot;Banana&quot;</span>,<span class="string">&quot;Pear&quot;</span>)</span><br><span class="line">    <span class="keyword">val</span> result=StringBuilder().run&#123;</span><br><span class="line">        append(<span class="string">&quot;Start eating fruits.\n&quot;</span>)</span><br><span class="line">        <span class="keyword">for</span>(fruit <span class="keyword">in</span> list)&#123;</span><br><span class="line">            append(fruit).append(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        append(<span class="string">&quot;Ate all Fruits&quot;</span>)</span><br><span class="line">        toString()</span><br><span class="line">    &#125;</span><br><span class="line">    println(result)</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h1 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h1><p>作用：作用和run类似只是无法指定返回值</p>
-<p>标准形式：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> result =obj.apply&#123;</span><br><span class="line">    <span class="comment">//这里是obj的上下文</span></span><br><span class="line">&#125;</span><br><span class="line">result==obj</span><br></pre></td></tr></table></figure>
-
-<p>实例：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list= listOf(<span class="string">&quot;Apple&quot;</span>,<span class="string">&quot;Banana&quot;</span>,<span class="string">&quot;Pear&quot;</span>)</span><br><span class="line"><span class="keyword">val</span> result=StringBuilder().apply&#123;</span><br><span class="line">    append(<span class="string">&quot;Start eating fruits.\n&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span>(fruit <span class="keyword">in</span> list)&#123;</span><br><span class="line">        append(fruit).append(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    append(<span class="string">&quot;Ate all Fruits&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line">println(result.toString())</span><br></pre></td></tr></table></figure>
-
-<p><strong>利用Intent传递数据时也可以使用apply函数</strong></p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> intent=Intent(context,SecondActivity::<span class="keyword">class</span>.java).apply&#123;</span><br><span class="line">    putExtra(<span class="string">&quot;param1&quot;</span>,<span class="string">&quot;data1&quot;</span>)</span><br><span class="line">    putExtra(<span class="string">&quot;param2&quot;</span>,<span class="string">&quot;data2&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line">context.startActivity(intent)</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h1 id="repeat"><a href="#repeat" class="headerlink" title="repeat"></a>repeat</h1><p>传入一个值n然后lambda表达式中的内容执行n遍</p>
-<hr>
+        <h1 id="文件存储"><a href="#文件存储" class="headerlink" title="文件存储"></a>文件存储</h1><h3 id="存储数据"><a href="#存储数据" class="headerlink" title="存储数据"></a>存储数据</h3><h3 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h3><hr>
+<h1 id="SharedPreferences"><a href="#SharedPreferences" class="headerlink" title="SharedPreferences"></a>SharedPreferences</h1><h3 id="存储数据-1"><a href="#存储数据-1" class="headerlink" title="存储数据"></a>存储数据</h3><h3 id="读取数据-1"><a href="#读取数据-1" class="headerlink" title="读取数据"></a>读取数据</h3><hr>
+<h1 id="SQLite数据库"><a href="#SQLite数据库" class="headerlink" title="SQLite数据库"></a>SQLite数据库</h1><h3 id="创建和升级"><a href="#创建和升级" class="headerlink" title="创建和升级"></a>创建和升级</h3><h3 id="添加，更新，删除，查询"><a href="#添加，更新，删除，查询" class="headerlink" title="添加，更新，删除，查询"></a>添加，更新，删除，查询</h3><h3 id="SQL操作数据库"><a href="#SQL操作数据库" class="headerlink" title="SQL操作数据库"></a>SQL操作数据库</h3><h3 id="使用事务"><a href="#使用事务" class="headerlink" title="使用事务"></a>使用事务</h3><h3 id="升级数据库最佳写法"><a href="#升级数据库最佳写法" class="headerlink" title="升级数据库最佳写法"></a>升级数据库最佳写法</h3><hr>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 QQ邮箱3072420788@qq.com处。 </span>
