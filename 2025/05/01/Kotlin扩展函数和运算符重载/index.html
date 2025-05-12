@@ -6,15 +6,15 @@
   <meta name="keywords" content="">
   <meta name="description" content="Kotlin扩展函数和运算符重载 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="简化SharedPreferences的用法 通过扩展函数方式像其中添加open函数  接收函数类型 12345fun SharedPreferences.open(block:SharedPreferences.Editor.()-&gt;Unit)&#123;    val editor&#x3D;edit()    editor.block()    editor.apply()&#125;  123">
+<meta name="description" content="泛型定义泛型类 语法结构 123456&#x2F;&#x2F;T代指泛型是一种约定俗成class MyClass&lt;T&gt; &#123;    fun method(param:T):T&#123;        return param    &#125;&#125;  调用 123val myClass&#x3D;MyClass&lt;Int&gt;()   val result&#x3D;myClass.method(12">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Kotlin高阶函数的应用">
-<meta property="og:url" content="http://example.com/2025/05/08/Kotlin%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%E7%9A%84%E5%BA%94%E7%94%A8/index.html">
+<meta property="og:title" content="泛型和委托">
+<meta property="og:url" content="http://example.com/2025/05/11/%E6%B3%9B%E5%9E%8B%E5%92%8C%E5%A7%94%E6%89%98/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="简化SharedPreferences的用法 通过扩展函数方式像其中添加open函数  接收函数类型 12345fun SharedPreferences.open(block:SharedPreferences.Editor.()-&gt;Unit)&#123;    val editor&#x3D;edit()    editor.block()    editor.apply()&#125;  123">
+<meta property="og:description" content="泛型定义泛型类 语法结构 123456&#x2F;&#x2F;T代指泛型是一种约定俗成class MyClass&lt;T&gt; &#123;    fun method(param:T):T&#123;        return param    &#125;&#125;  调用 123val myClass&#x3D;MyClass&lt;Int&gt;()   val result&#x3D;myClass.method(12">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-05-07T16:06:10.000Z">
-<meta property="article:modified_time" content="2025-05-08T14:55:44.217Z">
+<meta property="article:published_time" content="2025-05-11T15:47:29.000Z">
+<meta property="article:modified_time" content="2025-05-12T12:45:32.817Z">
 <meta property="article:author" content="Pick">
 <meta name="twitter:card" content="summary">
 
@@ -91,7 +91,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(26)</small>
+                <small>(29)</small>
             
         </div>
     </li>
@@ -133,7 +133,7 @@
         <div data-rel="Kotlin">
             
             Kotlin
-            <small>(7)</small>
+            <small>(9)</small>
         </div>
         
     </li>
@@ -148,7 +148,7 @@
         <div data-rel="Android(Kotlin版)">
             
             Android(Kotlin版)
-            <small>(5)</small>
+            <small>(6)</small>
         </div>
         
     </li>
@@ -169,8 +169,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="26">
-<input type="hidden" id="yelog_site_word_count" value="38.9k">
+<input type="hidden" id="yelog_site_posts_number" value="29">
+<input type="hidden" id="yelog_site_word_count" value="41.7k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -221,6 +221,33 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All Kotlin "
+           href="/2025/05/11/%E6%B3%9B%E5%9E%8B%E5%92%8C%E5%A7%94%E6%89%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="泛型和委托">泛型和委托</span>
+            <span class="post-date" title="2025-05-11 23:47:29">2025/05/11</span>
+        </a>
+        
+        
+        <a  class="All Kotlin "
+           href="/2025/05/11/Kotlin%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Kotlin内置函数">Kotlin内置函数</span>
+            <span class="post-date" title="2025-05-11 23:42:00">2025/05/11</span>
+        </a>
+        
+        
+        <a  class="All Android(Kotlin版) "
+           href="/2025/05/11/%E6%8E%A2%E7%A9%B6ContentProvider-Kotlin/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="探究ContentProvider(Kotlin)">探究ContentProvider(Kotlin)</span>
+            <span class="post-date" title="2025-05-11 22:08:37">2025/05/11</span>
+        </a>
         
         
         <a  class="All Kotlin "
@@ -494,12 +521,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-05-08 22:02:26'>2025-05-01 16:13</time>
+            Created At : <time class="date" title='Updated At: 2025-05-11 23:42:45'>2025-05-01 16:13</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:382</span>
+        <span>Count:295</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -518,7 +545,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E5%87%BD%E6%95%B0"><span class="toc-text">扩展函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E7%BD%AE%E6%89%A9%E5%B1%95%E5%87%BD%E6%95%B0"><span class="toc-text">内置扩展函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%E7%BB%93%E6%9E%84"><span class="toc-text">语法结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B"><span class="toc-text">实例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-text">运算符重载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%E7%BB%93%E6%9E%84-%E5%8F%AF%E4%BB%A5%E5%AE%9E%E7%8E%B0%E5%90%8C%E4%B8%80%E4%B8%AA%E8%BF%90%E7%AE%97%E7%AC%A6%E5%A4%9A%E9%87%8D%E9%87%8D%E8%BD%BD"><span class="toc-text">语法结构(可以实现同一个运算符多重重载)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B-1"><span class="toc-text">实例</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E5%87%BD%E6%95%B0"><span class="toc-text">扩展函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%E7%BB%93%E6%9E%84"><span class="toc-text">语法结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B"><span class="toc-text">实例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-text">运算符重载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%E7%BB%93%E6%9E%84-%E5%8F%AF%E4%BB%A5%E5%AE%9E%E7%8E%B0%E5%90%8C%E4%B8%80%E4%B8%AA%E8%BF%90%E7%AE%97%E7%AC%A6%E5%A4%9A%E9%87%8D%E9%87%8D%E8%BD%BD"><span class="toc-text">语法结构(可以实现同一个运算符多重重载)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B-1"><span class="toc-text">实例</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -534,18 +561,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="扩展函数"><a href="#扩展函数" class="headerlink" title="扩展函数"></a>扩展函数</h1><h3 id="内置扩展函数"><a href="#内置扩展函数" class="headerlink" title="内置扩展函数"></a>内置扩展函数</h3><ul>
-<li><p><strong>use</strong></p>
-<p>可以保证Lambda表达式中的所有代码执行完毕后自动将外层的流关闭，这样就不用再编写finally语句手动关闭了</p>
-</li>
-<li><p><strong>forEachLine</strong></p>
-<p>它会将读取的每行内容回调到Lambda表达式，在lambda中完成拼接逻辑</p>
-</li>
-<li><p><strong>arrayOf</strong></p>
-<p>用于便捷创建数组</p>
-</li>
-</ul>
-<h3 id="语法结构"><a href="#语法结构" class="headerlink" title="语法结构"></a>语法结构</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> ClassName.<span class="title">methodName</span><span class="params">(param1:<span class="type">Int</span>,param2:<span class="type">Int</span>)</span></span>:<span class="built_in">Int</span>&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h1 id="扩展函数"><a href="#扩展函数" class="headerlink" title="扩展函数"></a>扩展函数</h1><h3 id="语法结构"><a href="#语法结构" class="headerlink" title="语法结构"></a>语法结构</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> ClassName.<span class="title">methodName</span><span class="params">(param1:<span class="type">Int</span>,param2:<span class="type">Int</span>)</span></span>:<span class="built_in">Int</span>&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//构建扩展函数</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> String.<span class="title">lettersCount</span><span class="params">()</span></span>:<span class="built_in">Int</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> count=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span>(char <span class="keyword">in</span> <span class="keyword">this</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(char.isLetter())&#123;</span><br><span class="line">            count++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
