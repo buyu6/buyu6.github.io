@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>泛型和委托 | Hexo</title>
+  <title>Kotlin的infix函数 | Hexo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="泛型和委托 | Hexo">
+  <meta name="description" content="Kotlin的infix函数 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="特点infix 关键字可以让 单参数的函数 以 更自然的语法 书写，使代码更易读。你可以把它理解为 一种特殊的调用方式，不需要 . 和 ()，让代码像 自然语言 一样流畅。例如mapOf中的键值对(A to B实际等价于A.to(B))省略了  .  和  （）。 条件要使用 infix，需要满足 三个条件：  必须是成员函数或扩展函数（它必须属于某个类或某种类型）。 必须只有且只能有一个参数（如">
 <meta property="og:type" content="article">
@@ -519,9 +519,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-泛型和委托" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Kotlin的infix函数" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">泛型和委托</h1>
+        <h1 class="article-title">Kotlin的infix函数</h1>
     
     <div class="article-meta">
         
@@ -539,12 +539,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-05-12 20:45:32'>2025-05-11 23:47</time>
+            Created At : <time class="date" title='Updated At: 2025-05-26 21:47:06'>2025-05-26 21:22</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:809</span>
+        <span>Count:212</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -563,7 +563,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B"><span class="toc-text">泛型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E6%B3%9B%E5%9E%8B%E7%B1%BB"><span class="toc-text">定义泛型类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95"><span class="toc-text">定义泛型方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B%E4%B8%8A%E7%95%8C"><span class="toc-text">泛型上界</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B1%BB%E5%A7%94%E6%89%98%E5%92%8C%E5%A7%94%E6%89%98%E5%B1%9E%E6%80%A7"><span class="toc-text">类委托和委托属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%A7%94%E6%89%98"><span class="toc-text">类委托</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A7%94%E6%89%98%E5%B1%9E%E6%80%A7"><span class="toc-text">委托属性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%87%AA%E5%B7%B1%E7%9A%84lazy%E5%87%BD%E6%95%B0"><span class="toc-text">实现一个自己的lazy函数</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E7%82%B9"><span class="toc-text">特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6"><span class="toc-text">条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B"><span class="toc-text">实例</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -579,75 +579,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><h3 id="定义泛型类"><a href="#定义泛型类" class="headerlink" title="定义泛型类"></a>定义泛型类</h3><ul>
-<li><p><strong>语法结构</strong></p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//T代指泛型是一种约定俗成</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span>&lt;<span class="type">T</span>&gt; &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">method</span><span class="params">(param:<span class="type">T</span>)</span></span>:T&#123;</span><br><span class="line">        <span class="keyword">return</span> param</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>调用</strong></p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> myClass=MyClass&lt;<span class="built_in">Int</span>&gt;()</span><br><span class="line">   <span class="keyword">val</span> result=myClass.method(<span class="number">123</span>)</span><br><span class="line">   println(result)</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="定义泛型方法"><a href="#定义泛型方法" class="headerlink" title="定义泛型方法"></a>定义泛型方法</h3><ul>
-<li><p><strong>语法结构</strong></p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span><span class="type">&lt;T&gt;</span><span class="title">method</span><span class="params">(param:<span class="type">T</span>)</span></span>:T&#123;</span><br><span class="line">        <span class="keyword">return</span> param</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>调用</strong></p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> myClass=MyClass()</span><br><span class="line">    <span class="keyword">val</span> result=myClass.method&lt;<span class="built_in">Int</span>&gt;(<span class="number">123</span>)</span><br><span class="line">    println(result)</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="泛型上界"><a href="#泛型上界" class="headerlink" title="泛型上界"></a>泛型上界</h3><p>对泛型类型进行限制</p>
-<ul>
-<li><p><strong>语法结构</strong></p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span><span class="type">&lt;T:Number&gt;</span><span class="title">method</span><span class="params">(param:<span class="type">T</span>)</span></span>:T&#123;</span><br><span class="line">        <span class="keyword">return</span> param</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>调用</strong></p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> myClass=MyClass()</span><br><span class="line"><span class="keyword">val</span> result=myClass.method(<span class="number">123</span>)</span><br><span class="line">println(result)</span><br></pre></td></tr></table></figure></li>
-</ul>
-<hr>
-<h1 id="类委托和委托属性"><a href="#类委托和委托属性" class="headerlink" title="类委托和委托属性"></a>类委托和委托属性</h1><h3 id="类委托"><a href="#类委托" class="headerlink" title="类委托"></a>类委托</h3><ul>
-<li><p><strong>原理</strong></p>
-<p>将一个类的具体实现委托给另一个类去完成</p>
-</li>
-<li><p><strong>意义</strong></p>
-<p>大部分方法实现调用辅助对象的方法，少部分方法实现自己重写，甚至加入自己独有的方法</p>
-</li>
-<li><p><strong>实例</strong></p>
-<p>MySet构造函数中接收了一个HashSet参数这就相当于一个辅助对象，Set接口中所有方法的实现都是调用了辅助对象中相应的方法实现的，这就是类委托</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MySet</span>&lt;<span class="type">T</span>&gt;(<span class="keyword">val</span> helperSet: HashSet&lt;T&gt;) : Set&lt;T&gt;  &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="keyword">val</span> size: <span class="built_in">Int</span></span><br><span class="line">        <span class="keyword">get</span>() = helperSet.size</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">isEmpty</span><span class="params">()</span></span>=helperSet.isEmpty()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">iterator</span><span class="params">()</span></span>=helperSet.iterator()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">containsAll</span><span class="params">(elements: <span class="type">Collection</span>&lt;<span class="type">T</span>&gt;)</span></span>=helperSet.containsAll(elements)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">contains</span><span class="params">(element: <span class="type">T</span>)</span></span>=helperSet.contains(element)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p><code>infix</code> <a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E5%85%B3%E9%94%AE%E5%AD%97&spm=1001.2101.3001.7020">关键字</a>可以让 <strong>单参数的函数</strong> 以 <strong>更自然的语法</strong> 书写，使代码更易读。<br>你可以把它理解为 <strong>一种特殊的调用方式</strong>，不需要 <code>.</code> 和 <code>()</code>，让代码像 <strong>自然语言</strong> 一样流畅。例如mapOf中的键值对(A to B实际等价于A.to(B))省略了  <code>.</code>  和  <code>（）</code>。</p>
+<h3 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h3><p>要使用 <code>infix</code>，需要满足 <strong>三个条件</strong>：</p>
+<ol>
+<li><strong>必须是成员函数或扩展函数</strong>（它必须属于某个类或某种类型）。</li>
+<li><strong>必须只有且只能有一个参数</strong>（如果有多个参数，就不能用 <code>infix</code>）。</li>
+<li>⭐⭐⭐⭐⭐⭐**调用时可以省略 <code>.</code> 和 <code>()</code>**（但仍然可以用 <code>.</code> 调用）。</li>
+</ol>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">infix</span> <span class="function"><span class="keyword">fun</span> <span class="type">&lt;T&gt;</span> Collection<span class="type">&lt;T&gt;</span>.<span class="title">has</span><span class="params">(element:<span class="type">T</span>)</span></span>=contains(element)</span><br><span class="line"><span class="keyword">val</span> list =listOf(<span class="string">&quot;Apple&quot;</span>,<span class="string">&quot;Banana&quot;</span>,<span class="string">&quot;Orange&quot;</span>,<span class="string">&quot;Pear&quot;</span>,<span class="string">&quot;Grape&quot;</span>)</span><br><span class="line"><span class="keyword">if</span>(list has <span class="string">&quot;Banana&quot;</span>)&#123;</span><br><span class="line">    <span class="comment">//处理具体逻辑</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>使用<strong>by</strong>类委托关键字简化</p>
-<p>哪个方法需要重新实现只需要写那一个方法即可，不需要把所有继承方法都写下来</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MySet</span>&lt;<span class="type">T</span>&gt;(<span class="keyword">val</span> helperSet: HashSet&lt;T&gt;) : Set&lt;T&gt; <span class="keyword">by</span> helperSet &#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">helloWorld</span><span class="params">()</span></span> = println(<span class="string">&quot;Hello World&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">isEmpty</span><span class="params">()</span></span> = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="委托属性"><a href="#委托属性" class="headerlink" title="委托属性"></a>委托属性</h3><ul>
-<li><p><strong>原理</strong></p>
-<p>将一个属性(字段)的具体实现委托给另一个类去完成</p>
-</li>
-<li><p><strong>语法结构</strong></p>
-<p>将p属性具体实现委托给Delegate类完成，当调用p时会自动调用Delegate的getValue()方法，当给其赋值会调用Delegate的setValue()方法</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> p <span class="keyword">by</span> Delegate()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Delegate()的实现</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Delegate</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> propValue: Any? = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 第一个参数声明该委托功能可以在哪个类中使用</span></span><br><span class="line"><span class="comment">     第二个参数是一个属性操作类，当前情景用不着但必须声明</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">getValue</span><span class="params">(myClass: <span class="type">MyClass</span>, prop: <span class="type">KProperty</span>&lt;*&gt;)</span></span>: Any? &#123;</span><br><span class="line">        <span class="keyword">return</span> propValue</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 第一个参数声明该委托功能可以在哪个类中使用</span></span><br><span class="line"><span class="comment">     第二个参数是一个属性操作类，当前情景用不着但必须声明</span></span><br><span class="line"><span class="comment">     第三个参数表示具体赋给委托属性的值，必须与getValue方法返回值类型一致</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">setValue</span><span class="params">(myClass: <span class="type">MyClass</span>, prop: <span class="type">KProperty</span>&lt;*&gt;, value: <span class="type">Any</span>?)</span></span> &#123;</span><br><span class="line">       propValue = value</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>注意：</strong>当p属性用val修饰时不需要再去实现setValue方法</p>
-<hr>
-</li>
-</ul>
-<h1 id="实现一个自己的lazy函数"><a href="#实现一个自己的lazy函数" class="headerlink" title="实现一个自己的lazy函数"></a>实现一个自己的lazy函数</h1><ul>
-<li><p><strong>高阶函数</strong></p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Later</span>&lt;<span class="type">T</span>&gt;(<span class="keyword">val</span> block:()-&gt;T)&#123;</span><br><span class="line">    <span class="keyword">var</span> value:Any?=<span class="literal">null</span></span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">getValue</span><span class="params">(any:<span class="type">Any</span>?,prop:<span class="type">KProperty</span>&lt;*&gt;)</span></span>:T&#123;</span><br><span class="line">        <span class="keyword">if</span>(value==<span class="literal">null</span>)&#123;</span><br><span class="line">            value=block()</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> value <span class="keyword">as</span> T</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>创建Later类实例并将接收的函数类型参数传给Later类的构造函数</strong></p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="type">&lt;T&gt;</span><span class="title">later</span><span class="params">(block:()-&gt;<span class="type">T</span>)</span></span>=Later(block)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>实现</strong></p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> uriMatcher <span class="keyword">by</span> later&#123;</span><br><span class="line">    <span class="keyword">val</span> matcher=UriMatcher(UriMatcher.NO_MATCH)</span><br><span class="line">    matcher.addURI(authority,path,CODE_CREATE)</span><br><span class="line">    ......</span><br><span class="line">    matcher</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>验证</strong></p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> p <span class="keyword">by</span> later&#123;</span><br><span class="line">    Log.d(<span class="string">&quot;TAG&quot;</span>,<span class="string">&quot;run codes inside later block&quot;</span>)</span><br><span class="line">    <span class="string">&quot;test later&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>注意：一般还是更常用Kotlin内置的<strong>lazy</strong>函数</p>
-</li>
-</ul>
 <hr>
 
       
