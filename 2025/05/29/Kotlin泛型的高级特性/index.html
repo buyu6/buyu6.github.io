@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Kotlin标准函数 | Hexo</title>
+  <title>Kotlin泛型的高级特性 | Hexo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Kotlin标准函数 | Hexo">
+  <meta name="description" content="Kotlin泛型的高级特性 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="泛型的实化条件  内联函数 reified关键字修饰  举例 123inline fun &lt;reified T&gt; getGenericType()&#123;    &#125;  应用 启动活动  新建一个reified.kt文件  123456inline fun &lt;reified T&gt; startActivity(context:Context,block:Inten">
 <meta property="og:type" content="article">
@@ -537,9 +537,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Kotlin标准函数" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Kotlin泛型的高级特性" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Kotlin标准函数</h1>
+        <h1 class="article-title">Kotlin泛型的高级特性</h1>
     
     <div class="article-meta">
         
@@ -557,12 +557,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-04-28 22:29:21'>2025-04-19 21:56</time>
+            Created At : <time class="date" title='Updated At: 2025-05-29 20:25:53'>2025-05-29 19:25</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:353</span>
+        <span>Count:442</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -581,7 +581,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#with"><span class="toc-text">with</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#run"><span class="toc-text">run</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#apply"><span class="toc-text">apply</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#repeat"><span class="toc-text">repeat</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B%E7%9A%84%E5%AE%9E%E5%8C%96"><span class="toc-text">泛型的实化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B%E7%9A%84%E5%8D%8F%E5%8F%98"><span class="toc-text">泛型的协变</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B%E7%9A%84%E9%80%86%E5%8F%98"><span class="toc-text">泛型的逆变</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -597,38 +597,44 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="with"><a href="#with" class="headerlink" title="with"></a>with</h1><p>作用：可以在连续调用同一个对象的多个方法时让代码变得更简便</p>
-<p>标准形式：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> result = with (obj)&#123;</span><br><span class="line">    <span class="comment">//这里是obj的上下文</span></span><br><span class="line">    <span class="string">&quot;value&quot;</span><span class="comment">//with函数返回值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h3 id="泛型的实化"><a href="#泛型的实化" class="headerlink" title="泛型的实化"></a>泛型的实化</h3><p><strong>条件</strong></p>
+<ul>
+<li>内联函数</li>
+<li>reified关键字修饰</li>
+</ul>
+<p><strong>举例</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span> <span class="function"><span class="keyword">fun</span> <span class="type">&lt;<span class="keyword">reified</span> T&gt;</span> <span class="title">getGenericType</span><span class="params">()</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>实例：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list= listOf(<span class="string">&quot;Apple&quot;</span>,<span class="string">&quot;Banana&quot;</span>,<span class="string">&quot;Pear&quot;</span>)</span><br><span class="line">    <span class="keyword">val</span> result=with(StringBuilder())&#123;</span><br><span class="line">        append(<span class="string">&quot;Start eating fruits.\n&quot;</span>)</span><br><span class="line">        <span class="keyword">for</span>(fruit <span class="keyword">in</span> list)&#123;</span><br><span class="line">            append(fruit).append(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        append(<span class="string">&quot;Ate all Fruits&quot;</span>)</span><br><span class="line">        toString()</span><br><span class="line">    &#125;</span><br><span class="line">    println(result)</span><br></pre></td></tr></table></figure>
+<p><strong>应用</strong></p>
+<p>启动活动</p>
+<ul>
+<li>新建一个reified.kt文件</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span> <span class="function"><span class="keyword">fun</span> <span class="type">&lt;<span class="keyword">reified</span> T&gt;</span> <span class="title">startActivity</span><span class="params">(context:<span class="type">Context</span>,block:<span class="type">Intent</span>.()-&gt;<span class="type">Unit</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">val</span> intent= Intent(context,T::<span class="keyword">class</span>.java)</span><br><span class="line">    <span class="comment">//高阶函数用于传递数据</span></span><br><span class="line">    intent.block()</span><br><span class="line">    context.startActivity(intent)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<hr>
-<h1 id="run"><a href="#run" class="headerlink" title="run"></a>run</h1><p>作用：同with相同只是通常不会直接调用而是在对象的基础上调用</p>
-<p>标准形式：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> result =obj.run&#123;</span><br><span class="line">    <span class="comment">//这里是obj的上下文</span></span><br><span class="line">    <span class="string">&quot;value&quot;</span><span class="comment">//run函数返回值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>启动活动</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">startActivity&lt;Test&gt;(<span class="keyword">this</span>)&#123;</span><br><span class="line">                putExtra(<span class="string">&quot;param1&quot;</span>,<span class="string">&quot;data&quot;</span>)</span><br><span class="line">                putExtra(<span class="string">&quot;param2&quot;</span>,<span class="number">123</span>)</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
 
-<p>实例：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list= listOf(<span class="string">&quot;Apple&quot;</span>,<span class="string">&quot;Banana&quot;</span>,<span class="string">&quot;Pear&quot;</span>)</span><br><span class="line">    <span class="keyword">val</span> result=StringBuilder().run&#123;</span><br><span class="line">        append(<span class="string">&quot;Start eating fruits.\n&quot;</span>)</span><br><span class="line">        <span class="keyword">for</span>(fruit <span class="keyword">in</span> list)&#123;</span><br><span class="line">            append(fruit).append(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        append(<span class="string">&quot;Ate all Fruits&quot;</span>)</span><br><span class="line">        toString()</span><br><span class="line">    &#125;</span><br><span class="line">    println(result)</span><br></pre></td></tr></table></figure>
+<h3 id="泛型的协变"><a href="#泛型的协变" class="headerlink" title="泛型的协变"></a>泛型的协变</h3><p><strong>定义</strong></p>
+<p>假如定义一个MyClass<T>的泛型类，其中A是B的子类型，同时MyClass<A>是MyClass<B>的子类型，就称MyClass在T这个泛型上是协变的</p>
+<p><strong>条件</strong></p>
+<p>一个泛型类在其泛型类型的数据上是只读的情况，简而言之，T只能出现在out位置上，而不能出现在in位置</p>
+<p><strong>实例</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在T前使用out关键字声明表示T只能出现在out位置上</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SimpleData</span>&lt;<span class="type">out T</span>&gt;(<span class="keyword">val</span> <span class="keyword">data</span>:T?)&#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">get</span><span class="params">()</span></span>:T?&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">data</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">val</span> student=Student(<span class="string">&quot;Tom&quot;</span>,<span class="number">19</span>)</span><br><span class="line">    <span class="keyword">val</span> <span class="keyword">data</span>=SimpleData&lt;Student&gt;(student)</span><br><span class="line">    handleMyData(<span class="keyword">data</span>)</span><br><span class="line">    <span class="keyword">val</span> studentData=<span class="keyword">data</span>.<span class="keyword">get</span>()</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">handleMyData</span><span class="params">(<span class="keyword">data</span>:<span class="type">SimpleData</span>&lt;<span class="type">Person</span>&gt;)</span></span>&#123;</span><br><span class="line">    <span class="keyword">val</span> personData=<span class="keyword">data</span>.<span class="keyword">get</span>()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h3 id="泛型的逆变"><a href="#泛型的逆变" class="headerlink" title="泛型的逆变"></a>泛型的逆变</h3><p><strong>定义</strong></p>
+<p>假如定义一个MyClass<T>的泛型类，其中A是B的子类型，同时MyClass<B>是MyClass<A>的子类型，就称MyClass在T这个泛型上是逆变的</p>
+<p><strong>条件</strong></p>
+<p>泛型T前加上in关键字声明，简而言之，T只能出现在in位置上，而不能出现在out位置</p>
+<p><strong>实例</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在T前使用out关键字声明表示T只能出现在out位置上</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Transformer</span>&lt;<span class="type">in T</span>&gt;&#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">transform</span><span class="params">(t:<span class="type">T</span>)</span></span>:String</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<hr>
-<h1 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h1><p>作用：作用和run类似只是无法指定返回值</p>
-<p>标准形式：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> result =obj.apply&#123;</span><br><span class="line">    <span class="comment">//这里是obj的上下文</span></span><br><span class="line">&#125;</span><br><span class="line">result==obj</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">val</span> trans=<span class="keyword">object</span>:Transformer&lt;Person&gt;&#123;</span><br><span class="line">        <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">transform</span><span class="params">(t:<span class="type">Person</span>)</span></span>:String&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;<span class="subst">$&#123;t.name&#125;</span> <span class="subst">$&#123;t.age&#125;</span>&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    handleTransformer(trans)</span><br><span class="line">&#125;</span><br><span class="line">handleTransformer(trans:Transformer&lt;Student&gt;)&#123;</span><br><span class="line">        <span class="keyword">val</span> student=Student(<span class="string">&quot;Tom&quot;</span>,<span class="number">19</span>)</span><br><span class="line">    	<span class="keyword">val</span> result=trans.transform(student)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<p>实例：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list= listOf(<span class="string">&quot;Apple&quot;</span>,<span class="string">&quot;Banana&quot;</span>,<span class="string">&quot;Pear&quot;</span>)</span><br><span class="line"><span class="keyword">val</span> result=StringBuilder().apply&#123;</span><br><span class="line">    append(<span class="string">&quot;Start eating fruits.\n&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span>(fruit <span class="keyword">in</span> list)&#123;</span><br><span class="line">        append(fruit).append(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    append(<span class="string">&quot;Ate all Fruits&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line">println(result.toString())</span><br></pre></td></tr></table></figure>
-
-<p><strong>利用Intent传递数据时也可以使用apply函数</strong></p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> intent=Intent(context,SecondActivity::<span class="keyword">class</span>.java).apply&#123;</span><br><span class="line">    putExtra(<span class="string">&quot;param1&quot;</span>,<span class="string">&quot;data1&quot;</span>)</span><br><span class="line">    putExtra(<span class="string">&quot;param2&quot;</span>,<span class="string">&quot;data2&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line">context.startActivity(intent)</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h1 id="repeat"><a href="#repeat" class="headerlink" title="repeat"></a>repeat</h1><p>传入一个值n然后lambda表达式中的内容执行n遍</p>
 <hr>
 
       
