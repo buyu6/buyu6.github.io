@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>网络技术(Kotlin) | Hexo</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="网络技术(Kotlin) | Hexo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="协程的基本用法 优点 协程允许我们在单线程模式下模拟多线程编程的效果  依赖库 1234&#x2F;&#x2F; Gradle 依赖implementation(&quot;org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0&quot;)&#x2F;&#x2F;Android扩展implementation(&quot;org.jetbrains.kotlinx:kotlinx-cor">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin使用协程编写高效的并发程序">
+<meta property="og:url" content="http://example.com/2025/06/05/Kotlin%E4%BD%BF%E7%94%A8%E5%8D%8F%E7%A8%8B%E7%BC%96%E5%86%99%E9%AB%98%E6%95%88%E7%9A%84%E5%B9%B6%E5%8F%91%E7%A8%8B%E5%BA%8F/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="协程的基本用法 优点 协程允许我们在单线程模式下模拟多线程编程的效果  依赖库 1234&#x2F;&#x2F; Gradle 依赖implementation(&quot;org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0&quot;)&#x2F;&#x2F;Android扩展implementation(&quot;org.jetbrains.kotlinx:kotlinx-cor">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-06-05T13:42:16.000Z">
+<meta property="article:modified_time" content="2025-06-06T16:50:04.848Z">
+<meta property="article:author" content="Pick">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/picture.png">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/gruvbox-dark.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/picture.png"/>
+</a>
+<div class="author">
+    <span>Pick</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://buyu6.github.io/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(35)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="Android(Java版)">
+            
+            Android(Java版)
+            <small>(13)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Git">
+            
+            Git
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Kotlin">
+            
+            Kotlin
+            <small>(12)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Android(Kotlin版)">
+            
+            Android(Kotlin版)
+            <small>(9)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="35">
+<input type="hidden" id="yelog_site_word_count" value="50k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="/null">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="search shortcut key i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="switch to outline view shortcut key w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="return"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="case sensitive"></i>
+            <i class="iconfont icon-tag" data-title="label"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">outline</div>
+            <i class="iconfont icon-list" data-title="switch to article list"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="All Kotlin "
+           href="/2025/06/05/Kotlin%E4%BD%BF%E7%94%A8%E5%8D%8F%E7%A8%8B%E7%BC%96%E5%86%99%E9%AB%98%E6%95%88%E7%9A%84%E5%B9%B6%E5%8F%91%E7%A8%8B%E5%BA%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Kotlin使用协程编写高效的并发程序">Kotlin使用协程编写高效的并发程序</span>
+            <span class="post-date" title="2025-06-05 21:42:16">2025/06/05</span>
+        </a>
+        
+        
+        <a  class="All Android(Kotlin版) "
+           href="/2025/06/04/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="网络技术(Kotlin)">网络技术(Kotlin)</span>
+            <span class="post-date" title="2025-06-04 16:47:59">2025/06/04</span>
+        </a>
+        
+        
+        <a  class="All Kotlin "
+           href="/2025/05/29/Kotlin%E6%B3%9B%E5%9E%8B%E7%9A%84%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Kotlin泛型的高级特性">Kotlin泛型的高级特性</span>
+            <span class="post-date" title="2025-05-29 19:25:42">2025/05/29</span>
+        </a>
+        
+        
+        <a  class="All Android(Kotlin版) "
+           href="/2025/05/27/Service-Kotlin/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Service(Kotlin)">Service(Kotlin)</span>
+            <span class="post-date" title="2025-05-27 22:16:33">2025/05/27</span>
+        </a>
+        
+        
+        <a  class="All Kotlin "
+           href="/2025/05/26/Kotlin%E7%9A%84infix%E5%87%BD%E6%95%B0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Kotlin的infix函数">Kotlin的infix函数</span>
+            <span class="post-date" title="2025-05-26 21:22:12">2025/05/26</span>
+        </a>
+        
+        
+        <a  class="All Android(Kotlin版) "
+           href="/2025/05/24/%E6%89%8B%E6%9C%BA%E5%A4%9A%E5%AA%92%E4%BD%93-Kotlin/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="手机多媒体(Kotlin)">手机多媒体(Kotlin)</span>
+            <span class="post-date" title="2025-05-24 23:49:21">2025/05/24</span>
+        </a>
+        
+        
+        <a  class="All Kotlin "
+           href="/2025/05/11/%E6%B3%9B%E5%9E%8B%E5%92%8C%E5%A7%94%E6%89%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="泛型和委托">泛型和委托</span>
+            <span class="post-date" title="2025-05-11 23:47:29">2025/05/11</span>
+        </a>
+        
+        
+        <a  class="All Kotlin "
+           href="/2025/05/11/Kotlin%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Kotlin内置函数">Kotlin内置函数</span>
+            <span class="post-date" title="2025-05-11 23:42:00">2025/05/11</span>
+        </a>
+        
+        
+        <a  class="All Android(Kotlin版) "
+           href="/2025/05/11/%E6%8E%A2%E7%A9%B6ContentProvider-Kotlin/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="探究ContentProvider(Kotlin)">探究ContentProvider(Kotlin)</span>
+            <span class="post-date" title="2025-05-11 22:08:37">2025/05/11</span>
+        </a>
+        
+        
+        <a  class="All Kotlin "
+           href="/2025/05/08/Kotlin%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%E7%9A%84%E5%BA%94%E7%94%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Kotlin高阶函数的应用">Kotlin高阶函数的应用</span>
+            <span class="post-date" title="2025-05-08 00:06:10">2025/05/08</span>
+        </a>
+        
+        
+        <a  class="All Android(Kotlin版) "
+           href="/2025/05/08/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8-Kotlin/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="数据存储(Kotlin)">数据存储(Kotlin)</span>
+            <span class="post-date" title="2025-05-08 00:01:07">2025/05/08</span>
+        </a>
+        
+        
+        <a  class="All Kotlin "
+           href="/2025/05/05/Kotlin%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Kotlin高阶函数">Kotlin高阶函数</span>
+            <span class="post-date" title="2025-05-05 22:05:41">2025/05/05</span>
+        </a>
+        
+        
+        <a  class="All Android(Kotlin版) "
+           href="/2025/05/05/%E5%B9%BF%E6%92%AD%E6%9C%BA%E5%88%B6-Kotlin/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="广播机制(Kotlin)">广播机制(Kotlin)</span>
+            <span class="post-date" title="2025-05-05 20:44:19">2025/05/05</span>
+        </a>
+        
+        
+        <a  class="All Kotlin "
+           href="/2025/05/01/Kotlin%E6%89%A9%E5%B1%95%E5%87%BD%E6%95%B0%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Kotlin扩展函数和运算符重载">Kotlin扩展函数和运算符重载</span>
+            <span class="post-date" title="2025-05-01 16:13:13">2025/05/01</span>
+        </a>
+        
+        
+        <a  class="All Android(Kotlin版) "
+           href="/2025/05/01/%E7%A2%8E%E7%89%87-1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="碎片(Kotlin)">碎片(Kotlin)</span>
+            <span class="post-date" title="2025-05-01 14:22:24">2025/05/01</span>
+        </a>
+        
+        
+        <a  class="All Kotlin "
+           href="/2025/04/25/Kotlin%E5%BB%B6%E8%BF%9F%E5%88%9D%E5%A7%8B%E5%8C%96%E5%92%8C%E5%AF%86%E5%B0%81%E7%B1%BB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Kotlin延迟初始化和密封类">Kotlin延迟初始化和密封类</span>
+            <span class="post-date" title="2025-04-25 21:41:59">2025/04/25</span>
+        </a>
+        
+        
+        <a  class="All Android(Kotlin版) "
+           href="/2025/04/24/UI%E5%BC%80%E5%8F%91-Kotlin/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="UI开发(Kotlin)">UI开发(Kotlin)</span>
+            <span class="post-date" title="2025-04-24 19:35:30">2025/04/24</span>
+        </a>
+        
+        
+        <a  class="All Kotlin "
+           href="/2025/04/20/Kotlin%E5%AE%9A%E4%B9%89%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Kotlin定义静态方法">Kotlin定义静态方法</span>
+            <span class="post-date" title="2025-04-20 22:51:42">2025/04/20</span>
+        </a>
+        
+        
+        <a  class="All Android(Kotlin版) "
+           href="/2025/04/20/%E6%B4%BB%E5%8A%A8-1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="活动(Kotlin)">活动(Kotlin)</span>
+            <span class="post-date" title="2025-04-20 09:55:22">2025/04/20</span>
+        </a>
+        
+        
+        <a  class="All Kotlin "
+           href="/2025/04/19/Kotlin%E6%A0%87%E5%87%86%E5%87%BD%E6%95%B0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Kotlin标准函数">Kotlin标准函数</span>
+            <span class="post-date" title="2025-04-19 21:56:44">2025/04/19</span>
+        </a>
+        
+        
+        <a  class="All Kotlin "
+           href="/2025/04/15/Kotlin%E8%AF%AD%E6%B3%95/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Kotlin语法">Kotlin语法</span>
+            <span class="post-date" title="2025-04-15 20:59:56">2025/04/15</span>
+        </a>
+        
+        
+        <a  class="All Android(Java版) "
+           href="/2025/03/28/%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="高级技巧(Java)">高级技巧(Java)</span>
+            <span class="post-date" title="2025-03-28 16:23:09">2025/03/28</span>
+        </a>
+        
+        
+        <a  class="All Android(Java版) "
+           href="/2025/03/25/Material-Design/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Material Design(Java)">Material Design(Java)</span>
+            <span class="post-date" title="2025-03-25 15:41:23">2025/03/25</span>
+        </a>
+        
+        
+        <a  class="All Android(Java版) "
+           href="/2025/03/24/%E6%9C%8D%E5%8A%A1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="服务(Java)">服务(Java)</span>
+            <span class="post-date" title="2025-03-24 19:36:08">2025/03/24</span>
+        </a>
+        
+        
+        <a  class="All Android(Java版) "
+           href="/2025/03/19/%E4%BD%BF%E7%94%A8%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="使用网络技术(Java)">使用网络技术(Java)</span>
+            <span class="post-date" title="2025-03-19 22:25:07">2025/03/19</span>
+        </a>
+        
+        
+        <a  class="All Android(Java版) "
+           href="/2025/03/18/%E6%89%8B%E6%9C%BA%E5%A4%9A%E5%AA%92%E4%BD%93/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="手机多媒体(Java)">手机多媒体(Java)</span>
+            <span class="post-date" title="2025-03-18 16:14:22">2025/03/18</span>
+        </a>
+        
+        
+        <a  class="All Android(Java版) "
+           href="/2025/03/11/%E5%86%85%E5%AE%B9%E6%8F%90%E4%BE%9B%E5%99%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="内容提供器(Java)">内容提供器(Java)</span>
+            <span class="post-date" title="2025-03-11 14:56:45">2025/03/11</span>
+        </a>
+        
+        
+        <a  class="All Git "
+           href="/2025/03/11/Git/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Git">Git</span>
+            <span class="post-date" title="2025-03-11 14:56:07">2025/03/11</span>
+        </a>
+        
+        
+        <a  class="All Android(Java版) "
+           href="/2025/03/07/try-catch%E5%92%8Cfinally/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="try,catch和finally">try,catch和finally</span>
+            <span class="post-date" title="2025-03-07 23:02:39">2025/03/07</span>
+        </a>
+        
+        
+        <a  class="All Android(Java版) "
+           href="/2025/03/06/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="数据存储(Java)">数据存储(Java)</span>
+            <span class="post-date" title="2025-03-06 19:32:12">2025/03/06</span>
+        </a>
+        
+        
+        <a  class="All Android(Java版) "
+           href="/2025/03/03/%E5%B9%BF%E6%92%AD%E6%9C%BA%E5%88%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="广播机制(Java)">广播机制(Java)</span>
+            <span class="post-date" title="2025-03-03 20:42:38">2025/03/03</span>
+        </a>
+        
+        
+        <a  class="All Android(Java版) "
+           href="/2025/02/26/%E7%A2%8E%E7%89%87/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="碎片(Java)">碎片(Java)</span>
+            <span class="post-date" title="2025-02-26 21:53:56">2025/02/26</span>
+        </a>
+        
+        
+        <a  class="All Android(Java版) "
+           href="/2025/02/25/UI%E5%BC%80%E5%8F%91/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="UI开发(Java)">UI开发(Java)</span>
+            <span class="post-date" title="2025-02-25 20:25:49">2025/02/25</span>
+        </a>
+        
+        
+        <a  class="All Android(Java版) "
+           href="/2025/02/24/%E6%B4%BB%E5%8A%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="活动(Java)">活动(Java)</span>
+            <span class="post-date" title="2025-02-24 21:02:40">2025/02/24</span>
+        </a>
+        
+        
+        <a  class="All Android(Java版) "
+           href="/2025/02/24/Android%E8%AE%A4%E8%AF%86%E4%BB%A5%E5%8F%8A%E5%85%A5%E9%97%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Android认识以及入门">Android认识以及入门</span>
+            <span class="post-date" title="2025-02-24 20:28:01">2025/02/24</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="Toggle full screen shortcut key s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-网络技术" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">网络技术(Kotlin)</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Android(Kotlin版)">Android(Kotlin版)</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2025-06-05 21:39:04'>2025-06-04 16:47</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>Count:3.5k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#WebView"><span class="toc-text">WebView</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8HTTP%E8%AE%BF%E9%97%AE%E7%BD%91%E7%BB%9C"><span class="toc-text">使用HTTP访问网络</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HttpURLConnection"><span class="toc-text">HttpURLConnection</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8OkHttp"><span class="toc-text">使用OkHttp</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90XML%E6%95%B0%E6%8D%AE"><span class="toc-text">解析XML数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Pull%E8%A7%A3%E6%9E%90%E6%96%B9%E5%BC%8F"><span class="toc-text">Pull解析方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SAX%E8%A7%A3%E6%9E%90%E6%96%B9%E5%BC%8F"><span class="toc-text">SAX解析方式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90JSON%E6%A0%BC%E5%BC%8F%E6%95%B0%E6%8D%AE"><span class="toc-text">解析JSON格式数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8JSONObject"><span class="toc-text">使用JSONObject</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8GSON"><span class="toc-text">使用GSON</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E5%9B%9E%E8%B0%83%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="toc-text">网络请求回调的实现方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HttpURLConnection%E6%96%B9%E6%B3%95"><span class="toc-text">HttpURLConnection方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OkHttp%E6%96%B9%E6%B3%95"><span class="toc-text">OkHttp方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%80%E5%A5%BD%E7%94%A8%E7%9A%84%E7%BD%91%E7%BB%9C%E5%BA%93%EF%BC%9ARetrofit"><span class="toc-text">最好用的网络库：Retrofit</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="toc-text">基本用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E5%A4%8D%E6%9D%82%E7%9A%84%E6%8E%A5%E5%8F%A3%E5%9C%B0%E5%9D%80%E7%B1%BB%E5%9E%8B"><span class="toc-text">处理复杂的接口地址类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Retrofit%E6%9E%84%E5%BB%BA%E5%99%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E5%86%99%E6%B3%95"><span class="toc-text">Retrofit构建器的最佳写法</span></a></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="WebView"><a href="#WebView" class="headerlink" title="WebView"></a>WebView</h1><ol>
+<li><p>使用WebView控件</p>
+</li>
+<li><p>调用getSettings方法设置浏览器属性</p>
+</li>
+<li><p>传入WebViewClient实例</p>
+</li>
+<li><p>传入网址</p>
+</li>
+<li><p>声明网络权限</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;WebView</span><br><span class="line">        android:id=<span class="string">&quot;@+id/webView&quot;</span></span><br><span class="line">        android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;match_parent&quot;</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MainActivity</span> : <span class="type">AppCompatActivity</span>() &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> binding:ActivityMainBinding</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        enableEdgeToEdge()</span><br><span class="line">        binding=ActivityMainBinding.inflate(layoutInflater)</span><br><span class="line">        setContentView(binding.root)</span><br><span class="line">        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) &#123; v, insets -&gt;</span><br><span class="line">            <span class="keyword">val</span> systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())</span><br><span class="line">            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)</span><br><span class="line">            insets</span><br><span class="line">        &#125;</span><br><span class="line">        binding.webView.settings.javaScriptEnabled=<span class="literal">true</span></span><br><span class="line">        <span class="comment">//当需要从一个网页跳转到另一个网页时，目标网页仍在WebView中展示，而不是打开系统浏览器</span></span><br><span class="line">        binding.webView.webViewClient= WebViewClient()</span><br><span class="line">        binding.webView.loadUrl(<span class="string">&quot;https://www.baidu.com&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name=<span class="string">&quot;android.permission.INTERNET&quot;</span>/&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<hr>
+<h1 id="使用HTTP访问网络"><a href="#使用HTTP访问网络" class="headerlink" title="使用HTTP访问网络"></a>使用HTTP访问网络</h1><h3 id="HttpURLConnection"><a href="#HttpURLConnection" class="headerlink" title="HttpURLConnection"></a>HttpURLConnection</h3><ol>
+<li>获取HttpURLConnection实例</li>
+<li>设置请求方法</li>
+<li>自由定制一些功能</li>
+<li>得到从服务器返回的输入流，并对输入流进行读取</li>
+<li>将HTTP连接关闭</li>
+<li>记得声明权限</li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MainActivity</span> : <span class="type">AppCompatActivity</span>() &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> binding: ActivityMainBinding</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        enableEdgeToEdge()</span><br><span class="line">        binding= ActivityMainBinding.inflate(layoutInflater)</span><br><span class="line">        setContentView(binding.root)</span><br><span class="line">        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) &#123; v, insets -&gt;</span><br><span class="line">            <span class="keyword">val</span> systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())</span><br><span class="line">            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)</span><br><span class="line">            insets</span><br><span class="line">        &#125;</span><br><span class="line">        binding.sendRequest.setOnClickListener &#123;</span><br><span class="line">            sendRequestWithHttpURLConnection()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;   </span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">sendRequestWithHttpURLConnection</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="comment">//开启线程发送网络请求</span></span><br><span class="line">        thread &#123;</span><br><span class="line">            <span class="keyword">var</span> connection:HttpURLConnection?=<span class="literal">null</span></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">val</span> response=StringBuilder()</span><br><span class="line">                <span class="keyword">val</span> url=URL(<span class="string">&quot;https://www.baidu.com&quot;</span>)</span><br><span class="line">                connection=url.openConnection() <span class="keyword">as</span> HttpURLConnection</span><br><span class="line">                connection.connectTimeout=<span class="number">8000</span></span><br><span class="line">                connection.readTimeout=<span class="number">8000</span></span><br><span class="line">                <span class="keyword">val</span> input=connection.inputStream</span><br><span class="line">                <span class="comment">//下面对获取到的输入流进行读取</span></span><br><span class="line">                <span class="keyword">val</span> reader=BufferedReader(InputStreamReader(input))</span><br><span class="line">                reader.use &#123;</span><br><span class="line">                    reader.forEachLine &#123;</span><br><span class="line">                        response.append(it)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                showResponse(response.toString())</span><br><span class="line"></span><br><span class="line">            &#125;<span class="keyword">catch</span> (e:Exception)&#123;</span><br><span class="line">                e.printStackTrace()</span><br><span class="line">            &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">                <span class="comment">//断开连接</span></span><br><span class="line">                connection?.disconnect()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">showResponse</span><span class="params">(response: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">        runOnUiThread &#123;</span><br><span class="line">            <span class="comment">//在这里进行UI操作，将结果显示到界面上</span></span><br><span class="line">            binding.responseText.text=response</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用OkHttp"><a href="#使用OkHttp" class="headerlink" title="使用OkHttp"></a>使用OkHttp</h3><p><strong>发送GET请求</strong></p>
+<ol>
+<li><p>安装依赖库</p>
+</li>
+<li><p>创建一个OkHttpClient()实例</p>
+</li>
+<li><p>创建Request对象，通过连缀丰富对象</p>
+</li>
+<li><p>通过newCall方法获取Call对象，并调用execute方法发送请求并获取服务器返回的数据</p>
+</li>
+<li><p>得到返回数据的具体内容</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation(<span class="string">&quot;com.squareup.okhttp3:okhttp:4.11.0&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">sendRequestWithOkHttp</span><span class="params">()</span></span> &#123;</span><br><span class="line">       <span class="comment">//开启线程发送网络请求</span></span><br><span class="line">       thread &#123;</span><br><span class="line">           <span class="keyword">try</span> &#123;</span><br><span class="line">               <span class="keyword">val</span> client=OkHttpClient()</span><br><span class="line">               <span class="keyword">val</span> request=Request.Builder()</span><br><span class="line">                   .url(<span class="string">&quot;https://www.baidu.com&quot;</span>)                </span><br><span class="line">                   .build()</span><br><span class="line">               <span class="keyword">val</span> response=client.newCall(request).execute()</span><br><span class="line">               <span class="keyword">val</span> responseData=response.body?.string()</span><br><span class="line">               <span class="keyword">if</span> (responseData!=<span class="literal">null</span>)&#123;</span><br><span class="line">                   showResponse(responseData)</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;<span class="keyword">catch</span> (e:Exception)&#123;</span><br><span class="line">               e.printStackTrace()</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><strong>发送POST请求</strong></p>
+<ol>
+<li><p>安装依赖库</p>
+</li>
+<li><p>创建一个OkHttpClient()实例</p>
+</li>
+<li><p>创建一个RequestBody对象</p>
+</li>
+<li><p>创建Request对象，并调用post方法，通过连缀丰富对象</p>
+</li>
+<li><p>通过newCall方法获取Call对象，并调用execute方法发送请求并获取服务器返回的数据</p>
+</li>
+<li><p>得到返回数据的具体内容</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation(<span class="string">&quot;com.squareup.okhttp3:okhttp:4.11.0&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">sendRequestWithOkHttp</span><span class="params">()</span></span> &#123;</span><br><span class="line">       <span class="comment">//开启线程发送网络请求</span></span><br><span class="line">       thread &#123;</span><br><span class="line">           <span class="keyword">try</span> &#123;</span><br><span class="line">               <span class="keyword">val</span> client=OkHttpClient()</span><br><span class="line">               <span class="keyword">val</span> requestBody=FormBody.Builder()</span><br><span class="line">                   .add(<span class="string">&quot;username&quot;</span>,<span class="string">&quot;admin&quot;</span>)</span><br><span class="line">               	.add(<span class="string">&quot;password&quot;</span>,<span class="string">&quot;123456&quot;</span>)</span><br><span class="line">               	.build()</span><br><span class="line">               <span class="keyword">val</span> request=Request.Builder()</span><br><span class="line">                   .url(<span class="string">&quot;https://www.baidu.com&quot;</span>)   </span><br><span class="line">               	.post(requestBody)</span><br><span class="line">                   .build()</span><br><span class="line">               <span class="keyword">val</span> response=client.newCall(request).execute()</span><br><span class="line">               <span class="keyword">val</span> responseData=response.body?.string()</span><br><span class="line">               <span class="keyword">if</span> (responseData!=<span class="literal">null</span>)&#123;</span><br><span class="line">                   showResponse(responseData)</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;<span class="keyword">catch</span> (e:Exception)&#123;</span><br><span class="line">               e.printStackTrace()</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<hr>
+<h1 id="解析XML数据"><a href="#解析XML数据" class="headerlink" title="解析XML数据"></a>解析XML数据</h1><h3 id="Pull解析方式"><a href="#Pull解析方式" class="headerlink" title="Pull解析方式"></a>Pull解析方式</h3><ol>
+<li><p>创建XmlPullParserFactory实例,并得到得到XmlPullParser对象</p>
+</li>
+<li><p>将服务器返回的XML数据设置进去</p>
+</li>
+<li><p>开始解析，用geteventType()得到当前解析的事件</p>
+</li>
+<li><p>在while循环中不断进行解析，调用next获得下一个解析事件</p>
+</li>
+<li><p>在循环内通过getName获得名字，用nextText获取具体内容</p>
+</li>
+<li><p>为了让程序可以使用HTTP，还要在xml文件中添加配置</p>
+</li>
+<li><p>在AndroidManifest中启动配置文件</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">parseXMLWithPull</span><span class="params">(xmlData:<span class="type">String</span>)</span></span>&#123;</span><br><span class="line">           <span class="keyword">try</span> &#123;</span><br><span class="line">               <span class="comment">//创建XmlPullParserFactory实例</span></span><br><span class="line">               <span class="keyword">val</span> factory=XmlPullParserFactory.newInstance()</span><br><span class="line">               <span class="comment">//借助XmlPullParserFactory实例得到XmlPullParser对象</span></span><br><span class="line">               <span class="keyword">val</span> xmlPullParser=factory.newPullParser()</span><br><span class="line">               <span class="comment">//将服务器返回的XML数据设置进去</span></span><br><span class="line">               xmlPullParser.setInput(StringReade r(xmlData))</span><br><span class="line">               <span class="comment">//开始解析</span></span><br><span class="line">               <span class="comment">//用geteventType()得到当前解析的事件</span></span><br><span class="line">               <span class="keyword">var</span> eventType=xmlPullParser.eventType</span><br><span class="line">               <span class="keyword">var</span> id=<span class="string">&quot;&quot;</span></span><br><span class="line">               <span class="keyword">var</span> name=<span class="string">&quot;&quot;</span></span><br><span class="line">               <span class="keyword">var</span> version=<span class="string">&quot;&quot;</span></span><br><span class="line">               <span class="comment">//当eventType!=XmlPullParser.END_DOCUMENT说明解析工作还未完成</span></span><br><span class="line">               <span class="keyword">while</span>(eventType!=XmlPullParser.END_DOCUMENT)&#123;</span><br><span class="line">                   <span class="comment">//通过getName得到当前节点的名字</span></span><br><span class="line">                   <span class="keyword">val</span> nodeName=xmlPullParser.name</span><br><span class="line">                   <span class="keyword">when</span> (eventType) &#123;</span><br><span class="line">                       <span class="comment">//开始解析某节点</span></span><br><span class="line">                       XmlPullParser.START_TAG-&gt;&#123;</span><br><span class="line">                           <span class="keyword">when</span>(nodeName)&#123;</span><br><span class="line">                                <span class="comment">//通过nextText()获取节点具体内容</span></span><br><span class="line">                               <span class="string">&quot;id&quot;</span>-&gt;id=xmlPullParser.nextText()</span><br><span class="line">                               <span class="string">&quot;name&quot;</span>-&gt;name=xmlPullParser.nextText()</span><br><span class="line">                               <span class="string">&quot;version&quot;</span>-&gt;version=xmlPullParser.nextText()</span><br><span class="line">                           &#125;</span><br><span class="line">                       &#125;</span><br><span class="line">                       <span class="comment">//完成解析某个节点</span></span><br><span class="line">                       XmlPullParser.END_TAG-&gt;&#123;</span><br><span class="line">                           <span class="keyword">if</span>(<span class="string">&quot;app&quot;</span>==nodeName)&#123;</span><br><span class="line">                               Log.d(<span class="string">&quot;MainActivity&quot;</span>, <span class="string">&quot;id is <span class="variable">$id</span>&quot;</span>)</span><br><span class="line">                               Log.d(<span class="string">&quot;MainActivity&quot;</span>, <span class="string">&quot;name is <span class="variable">$name</span>&quot;</span>)</span><br><span class="line">                               Log.d(<span class="string">&quot;MainActivity&quot;</span>, <span class="string">&quot;version is <span class="variable">$version</span>&quot;</span>)</span><br><span class="line">                           &#125;</span><br><span class="line">                       &#125;</span><br><span class="line">                   &#125;</span><br><span class="line">                   <span class="comment">//调用next()方法获取下一个解析事件</span></span><br><span class="line">                   eventType=xmlPullParser.next()</span><br><span class="line">   </span><br><span class="line">               &#125;</span><br><span class="line">           &#125;<span class="keyword">catch</span> (e:Exception)&#123;</span><br><span class="line">               e.printStackTrace()</span><br><span class="line">           &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span>?&gt;</span><br><span class="line">&lt;network-security-config&gt;</span><br><span class="line">    &lt;base-config cleartextTrafficPermitted=<span class="string">&quot;true&quot;</span>&gt;</span><br><span class="line">        &lt;trust-anchors&gt;</span><br><span class="line">            &lt;certificates src=<span class="string">&quot;system&quot;</span>/&gt;</span><br><span class="line">        &lt;/trust-anchors&gt;</span><br><span class="line">    &lt;/base-config&gt;</span><br><span class="line">&lt;/network-security-config&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:networkSecurityConfig=<span class="string">&quot;@xml/neiwork_config&quot;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="SAX解析方式"><a href="#SAX解析方式" class="headerlink" title="SAX解析方式"></a>SAX解析方式</h3><ol>
+<li>新建一个类继承DefaultHandler,并重写五种方法</li>
+<li>创建SAXParserFactory实例</li>
+<li>获取XMLReader对象</li>
+<li>将编写的实例类设置到XMLReader中</li>
+<li>调用parse方法开始执行</li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyHandle</span>:<span class="type">DefaultHandler</span>() &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> nodeName=<span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> id:StringBuilder</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> name:StringBuilder</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> version:StringBuilder</span><br><span class="line">    <span class="comment">//开始XML解析时调用</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">startDocument</span><span class="params">()</span></span> &#123;</span><br><span class="line">        id=StringBuilder()</span><br><span class="line">        name=StringBuilder()</span><br><span class="line">        version=StringBuilder()</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//开始解析某个节点时调用</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">startElement</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">        uri: <span class="type">String</span>?,</span></span></span><br><span class="line"><span class="params"><span class="function">        localName: <span class="type">String</span>?,</span></span></span><br><span class="line"><span class="params"><span class="function">        qName: <span class="type">String</span>?,</span></span></span><br><span class="line"><span class="params"><span class="function">        attributes: <span class="type">Attributes</span>?</span></span></span><br><span class="line"><span class="params"><span class="function">    )</span></span> &#123;</span><br><span class="line">        <span class="comment">// localName记录当前节点名称</span></span><br><span class="line">        nodeName= localName!!</span><br><span class="line">        Log.d(<span class="string">&quot;MyHandle&quot;</span>, <span class="string">&quot;uri is <span class="variable">$uri</span>&quot;</span>)</span><br><span class="line">        Log.d(<span class="string">&quot;MyHandle&quot;</span>, <span class="string">&quot;localName is <span class="variable">$localName</span>&quot;</span>)</span><br><span class="line">        Log.d(<span class="string">&quot;MyHandle&quot;</span>, <span class="string">&quot;qName is <span class="variable">$qName</span>&quot;</span>)</span><br><span class="line">        Log.d(<span class="string">&quot;MyHandle&quot;</span>, <span class="string">&quot;attributes is <span class="variable">$attributes</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//获取节点内内容时调用</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">characters</span><span class="params">(ch: <span class="type">CharArray</span>?, start: <span class="type">Int</span>, length: <span class="type">Int</span>)</span></span> &#123;</span><br><span class="line">        <span class="comment">//根据当前节点名判断加到哪个StringBuilder对象中</span></span><br><span class="line">        <span class="keyword">when</span>(nodeName)&#123;</span><br><span class="line">            <span class="string">&quot;id&quot;</span>-&gt;id.append(ch,start,length)</span><br><span class="line">            <span class="string">&quot;name&quot;</span>-&gt;name.append(ch,start,length)</span><br><span class="line">            <span class="string">&quot;version&quot;</span>-&gt;version.append(ch,start,length)</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//完成解析某个节点时调用</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">endElement</span><span class="params">(uri: <span class="type">String</span>?, localName: <span class="type">String</span>?, qName: <span class="type">String</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="string">&quot;app&quot;</span>==localName)&#123;</span><br><span class="line">            <span class="comment">//trim()方法是用于去除字符串两端的空白字符</span></span><br><span class="line">            Log.d(<span class="string">&quot;MyHandle&quot;</span>, <span class="string">&quot;id is <span class="subst">$&#123;id.toString().trim()&#125;</span> &quot;</span>)</span><br><span class="line">            Log.d(<span class="string">&quot;MyHandle&quot;</span>, <span class="string">&quot;name is <span class="subst">$&#123;name.toString().trim()&#125;</span> &quot;</span>)</span><br><span class="line">            Log.d(<span class="string">&quot;MyHandle&quot;</span>, <span class="string">&quot;version is <span class="subst">$&#123;version.toString().trim()&#125;</span> &quot;</span>)</span><br><span class="line">            <span class="comment">//最后将StringBuilder内容清空</span></span><br><span class="line">            id.setLength(<span class="number">0</span>)</span><br><span class="line">            name.setLength(<span class="number">0</span>)</span><br><span class="line">            version.setLength(<span class="number">0</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="comment">//完成xml解析时调用</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">endDocument</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.endDocument()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">parseXMLWithSAX</span><span class="params">(xmlData: <span class="type">String</span>)</span></span> = <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">val</span> factory=SAXParserFactory.newInstance()</span><br><span class="line">        <span class="keyword">val</span> xmlReader=factory.newSAXParser().xmlReader</span><br><span class="line">        <span class="keyword">val</span> handler= MyHandle()</span><br><span class="line"></span><br><span class="line">        <span class="comment">//将MyHandle的实例设置到XMLReader中</span></span><br><span class="line">        xmlReader.contentHandler=handler</span><br><span class="line">        <span class="comment">//开始执行解析</span></span><br><span class="line">        xmlReader.parse(InputSource(StringReader(xmlData)))</span><br><span class="line"></span><br><span class="line">    &#125;<span class="keyword">catch</span> (e:Exception)&#123;</span><br><span class="line">        e.printStackTrace()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h1 id="解析JSON格式数据"><a href="#解析JSON格式数据" class="headerlink" title="解析JSON格式数据"></a>解析JSON格式数据</h1><h3 id="使用JSONObject"><a href="#使用JSONObject" class="headerlink" title="使用JSONObject"></a>使用JSONObject</h3><ol>
+<li>定义一个数组，将返回的数据传入到JSONArray对象中</li>
+<li>循环遍历数组，取出各个元素</li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">parseJSONWithJSONObject</span><span class="params">(jsonData: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//定义一个JSON数组</span></span><br><span class="line">            <span class="keyword">val</span> jsonArray=JSONArray(jsonData)</span><br><span class="line">            <span class="comment">//循环遍历</span></span><br><span class="line">            <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">0</span> until jsonArray.length())&#123;</span><br><span class="line">                <span class="comment">//取出元素，每个取出的元素都是一个jsonObject对象</span></span><br><span class="line">                <span class="keyword">val</span> jsonObject=jsonArray.getJSONObject(i)</span><br><span class="line">                <span class="keyword">val</span> id=jsonObject.getString(<span class="string">&quot;id&quot;</span>)</span><br><span class="line">                <span class="keyword">val</span> name=jsonObject.getString(<span class="string">&quot;name&quot;</span>)</span><br><span class="line">                <span class="keyword">val</span> version=jsonObject.getString(<span class="string">&quot;version&quot;</span>)</span><br><span class="line">                Log.d(<span class="string">&quot;MainActivity&quot;</span>, <span class="string">&quot;id is <span class="variable">$id</span>&quot;</span>)</span><br><span class="line">                Log.d(<span class="string">&quot;MainActivity&quot;</span>, <span class="string">&quot;name is <span class="variable">$name</span>&quot;</span>)</span><br><span class="line">                Log.d(<span class="string">&quot;MainActivity&quot;</span>, <span class="string">&quot;version is <span class="variable">$version</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">catch</span> (e:Exception)&#123;</span><br><span class="line">            e.printStackTrace()</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用GSON"><a href="#使用GSON" class="headerlink" title="使用GSON"></a>使用GSON</h3><p><strong>优点</strong>：可以将一段JSON格式的字符串自动映射成一个对象，不需要再手动编写代码解析</p>
+<ol>
+<li>添加依赖库</li>
+<li>获取Gson对象</li>
+<li>如果是一个JSON数据，可以调用fromJson方法，如果是一段Json数组需要借助TypeToken将期望解析成的数据类型传入fromJson方法</li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation (<span class="string">&quot;com.google.code.gson:gson:2.10.1&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">parseJSONWithGSON</span><span class="params">(jsonData: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">       <span class="keyword">val</span> gson=Gson()</span><br><span class="line">       <span class="keyword">val</span> typeOf=<span class="keyword">object</span> :TypeToken&lt;List&lt;App&gt;&gt;() &#123;&#125;.type</span><br><span class="line">       <span class="keyword">val</span> appList=gson.fromJson&lt;List&lt;App&gt;&gt;(jsonData,typeOf)</span><br><span class="line">       <span class="keyword">for</span>(app <span class="keyword">in</span> appList)&#123;</span><br><span class="line">           Log.d(<span class="string">&quot;MainActivity&quot;</span>, <span class="string">&quot;id is <span class="subst">$&#123;app.id&#125;</span>&quot;</span>)</span><br><span class="line">           Log.d(<span class="string">&quot;MainActivity&quot;</span>, <span class="string">&quot;name is <span class="subst">$&#123;app.name&#125;</span>&quot;</span>)</span><br><span class="line">           Log.d(<span class="string">&quot;MainActivity&quot;</span>, <span class="string">&quot;version is <span class="subst">$&#123;app.version&#125;</span>&quot;</span>)</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="网络请求回调的实现方式"><a href="#网络请求回调的实现方式" class="headerlink" title="网络请求回调的实现方式"></a>网络请求回调的实现方式</h1><p><strong>采用回调的原因</strong>：所有耗时逻辑在子线程中进行，sendHttpRequest()方法在服务器还没来得及响应的时候就执行结束</p>
+<h3 id="HttpURLConnection方法"><a href="#HttpURLConnection方法" class="headerlink" title="HttpURLConnection方法"></a>HttpURLConnection方法</h3><ol>
+<li><p>将请求方法放入到单例类中</p>
+</li>
+<li><p>定义一个接口，并定义方法</p>
+</li>
+<li><p>给方法添加一个接口参数，并开启一个子线程</p>
+</li>
+<li><p>在线程中回调接口方法</p>
+</li>
+<li><p>调用sendRequestWithHttpURLConnection()方法，调用时还需将接口实例传入</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">HttpCallbackListener</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">onFinish</span><span class="params">(response:<span class="type">String</span>)</span></span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">onError</span><span class="params">(e: <span class="type">Exception</span>)</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">object</span> HttpUtil &#123;</span><br><span class="line">     <span class="function"><span class="keyword">fun</span> <span class="title">sendRequestWithHttpURLConnection</span><span class="params">(adress: <span class="type">String</span>, listener: <span class="type">HttpCallbackListener</span>)</span></span> &#123;</span><br><span class="line">        <span class="comment">//开启线程发送网络请求</span></span><br><span class="line">        thread &#123;</span><br><span class="line">            <span class="keyword">var</span> connection: HttpURLConnection? = <span class="literal">null</span></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">val</span> response = StringBuilder()</span><br><span class="line">                <span class="keyword">val</span> url = URL(adress)</span><br><span class="line">                connection = url.openConnection() <span class="keyword">as</span> HttpURLConnection</span><br><span class="line">                connection.connectTimeout = <span class="number">8000</span></span><br><span class="line">                connection.readTimeout = <span class="number">8000</span></span><br><span class="line">                <span class="keyword">val</span> input = connection.inputStream</span><br><span class="line">                <span class="comment">//下面对获取到的输入流进行读取</span></span><br><span class="line">                <span class="keyword">val</span> reader = BufferedReader(InputStreamReader(input))</span><br><span class="line">                reader.use &#123;</span><br><span class="line">                    reader.forEachLine &#123;</span><br><span class="line">                        response.append(it)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//回调onFinish()方法</span></span><br><span class="line">                listener.onFinish(response.toString())</span><br><span class="line"></span><br><span class="line">            &#125; <span class="keyword">catch</span> (e: Exception) &#123;</span><br><span class="line">                e.printStackTrace()</span><br><span class="line">                <span class="comment">//回调onError方法</span></span><br><span class="line">                listener.onError(e)</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                connection?.disconnect()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">HttpUtil.sendRequestWithHttpURLConnection(adress,<span class="keyword">object</span>:HttpCallbackListener&#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onFinish</span><span class="params">(response:<span class="type">String</span>)</span></span>&#123;</span><br><span class="line">        <span class="comment">//得到服务器返回的具体内容</span></span><br><span class="line">    &#125;</span><br><span class="line">     <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onError</span><span class="params">(e:<span class="type">Exception</span>)</span></span>&#123;</span><br><span class="line">        <span class="comment">//在这里对异常情况进行处理</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="OkHttp方法"><a href="#OkHttp方法" class="headerlink" title="OkHttp方法"></a>OkHttp方法</h3><ol>
+<li>将请求方法放入到单例类中</li>
+<li>传入okhttp3.Callback参数，这是oKHttp库自带的回调接口</li>
+<li>在newCall后调用enqueue方法，并传入接口参数</li>
+<li>调用sendRequestWithOkHttp()方法</li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">sendRequestWithOkHttp</span><span class="params">(adress: <span class="type">String</span>, callback: <span class="type">okhttp3</span>.<span class="type">Callback</span>)</span></span> &#123;</span><br><span class="line">       <span class="keyword">val</span> client = OkHttpClient()</span><br><span class="line">       <span class="keyword">val</span> request = Request.Builder()</span><br><span class="line">           .url(adress)</span><br><span class="line">           .build()</span><br><span class="line">       <span class="comment">//enqueue()内部帮我们开好了子线程，然后子线程中执行Http请求</span></span><br><span class="line">    client.newCall(request).enqueue(callback)</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">HttpUtil.sendRequestWithOkHttp(adress,<span class="keyword">object</span>:Callback&#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onResponse</span><span class="params">(call:<span class="type">Call</span>,response:<span class="type">Response</span>)</span></span>&#123;</span><br><span class="line">        <span class="comment">//得到服务器返回的具体内容</span></span><br><span class="line">        <span class="keyword">val</span> responseData=response.body?.string()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onFailure</span><span class="params">(call:<span class="type">Call</span>,e:<span class="type">IOException</span>)</span></span>&#123;</span><br><span class="line">         <span class="comment">//在这里对异常情况进行处理</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="最好用的网络库：Retrofit"><a href="#最好用的网络库：Retrofit" class="headerlink" title="最好用的网络库：Retrofit"></a>最好用的网络库：Retrofit</h1><h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><ol>
+<li><p>添加依赖库</p>
+</li>
+<li><p>定义接口，使用@GET注解表示调用方法时Retrofit会发起一条GET请求，请求地址就是注解中传入的具体参数</p>
+</li>
+<li><p>构建Retrofit对象,baseUrl用于指定所以Retrofit请求的根路径,addConverterFactory用于指定Retrofit在解析数据时所使用的转换库，这俩方法必须调用</p>
+</li>
+<li><p>创建接口的动态代理对象</p>
+</li>
+<li><p>调用接口方法返回一个Call&lt;List<App>&gt;对象，再调用它enqueue方法（发送请求时Retrofit会自动在内部开启线程，整个操作无需考虑线程切换问题）</p>
+</li>
+<li><p>调用response.body()方法获取Retrofit解析后的对象，也就是List<App>类型数据，最后遍历List</p>
+</li>
+<li><p>记得声明权限</p>
+</li>
+<li><p>如果服务器接口是HTTP，则需要进行网络安全配置，并启动配置</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Retrofit 核心库</span></span><br><span class="line">    implementation (<span class="string">&quot;com.squareup.retrofit2:retrofit:2.9.0&quot;</span>)</span><br><span class="line">    <span class="comment">// Gson 转换器</span></span><br><span class="line">    implementation (<span class="string">&quot;com.squareup.retrofit2:converter-gson:2.9.0&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">binding.getAppDataBtn.setOnClickListener &#123;</span><br><span class="line">          <span class="keyword">val</span> retrofit=Retrofit.Builder()</span><br><span class="line">              .baseUrl(<span class="string">&quot;http://10.0.2.2/&quot;</span>)</span><br><span class="line">              .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">              .build()</span><br><span class="line">          <span class="keyword">val</span> appService=retrofit.create(AppService::<span class="keyword">class</span>.java)</span><br><span class="line">          appService.getAppData().enqueue( <span class="keyword">object</span> :retrofit2.Callback&lt;List&lt;App&gt;&gt; &#123;</span><br><span class="line">              <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onResponse</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">                  call: <span class="type">retrofit2</span>.<span class="type">Call</span>&lt;<span class="type">List</span>&lt;<span class="type">App</span>&gt;&gt;,</span></span></span><br><span class="line"><span class="params"><span class="function">                  response: <span class="type">retrofit2</span>.<span class="type">Response</span>&lt;<span class="type">List</span>&lt;<span class="type">App</span>&gt;&gt;</span></span></span><br><span class="line"><span class="params"><span class="function">              )</span></span> &#123;</span><br><span class="line">                  <span class="keyword">val</span> list=response.body()</span><br><span class="line">                  <span class="keyword">if</span>(list!=<span class="literal">null</span>)&#123;</span><br><span class="line">                      <span class="keyword">for</span> (app <span class="keyword">in</span> list)&#123;</span><br><span class="line">                          Log.d(<span class="string">&quot;MainActivity&quot;</span>, <span class="string">&quot;id is <span class="subst">$&#123;app.id&#125;</span>&quot;</span>)</span><br><span class="line">                          Log.d(<span class="string">&quot;MainActivity&quot;</span>, <span class="string">&quot;name is <span class="subst">$&#123;app.name&#125;</span>&quot;</span>)</span><br><span class="line">                          Log.d(<span class="string">&quot;MainActivity&quot;</span>, <span class="string">&quot;version is <span class="subst">$&#123;app.version&#125;</span>&quot;</span>)</span><br><span class="line">                      &#125;</span><br><span class="line">                  &#125;</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onFailure</span><span class="params">(call: <span class="type">retrofit2</span>.<span class="type">Call</span>&lt;<span class="type">List</span>&lt;<span class="type">App</span>&gt;&gt;, t: <span class="type">Throwable</span>)</span></span> &#123;</span><br><span class="line">                  t.printStackTrace()</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;)</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="处理复杂的接口地址类型"><a href="#处理复杂的接口地址类型" class="headerlink" title="处理复杂的接口地址类型"></a>处理复杂的接口地址类型</h3><p><code>class Data(val id:String,val content:String)</code></p>
+<ul>
+<li><p><strong>接口地址是静态</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">GET http:<span class="comment">//example.com/get_data.json</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">ExampleService</span>&#123;</span><br><span class="line">    <span class="meta">@GET(<span class="string">&quot;get_data.json&quot;</span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">getData</span><span class="params">()</span></span>:Call&lt;Data&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>接口地址是动态变化的</strong></p>
+<p>page部分代表页数，传入不同页数，返回数据也不同。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">GET http:<span class="comment">//example.com/&lt;page&gt;/get_data.json</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">ExampleService</span>&#123;</span><br><span class="line">    <span class="meta">@GET(<span class="string">&quot;&#123;page&#125;/get_data.json&quot;</span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">getData</span><span class="params">(<span class="meta">@Path(<span class="string">&quot;page&quot;</span>)</span> page:<span class="type">Int</span>)</span></span>:Call&lt;Data&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>接口要求传入一系列参数</strong></p>
+<p>这是一个标准的带参数的GET请求格式，接口地址的最后使用问号连接参数，每个参数都是使用等号连接符连接的键值对，多个参数之间用&amp;分隔</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">GET http:<span class="comment">//example.com/get_data.json?u=&lt;user&gt;&amp;t=&lt;token&gt;</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">ExampleService</span>&#123;</span><br><span class="line">    <span class="meta">@GET(<span class="string">&quot;get_data.json&quot;</span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">getData</span><span class="params">(<span class="meta">@Query(<span class="string">&quot;u&quot;</span>)</span> user:<span class="type">String</span>,<span class="meta">@Query(<span class="string">&quot;t&quot;</span>)</span> token:<span class="type">String</span>)</span></span>:Call&lt;Data&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>多种请求类型</strong></p>
+<p>GET请求用于从服务器获取数据，POST请求用于从服务器提交数据，PUT和PATCH请求用于修改服务器上的数据，DELETE请求用于删除服务器上的数据</p>
+</li>
+<li><p><strong>DELETE请求</strong></p>
+<p><strong>使用ResponseBody的原因</strong>：POST,PUT,PATCH和DELETE与GET不同，它们更多用于对数据进行操作，而不是获取数据，所以对服务器响应的数据并不关心，ResponseBody表示能接收任意类型的响应数据，但不对数据进行解析。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">DELETE http:<span class="comment">//example.com/data/&lt;id&gt;</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">ExampleService</span>&#123;</span><br><span class="line">    <span class="meta">@DELETE(<span class="string">&quot;data/&#123;id&#125;&quot;</span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">deleteData</span><span class="params">(<span class="meta">@Path(<span class="string">&quot;id&quot;</span>)</span> id:<span class="type">String</span>)</span></span>:Call&lt;ResponseBody&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>POST请求</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">POST http:<span class="comment">//example.com/data/create</span></span><br><span class="line">&#123;<span class="string">&quot;id&quot;</span>:<span class="number">1</span>,<span class="string">&quot;content&quot;</span>:<span class="string">&quot;The description for this data.&quot;</span>&#125;</span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">ExampleService</span>&#123;</span><br><span class="line">    <span class="meta">@POST(<span class="string">&quot;data/create&quot;</span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">createData</span><span class="params">(<span class="meta">@Body</span> <span class="keyword">data</span>:<span class="type">Data</span>)</span></span>:Call&lt;ResponseBody&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>@Body注解作用</strong>：当发出请求时，会自动将Data对象中的数据转化成JSON格式文本，并放到HTTP请求的body部分，服务器收到请求后只需从body中将这一部分数据解析出来即可，这种写法也可用来给PUT,PATCH和DELETE请求提交数据</p>
+</li>
+<li><p><strong>在HTTP请求的header中指定参数</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET http:<span class="comment">//example.com/get_data.json</span></span><br><span class="line">User-Agent:okhttp</span><br><span class="line">Cache-Control:max-age=<span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>这些header参数其实就是一个个键值对</p>
+<p><strong>静态header声明：</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">ExampleService</span>&#123;</span><br><span class="line">    <span class="meta">@Headers(<span class="string">&quot;User-Agent:okhttp&quot;</span>,<span class="string">&quot;Cache-Control:max-age=0&quot;</span>)</span></span><br><span class="line">    <span class="meta">@GET(<span class="string">&quot;get_data.json&quot;</span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">getData</span><span class="params">()</span></span>:Call&lt;Data&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>动态header声明：</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">ExampleService</span>&#123;</span><br><span class="line">    <span class="meta">@GET(<span class="string">&quot;get_data.json&quot;</span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">getData</span><span class="params">(<span class="meta">@Header(<span class="string">&quot;User-Agent&quot;</span>)</span> userAgent:<span class="type">String</span>,<span class="meta">@Header(<span class="string">&quot;Cache-Control&quot;</span>)</span> cacheControl:<span class="type">String</span>)</span></span>:Call&lt;Data&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="Retrofit构建器的最佳写法"><a href="#Retrofit构建器的最佳写法" class="headerlink" title="Retrofit构建器的最佳写法"></a>Retrofit构建器的最佳写法</h3><ul>
+<li><p>新建一个单例类</p>
+</li>
+<li><p>将构建Retrofit写法放入</p>
+</li>
+<li><p>使用泛型实化</p>
+</li>
+<li><p>调用</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">object</span> ServiceCreator&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">const</span> <span class="keyword">val</span> BASE_URL=<span class="string">&quot;http://10.0.2.2/&quot;</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> retrofit=Retrofit.Builder()</span><br><span class="line">                .baseUrl(BASE_URL)</span><br><span class="line">                .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">                .build()</span><br><span class="line">  <span class="keyword">inline</span> <span class="function"><span class="keyword">fun</span> <span class="type">&lt;<span class="keyword">reified</span> T&gt;</span><span class="title">create</span><span class="params">()</span></span>:T=create(T::<span class="keyword">class</span>.java)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> appService=ServiceCreator.create&lt;AppService&gt;()</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 QQ邮箱3072420788@qq.com处。 </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©BUYU2024
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="Toggle full screen shortcut key s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().trim().split('\n').length, widther='';
+            if (lines>99) {
+                widther = 'widther'
+            }
+            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
+            $(this).addClass('has-numbering ' + widther)
+                    .parent()
+                    .append($numbering);
+            for(var i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 1px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    code.has-numbering.widther{
+        margin-left: 35px;
+    }
+    .pre-numbering{
+        margin: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 18px 3px 15px 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: ;
+    }
+    .pre-numbering.widther {
+        width: 35px;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 1468px392px;
+        }
+        .nav.fullscreen {
+            margin-left: -1468px392px;
+        }
+        .nav-left {
+            width: 1468pxpx;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 1468px392px;
+            margin-left: -1468px392px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    #post {
+        background: url(/img/picture3.jpg);
+    }
+    
+    
+    #post .index {
+        background: url(/img/picture3.jpg);
+    }
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("/img/picture1.jpg");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

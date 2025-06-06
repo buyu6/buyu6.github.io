@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Kotlin的infix函数 | Hexo</title>
+  <title>Kotlin使用协程编写高效的并发程序 | Hexo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Kotlin的infix函数 | Hexo">
+  <meta name="description" content="Kotlin使用协程编写高效的并发程序 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="协程的基本用法 优点 协程允许我们在单线程模式下模拟多线程编程的效果  依赖库 1234&#x2F;&#x2F; Gradle 依赖implementation(&quot;org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0&quot;)&#x2F;&#x2F;Android扩展implementation(&quot;org.jetbrains.kotlinx:kotlinx-cor">
 <meta property="og:type" content="article">
@@ -555,9 +555,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Kotlin的infix函数" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Kotlin使用协程编写高效的并发程序" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Kotlin的infix函数</h1>
+        <h1 class="article-title">Kotlin使用协程编写高效的并发程序</h1>
     
     <div class="article-meta">
         
@@ -575,12 +575,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-05-26 21:47:06'>2025-05-26 21:22</time>
+            Created At : <time class="date" title='Updated At: 2025-06-07 00:50:04'>2025-06-05 21:42</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:212</span>
+        <span>Count:1.2k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -599,7 +599,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E7%82%B9"><span class="toc-text">特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6"><span class="toc-text">条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B"><span class="toc-text">实例</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%8F%E7%A8%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="toc-text">协程的基本用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E5%A4%9A%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E6%9E%84%E5%BB%BA%E5%99%A8"><span class="toc-text">更多的作用域构建器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%8D%8F%E7%A8%8B%E7%AE%80%E5%8C%96%E5%9B%9E%E8%B0%83%E6%96%B9%E6%B3%95"><span class="toc-text">使用协程简化回调方法</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -615,15 +615,85 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p><code>infix</code> <a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E5%85%B3%E9%94%AE%E5%AD%97&spm=1001.2101.3001.7020">关键字</a>可以让 <strong>单参数的函数</strong> 以 <strong>更自然的语法</strong> 书写，使代码更易读。<br>你可以把它理解为 <strong>一种特殊的调用方式</strong>，不需要 <code>.</code> 和 <code>()</code>，让代码像 <strong>自然语言</strong> 一样流畅。例如mapOf中的键值对(A to B实际等价于A.to(B))省略了  <code>.</code>  和  <code>（）</code>。</p>
-<h3 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h3><p>要使用 <code>infix</code>，需要满足 <strong>三个条件</strong>：</p>
-<ol>
-<li><strong>必须是成员函数或扩展函数</strong>（它必须属于某个类或某种类型）。</li>
-<li><strong>必须只有且只能有一个参数</strong>（如果有多个参数，就不能用 <code>infix</code>）。</li>
-<li>⭐⭐⭐⭐⭐⭐**调用时可以省略 <code>.</code> 和 <code>()</code>**（但仍然可以用 <code>.</code> 调用）。</li>
-</ol>
-<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">infix</span> <span class="function"><span class="keyword">fun</span> <span class="type">&lt;T&gt;</span> Collection<span class="type">&lt;T&gt;</span>.<span class="title">has</span><span class="params">(element:<span class="type">T</span>)</span></span>=contains(element)</span><br><span class="line"><span class="keyword">val</span> list =listOf(<span class="string">&quot;Apple&quot;</span>,<span class="string">&quot;Banana&quot;</span>,<span class="string">&quot;Orange&quot;</span>,<span class="string">&quot;Pear&quot;</span>,<span class="string">&quot;Grape&quot;</span>)</span><br><span class="line"><span class="keyword">if</span>(list has <span class="string">&quot;Banana&quot;</span>)&#123;</span><br><span class="line">    <span class="comment">//处理具体逻辑</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h3 id="协程的基本用法"><a href="#协程的基本用法" class="headerlink" title="协程的基本用法"></a>协程的基本用法</h3><ul>
+<li><p><strong>优点</strong></p>
+<p>协程允许我们在单线程模式下模拟多线程编程的效果</p>
+</li>
+<li><p><strong>依赖库</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Gradle 依赖</span></span><br><span class="line">implementation(<span class="string">&quot;org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0&quot;</span>)</span><br><span class="line"><span class="comment">//Android扩展</span></span><br><span class="line">implementation(<span class="string">&quot;org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0&quot;</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Global.launch函数创建协程作用域</strong></p>
+<ul>
+<li>Global.launch创建的是一个顶层协程，这种协程当应用程序结束时也会跟着结束</li>
+<li>使用Thread.sleep可以让主线程堵塞一定时长</li>
+<li>delay()可以让当前协程延长指定时间后再运行，是一个非阻塞式的挂起函数，只会挂起当前协程，对其他线程或协程无影响</li>
+<li>最大的问题就是可能代码还没运行结束应用程序就结束了，代码运行强制中断</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">GlobalScope.launch &#123;</span><br><span class="line">       println(<span class="string">&quot;codes run in coroutine scope&quot;</span>)</span><br><span class="line">       delay(<span class="number">1500</span>)</span><br><span class="line">       println(<span class="string">&quot;codes run in coroutine scope finished&quot;</span>)</span><br><span class="line">   &#125;</span><br><span class="line">   Thread.sleep(<span class="number">1000</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>runBlocking函数</strong></p>
+<ul>
+<li>可以保证作用域内所有代码和子线程未执行完之前一直阻塞当前线程</li>
+<li><strong>需要注意</strong>runBlocking 一般只在测试环境使用，正式环境容易出现性能问题</li>
+<li>可以在作用域中使用launch函数创建多个协程</li>
+<li><strong>子线程的特点</strong>如果外层作用域协程结束子线程也会结束</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">runBlocking &#123;</span><br><span class="line">            launch &#123;</span><br><span class="line">                println(<span class="string">&quot;launch1&quot;</span>)</span><br><span class="line">                delay(<span class="number">1000</span>)</span><br><span class="line">                println(<span class="string">&quot;launch1 finished&quot;</span>)</span><br><span class="line">            &#125;</span><br><span class="line">            launch &#123;</span><br><span class="line">                println(<span class="string">&quot;launch2&quot;</span>)</span><br><span class="line">                delay(<span class="number">1000</span>)</span><br><span class="line">                println(<span class="string">&quot;launch2 finished&quot;</span>)</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>suspend关键字</strong></p>
+<ul>
+<li>可以将任何函数声明成挂起函数</li>
+<li>无法提供协程作用域</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">printDot</span><span class="params">()</span></span>&#123;</span><br><span class="line">    println(<span class="string">&quot;.&quot;</span>)</span><br><span class="line">    delay(<span class="number">1000</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>coroutineScope函数</strong></p>
+<p>会继承外部的协程的作用域并创建一个子协程</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">printDot</span><span class="params">()</span></span>=coroutineScope&#123;</span><br><span class="line">    launch&#123;</span><br><span class="line">    println(<span class="string">&quot;.&quot;</span>)</span><br><span class="line">    delay(<span class="number">1000</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>coroutineScope函数和runBlocking函数的区别</strong></p>
+<ul>
+<li>coroutineScope将外部协程挂起，当作用域内代码执行完毕coroutineScope函数之后的代码才可以执行</li>
+<li>coroutineScope函数只会阻塞当前线程既不影响其他协程又不影响其他线程，因此不会造成任何性能上的问题</li>
+<li>runBlocking会造成性能上的问题，不推荐在项目中使用</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="更多的作用域构建器"><a href="#更多的作用域构建器" class="headerlink" title="更多的作用域构建器"></a>更多的作用域构建器</h3><ul>
+<li><p><strong>实际项目中常用写法</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> job=Job()</span><br><span class="line"><span class="keyword">val</span> scope=CoroutineScope(job)</span><br><span class="line">scope.launch&#123;</span><br><span class="line">    <span class="comment">//处理具体逻辑</span></span><br><span class="line">&#125;</span><br><span class="line">job.cancel()</span><br></pre></td></tr></table></figure>
 
+<p>这样创建所有调用CoroutineScope的launch函数所创建的协程，都会被关联在Job对象作用域下，这样只需调用一次cancel就可以将同一作用域内的所有协程全部取消</p>
+</li>
+<li><p><strong>async获取执行结果</strong></p>
+<ul>
+<li>async必须在协程作用域中调用</li>
+<li>创建一个新的协程并返回一个Deferred对象，并调用await()方法获取结果</li>
+<li>在最后一起调用await方法可以大大提高效率，会使两个async函数变为并行关系</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">/*runBlocking &#123;</span></span><br><span class="line"><span class="comment">        val result=async &#123;</span></span><br><span class="line"><span class="comment">            5+5</span></span><br><span class="line"><span class="comment">        &#125;.await()</span></span><br><span class="line"><span class="comment">        println(result)</span></span><br><span class="line"><span class="comment">    &#125;*/</span></span><br><span class="line">    runBlocking &#123;</span><br><span class="line">        <span class="keyword">val</span> result1=async &#123;</span><br><span class="line">            <span class="number">5</span>+<span class="number">5</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">val</span> result2=async &#123;</span><br><span class="line">            <span class="number">4</span>+<span class="number">6</span></span><br><span class="line">        &#125;</span><br><span class="line">        println(<span class="string">&quot;result is <span class="subst">$&#123;result1.await()+result2.await()&#125;</span>&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>withContext()函数(async函数的简化版)</strong></p>
+<ul>
+<li>当代码全部执行完会将最后一行结果作为返回值返回</li>
+<li>强制要求指定一个线程参数</li>
+<li>线程参数有三个可选值：Dispatchers.Default,Dispatchers.IO和Dispatchers.Main.Dispatchers.Default表示默认低并发策略，当执行代码属于计算密集型任务时，开启过高的并发反而影响效率。Dispatchers.IO表示较高并发的线程策略，执行代码大多数时间在阻塞和等待中。Dispatchers.Main表示不会开启子线程，但这个值只能在Android项目中使用，纯Kotlin程序中使用会出错。</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    runBlocking &#123;</span><br><span class="line">        <span class="keyword">val</span> result= withContext(Dispatchers.Default)&#123;</span><br><span class="line">            <span class="number">5</span>+<span class="number">5</span></span><br><span class="line">        &#125;</span><br><span class="line">        println(result)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h3 id="使用协程简化回调方法"><a href="#使用协程简化回调方法" class="headerlink" title="使用协程简化回调方法"></a>使用协程简化回调方法</h3><ul>
+<li><p><strong>发送网络请求的回调</strong></p>
+<ul>
+<li>suspendCoroutine函数必须在协程作用域或挂起函数中才能调用，主要作用是把当前协程立刻挂起，然后在普通线程中执行lambda表达式代码</li>
+<li>Lambda表达式会传入continuation参数，调用他的resume方法或resumeWithException方法可以使协程恢复</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">suspend</span>  <span class="function"><span class="keyword">fun</span> <span class="title">request</span><span class="params">(adress:<span class="type">String</span>)</span></span>:String&#123;</span><br><span class="line">        <span class="keyword">return</span> suspendCoroutine &#123;</span><br><span class="line">            continuation -&gt;</span><br><span class="line">           HttpUtil.sendRequestWithHttpURLConnection(adress,<span class="keyword">object</span>:HttpCallbackListener&#123;</span><br><span class="line">               <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onFinish</span><span class="params">(response: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">                   continuation.resume(response)</span><br><span class="line">               &#125;</span><br><span class="line"></span><br><span class="line">               <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onError</span><span class="params">(e: <span class="type">Exception</span>)</span></span> &#123;</span><br><span class="line">                   continuation.resumeWithException(e)</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//调用</span></span><br><span class="line">    <span class="keyword">suspend</span>  <span class="function"><span class="keyword">fun</span> <span class="title">getBaiduResponse</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            <span class="keyword">val</span> response=request(<span class="string">&quot;http://www.baidu.com/&quot;</span>)</span><br><span class="line">            <span class="comment">//对服务器响应数据进行处理</span></span><br><span class="line">        &#125;<span class="keyword">catch</span>(e:Exception)&#123;</span><br><span class="line">            <span class="comment">//对异常情况处理</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Retrofit发送请求的回调</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span><span class="type">&lt;T&gt;</span> Call<span class="type">&lt;T&gt;</span>.<span class="title">await</span><span class="params">()</span></span>:T&#123;</span><br><span class="line">    <span class="keyword">return</span> suspendCoroutine&#123;continuation -&gt;</span><br><span class="line">                            enqueue(<span class="keyword">object</span>:Callback&lt;T&gt;&#123;</span><br><span class="line">                                 <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onResponse</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">                    call: <span class="type">Call</span>&lt;<span class="type">T</span>&gt;,</span></span></span><br><span class="line"><span class="params"><span class="function">                    response: <span class="type">Response</span>&lt;<span class="type">T</span>&gt;</span></span></span><br><span class="line"><span class="params"><span class="function">                )</span></span> &#123;</span><br><span class="line">                  <span class="keyword">val</span> body=response.body()</span><br><span class="line">                  <span class="keyword">if</span>(body!=<span class="literal">null</span>)&#123;</span><br><span class="line">                      continuation.resume(body)</span><br><span class="line">                  &#125; </span><br><span class="line">                 <span class="keyword">else</span>   continuation.resumeWithException(</span><br><span class="line">                     RuntimeException(<span class="string">&quot;response body is null&quot;</span>)</span><br><span class="line">                 )                 </span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onFailure</span><span class="params">(call: <span class="type">Call</span>&lt;<span class="type">T</span>&gt;, t:<span class="type">Throwable</span>)</span></span> &#123;</span><br><span class="line">                  continuation.resumeWithException(t)</span><br><span class="line">                &#125;</span><br><span class="line">                            &#125;)</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//调用</span></span><br><span class="line"><span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">getAppData</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">        <span class="keyword">val</span> appList=ServiceCreator.create&lt;AppService&gt;().getAppData().await()</span><br><span class="line">        <span class="comment">//对服务器响应的数据进行处理</span></span><br><span class="line">    &#125;<span class="keyword">catch</span>(e:Exception)&#123;</span><br><span class="line">        <span class="comment">//对异常进行处理</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
 <hr>
 
       
