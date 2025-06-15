@@ -96,3 +96,30 @@ add是先将想要提交的代码添加进来，commit则是真正的去执行�
 
 ------
 
+# 分支的用法
+
+- git branch查看分支
+
+- git branch+名字用于创建分支
+
+- git checkout +名字 切换分支
+
+- git checkout+分支1
+
+  git merge+分支2  可以把分支2上修改并提交的内容合并到分支1上
+
+- git branch -D +分支名用于删除分支
+
+------
+
+# 与远程版本库协作
+
+- git clone 地址表示将代码下载到本地
+- git push origin master  表示将本地修改的内容同步到远程版本库（origin指定的是远程版本库的Git地址）
+- git fetch origin master  表示将远程版本库内容同步到本地，会存放到origin/master 分支上
+- git diff origin/master 查看远程版本库上到底修改了什么
+- git merge origin/master将origin/master分支上的修改合并到主分支上
+- git pull origin master相当于将fetch和merge两个命令放一块执行，它可以从远程版本库上获取最新代码并合并到本地
+
+------
+

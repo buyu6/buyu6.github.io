@@ -6,15 +6,15 @@
   <meta name="keywords" content="">
   <meta name="description" content="Git | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="协程的基本用法 优点 协程允许我们在单线程模式下模拟多线程编程的效果  依赖库 1234&#x2F;&#x2F; Gradle 依赖implementation(&quot;org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0&quot;)&#x2F;&#x2F;Android扩展implementation(&quot;org.jetbrains.kotlinx:kotlinx-cor">
+<meta name="description" content="求N个数的最大最小值使用泛型实现Comparable接口，可以适用于任意类型数字比较 12345678910fun &lt;T:Comparable&lt;T&gt;&gt; max(vararg nums:T):T&#123;    if(nums.isEmpty()) throw RuntimeException(&quot;Params can not be empty&quot;)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Kotlin使用协程编写高效的并发程序">
-<meta property="og:url" content="http://example.com/2025/06/05/Kotlin%E4%BD%BF%E7%94%A8%E5%8D%8F%E7%A8%8B%E7%BC%96%E5%86%99%E9%AB%98%E6%95%88%E7%9A%84%E5%B9%B6%E5%8F%91%E7%A8%8B%E5%BA%8F/index.html">
+<meta property="og:title" content="编写好用的工具">
+<meta property="og:url" content="http://example.com/2025/06/16/%E7%BC%96%E5%86%99%E5%A5%BD%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="协程的基本用法 优点 协程允许我们在单线程模式下模拟多线程编程的效果  依赖库 1234&#x2F;&#x2F; Gradle 依赖implementation(&quot;org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0&quot;)&#x2F;&#x2F;Android扩展implementation(&quot;org.jetbrains.kotlinx:kotlinx-cor">
+<meta property="og:description" content="求N个数的最大最小值使用泛型实现Comparable接口，可以适用于任意类型数字比较 12345678910fun &lt;T:Comparable&lt;T&gt;&gt; max(vararg nums:T):T&#123;    if(nums.isEmpty()) throw RuntimeException(&quot;Params can not be empty&quot;)">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-06-05T13:42:16.000Z">
-<meta property="article:modified_time" content="2025-06-06T16:50:04.848Z">
+<meta property="article:published_time" content="2025-06-15T18:41:33.000Z">
+<meta property="article:modified_time" content="2025-06-15T19:41:35.889Z">
 <meta property="article:author" content="Pick">
 <meta name="twitter:card" content="summary">
 
@@ -91,7 +91,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(35)</small>
+                <small>(37)</small>
             
         </div>
     </li>
@@ -133,7 +133,7 @@
         <div data-rel="Kotlin">
             
             Kotlin
-            <small>(12)</small>
+            <small>(13)</small>
         </div>
         
     </li>
@@ -148,7 +148,7 @@
         <div data-rel="Android(Kotlin版)">
             
             Android(Kotlin版)
-            <small>(9)</small>
+            <small>(10)</small>
         </div>
         
     </li>
@@ -169,8 +169,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="35">
-<input type="hidden" id="yelog_site_word_count" value="50k">
+<input type="hidden" id="yelog_site_posts_number" value="37">
+<input type="hidden" id="yelog_site_word_count" value="52.4k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -221,6 +221,24 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All Kotlin "
+           href="/2025/06/16/%E7%BC%96%E5%86%99%E5%A5%BD%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="编写好用的工具">编写好用的工具</span>
+            <span class="post-date" title="2025-06-16 02:41:33">2025/06/16</span>
+        </a>
+        
+        
+        <a  class="All Android(Kotlin版) "
+           href="/2025/06/15/%E6%9C%80%E7%BE%8EUI%E4%BD%93%E9%AA%8C-Material-Design-Kotlin/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="最美UI体验,Material Design(Kotlin)">最美UI体验,Material Design(Kotlin)</span>
+            <span class="post-date" title="2025-06-15 21:34:20">2025/06/15</span>
+        </a>
         
         
         <a  class="All Kotlin "
@@ -575,12 +593,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-04-28 22:29:21'>2025-03-11 14:56</time>
+            Created At : <time class="date" title='Updated At: 2025-06-16 04:09:56'>2025-03-11 14:56</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:583</span>
+        <span>Count:822</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -599,7 +617,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93"><span class="toc-text">创建代码仓库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8F%90%E4%BA%A4%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81"><span class="toc-text">提交本地代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6"><span class="toc-text">忽略文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E4%BF%AE%E6%94%B9%E5%86%85%E5%AE%B9"><span class="toc-text">查看修改内容</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%92%A4%E9%94%80%E6%9C%AA%E6%8F%90%E4%BA%A4%E7%9A%84%E4%BF%AE%E6%94%B9"><span class="toc-text">撤销未提交的修改</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E8%AE%B0%E5%BD%95"><span class="toc-text">查看提交记录</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93"><span class="toc-text">创建代码仓库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8F%90%E4%BA%A4%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81"><span class="toc-text">提交本地代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6"><span class="toc-text">忽略文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E4%BF%AE%E6%94%B9%E5%86%85%E5%AE%B9"><span class="toc-text">查看修改内容</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%92%A4%E9%94%80%E6%9C%AA%E6%8F%90%E4%BA%A4%E7%9A%84%E4%BF%AE%E6%94%B9"><span class="toc-text">撤销未提交的修改</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E8%AE%B0%E5%BD%95"><span class="toc-text">查看提交记录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E6%94%AF%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-text">分支的用法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8E%E8%BF%9C%E7%A8%8B%E7%89%88%E6%9C%AC%E5%BA%93%E5%8D%8F%E4%BD%9C"><span class="toc-text">与远程版本库协作</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -652,6 +670,29 @@
 <h1 id="查看提交记录"><a href="#查看提交记录" class="headerlink" title="查看提交记录"></a>查看提交记录</h1><p>1.用git log查看历史提交信息</p>
 <p>2.若只想查其中一条记录，可以在命令中指定该条记录的id并加上**-1**参数表示只想看到这一行</p>
 <p>3.如果想看这条记录具体修改了什么可以加个 <strong>-p</strong>，其中减号代表删除，加号代表添加的部分。</p>
+<hr>
+<h1 id="分支的用法"><a href="#分支的用法" class="headerlink" title="分支的用法"></a>分支的用法</h1><ul>
+<li><p>git branch查看分支</p>
+</li>
+<li><p>git branch+名字用于创建分支</p>
+</li>
+<li><p>git checkout +名字 切换分支</p>
+</li>
+<li><p>git checkout+分支1</p>
+<p>git merge+分支2  可以把分支2上修改并提交的内容合并到分支1上</p>
+</li>
+<li><p>git branch -D +分支名用于删除分支</p>
+</li>
+</ul>
+<hr>
+<h1 id="与远程版本库协作"><a href="#与远程版本库协作" class="headerlink" title="与远程版本库协作"></a>与远程版本库协作</h1><ul>
+<li>git clone 地址表示将代码下载到本地</li>
+<li>git push origin master  表示将本地修改的内容同步到远程版本库（origin指定的是远程版本库的Git地址）</li>
+<li>git fetch origin master  表示将远程版本库内容同步到本地，会存放到origin&#x2F;master 分支上</li>
+<li>git diff origin&#x2F;master 查看远程版本库上到底修改了什么</li>
+<li>git merge origin&#x2F;master将origin&#x2F;master分支上的修改合并到主分支上</li>
+<li>git pull origin master相当于将fetch和merge两个命令放一块执行，它可以从远程版本库上获取最新代码并合并到本地</li>
+</ul>
 <hr>
 
       
