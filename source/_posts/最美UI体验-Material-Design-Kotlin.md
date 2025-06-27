@@ -404,6 +404,8 @@ implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
 ### 充分利用系统状态栏空间
 
+- **方案一**
+
 1. 将ImageView及其所有父布局使用android:fitsSystemWindows=”true”
 
 2. 使用android:statusBarColor属性将主题状态栏颜色设为透明
@@ -422,5 +424,12 @@ implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
                android:theme="@style/FruitActivityTheme"></activity>
    ```
 
-------
+- **方案二**
 
+  ```kotlin
+  val decorView=window.decorView
+  decorView.systemUiVisibility=View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+  window.statusBarColor=Color.TRANSPARENT
+  ```
+
+------
