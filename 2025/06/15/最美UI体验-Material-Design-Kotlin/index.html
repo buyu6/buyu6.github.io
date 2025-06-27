@@ -6,15 +6,15 @@
   <meta name="keywords" content="">
   <meta name="description" content="最美UI体验,Material Design(Kotlin) | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="求N个数的最大最小值使用泛型实现Comparable接口，可以适用于任意类型数字比较 12345678910fun &lt;T:Comparable&lt;T&gt;&gt; max(vararg nums:T):T&#123;    if(nums.isEmpty()) throw RuntimeException(&quot;Params can not be empty&quot;)">
+<meta name="description" content="全局获取Context的技巧12345678910class MyApplication : Application() &#123;    companion object &#123;        @SuppressLint(&quot;StaticFieldLeak&quot;)        lateinit var context: Context    &#125;    overr">
 <meta property="og:type" content="article">
-<meta property="og:title" content="编写好用的工具">
-<meta property="og:url" content="http://example.com/2025/06/16/%E7%BC%96%E5%86%99%E5%A5%BD%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/index.html">
+<meta property="og:title" content="高级技巧(Kotlin)">
+<meta property="og:url" content="http://example.com/2025/06/27/%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7-Kotlin/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="求N个数的最大最小值使用泛型实现Comparable接口，可以适用于任意类型数字比较 12345678910fun &lt;T:Comparable&lt;T&gt;&gt; max(vararg nums:T):T&#123;    if(nums.isEmpty()) throw RuntimeException(&quot;Params can not be empty&quot;)">
+<meta property="og:description" content="全局获取Context的技巧12345678910class MyApplication : Application() &#123;    companion object &#123;        @SuppressLint(&quot;StaticFieldLeak&quot;)        lateinit var context: Context    &#125;    overr">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-06-15T18:41:33.000Z">
-<meta property="article:modified_time" content="2025-06-15T19:41:35.889Z">
+<meta property="article:published_time" content="2025-06-26T18:02:24.000Z">
+<meta property="article:modified_time" content="2025-06-27T16:51:54.891Z">
 <meta property="article:author" content="Pick">
 <meta name="twitter:card" content="summary">
 
@@ -91,7 +91,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(37)</small>
+                <small>(40)</small>
             
         </div>
     </li>
@@ -133,7 +133,7 @@
         <div data-rel="Kotlin">
             
             Kotlin
-            <small>(13)</small>
+            <small>(14)</small>
         </div>
         
     </li>
@@ -148,7 +148,7 @@
         <div data-rel="Android(Kotlin版)">
             
             Android(Kotlin版)
-            <small>(10)</small>
+            <small>(12)</small>
         </div>
         
     </li>
@@ -169,8 +169,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="37">
-<input type="hidden" id="yelog_site_word_count" value="52.4k">
+<input type="hidden" id="yelog_site_posts_number" value="40">
+<input type="hidden" id="yelog_site_word_count" value="56.6k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -221,6 +221,33 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All Android(Kotlin版) "
+           href="/2025/06/27/%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7-Kotlin/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="高级技巧(Kotlin)">高级技巧(Kotlin)</span>
+            <span class="post-date" title="2025-06-27 02:02:24">2025/06/27</span>
+        </a>
+        
+        
+        <a  class="All Kotlin "
+           href="/2025/06/27/Kotlin%E4%BD%BF%E7%94%A8DSL%E6%9E%84%E5%BB%BA%E4%B8%93%E6%9C%89%E8%AF%AD%E6%B3%95%E7%BB%93%E6%9E%84/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Kotlin使用DSL构建专有语法结构">Kotlin使用DSL构建专有语法结构</span>
+            <span class="post-date" title="2025-06-27 02:01:25">2025/06/27</span>
+        </a>
+        
+        
+        <a  class="All Android(Kotlin版) "
+           href="/2025/06/25/Jetpack/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Jetpack(Kotlin)">Jetpack(Kotlin)</span>
+            <span class="post-date" title="2025-06-25 18:30:24">2025/06/25</span>
+        </a>
         
         
         <a  class="All Kotlin "
@@ -593,12 +620,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-06-15 22:44:15'>2025-06-15 21:34</time>
+            Created At : <time class="date" title='Updated At: 2025-06-28 00:56:21'>2025-06-15 21:34</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:1.9k</span>
+        <span>Count:2k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -700,7 +727,10 @@
 <p>这个高级标题栏就是普通标题栏加上背景图片</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">&lt;androidx.coordinatorlayout.widget.CoordinatorLayout</span><br><span class="line">    xmlns:android=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="line">    xmlns:app=<span class="string">&quot;http://schemas.android.com/apk/res-auto&quot;</span></span><br><span class="line">    android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">    android:layout_height=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">    android:fitsSystemWindows=<span class="string">&quot;true&quot;</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;com.google.android.material.appbar.AppBarLayout</span><br><span class="line">        android:id=<span class="string">&quot;@+id/appBar&quot;</span></span><br><span class="line">        android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;250dp&quot;</span></span><br><span class="line">        android:fitsSystemWindows=<span class="string">&quot;true&quot;</span>&gt;</span><br><span class="line"></span><br><span class="line">        &lt;com.google.android.material.appbar.CollapsingToolbarLayout</span><br><span class="line">            android:id=<span class="string">&quot;@+id/collapsingToolbar&quot;</span></span><br><span class="line">            android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">            android:layout_height=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">            android:theme=<span class="string">&quot;@style/ThemeOverlay.AppCompat.Dark.ActionBar&quot;</span></span><br><span class="line">            android:fitsSystemWindows=<span class="string">&quot;true&quot;</span></span><br><span class="line">            app:contentScrim=<span class="string">&quot;?attr/colorPrimary&quot;</span></span><br><span class="line">            app:layout_scrollFlags=<span class="string">&quot;scroll|exitUntilCollapsed&quot;</span>&gt;</span><br><span class="line"></span><br><span class="line">            &lt;ImageView</span><br><span class="line">                android:id=<span class="string">&quot;@+id/fruitImageView&quot;</span></span><br><span class="line">                android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">                android:layout_height=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">                android:scaleType=<span class="string">&quot;centerCrop&quot;</span></span><br><span class="line">                android:fitsSystemWindows=<span class="string">&quot;true&quot;</span></span><br><span class="line">                app:layout_collapseMode=<span class="string">&quot;parallax&quot;</span> /&gt;</span><br><span class="line"></span><br><span class="line">            &lt;androidx.appcompat.widget.Toolbar</span><br><span class="line">                android:id=<span class="string">&quot;@+id/toolbar&quot;</span></span><br><span class="line">                android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">                android:layout_height=<span class="string">&quot;?attr/actionBarSize&quot;</span></span><br><span class="line">                app:layout_collapseMode=<span class="string">&quot;pin&quot;</span> /&gt;</span><br><span class="line"></span><br><span class="line">        &lt;/com.google.android.material.appbar.CollapsingToolbarLayout&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/com.google.android.material.appbar.AppBarLayout&gt;</span><br><span class="line"></span><br><span class="line">    &lt;androidx.core.widget.NestedScrollView</span><br><span class="line">        android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">        app:layout_behavior=<span class="string">&quot;@string/appbar_scrolling_view_behavior&quot;</span>&gt;</span><br><span class="line"></span><br><span class="line">        &lt;LinearLayout</span><br><span class="line">            android:orientation=<span class="string">&quot;vertical&quot;</span></span><br><span class="line">            android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">            android:layout_height=<span class="string">&quot;wrap_content&quot;</span>&gt;</span><br><span class="line"></span><br><span class="line">            &lt;com.google.android.material.card.MaterialCardView</span><br><span class="line">                android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">                android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">                android:layout_marginBottom=<span class="string">&quot;15dp&quot;</span></span><br><span class="line">                android:layout_marginLeft=<span class="string">&quot;15dp&quot;</span></span><br><span class="line">                android:layout_marginRight=<span class="string">&quot;15dp&quot;</span></span><br><span class="line">                android:layout_marginTop=<span class="string">&quot;35dp&quot;</span></span><br><span class="line">                app:cardCornerRadius=<span class="string">&quot;4dp&quot;</span>&gt;</span><br><span class="line"></span><br><span class="line">                &lt;TextView</span><br><span class="line">                    android:id=<span class="string">&quot;@+id/fruitContentText&quot;</span></span><br><span class="line">                    android:layout_width=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">                    android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">                    android:layout_margin=<span class="string">&quot;10dp&quot;</span> /&gt;</span><br><span class="line"></span><br><span class="line">            &lt;/com.google.android.material.card.MaterialCardView&gt;</span><br><span class="line"></span><br><span class="line">        &lt;/LinearLayout&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/androidx.core.widget.NestedScrollView&gt;</span><br><span class="line"></span><br><span class="line">    &lt;com.google.android.material.floatingactionbutton.FloatingActionButton</span><br><span class="line">        android:layout_width=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">        android:layout_margin=<span class="string">&quot;16dp&quot;</span></span><br><span class="line">        android:src=<span class="string">&quot;@drawable/ic_comment&quot;</span></span><br><span class="line">        app:layout_anchor=<span class="string">&quot;@id/appBar&quot;</span></span><br><span class="line">        app:layout_anchorGravity=<span class="string">&quot;bottom|end&quot;</span> /&gt;</span><br><span class="line"></span><br><span class="line">&lt;/androidx.coordinatorlayout.widget.CoordinatorLayout&gt;</span><br></pre></td></tr></table></figure>
 
-<h3 id="充分利用系统状态栏空间"><a href="#充分利用系统状态栏空间" class="headerlink" title="充分利用系统状态栏空间"></a>充分利用系统状态栏空间</h3><ol>
+<h3 id="充分利用系统状态栏空间"><a href="#充分利用系统状态栏空间" class="headerlink" title="充分利用系统状态栏空间"></a>充分利用系统状态栏空间</h3><ul>
+<li><strong>方案一</strong></li>
+</ul>
+<ol>
 <li><p>将ImageView及其所有父布局使用android:fitsSystemWindows&#x3D;”true”</p>
 </li>
 <li><p>使用android:statusBarColor属性将主题状态栏颜色设为透明</p>
@@ -710,6 +740,10 @@
 
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity</span><br><span class="line">            android:name=<span class="string">&quot;.FruitActivity&quot;</span></span><br><span class="line">            android:theme=<span class="string">&quot;@style/FruitActivityTheme&quot;</span>&gt;&lt;/activity&gt;</span><br></pre></td></tr></table></figure></li>
 </ol>
+<ul>
+<li><p><strong>方案二</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> decorView=window.decorView</span><br><span class="line">decorView.systemUiVisibility=View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE</span><br><span class="line">window.statusBarColor=Color.TRANSPARENT</span><br></pre></td></tr></table></figure></li>
+</ul>
 <hr>
 
       
