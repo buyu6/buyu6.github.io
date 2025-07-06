@@ -6,15 +6,15 @@
   <meta name="keywords" content="">
   <meta name="description" content="手机多媒体(Java) | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="基本步骤自定义View的属性 format取值类型：    格式类型 含义说明    reference 资源引用，例如 @string&#x2F;app_name、@drawable&#x2F;icon   string 字符串文本，例如 &quot;Hello&quot;   integer 整数，例如 42   boolean 布尔值，例如 true、false   color 颜色值，例如 #FF0000 或">
+<meta name="description" content="作用类似于自定义布局 职责ViewGroup相当于一个放置View的容器，并且我们在写布局xml的时候，会告诉容器（凡是以layout为开头的属性，都是为用于告诉容器的），我们的宽度（layout_width）、高度（layout_height）、对齐方式（layout_gravity）等；当然还有margin等；于是乎，ViewGroup的职能为：给childView计算出建议的宽和高和测量模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="自定义View(一)">
-<meta property="og:url" content="http://example.com/2025/07/04/%E8%87%AA%E5%AE%9A%E4%B9%89View/index.html">
+<meta property="og:title" content="自定义ViewGroup">
+<meta property="og:url" content="http://example.com/2025/07/06/%E8%87%AA%E5%AE%9A%E4%B9%89ViewGroup/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="基本步骤自定义View的属性 format取值类型：    格式类型 含义说明    reference 资源引用，例如 @string&#x2F;app_name、@drawable&#x2F;icon   string 字符串文本，例如 &quot;Hello&quot;   integer 整数，例如 42   boolean 布尔值，例如 true、false   color 颜色值，例如 #FF0000 或">
+<meta property="og:description" content="作用类似于自定义布局 职责ViewGroup相当于一个放置View的容器，并且我们在写布局xml的时候，会告诉容器（凡是以layout为开头的属性，都是为用于告诉容器的），我们的宽度（layout_width）、高度（layout_height）、对齐方式（layout_gravity）等；当然还有margin等；于是乎，ViewGroup的职能为：给childView计算出建议的宽和高和测量模式">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-07-04T09:08:12.000Z">
-<meta property="article:modified_time" content="2025-07-04T09:31:56.398Z">
+<meta property="article:published_time" content="2025-07-06T10:20:25.000Z">
+<meta property="article:modified_time" content="2025-07-06T10:31:35.131Z">
 <meta property="article:author" content="Pick">
 <meta name="twitter:card" content="summary">
 
@@ -91,7 +91,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(41)</small>
+                <small>(43)</small>
             
         </div>
     </li>
@@ -163,7 +163,7 @@
         <div data-rel="自定义View">
             
             自定义View
-            <small>(1)</small>
+            <small>(3)</small>
         </div>
         
     </li>
@@ -184,8 +184,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="41">
-<input type="hidden" id="yelog_site_word_count" value="57k">
+<input type="hidden" id="yelog_site_posts_number" value="43">
+<input type="hidden" id="yelog_site_word_count" value="60.5k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -239,7 +239,25 @@
         
         
         <a  class="All 自定义View "
-           href="/2025/07/04/%E8%87%AA%E5%AE%9A%E4%B9%89View/"
+           href="/2025/07/06/%E8%87%AA%E5%AE%9A%E4%B9%89ViewGroup/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="自定义ViewGroup">自定义ViewGroup</span>
+            <span class="post-date" title="2025-07-06 18:20:25">2025/07/06</span>
+        </a>
+        
+        
+        <a  class="All 自定义View "
+           href="/2025/07/05/%E8%87%AA%E5%AE%9A%E4%B9%89View-%E4%BA%8C/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="自定义View(二)">自定义View(二)</span>
+            <span class="post-date" title="2025-07-05 20:59:14">2025/07/05</span>
+        </a>
+        
+        
+        <a  class="All 自定义View "
+           href="/2025/07/04/%E8%87%AA%E5%AE%9A%E4%B9%89View(%E4%B8%80)/"
            data-tag=""
            data-author="" >
             <span class="post-title" title="自定义View(一)">自定义View(一)</span>
