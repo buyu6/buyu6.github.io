@@ -46,6 +46,7 @@ category:
     - Kotlin
     - Android(Kotlin版)
     - 自定义View
+    - 数据库(SQL)
   width:
     lg: 120 # 1468px<屏幕宽度 左侧分类宽度
     md: 1468px # 1024px<屏幕宽度<=1468px 左侧分类宽度
