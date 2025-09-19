@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Kotlin标准函数 | Hexo</title>
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>HEXO</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;HEXO</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>Kotlin标准函数</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/4/19
+        </span>
+        
+        <span class="category">
+            <a href="/categories/Kotlin/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Kotlin
+            </a>
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="with"><a href="#with" class="headerlink" title="with"></a>with</h1><p>作用：可以在连续调用同一个对象的多个方法时让代码变得更简便</p>
+<p>标准形式：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> result = with (obj)&#123;</span><br><span class="line">    <span class="comment">//这里是obj的上下文</span></span><br><span class="line">    <span class="string">&quot;value&quot;</span><span class="comment">//with函数返回值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实例：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list= listOf(<span class="string">&quot;Apple&quot;</span>,<span class="string">&quot;Banana&quot;</span>,<span class="string">&quot;Pear&quot;</span>)</span><br><span class="line">    <span class="keyword">val</span> result=with(StringBuilder())&#123;</span><br><span class="line">        append(<span class="string">&quot;Start eating fruits.\n&quot;</span>)</span><br><span class="line">        <span class="keyword">for</span>(fruit <span class="keyword">in</span> list)&#123;</span><br><span class="line">            append(fruit).append(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        append(<span class="string">&quot;Ate all Fruits&quot;</span>)</span><br><span class="line">        toString()</span><br><span class="line">    &#125;</span><br><span class="line">    println(result)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="run"><a href="#run" class="headerlink" title="run"></a>run</h1><p>作用：同with相同只是通常不会直接调用而是在对象的基础上调用</p>
+<p>标准形式：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> result =obj.run&#123;</span><br><span class="line">    <span class="comment">//这里是obj的上下文</span></span><br><span class="line">    <span class="string">&quot;value&quot;</span><span class="comment">//run函数返回值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实例：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list= listOf(<span class="string">&quot;Apple&quot;</span>,<span class="string">&quot;Banana&quot;</span>,<span class="string">&quot;Pear&quot;</span>)</span><br><span class="line">    <span class="keyword">val</span> result=StringBuilder().run&#123;</span><br><span class="line">        append(<span class="string">&quot;Start eating fruits.\n&quot;</span>)</span><br><span class="line">        <span class="keyword">for</span>(fruit <span class="keyword">in</span> list)&#123;</span><br><span class="line">            append(fruit).append(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        append(<span class="string">&quot;Ate all Fruits&quot;</span>)</span><br><span class="line">        toString()</span><br><span class="line">    &#125;</span><br><span class="line">    println(result)</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h1 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h1><p>作用：作用和run类似只是无法指定返回值</p>
+<p>标准形式：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> result =obj.apply&#123;</span><br><span class="line">    <span class="comment">//这里是obj的上下文</span></span><br><span class="line">&#125;</span><br><span class="line">result==obj</span><br></pre></td></tr></table></figure>
+
+<p>实例：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list= listOf(<span class="string">&quot;Apple&quot;</span>,<span class="string">&quot;Banana&quot;</span>,<span class="string">&quot;Pear&quot;</span>)</span><br><span class="line"><span class="keyword">val</span> result=StringBuilder().apply&#123;</span><br><span class="line">    append(<span class="string">&quot;Start eating fruits.\n&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span>(fruit <span class="keyword">in</span> list)&#123;</span><br><span class="line">        append(fruit).append(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    append(<span class="string">&quot;Ate all Fruits&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line">println(result.toString())</span><br></pre></td></tr></table></figure>
+
+<p><strong>利用Intent传递数据时也可以使用apply函数</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> intent=Intent(context,SecondActivity::<span class="keyword">class</span>.java).apply&#123;</span><br><span class="line">    putExtra(<span class="string">&quot;param1&quot;</span>,<span class="string">&quot;data1&quot;</span>)</span><br><span class="line">    putExtra(<span class="string">&quot;param2&quot;</span>,<span class="string">&quot;data2&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line">context.startActivity(intent)</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h1 id="repeat"><a href="#repeat" class="headerlink" title="repeat"></a>repeat</h1><p>传入一个值n然后lambda表达式中的内容执行n遍</p>
+<hr>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2025 Hexo
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;John Doe
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>

@@ -1,0 +1,309 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Kotlin使用协程编写高效的并发程序 | Hexo</title>
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>HEXO</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;HEXO</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>Kotlin使用协程编写高效的并发程序</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/6/5
+        </span>
+        
+        <span class="category">
+            <a href="/categories/Kotlin/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Kotlin
+            </a>
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h3 id="协程的基本用法"><a href="#协程的基本用法" class="headerlink" title="协程的基本用法"></a>协程的基本用法</h3><ul>
+<li><p><strong>优点</strong></p>
+<p>协程允许我们在单线程模式下模拟多线程编程的效果</p>
+</li>
+<li><p><strong>依赖库</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Gradle 依赖</span></span><br><span class="line">implementation(<span class="string">&quot;org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0&quot;</span>)</span><br><span class="line"><span class="comment">//Android扩展</span></span><br><span class="line">implementation(<span class="string">&quot;org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0&quot;</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Global.launch函数创建协程作用域</strong></p>
+<ul>
+<li>Global.launch创建的是一个顶层协程，这种协程当应用程序结束时也会跟着结束</li>
+<li>使用Thread.sleep可以让主线程堵塞一定时长</li>
+<li>delay()可以让当前协程延长指定时间后再运行，是一个非阻塞式的挂起函数，只会挂起当前协程，对其他线程或协程无影响</li>
+<li>最大的问题就是可能代码还没运行结束应用程序就结束了，代码运行强制中断</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">GlobalScope.launch &#123;</span><br><span class="line">       println(<span class="string">&quot;codes run in coroutine scope&quot;</span>)</span><br><span class="line">       delay(<span class="number">1500</span>)</span><br><span class="line">       println(<span class="string">&quot;codes run in coroutine scope finished&quot;</span>)</span><br><span class="line">   &#125;</span><br><span class="line">   Thread.sleep(<span class="number">1000</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>runBlocking函数</strong></p>
+<ul>
+<li>可以保证作用域内所有代码和子线程未执行完之前一直阻塞当前线程</li>
+<li><strong>需要注意</strong>runBlocking 一般只在测试环境使用，正式环境容易出现性能问题</li>
+<li>可以在作用域中使用launch函数创建多个协程</li>
+<li><strong>子线程的特点</strong>如果外层作用域协程结束子线程也会结束</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">runBlocking &#123;</span><br><span class="line">            launch &#123;</span><br><span class="line">                println(<span class="string">&quot;launch1&quot;</span>)</span><br><span class="line">                delay(<span class="number">1000</span>)</span><br><span class="line">                println(<span class="string">&quot;launch1 finished&quot;</span>)</span><br><span class="line">            &#125;</span><br><span class="line">            launch &#123;</span><br><span class="line">                println(<span class="string">&quot;launch2&quot;</span>)</span><br><span class="line">                delay(<span class="number">1000</span>)</span><br><span class="line">                println(<span class="string">&quot;launch2 finished&quot;</span>)</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>suspend关键字</strong></p>
+<ul>
+<li>可以将任何函数声明成挂起函数</li>
+<li>无法提供协程作用域</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">printDot</span><span class="params">()</span></span>&#123;</span><br><span class="line">    println(<span class="string">&quot;.&quot;</span>)</span><br><span class="line">    delay(<span class="number">1000</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>coroutineScope函数</strong></p>
+<p>会继承外部的协程的作用域并创建一个子协程</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">printDot</span><span class="params">()</span></span>=coroutineScope&#123;</span><br><span class="line">    launch&#123;</span><br><span class="line">    println(<span class="string">&quot;.&quot;</span>)</span><br><span class="line">    delay(<span class="number">1000</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>coroutineScope函数和runBlocking函数的区别</strong></p>
+<ul>
+<li>coroutineScope将外部协程挂起，当作用域内代码执行完毕coroutineScope函数之后的代码才可以执行</li>
+<li>coroutineScope函数只会阻塞当前线程既不影响其他协程又不影响其他线程，因此不会造成任何性能上的问题</li>
+<li>runBlocking会造成性能上的问题，不推荐在项目中使用</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="更多的作用域构建器"><a href="#更多的作用域构建器" class="headerlink" title="更多的作用域构建器"></a>更多的作用域构建器</h3><ul>
+<li><p><strong>实际项目中常用写法</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> job=Job()</span><br><span class="line"><span class="keyword">val</span> scope=CoroutineScope(job)</span><br><span class="line">scope.launch&#123;</span><br><span class="line">    <span class="comment">//处理具体逻辑</span></span><br><span class="line">&#125;</span><br><span class="line">job.cancel()</span><br></pre></td></tr></table></figure>
+
+<p>这样创建所有调用CoroutineScope的launch函数所创建的协程，都会被关联在Job对象作用域下，这样只需调用一次cancel就可以将同一作用域内的所有协程全部取消</p>
+</li>
+<li><p><strong>async获取执行结果</strong></p>
+<ul>
+<li>async必须在协程作用域中调用</li>
+<li>创建一个新的协程并返回一个Deferred对象，并调用await()方法获取结果</li>
+<li>在最后一起调用await方法可以大大提高效率，会使两个async函数变为并行关系</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">/*runBlocking &#123;</span></span><br><span class="line"><span class="comment">        val result=async &#123;</span></span><br><span class="line"><span class="comment">            5+5</span></span><br><span class="line"><span class="comment">        &#125;.await()</span></span><br><span class="line"><span class="comment">        println(result)</span></span><br><span class="line"><span class="comment">    &#125;*/</span></span><br><span class="line">    runBlocking &#123;</span><br><span class="line">        <span class="keyword">val</span> result1=async &#123;</span><br><span class="line">            <span class="number">5</span>+<span class="number">5</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">val</span> result2=async &#123;</span><br><span class="line">            <span class="number">4</span>+<span class="number">6</span></span><br><span class="line">        &#125;</span><br><span class="line">        println(<span class="string">&quot;result is <span class="subst">$&#123;result1.await()+result2.await()&#125;</span>&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>withContext()函数(async函数的简化版)</strong></p>
+<ul>
+<li>当代码全部执行完会将最后一行结果作为返回值返回</li>
+<li>强制要求指定一个线程参数</li>
+<li>线程参数有三个可选值：Dispatchers.Default,Dispatchers.IO和Dispatchers.Main.Dispatchers.Default表示默认低并发策略，当执行代码属于计算密集型任务时，开启过高的并发反而影响效率。Dispatchers.IO表示较高并发的线程策略，执行代码大多数时间在阻塞和等待中。Dispatchers.Main表示不会开启子线程，但这个值只能在Android项目中使用，纯Kotlin程序中使用会出错。</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    runBlocking &#123;</span><br><span class="line">        <span class="keyword">val</span> result= withContext(Dispatchers.Default)&#123;</span><br><span class="line">            <span class="number">5</span>+<span class="number">5</span></span><br><span class="line">        &#125;</span><br><span class="line">        println(result)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h3 id="使用协程简化回调方法"><a href="#使用协程简化回调方法" class="headerlink" title="使用协程简化回调方法"></a>使用协程简化回调方法</h3><ul>
+<li><p><strong>发送网络请求的回调</strong></p>
+<ul>
+<li>suspendCoroutine函数必须在协程作用域或挂起函数中才能调用，主要作用是把当前协程立刻挂起，然后在普通线程中执行lambda表达式代码</li>
+<li>Lambda表达式会传入continuation参数，调用他的resume方法或resumeWithException方法可以使协程恢复</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">suspend</span>  <span class="function"><span class="keyword">fun</span> <span class="title">request</span><span class="params">(adress:<span class="type">String</span>)</span></span>:String&#123;</span><br><span class="line">        <span class="keyword">return</span> suspendCoroutine &#123;</span><br><span class="line">            continuation -&gt;</span><br><span class="line">           HttpUtil.sendRequestWithHttpURLConnection(adress,<span class="keyword">object</span>:HttpCallbackListener&#123;</span><br><span class="line">               <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onFinish</span><span class="params">(response: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">                   continuation.resume(response)</span><br><span class="line">               &#125;</span><br><span class="line"></span><br><span class="line">               <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onError</span><span class="params">(e: <span class="type">Exception</span>)</span></span> &#123;</span><br><span class="line">                   continuation.resumeWithException(e)</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//调用</span></span><br><span class="line">    <span class="keyword">suspend</span>  <span class="function"><span class="keyword">fun</span> <span class="title">getBaiduResponse</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            <span class="keyword">val</span> response=request(<span class="string">&quot;http://www.baidu.com/&quot;</span>)</span><br><span class="line">            <span class="comment">//对服务器响应数据进行处理</span></span><br><span class="line">        &#125;<span class="keyword">catch</span>(e:Exception)&#123;</span><br><span class="line">            <span class="comment">//对异常情况处理</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Retrofit发送请求的回调</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span><span class="type">&lt;T&gt;</span> Call<span class="type">&lt;T&gt;</span>.<span class="title">await</span><span class="params">()</span></span>:T&#123;</span><br><span class="line">    <span class="keyword">return</span> suspendCoroutine&#123;continuation -&gt;</span><br><span class="line">                            enqueue(<span class="keyword">object</span>:Callback&lt;T&gt;&#123;</span><br><span class="line">                                 <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onResponse</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">                    call: <span class="type">Call</span>&lt;<span class="type">T</span>&gt;,</span></span></span><br><span class="line"><span class="params"><span class="function">                    response: <span class="type">Response</span>&lt;<span class="type">T</span>&gt;</span></span></span><br><span class="line"><span class="params"><span class="function">                )</span></span> &#123;</span><br><span class="line">                  <span class="keyword">val</span> body=response.body()</span><br><span class="line">                  <span class="keyword">if</span>(body!=<span class="literal">null</span>)&#123;</span><br><span class="line">                      continuation.resume(body)</span><br><span class="line">                  &#125; </span><br><span class="line">                 <span class="keyword">else</span>   continuation.resumeWithException(</span><br><span class="line">                     RuntimeException(<span class="string">&quot;response body is null&quot;</span>)</span><br><span class="line">                 )                 </span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onFailure</span><span class="params">(call: <span class="type">Call</span>&lt;<span class="type">T</span>&gt;, t:<span class="type">Throwable</span>)</span></span> &#123;</span><br><span class="line">                  continuation.resumeWithException(t)</span><br><span class="line">                &#125;</span><br><span class="line">                            &#125;)</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//调用</span></span><br><span class="line"><span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">getAppData</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">        <span class="keyword">val</span> appList=ServiceCreator.create&lt;AppService&gt;().getAppData().await()</span><br><span class="line">        <span class="comment">//对服务器响应的数据进行处理</span></span><br><span class="line">    &#125;<span class="keyword">catch</span>(e:Exception)&#123;</span><br><span class="line">        <span class="comment">//对异常进行处理</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2025 Hexo
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;John Doe
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>

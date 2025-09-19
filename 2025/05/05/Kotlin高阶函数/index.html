@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Kotlin高阶函数 | Hexo</title>
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>HEXO</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;HEXO</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>Kotlin高阶函数</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/5/5
+        </span>
+        
+        <span class="category">
+            <a href="/categories/Kotlin/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Kotlin
+            </a>
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h1><h3 id="函数类型"><a href="#函数类型" class="headerlink" title="函数类型"></a>函数类型</h3><p>(String,Int)-&gt;Unit</p>
+<p>左边是函数接收参数类型，右边是返回值类型</p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>含有函数类型的就叫高阶函数</p>
+<h3 id="实例1"><a href="#实例1" class="headerlink" title="实例1"></a>实例1</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">num1Andnum2</span><span class="params">(num1:<span class="type">Int</span>,num2:<span class="type">Int</span>,operation: (<span class="type">Int</span>,<span class="type">Int</span>)-&gt;<span class="type">Int</span>)</span></span>:<span class="built_in">Int</span>&#123;</span><br><span class="line">    <span class="keyword">val</span> result=operation(num1,num2)</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">plus</span><span class="params">(num1:<span class="type">Int</span>,num2:<span class="type">Int</span>)</span></span>:<span class="built_in">Int</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num1 + num2</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">minus</span><span class="params">(num1:<span class="type">Int</span>,num2:<span class="type">Int</span>)</span></span>:<span class="built_in">Int</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num1-num2</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">val</span> num1=<span class="number">100</span></span><br><span class="line">    <span class="keyword">val</span> num2=<span class="number">50</span></span><br><span class="line">    <span class="keyword">val</span> result1=num1Andnum2(num1,num2,::plus)</span><br><span class="line">    <span class="keyword">val</span> result2= num1Andnum2(num1,num2,::minus)</span><br><span class="line">    println(result1)</span><br><span class="line">    println(result2)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Lambda表达式改进</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">num1Andnum2</span><span class="params">(num1:<span class="type">Int</span>,num2:<span class="type">Int</span>,operation: (<span class="type">Int</span>,<span class="type">Int</span>)-&gt;<span class="type">Int</span>)</span></span>:<span class="built_in">Int</span>&#123;</span><br><span class="line">    <span class="keyword">val</span> result=operation(num1,num2)</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">val</span> num1=<span class="number">100</span></span><br><span class="line">    <span class="keyword">val</span> num2=<span class="number">50</span></span><br><span class="line">    <span class="keyword">val</span> result1=num1Andnum2(num1,num2)&#123;</span><br><span class="line">        num1,num2-&gt;num1+num2</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">val</span> result2= num1Andnum2(num1,num2)&#123;</span><br><span class="line">            num1,num2-&gt;num1-num2</span><br><span class="line">    &#125;</span><br><span class="line">    println(result1)</span><br><span class="line">    println(result2)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="实例2"><a href="#实例2" class="headerlink" title="实例2"></a>实例2</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> StringBuilder.<span class="title">build</span><span class="params">( block:<span class="type">StringBuilder</span>.()-&gt;<span class="type">Unit</span>)</span></span>:StringBuilder&#123;</span><br><span class="line">    block()</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">val</span> list= listOf(<span class="string">&quot;Apple&quot;</span>,<span class="string">&quot;Banana&quot;</span>,<span class="string">&quot;Orange&quot;</span>,<span class="string">&quot;Pear&quot;</span>,<span class="string">&quot;Grape&quot;</span>)</span><br><span class="line">    <span class="keyword">val</span> result=StringBuilder().build &#123;</span><br><span class="line">        append(<span class="string">&quot;Start eating fruits\n&quot;</span>)</span><br><span class="line">        <span class="keyword">for</span>(fruit <span class="keyword">in</span> list)&#123;</span><br><span class="line">            append(fruit).append(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        append(<span class="string">&quot;Ate all fruits&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    println(result.toString())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="内联函数"><a href="#内联函数" class="headerlink" title="内联函数"></a>内联函数</h1><h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><p>使用<strong>inline</strong>关键字，在高阶函数前加上inline即可</p>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>可以将使用Lambda表达式带来的运行时开销完全消除</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span> <span class="function"><span class="keyword">fun</span> <span class="title">num1Andnum2</span><span class="params">(num1:<span class="type">Int</span>,num2:<span class="type">Int</span>,operation: (<span class="type">Int</span>,<span class="type">Int</span>)-&gt;<span class="type">Int</span>)</span></span>:<span class="built_in">Int</span>&#123;</span><br><span class="line">    <span class="keyword">val</span> result=operation(num1,num2)</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p><img src="/../img/img54.jpg"></p>
+<p><img src="/../img/img55.jpg"></p>
+<hr>
+<h1 id="noinline和crossinline"><a href="#noinline和crossinline" class="headerlink" title="noinline和crossinline"></a>noinline和crossinline</h1><h3 id="noinline"><a href="#noinline" class="headerlink" title="noinline"></a>noinline</h3><p>如果含有多个函数类型参数，但只想内联其中一个，这时可以在函数类型前加noinline表示不内联</p>
+<h3 id="内联和非内联区别"><a href="#内联和非内联区别" class="headerlink" title="内联和非内联区别"></a>内联和非内联区别</h3><p>内联函数中的lambda表达式可以使用return关键字返回，非内联只能局部返回</p>
+<h3 id="局部返回实例"><a href="#局部返回实例" class="headerlink" title="局部返回实例"></a>局部返回实例</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">fun</span> <span class="title">printString</span><span class="params">(str: <span class="type">String</span>, block: (<span class="type">String</span>) -&gt; <span class="type">Unit</span>)</span></span> &#123;</span><br><span class="line">    println(<span class="string">&quot;printString begin&quot;</span>)</span><br><span class="line">    block(str)</span><br><span class="line">    println(<span class="string">&quot;printString end&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">     println(<span class="string">&quot;main start&quot;</span>)</span><br><span class="line">    <span class="keyword">val</span> str = <span class="string">&quot;&quot;</span></span><br><span class="line">    printString(str) &#123; s -&gt;</span><br><span class="line">        println(<span class="string">&quot;lambda start&quot;</span>)</span><br><span class="line">        <span class="keyword">if</span> (s.isEmpty()) <span class="keyword">return</span><span class="symbol">@printString</span></span><br><span class="line">        println(s)</span><br><span class="line">        println(<span class="string">&quot;lambda end&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    println(<span class="string">&quot;main end&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">main start</span><br><span class="line">printString begin</span><br><span class="line">lambda start</span><br><span class="line">printString end</span><br><span class="line">main end</span><br></pre></td></tr></table></figure>
+
+<h3 id="内联函数返回实例"><a href="#内联函数返回实例" class="headerlink" title="内联函数返回实例"></a>内联函数返回实例</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span> <span class="function"><span class="keyword">fun</span> <span class="title">printString</span><span class="params">(str: <span class="type">String</span>, block: (<span class="type">String</span>) -&gt; <span class="type">Unit</span>)</span></span> &#123;</span><br><span class="line">    println(<span class="string">&quot;printString begin&quot;</span>)</span><br><span class="line">    block(str)</span><br><span class="line">    println(<span class="string">&quot;printString end&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">     println(<span class="string">&quot;main start&quot;</span>)</span><br><span class="line">    <span class="keyword">val</span> str = <span class="string">&quot;&quot;</span></span><br><span class="line">    printString(str) &#123; s -&gt;</span><br><span class="line">        println(<span class="string">&quot;lambda start&quot;</span>)</span><br><span class="line">        <span class="keyword">if</span> (s.isEmpty()) <span class="keyword">return</span></span><br><span class="line">        println(s)</span><br><span class="line">        println(<span class="string">&quot;lambda end&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    println(<span class="string">&quot;main end&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">main start</span><br><span class="line">printString begin</span><br><span class="line">lambda start</span><br></pre></td></tr></table></figure>
+
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>在高阶函数中创建另外的Lambda或匿名类实现，并且在这些实现中调用函数类型参数，此时再将其声明为内联函数会报错</p>
+<p><strong>原因</strong>：内联函数允许使用return和高阶函数的匿名类不允许使用return矛盾导致报错</p>
+<h3 id="crossinline"><a href="#crossinline" class="headerlink" title="crossinline"></a>crossinline</h3><p>借用crossinline可以解决上述问题，crossinline相当于一份契约，用于保证在内联函数的lambda中一定不会使用return关键字</p>
+<p>虽然不能使用return返回但仍可以使用局部返回</p>
+<h3 id="crossinline实例"><a href="#crossinline实例" class="headerlink" title="crossinline实例"></a>crossinline实例</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span> <span class="function"><span class="keyword">fun</span> <span class="title">runRunnable</span><span class="params">(<span class="keyword">crossinline</span> block: () -&gt; <span class="type">Unit</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> runnable = Runnable &#123;</span><br><span class="line">        block()</span><br><span class="line">    &#125;</span><br><span class="line">    runnable.run()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2025 Hexo
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;John Doe
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>

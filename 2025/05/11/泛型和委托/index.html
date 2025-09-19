@@ -1,0 +1,299 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>泛型和委托 | Hexo</title>
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>HEXO</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;HEXO</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>泛型和委托</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/5/11
+        </span>
+        
+        <span class="category">
+            <a href="/categories/Kotlin/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Kotlin
+            </a>
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><h3 id="定义泛型类"><a href="#定义泛型类" class="headerlink" title="定义泛型类"></a>定义泛型类</h3><ul>
+<li><p><strong>语法结构</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//T代指泛型是一种约定俗成</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span>&lt;<span class="type">T</span>&gt; &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">method</span><span class="params">(param:<span class="type">T</span>)</span></span>:T&#123;</span><br><span class="line">        <span class="keyword">return</span> param</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>调用</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> myClass=MyClass&lt;<span class="built_in">Int</span>&gt;()</span><br><span class="line">   <span class="keyword">val</span> result=myClass.method(<span class="number">123</span>)</span><br><span class="line">   println(result)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="定义泛型方法"><a href="#定义泛型方法" class="headerlink" title="定义泛型方法"></a>定义泛型方法</h3><ul>
+<li><p><strong>语法结构</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span><span class="type">&lt;T&gt;</span><span class="title">method</span><span class="params">(param:<span class="type">T</span>)</span></span>:T&#123;</span><br><span class="line">        <span class="keyword">return</span> param</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>调用</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> myClass=MyClass()</span><br><span class="line">    <span class="keyword">val</span> result=myClass.method&lt;<span class="built_in">Int</span>&gt;(<span class="number">123</span>)</span><br><span class="line">    println(result)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="泛型上界"><a href="#泛型上界" class="headerlink" title="泛型上界"></a>泛型上界</h3><p>对泛型类型进行限制</p>
+<ul>
+<li><p><strong>语法结构</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span><span class="type">&lt;T:Number&gt;</span><span class="title">method</span><span class="params">(param:<span class="type">T</span>)</span></span>:T&#123;</span><br><span class="line">        <span class="keyword">return</span> param</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>调用</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> myClass=MyClass()</span><br><span class="line"><span class="keyword">val</span> result=myClass.method(<span class="number">123</span>)</span><br><span class="line">println(result)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h1 id="类委托和委托属性"><a href="#类委托和委托属性" class="headerlink" title="类委托和委托属性"></a>类委托和委托属性</h1><h3 id="类委托"><a href="#类委托" class="headerlink" title="类委托"></a>类委托</h3><ul>
+<li><p><strong>原理</strong></p>
+<p>将一个类的具体实现委托给另一个类去完成</p>
+</li>
+<li><p><strong>意义</strong></p>
+<p>大部分方法实现调用辅助对象的方法，少部分方法实现自己重写，甚至加入自己独有的方法</p>
+</li>
+<li><p><strong>实例</strong></p>
+<p>MySet构造函数中接收了一个HashSet参数这就相当于一个辅助对象，Set接口中所有方法的实现都是调用了辅助对象中相应的方法实现的，这就是类委托</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MySet</span>&lt;<span class="type">T</span>&gt;(<span class="keyword">val</span> helperSet: HashSet&lt;T&gt;) : Set&lt;T&gt;  &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="keyword">val</span> size: <span class="built_in">Int</span></span><br><span class="line">        <span class="keyword">get</span>() = helperSet.size</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">isEmpty</span><span class="params">()</span></span>=helperSet.isEmpty()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">iterator</span><span class="params">()</span></span>=helperSet.iterator()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">containsAll</span><span class="params">(elements: <span class="type">Collection</span>&lt;<span class="type">T</span>&gt;)</span></span>=helperSet.containsAll(elements)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">contains</span><span class="params">(element: <span class="type">T</span>)</span></span>=helperSet.contains(element)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用<strong>by</strong>类委托关键字简化</p>
+<p>哪个方法需要重新实现只需要写那一个方法即可，不需要把所有继承方法都写下来</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MySet</span>&lt;<span class="type">T</span>&gt;(<span class="keyword">val</span> helperSet: HashSet&lt;T&gt;) : Set&lt;T&gt; <span class="keyword">by</span> helperSet &#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">helloWorld</span><span class="params">()</span></span> = println(<span class="string">&quot;Hello World&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">isEmpty</span><span class="params">()</span></span> = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="委托属性"><a href="#委托属性" class="headerlink" title="委托属性"></a>委托属性</h3><ul>
+<li><p><strong>原理</strong></p>
+<p>将一个属性(字段)的具体实现委托给另一个类去完成</p>
+</li>
+<li><p><strong>语法结构</strong></p>
+<p>将p属性具体实现委托给Delegate类完成，当调用p时会自动调用Delegate的getValue()方法，当给其赋值会调用Delegate的setValue()方法</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> p <span class="keyword">by</span> Delegate()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Delegate()的实现</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Delegate</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> propValue: Any? = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 第一个参数声明该委托功能可以在哪个类中使用</span></span><br><span class="line"><span class="comment">     第二个参数是一个属性操作类，当前情景用不着但必须声明</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">getValue</span><span class="params">(myClass: <span class="type">MyClass</span>, prop: <span class="type">KProperty</span>&lt;*&gt;)</span></span>: Any? &#123;</span><br><span class="line">        <span class="keyword">return</span> propValue</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 第一个参数声明该委托功能可以在哪个类中使用</span></span><br><span class="line"><span class="comment">     第二个参数是一个属性操作类，当前情景用不着但必须声明</span></span><br><span class="line"><span class="comment">     第三个参数表示具体赋给委托属性的值，必须与getValue方法返回值类型一致</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">setValue</span><span class="params">(myClass: <span class="type">MyClass</span>, prop: <span class="type">KProperty</span>&lt;*&gt;, value: <span class="type">Any</span>?)</span></span> &#123;</span><br><span class="line">       propValue = value</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>**注意：**当p属性用val修饰时不需要再去实现setValue方法</p>
+<hr>
+</li>
+</ul>
+<h1 id="实现一个自己的lazy函数"><a href="#实现一个自己的lazy函数" class="headerlink" title="实现一个自己的lazy函数"></a>实现一个自己的lazy函数</h1><ul>
+<li><p><strong>高阶函数</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Later</span>&lt;<span class="type">T</span>&gt;(<span class="keyword">val</span> block:()-&gt;T)&#123;</span><br><span class="line">    <span class="keyword">var</span> value:Any?=<span class="literal">null</span></span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">getValue</span><span class="params">(any:<span class="type">Any</span>?,prop:<span class="type">KProperty</span>&lt;*&gt;)</span></span>:T&#123;</span><br><span class="line">        <span class="keyword">if</span>(value==<span class="literal">null</span>)&#123;</span><br><span class="line">            value=block()</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> value <span class="keyword">as</span> T</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>创建Later类实例并将接收的函数类型参数传给Later类的构造函数</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="type">&lt;T&gt;</span><span class="title">later</span><span class="params">(block:()-&gt;<span class="type">T</span>)</span></span>=Later(block)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>实现</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> uriMatcher <span class="keyword">by</span> later&#123;</span><br><span class="line">    <span class="keyword">val</span> matcher=UriMatcher(UriMatcher.NO_MATCH)</span><br><span class="line">    matcher.addURI(authority,path,CODE_CREATE)</span><br><span class="line">    ......</span><br><span class="line">    matcher</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>验证</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> p <span class="keyword">by</span> later&#123;</span><br><span class="line">    Log.d(<span class="string">&quot;TAG&quot;</span>,<span class="string">&quot;run codes inside later block&quot;</span>)</span><br><span class="line">    <span class="string">&quot;test later&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：一般还是更常用Kotlin内置的<strong>lazy</strong>函数</p>
+</li>
+</ul>
+<hr>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2025 Hexo
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;John Doe
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>

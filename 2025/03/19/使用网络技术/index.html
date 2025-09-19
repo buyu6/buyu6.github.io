@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>使用网络技术(Java) | Hexo</title>
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>HEXO</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;HEXO</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>使用网络技术(Java)</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/3/19
+        </span>
+        
+        <span class="category">
+            <a href="/categories/Android-Java%E7%89%88/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Android(Java版)
+            </a>
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="WebView"><a href="#WebView" class="headerlink" title="WebView"></a>WebView</h1><p>可以利用其嵌入一个浏览器</p>
+<p>1.在布局文件中引入WebView控件</p>
+<p>2.获取该控件实例并设置浏览器属性</p>
+<p>3.用setWebViewClient使目标网页在WebView显示</p>
+<p>4.调用loadUrl方法传入网址并获取权限</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;LinearLayout xmlns:android=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="line">    android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">    android:layout_height=<span class="string">&quot;match_parent&quot;</span>&gt;</span><br><span class="line">    &lt;WebView</span><br><span class="line">        android:id=<span class="string">&quot;@+id/web_view&quot;</span></span><br><span class="line">        android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;match_parent&quot;</span>/&gt;</span><br><span class="line"></span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AppCompatActivity</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        WebView webView=(WebView) findViewById(R.id.web_view);</span><br><span class="line">        webView.getSettings().setJavaScriptEnabled(<span class="literal">true</span>);</span><br><span class="line">        webView.setWebViewClient(<span class="keyword">new</span> <span class="title class_">WebViewClient</span>());</span><br><span class="line">        webView.loadUrl(<span class="string">&quot;https://www.baidu.com&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name=<span class="string">&quot;android.permission.INTERNET&quot;</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="使用HTTP协议访问网络"><a href="#使用HTTP协议访问网络" class="headerlink" title="使用HTTP协议访问网络"></a>使用HTTP协议访问网络</h1><h3 id="使用HttpURLConnection"><a href="#使用HttpURLConnection" class="headerlink" title="使用HttpURLConnection"></a>使用HttpURLConnection</h3><h5 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h5><p>1.调用sendRequestWithHttpURLConnection()方法开启子线程,并使用HttpURLConnection发出HTTP请求</p>
+<p>2.利用BufferedReader对服务器返回的流进行读取，并将结果传入到showResponse()中</p>
+<p>3.在showResponse里通过runOnUiThread将线程切换到主线程,然后更新UI元素（安卓不允许在子线程进行UI操作）</p>
+<p>4.获取权限</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AppCompatActivity</span> <span class="keyword">implements</span> <span class="title class_">View</span>.OnClickListener &#123;</span><br><span class="line">    <span class="comment">//定义TextView</span></span><br><span class="line">    TextView responseText;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        <span class="comment">//获取按钮实例</span></span><br><span class="line">        Button sendRequest=(Button) findViewById(R.id.send_request);</span><br><span class="line">        <span class="comment">//获取TextView实例</span></span><br><span class="line">        responseText=(TextView) findViewById(R.id.response_text);</span><br><span class="line">        <span class="comment">//设置按钮点击事件</span></span><br><span class="line">        sendRequest.setOnClickListener(<span class="built_in">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//按钮点击事件</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(view.getId()==R.id.send_request)&#123;</span><br><span class="line">            <span class="comment">//发送网络请求</span></span><br><span class="line">            sendRequestWithHttpURLConnection();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">sendRequestWithHttpURLConnection</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">//开启线程来发起网络请求</span></span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Thread</span>(<span class="keyword">new</span> <span class="title class_">Runnable</span>() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">                <span class="comment">//获取HttpURLConnection和BufferedReader对象</span></span><br><span class="line">                HttpURLConnection connection=<span class="literal">null</span>;</span><br><span class="line">                BufferedReader reader=<span class="literal">null</span>;</span><br><span class="line">                <span class="keyword">try</span>&#123;</span><br><span class="line">                    <span class="comment">//获取URL对象，并传入目标网址</span></span><br><span class="line">                    URL url=<span class="keyword">new</span> <span class="title class_">URL</span>(<span class="string">&quot;https://www.baidu.com&quot;</span>);</span><br><span class="line">                    <span class="comment">//获取HttpURLConnection实例</span></span><br><span class="line">                    connection=(HttpURLConnection) url.openConnection();</span><br><span class="line">                    <span class="comment">//设置HTTP请求使用的方法(方法主要有两个，一个是GET表示希望从服务器那里获取数据，POST表示希望提交数据给服务器)</span></span><br><span class="line">                    connection.setRequestMethod(<span class="string">&quot;GET&quot;</span>);</span><br><span class="line">                    <span class="comment">//自由定制一些设置如连接超时或读取超时的毫秒数</span></span><br><span class="line">                    connection.setConnectTimeout(<span class="number">8000</span>);</span><br><span class="line">                    connection.setReadTimeout(<span class="number">8000</span>);</span><br><span class="line">                    <span class="comment">//获取到服务器返回的输入流</span></span><br><span class="line">                    InputStream in=connection.getInputStream();</span><br><span class="line">                    <span class="comment">//下面对获取到的输入流进行读取</span></span><br><span class="line">                    reader=<span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(in));</span><br><span class="line">                    StringBuilder response=<span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">                    String line;</span><br><span class="line">                    <span class="comment">//readLine一行一行读取并将其返回成字符串</span></span><br><span class="line">                    <span class="keyword">while</span>((line= reader.readLine())!=<span class="literal">null</span>)&#123;</span><br><span class="line">                        response.append(line);</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="comment">//将返回的数据显示显示到界面上</span></span><br><span class="line">                    showResponse(response.toString());</span><br><span class="line">                &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">                    <span class="keyword">if</span>(reader!=<span class="literal">null</span>)&#123;</span><br><span class="line">                        <span class="keyword">try</span>&#123;</span><br><span class="line">                            <span class="comment">//关掉BufferedReader对象</span></span><br><span class="line">                            reader.close();</span><br><span class="line">                        &#125;<span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">                            e.printStackTrace();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span>(connection!=<span class="literal">null</span>)&#123;</span><br><span class="line">                        <span class="comment">//将HTTP连接关掉</span></span><br><span class="line">                        connection.disconnect();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;).start();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//将返回的数据显示显示到界面上</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">showResponse</span><span class="params">(<span class="keyword">final</span> String response)</span>&#123;</span><br><span class="line">        runOnUiThread(<span class="keyword">new</span> <span class="title class_">Runnable</span>() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">                <span class="comment">//在这里进行UI操作，将结果显示到界面上</span></span><br><span class="line">                responseText.setText(response);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h5><p>将请求方法改为POST，并在获取输入流之前把要提交数据写出即可。注意每条数据都要以键值对形式存在，数据与数据间用“&amp;”隔开</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">connection.setRequestMethod(<span class="string">&quot;POST&quot;</span>);</span><br><span class="line">DataOutputStream out=<span class="keyword">new</span> <span class="title class_">DataOutputStream</span>(connection.getOutputStream);</span><br><span class="line">out.writeBytes(<span class="string">&quot;username=admin &amp; password=123456&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用OkHttp"><a href="#使用OkHttp" class="headerlink" title="使用OkHttp"></a>使用OkHttp</h3><h5 id="GET-1"><a href="#GET-1" class="headerlink" title="GET"></a>GET</h5><p>1.添加依赖库</p>
+<p>2.获取OkHttpClient实例</p>
+<p>3.创建Request对象，发起一条HTTP请求，可以在build之前连缀很多方法来丰富该对象</p>
+<p>4.调用newCall()创建一个Call对象，并用execute方法发送请求并获取服务器返回的数据</p>
+<p>5.获取返回数据具体内容</p>
+<p>6.获取权限</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation (<span class="string">&quot;com.squareup.okhttp3:okhttp:4.12.0&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AppCompatActivity</span> <span class="keyword">implements</span> <span class="title class_">View</span>.OnClickListener &#123;</span><br><span class="line">    <span class="comment">//定义TextView</span></span><br><span class="line">    TextView responseText;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        <span class="comment">//获取按钮实例</span></span><br><span class="line">        Button sendRequest=(Button) findViewById(R.id.send_request);</span><br><span class="line">        <span class="comment">//获取TextView实例</span></span><br><span class="line">        responseText=(TextView) findViewById(R.id.response_text);</span><br><span class="line">        <span class="comment">//设置按钮点击事件</span></span><br><span class="line">        sendRequest.setOnClickListener(<span class="built_in">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">        sendRequestWithOkHttp();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">sendRequestWithOkHttp</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Thread</span>(<span class="keyword">new</span> <span class="title class_">Runnable</span>() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="type">OkHttpClient</span> <span class="variable">client</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">OkHttpClient</span>();</span><br><span class="line">                    <span class="type">Request</span> <span class="variable">request</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Request</span>.Builder()</span><br><span class="line">                            .url(<span class="string">&quot;https://www.baidu.com&quot;</span>)</span><br><span class="line">                            .build();</span><br><span class="line">                        <span class="type">Response</span> <span class="variable">response</span> <span class="operator">=</span> client.newCall(request).execute();</span><br><span class="line">                        <span class="type">String</span> <span class="variable">responseData</span> <span class="operator">=</span> response.body().string();</span><br><span class="line">                        showResponse(responseData);</span><br><span class="line">                &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;).start();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//将返回的数据显示显示到界面上</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">showResponse</span><span class="params">(<span class="keyword">final</span> String response)</span>&#123;</span><br><span class="line">        runOnUiThread(<span class="keyword">new</span> <span class="title class_">Runnable</span>() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">                <span class="comment">//在这里进行UI操作，将结果显示到界面上</span></span><br><span class="line">                responseText.setText(response);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name=<span class="string">&quot;android.permission.INTERNET&quot;</span> /&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="POST-1"><a href="#POST-1" class="headerlink" title="POST"></a>POST</h5><p>1.先构建一个RequestBody对象来存放待提交的参数</p>
+<p>2.在Request.Builder()中调用post()方法将RequestBody对象传入</p>
+<p>3.接下来操作和GET的一样</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">RequestBody requestBody=<span class="keyword">new</span> <span class="title class_">FormBody</span>.Builder()</span><br><span class="line">    .add(<span class="string">&quot;username&quot;</span>,<span class="string">&quot;admin&quot;</span>)</span><br><span class="line">    .add(<span class="string">&quot;password&quot;</span>,<span class="string">&quot;123456&quot;</span>)</span><br><span class="line">    .build();</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Request</span> <span class="variable">request</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Request</span>.Builder()</span><br><span class="line">    .url(<span class="string">&quot;https://www.baidu.com&quot;</span>)</span><br><span class="line">    .post(requestBody)</span><br><span class="line">    .build();</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2025 Hexo
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;John Doe
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>

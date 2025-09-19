@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>高级技巧(Java) | Hexo</title>
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>HEXO</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;HEXO</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>高级技巧(Java)</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/3/28
+        </span>
+        
+        <span class="category">
+            <a href="/categories/Android-Java%E7%89%88/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Android(Java版)
+            </a>
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="全局获取Context"><a href="#全局获取Context" class="headerlink" title="全局获取Context"></a>全局获取Context</h1><p>1.定制自己的Application类</p>
+<p>2.在Manifest.xml中进行初始化</p>
+<p>3.如果有LitePal则在Application中调用LitePal初始化方法就行</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyApplication</span> <span class="keyword">extends</span> <span class="title class_">Application</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Context context;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@SuppressLint(&quot;MissingSuperCall&quot;)</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">()</span> &#123;</span><br><span class="line">        context = getApplicationContext();</span><br><span class="line">        LitePalApplication.initialize(context);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Context <span class="title function_">getContext</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> context;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;application</span><br><span class="line">       android:name=<span class="string">&quot;com.example.application.MyApplication&quot;</span>&gt;</span><br><span class="line">&lt;/application&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="Intent传递数据"><a href="#Intent传递数据" class="headerlink" title="Intent传递数据"></a>Intent传递数据</h1><h3 id="Serializable-序列化"><a href="#Serializable-序列化" class="headerlink" title="Serializable(序列化)"></a>Serializable(序列化)</h3><p>1.让一个类去实现Serializable接口</p>
+<p>2.Intent传值</p>
+<p>3.调用getSerializableExtra方法接收值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Person</span> <span class="keyword">implements</span> <span class="title class_">Serializable</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getAge</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setAge</span><span class="params">(<span class="type">int</span> age)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Person person=<span class="keyword">new</span> <span class="title class_">Person</span>();</span><br><span class="line">       person.setName(<span class="string">&quot;zx&quot;</span>);</span><br><span class="line">       person.setAge(<span class="number">18</span>);</span><br><span class="line">       Intent intent=<span class="keyword">new</span> <span class="title class_">Intent</span>(FirstActivity.<span class="built_in">this</span>, SecondActivity.class);</span><br><span class="line">       intent.putExtra(<span class="string">&quot;person_data&quot;</span>,person);</span><br><span class="line">       startActivity(intent);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Person person=(Person) getIntent().getSerializableExtra(<span class="string">&quot;person_data&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Parcelable"><a href="#Parcelable" class="headerlink" title="Parcelable"></a>Parcelable</h3><p>1.让一个类去实现Parcelable接口</p>
+<p>2.重写writeToParcel方法写入数据</p>
+<p>3.创建一个常量CREATOR，创建Parcelable.Creator接口的一个实现</p>
+<p>4.重写createFromParcel方法对数据进行读取，读取顺序和写出顺序一致</p>
+<p>5.同上一个Intent用法基本一致</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Person</span> <span class="keyword">implements</span> <span class="title class_">Parcelable</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getAge</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setAge</span><span class="params">(<span class="type">int</span> age)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">describeContents</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">writeToParcel</span><span class="params">(<span class="meta">@NonNull</span> Parcel parcel, <span class="type">int</span> i)</span> &#123;</span><br><span class="line"> parcel.writeString(name);<span class="comment">//写出Name</span></span><br><span class="line"> parcel.writeInt(age);<span class="comment">//写出Age</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Parcelable.Creator&lt;Person&gt; CREATOR = <span class="keyword">new</span> <span class="title class_">Parcelable</span>.Creator&lt;Person&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> Person <span class="title function_">createFromParcel</span><span class="params">(Parcel in)</span> &#123;</span><br><span class="line">            Person person=<span class="keyword">new</span> <span class="title class_">Person</span>();</span><br><span class="line">            person.name=in.readString();<span class="comment">//读取name</span></span><br><span class="line">            person.age=in.readInt();<span class="comment">//读取age</span></span><br><span class="line">            <span class="keyword">return</span> person;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> Person[] newArray(<span class="type">int</span> size) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Person</span>[size];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Person person=<span class="keyword">new</span> <span class="title class_">Person</span>();</span><br><span class="line">       person.setName(<span class="string">&quot;zx&quot;</span>);</span><br><span class="line">       person.setAge(<span class="number">18</span>);</span><br><span class="line">       Intent intent=<span class="keyword">new</span> <span class="title class_">Intent</span>(FirstActivity.<span class="built_in">this</span>, SecondActivity.class);</span><br><span class="line">       intent.putExtra(<span class="string">&quot;person_data&quot;</span>,person);</span><br><span class="line">       startActivity(intent);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Person person=(Person) getIntent().getParcelableExtra(<span class="string">&quot;person_data&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="定制自己的日志工具"><a href="#定制自己的日志工具" class="headerlink" title="定制自己的日志工具"></a>定制自己的日志工具</h1><p>1.新建一个日志类</p>
+<p>2.项目上线前将level定义为VERBOSE，上线后将其定义为NOTHING</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LogUtil</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> VERBOSE=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> DEBUG=<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> INFO=<span class="number">3</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> WARN=<span class="number">4</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> ERROR=<span class="number">5</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> NOTHING=<span class="number">6</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> level=VERBOSE;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">v</span><span class="params">(String tag,String msg)</span>&#123;</span><br><span class="line"><span class="keyword">if</span>(level&lt;=VERBOSE)&#123;</span><br><span class="line">    Log.v(tag,msg);</span><br><span class="line">&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">d</span><span class="params">(String tag,String msg)</span>&#123;</span><br><span class="line"><span class="keyword">if</span>(level&lt;=DEBUG)&#123;</span><br><span class="line">    Log.d(tag, msg);</span><br><span class="line">&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">i</span><span class="params">(String tag,String msg)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(level&lt;=INFO)&#123;</span><br><span class="line">            Log.i(tag, msg);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">w</span><span class="params">(String tag,String msg)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(level&lt;=WARN)&#123;</span><br><span class="line">            Log.w(tag, msg);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">e</span><span class="params">(String tag,String msg)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(level&lt;=ERROR)&#123;</span><br><span class="line">            Log.e(tag, msg);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="调试Android程序"><a href="#调试Android程序" class="headerlink" title="调试Android程序"></a>调试Android程序</h1><p>逐行的执行代码，查找bug</p>
+<h3 id="DeBug按钮调试"><a href="#DeBug按钮调试" class="headerlink" title="DeBug按钮调试"></a>DeBug按钮调试</h3><p>1.在需要调试的部分设置断点</p>
+<p>2.点击Debug调试按钮</p>
+<h3 id="Attach-debugger-to-Android-process按钮调试"><a href="#Attach-debugger-to-Android-process按钮调试" class="headerlink" title="Attach debugger to Android process按钮调试"></a>Attach debugger to Android process按钮调试</h3><p>1.设置断点</p>
+<p>2.直接运行程序</p>
+<p>3.点击工具栏中的Attach debugger to Android process进入Debug窗口</p>
+<hr>
+<h1 id="创建定时任务"><a href="#创建定时任务" class="headerlink" title="创建定时任务"></a>创建定时任务</h1><h3 id="Alarm机制"><a href="#Alarm机制" class="headerlink" title="Alarm机制"></a>Alarm机制</h3><p>1.建立一个新的服务</p>
+<p>2.在onStartCommand中开启一个新的线程</p>
+<p>3.利用AlarmManager进行设定(用setExact替代set，基本可以保证任务可以准时进行)</p>
+<p>4.启动定时服务</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">onStartCommand</span><span class="params">(Intent intent, <span class="type">int</span> flags, <span class="type">int</span> startId)</span> &#123;</span><br><span class="line">        <span class="comment">//开启一个子线程</span></span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Thread</span>(<span class="keyword">new</span> <span class="title class_">Runnable</span>() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">                <span class="comment">//在这里执行具体的逻辑操作</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;).start();</span><br><span class="line">        <span class="comment">//获取实例</span></span><br><span class="line">        AlarmManager manager=(AlarmManager) getSystemService(ALARM_SERVICE);</span><br><span class="line">        <span class="type">int</span> anHour=<span class="number">60</span>*<span class="number">60</span>*<span class="number">1000</span>;</span><br><span class="line">        <span class="type">long</span> triggerAtTime= SystemClock.elapsedRealtime()+anHour;</span><br><span class="line">        <span class="comment">//指定定时任务的服务为LongRunningService</span></span><br><span class="line">        Intent intent1=<span class="keyword">new</span> <span class="title class_">Intent</span>(<span class="built_in">this</span>, LongRunningService.class);</span><br><span class="line">        <span class="meta">@SuppressLint(&quot;UnspecifiedImmutableFlag&quot;)</span> PendingIntent pi=PendingIntent.getService(<span class="built_in">this</span>,<span class="number">0</span>,intent1,<span class="number">0</span>);</span><br><span class="line">        <span class="comment">//调用set方法完成设定</span></span><br><span class="line">        manager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,triggerAtTime,pi);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">super</span>.onStartCommand(intent,flags,startId);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//启动定时服务</span></span><br><span class="line">Intent intent=<span class="keyword">new</span> <span class="title class_">Intent</span>(<span class="built_in">this</span>, LongRunningService.class);</span><br><span class="line">context.startService(intent);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Doze模式"><a href="#Doze模式" class="headerlink" title="Doze模式"></a>Doze模式</h3><p>该模式下受限的功能：</p>
+<p>1.网络访问被禁止</p>
+<p>2.系统忽略唤醒CPU或者屏幕操作</p>
+<p>3.系统不再执行WIFI扫描</p>
+<p>4.系统不再执行同步服务</p>
+<p>5.Alarm服务将会在下次退出Doze模式时执行(该情况下定时任务会有误差，可以用setAndAllowWhileIdle()或setExactAndAllowWhileIdle()方法解决，这俩方法的区别和set(),setExact()之间的区别一样)</p>
+<hr>
+<h1 id="多窗口模式编程"><a href="#多窗口模式编程" class="headerlink" title="多窗口模式编程"></a>多窗口模式编程</h1><p>一：改变进入多窗口模式活动会被重建这一默认设置：</p>
+<p>在Manifest.xml进行配置：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:configChanges=<span class="string">&quot;orientation|keyboardHidden|screenSize|screenLayout&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>二：禁用多窗口模式：<br>1.在<application>或<activity>中加入如下属性：(targetSdkVersion&gt;&#x3D;24时有用)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:resizeableActivity=<span class="string">&quot;false&quot;</span><span class="comment">//false为不支持，true为支持，默认为true</span></span><br></pre></td></tr></table></figure>
+
+<p>2.targetSdkVersion&lt;24时，android规定活动不允许横竖屏切换时，则其也不支持多窗口模式</p>
+<p>只需在<activity>标签中加入以下配置：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:screenOrientation=<span class="string">&quot;portrait&quot;</span><span class="comment">//portrait只支持竖屏，landscape只支持横屏</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h1><p><strong>条件</strong>：只有一个待实现方法的接口可以使用这样的写法</p>
+<p><strong>实例</strong>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Runnable runnable=<span class="keyword">new</span> <span class="title class_">Runnable</span>()&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="comment">//添加具体的实现</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//用Lambda改写</span></span><br><span class="line">Runnable runnable=()-&gt;&#123;</span><br><span class="line">   <span class="comment">//代码逻辑</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建接口</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">MyListener</span>&#123;</span><br><span class="line">    String <span class="title function_">doSomething</span><span class="params">(String a,<span class="type">int</span> b)</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Lambda写法</span></span><br><span class="line">MyListener listener=(a,b)-&gt;&#123;</span><br><span class="line">    String result=a+b;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//参数类型可以省略，如果只有一个参数还可以把括号去掉</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2025 Hexo
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;John Doe
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>

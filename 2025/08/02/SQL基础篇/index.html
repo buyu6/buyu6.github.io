@@ -1,0 +1,287 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>SQL基础篇 | Hexo</title>
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>HEXO</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;HEXO</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>SQL基础篇</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/8/2
+        </span>
+        
+        <span class="category">
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-SQL/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                数据库(SQL)
+            </a>
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="SQL通用语法及其分类"><a href="#SQL通用语法及其分类" class="headerlink" title="SQL通用语法及其分类"></a>SQL通用语法及其分类</h1><h3 id="通用语法"><a href="#通用语法" class="headerlink" title="通用语法"></a>通用语法</h3><p><img src="/../img/img62.png"></p>
+<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><p><img src="/../img/img63.png"></p>
+<hr>
+<h1 id="DDL"><a href="#DDL" class="headerlink" title="DDL"></a>DDL</h1><h3 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h3><ul>
+<li><p><strong>查询</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> databases;#查询所有数据库</span><br><span class="line"><span class="keyword">select</span> database();#查询当前数据库</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>创建</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> database [IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>] 数据库名 [<span class="keyword">DEFAULT</span> CHARSET 字符集] [<span class="keyword">COLLATE</span> 排列规则];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>删除</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> DATABASE [IF <span class="keyword">EXISTS</span>] 数据库名;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>使用</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">USE 数据库名;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="表操作"><a href="#表操作" class="headerlink" title="表操作"></a>表操作</h3><ul>
+<li><p><strong>查询</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> TABLES;#查询当前数据库所有表格</span><br><span class="line"><span class="keyword">DESC</span> 表名;#查询表结构</span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">CREATE TABLE</span> 表名;#查询指定表的建表语句</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>创建</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> 表名(</span><br><span class="line">	字段<span class="number">1</span> 字段<span class="number">1</span>类型[COMMENT 字段<span class="number">1</span>注释]</span><br><span class="line">    字段<span class="number">2</span> 字段<span class="number">2</span>类型[COMMENT 字段<span class="number">2</span>注释]</span><br><span class="line">    字段<span class="number">3</span> 字段<span class="number">3</span>类型[COMMENT 字段<span class="number">3</span>注释]</span><br><span class="line">    . . . . . . .</span><br><span class="line">    字段n 字段n类型[COMMENT 字段n注释]</span><br><span class="line">)[COMMENT 表注释]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>修改</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER TABLE</span> 表名 <span class="keyword">ADD</span> 字段名 类型(长度) [COMMENT 注释] [约束];#添加字段</span><br><span class="line"><span class="keyword">ALTER TABLE</span> 表名 MODIFY 字段名 新数据类型(长度);#修改数据类型</span><br><span class="line"><span class="keyword">ALTER TABLE</span> 表名 CHANGE 旧字段名 新字段名 类型(长度) [COMMENT 注释] [约束];#修改字段名和字段类型</span><br><span class="line"><span class="keyword">ALTER TABLE</span> 表名 RENAME <span class="keyword">TO</span> 新表名;#修改表名</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>删除</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter table</span> 表名 <span class="keyword">drop</span> 字段名;#删除字段</span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> [if <span class="keyword">exists</span>] 表名;#删除表</span><br><span class="line"><span class="keyword">truncate</span> <span class="keyword">table</span> 表名;#删除指定表，并重新创建该表</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><ul>
+<li><p><strong>字符串类型</strong></p>
+<p><img src="/../img/img64.png"></p>
+</li>
+<li><p><strong>数值类型</strong></p>
+<p><img src="/../img/img65.png"></p>
+</li>
+<li><p><strong>日期类型</strong></p>
+<p><img src="/../img/img66.png"></p>
+</li>
+</ul>
+<hr>
+<h1 id="DML"><a href="#DML" class="headerlink" title="DML"></a>DML</h1><h3 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h3><p><img src="/../img/img67.png"></p>
+<h3 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h3><p><img src="/../img/img68.png"></p>
+<h3 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h3><p><img src="/../img/img69.png"></p>
+<hr>
+<h1 id="DQL"><a href="#DQL" class="headerlink" title="DQL"></a>DQL</h1><h3 id="通用语法-1"><a href="#通用语法-1" class="headerlink" title="通用语法"></a>通用语法</h3><p><img src="/../img/img70.png"></p>
+<h3 id="基本查询"><a href="#基本查询" class="headerlink" title="基本查询"></a>基本查询</h3><p><img src="/../img/img71.png"></p>
+<h3 id="条件查询"><a href="#条件查询" class="headerlink" title="条件查询"></a>条件查询</h3><p><img src="/../img/img72.png"></p>
+<h3 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h3><p><img src="/../img/img73.png"></p>
+<h3 id="分组查询"><a href="#分组查询" class="headerlink" title="分组查询"></a>分组查询</h3><p><img src="/../img/img74.png"></p>
+<h3 id="排序查询"><a href="#排序查询" class="headerlink" title="排序查询"></a>排序查询</h3><p><img src="/../img/img75.png"></p>
+<h3 id="分页查询"><a href="#分页查询" class="headerlink" title="分页查询"></a>分页查询</h3><p><img src="/../img/img76.png"></p>
+<h3 id="执行顺序"><a href="#执行顺序" class="headerlink" title="执行顺序"></a>执行顺序</h3><p><img src="/../img/img77.png"></p>
+<hr>
+<h1 id="DCL"><a href="#DCL" class="headerlink" title="DCL"></a>DCL</h1><h3 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h3><p><img src="/../img/img78.png"></p>
+<h3 id="权限控制"><a href="#权限控制" class="headerlink" title="权限控制"></a>权限控制</h3><p><img src="/../img/img79.png"></p>
+<p><img src="/../img/img80.png"></p>
+<hr>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2025 Hexo
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;John Doe
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>

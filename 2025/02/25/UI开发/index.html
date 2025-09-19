@@ -1,0 +1,335 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>UI开发(Java) | Hexo</title>
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>HEXO</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;HEXO</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>UI开发(Java)</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/2/25
+        </span>
+        
+        <span class="category">
+            <a href="/categories/Android-Java%E7%89%88/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Android(Java版)
+            </a>
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="常用控件"><a href="#常用控件" class="headerlink" title="常用控件"></a>常用控件</h1><h3 id="TextView"><a href="#TextView" class="headerlink" title="TextView"></a>TextView</h3><p>1.android:id定义唯一标识符<br>2.android:layout_width指定宽度有match_parent和wrap_content两个选项，第一个表示当前控件大小和父布局大小一样，第二个表示当前控件大小刚好能包住里面的内容<br>3.android:layout_height指定高度，选项和上相同<br>4.android:text指定文本显示的内容<br>5.android:gravity指定文字对齐方式可选值有top,bottom,left,right,center等，可以用“|”来指定多个值<br>6.android:textSize指定文字大小，用sp做单位<br>7.android:textColor指定文字颜色</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;TextView</span><br><span class="line">       android:id=<span class="string">&quot;@+id/text_view&quot;</span></span><br><span class="line">       android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">       android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">       android:gravity=<span class="string">&quot;center&quot;</span></span><br><span class="line">       android:text=<span class="string">&quot;@string/this_is_textview&quot;</span></span><br><span class="line">       android:textColor=<span class="string">&quot;#00ff00&quot;</span></span><br><span class="line">       android:textSize=<span class="string">&quot;24sp&quot;</span></span><br><span class="line">      /&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Button"><a href="#Button" class="headerlink" title="Button"></a>Button</h3><p>1.android:id确定唯一标识符<br>2.android:layout_width指定宽度<br>3.android:layout_height指定高度<br>4.android:text指定文本内容<br>5.android:textAllCaps是否对字母进行大写转换<br><strong>含有的板块与TextView中的差不多，其余的不再过多赘述</strong><br><strong>重点:设定完按钮后在活动中要给其注册一个相应的点击事件(注册一个监听器)</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;Button</span><br><span class="line">       android:id=<span class="string">&quot;@+id/button&quot;</span></span><br><span class="line">       android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">       android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">       android:text=<span class="string">&quot;@string/button&quot;</span></span><br><span class="line">       android:textAllCaps=<span class="string">&quot;false&quot;</span> /&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Button button=(Button) findViewById(R.id.button);</span><br><span class="line">button.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">               <span class="type">ProgressDialog</span> <span class="variable">dialog</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ProgressDialog</span>(MainActivity.<span class="built_in">this</span>);</span><br><span class="line">              <span class="comment">//此处添加逻辑代码</span></span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="EditText"><a href="#EditText" class="headerlink" title="EditText"></a>EditText</h3><p>1.android:id唯一标识符<br>2.android:layout-width确定宽度<br>3.android:layout_height高度<br>4.android:hint指定一段提示性文字，输入内容后文字会自己消失<br>5.android:maxLines指定文本输入的最大行数<br>6.EditText与Button可以结合使用，首先使用findViewById方法得到EditText的实例，然后在按钮点击事件里修改通过getText获取文本内容利用toString转换成字符串，最后利用Toast将内容通过按钮显示</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;EditText</span><br><span class="line">      android:id=<span class="string">&quot;@+id/edit_text&quot;</span></span><br><span class="line">      android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">      android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">      android:hint=<span class="string">&quot;@string/type_something_here&quot;</span></span><br><span class="line">      android:textSize=<span class="string">&quot;20sp&quot;</span></span><br><span class="line">      android:maxLines=<span class="string">&quot;2&quot;</span></span><br><span class="line">      /&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> EditText editText;</span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line">   <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">       <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">       setContentView(R.layout.activity_main);</span><br><span class="line">        Button button=(Button) findViewById(R.id.button);</span><br><span class="line">       editText=(EditText) findViewById(R.id.edit_text);    </span><br><span class="line">       button.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">             String inputText=editText.getText().toString;</span><br><span class="line">             Toast.makeText(MainActivity.<span class="built_in">this</span>,inputText,Toast.LENGTH_SHORT).show();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="ImageView"><a href="#ImageView" class="headerlink" title="ImageView"></a>ImageView</h3><p>1.android:id<br>2.android:layout_width<br>3.android:layout_height<br>4.android:src选择显示的图片<br>5.可以和按钮一起使用动态的更改图片</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;ImageView</span><br><span class="line">      android:id=<span class="string">&quot;@+id/image_view&quot;</span></span><br><span class="line">      android:layout_width=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">      android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">      android:src=<span class="string">&quot;@drawable/img_1&quot;</span></span><br><span class="line">       /&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> ImageView imageView;  </span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    setContentView(R.layout.activity_main);</span><br><span class="line">    Button button=(Button) findViewById(R.id.button);</span><br><span class="line">     imageView=(ImageView) findViewById(R.id.image_view) ;</span><br><span class="line">    button.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">         imageView.setImageResource(R.drawable.img_2);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="ProgressBar"><a href="#ProgressBar" class="headerlink" title="ProgressBar"></a>ProgressBar</h3><p>用途:用于显示进度条<br>1.android:id<br>2.android:layout_width<br>3.android:layout_height<br>4.android:max设置进度条最大值<br>5.style设置进度条的种类<br>6.通过按钮可以实现，进度条可见变为不可见，不可见变为可见<br>7.通过按钮可以使进度条发生动态变化</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;ProgressBar</span><br><span class="line">       android:id=<span class="string">&quot;@+id/progress_bar&quot;</span></span><br><span class="line">       android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">       android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">       style=<span class="string">&quot;?android:attr/progressBarStyleHorizontal&quot;</span></span><br><span class="line">       android:max=<span class="string">&quot;100&quot;</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> ProgressBar progressBar;</span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line"> <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">     <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">     setContentView(R.layout.activity_main);</span><br><span class="line">     Button button=(Button) findViewById(R.id.button);</span><br><span class="line">      progressBar=(ProgressBar) findViewById(R.id.progress_bar);</span><br><span class="line">     button.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">         <span class="meta">@Override</span></span><br><span class="line">         <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">           <span class="comment">/*6.if(progressBar.getVisibility()==View.GONE)&#123;</span></span><br><span class="line"><span class="comment">           progressBar.setVisibility(View.VISIBLE);</span></span><br><span class="line"><span class="comment">           &#125; else&#123;</span></span><br><span class="line"><span class="comment">           progressBar.setVisibility(View.GONE);</span></span><br><span class="line"><span class="comment">           &#125;</span></span><br><span class="line"><span class="comment">           */</span></span><br><span class="line">           <span class="comment">/*7.int progress = progressBar.getProgress();</span></span><br><span class="line"><span class="comment">               progress=progress+10;</span></span><br><span class="line"><span class="comment">               progressBar.setProgress(progress);</span></span><br><span class="line"><span class="comment">           */</span></span><br><span class="line">         &#125;</span><br><span class="line">     &#125;);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="AlertDialog"><a href="#AlertDialog" class="headerlink" title="AlertDialog"></a>AlertDialog</h3><p>作用:弹出对话框，用于提示一些重要信息</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">AlertDialog.<span class="type">Builder</span> <span class="variable">dialog</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AlertDialog</span>.Builder(MainActivity.<span class="built_in">this</span>);</span><br><span class="line">dialog.setTitle(<span class="string">&quot;This is a dialog&quot;</span>);<span class="comment">//标题</span></span><br><span class="line">dialog.setMessage(<span class="string">&quot;Something important&quot;</span>);<span class="comment">//内容</span></span><br><span class="line">dialog.setCancelable(<span class="literal">false</span>);<span class="comment">//是否可以通过点击其他区域来关闭对话框</span></span><br><span class="line">dialog.setPositiveButton(<span class="string">&quot;OK&quot;</span>,<span class="keyword">new</span> <span class="title class_">DialogInterface</span>.OnClickListener()&#123;</span><br><span class="line">    <span class="meta">@Overrid</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Click</span><span class="params">(DialogInterface dialogInterface,<span class="type">int</span> i)</span>&#123;&#125;</span><br><span class="line">&#125;);</span><br><span class="line">dialog.setNegativeButton(<span class="string">&quot;No&quot;</span>,<span class="keyword">new</span> <span class="title class_">DialogInterface</span>.OnClickListener()&#123;</span><br><span class="line">    <span class="meta">@Overrid</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Click</span><span class="params">(DialogInterface dialogInterface,<span class="type">int</span> i)</span>&#123;&#125;</span><br><span class="line">&#125;);</span><br><span class="line">dialog.show();</span><br></pre></td></tr></table></figure>
+
+<h3 id="ProgressDialog"><a href="#ProgressDialog" class="headerlink" title="ProgressDialog"></a>ProgressDialog</h3><p>作用:同AlertDialog相似，不过是在弹出的窗口中有一个进度条</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ProgressDialog</span> <span class="variable">dialog</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ProgressDialog</span>(MainActivity.<span class="built_in">this</span>);</span><br><span class="line">dialog.setTitle(<span class="string">&quot;This is a dialog&quot;</span>);<span class="comment">//标题</span></span><br><span class="line">dialog.setMessage(<span class="string">&quot;Loading......&quot;</span>);<span class="comment">//内容</span></span><br><span class="line">dialog.setCancelable(<span class="literal">true</span>);<span class="comment">//是否可以通过点击其他区域来关闭对话框</span></span><br><span class="line">dialog.show();</span><br></pre></td></tr></table></figure>
+
+<p>如果setCancelable()中传入的是false，此时无法通过back键退出，这时在数据加载完成之后一定要调用dismiss()方法关闭对话框</p>
+<hr>
+<h1 id="四种基本布局"><a href="#四种基本布局" class="headerlink" title="四种基本布局"></a>四种基本布局</h1><h3 id="线性布局"><a href="#线性布局" class="headerlink" title="线性布局"></a>线性布局</h3><p>又叫做<LinearLayout><br>1.android:orientation表示排列方向，有两个选择vertical垂直方向，如果排列方向是这个时高度不能是match_parent，horizontal表示水平方向，如果排列方向是这个时，控件宽度不能设置为match_parent,默认为horizontal<br>2.android:layout_width宽度<br>3.android:layout_height高度<br>4.android:layout_gravity指定控件在布局中的对齐方式，如果排列方式是horizontal是只有垂直方向上的对齐方式才会生效，排列方向是vertical时与之相同</p>
+<p><img src="/../img/img15.jpg"></p>
+<p>5.android:layout_weight这个属性允许我们使用比例的方式来指定控件的大小。使用这个时要把layout_width的值设为“0dp”</p>
+<p><img src="/../img/img16.jpg"></p>
+<p>使用这个属性时，也可以仅部分控件使用可以达到更好的效果</p>
+<h3 id="相对布局"><a href="#相对布局" class="headerlink" title="相对布局"></a>相对布局</h3><p>RelativeLayout又称相对布局，也是一种非常常用的布局，它可以通过定位的方式让控件出现在布局的任意位置<br>1.相对于父布局进行定位</p>
+<p><img src="/../img/img17.jpg"></p>
+<p><img src="/../img/img18.jpg"></p>
+<p>2.相对于控件进行定位:<br>android:layout_above一个控件在另一个控件上面<br>android:layout_below一个控件在另一个控件下面<br>android:layout_toLeft0f一个控件在另一个控件左侧<br>android:layout_toRight0f一个控件在另一个控件右侧<br>注:引用的控件应该放在前面</p>
+<p><img src="/../img/img19.jpg"></p>
+<p><img src="/../img/img20.jpg"></p>
+<p>3.其他定位属性:<br>android:layout_alignLeft表示让一个控件的左边缘同另一个控件左边缘对齐<br>android:layout_alignRight表示让一个控件的右边缘同另一个控件右边缘对齐<br>android:layout_alignTop<br>android:layout_alignBottom</p>
+<h3 id="帧布局"><a href="#帧布局" class="headerlink" title="帧布局"></a>帧布局</h3><p>FrameLayout又叫帧布局，应用场景较少，所有控件都会默认摆在布局左上角，也可以使用android:layout_gravity进行对齐操作，此方法应用场景过少，不做过多赘述</p>
+<h3 id="百分比布局"><a href="#百分比布局" class="headerlink" title="百分比布局"></a>百分比布局</h3><p>百分比布局是对帧布局和相对布局两种布局方式的扩展<br>重点:使用前要先添加百分比布局库的依赖</p>
+<p><img src="/../img/img21.jpg"></p>
+<p>(1)帧布局的百分比布局<br>需要定义一个app空间</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xmlns:app=“http:<span class="comment">//schemas.android.com/apk/res-auto”</span></span><br></pre></td></tr></table></figure>
+
+<p>1.app:layout_widthPercent<br>2.app:layout_heightPercent<br>其余继承FrameLayout</p>
+<p><img src="/../img/img22.jpg"></p>
+<p><img src="/../img/img23.jpg"></p>
+<p>(2)相对布局的百分比布局:与上述相似</p>
+<hr>
+<h1 id="创建自定义控件"><a href="#创建自定义控件" class="headerlink" title="创建自定义控件"></a>创建自定义控件</h1><h3 id="引入布局"><a href="#引入布局" class="headerlink" title="引入布局"></a>引入布局</h3><p>1.新建一个布局，在里面写需要的代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;include layout=<span class="string">&quot;@layout/title&quot;</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2.利用include语句引入<br>3.利用ActionBar隐藏自带标题</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ActionBar actionBar=getSupportActionBar();</span><br><span class="line"><span class="keyword">if</span>(actionBar!=<span class="literal">null</span>)&#123;</span><br><span class="line">    actionBar.hide();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建自定义控件-1"><a href="#创建自定义控件-1" class="headerlink" title="创建自定义控件"></a>创建自定义控件</h3><p>1.创建通用的布局代码。</p>
+<p>2.新建一个类继承自LinearLayout</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TitleLayout</span> <span class="keyword">extends</span> <span class="title class_">LinearLayout</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">TitleLayout</span><span class="params">(Context context, AttributeSet attrs)</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>(context,attrs);</span><br><span class="line">        LayoutInflater.from(context).inflate(R.layout.title,<span class="built_in">this</span>);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>3.将创建好的控件添加到布局文件中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;com.example.uicustomviews.TitleLayout</span><br><span class="line">     android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">     android:layout_height=<span class="string">&quot;wrap_content&quot;</span>/&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>4.可以为按钮注册点击事件在新建那个类中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TitleLayout</span> <span class="keyword">extends</span> <span class="title class_">LinearLayout</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">TitleLayout</span><span class="params">(Context context, AttributeSet attrs)</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>(context,attrs);</span><br><span class="line">        LayoutInflater.from(context).inflate(R.layout.title,<span class="built_in">this</span>);</span><br><span class="line">        <span class="type">Button</span> <span class="variable">titleBack</span> <span class="operator">=</span> (Button) findViewById(R.id.title_back);</span><br><span class="line">        Button titleEdit=(Button) findViewById(R.id.title_edit);</span><br><span class="line">        titleBack.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">                ( (Activity) getContext()).finish();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        titleEdit.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">                Toast.makeText(getContext(), <span class="string">&quot;You clicked &quot;</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="ListView"><a href="#ListView" class="headerlink" title="ListView"></a>ListView</h1><h3 id="ListView的简单用法"><a href="#ListView的简单用法" class="headerlink" title="ListView的简单用法"></a>ListView的简单用法</h3><p>以一个数组数据进行举例讲解<br>1.在布局中直接加入<ListView>布局<br>2.数组中的数据无法直接传给ListView,故需借助适配器完成，这里推荐使用ArrayAdapter,这里需要传入三个数据上下文，Listview子项布局id及适配数据<br>3.创建一个listview对象调用setAdapter传入适配器，这样就关联好了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;ListView</span><br><span class="line">     android:id=<span class="string">&quot;@+id/list_view&quot;</span></span><br><span class="line">     android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">     android:layout_height=<span class="string">&quot;match_parent&quot;</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../img/img24.jpg"></p>
+<h3 id="定制ListView界面"><a href="#定制ListView界面" class="headerlink" title="定制ListView界面"></a>定制ListView界面</h3><p>1.先定义一个实体类作为listview的适配类型</p>
+<p><img src="/../img/img25.jpg"></p>
+<p>2.然后给listview的子项指定一个自定义的布局，用imageview显示图片，textview显示名字</p>
+<p><img src="/../img/img26.jpg"></p>
+<p>3.接下来创建一个自定义适配器继承自ArrayAdapter,将上下文，子项布局的id和数据都传入进来，通过getItem方法获取实例，然后使用LayoutInflater来为子项加载布局，这里LayoutInflater中的inflate方法接收三个数据，第三个参数指定为false表示只让父布局中声明的layout属性失效，但不为这个View添加父布局，因为一旦View有了父布局，它就不能再添加到ListView中了</p>
+<p><img src="/../img/img27.jpg"></p>
+<p>4.添加一个initFruits方法，对数据进行初始化，将水果名称及图片这些数据传入列表中，并利用新建的那个适配器传递给ListView</p>
+<p><img src="/../img/img28.jpg"></p>
+<p><img src="/../img/img29.jpg"></p>
+<h3 id="提升ListView运行效率"><a href="#提升ListView运行效率" class="headerlink" title="提升ListView运行效率"></a>提升ListView运行效率</h3><p>主要在适配器中进行修改<br>1.原本布局需要多次重复加载，这样性能很低，所以可以利用convertView对其进行修改，用它来对布局进行缓存，重复利用。<br>2.控件也需要多次创建，这个可以通过建立一个内部类viewHolder对控件进行缓存，利用setTag进行缓存，用getTag进行取出，可以得到更好的性能</p>
+<p><img src="/../img/img30.jpg"></p>
+<p><img src="/../img/img31.jpg"></p>
+<h3 id="ListView的点击事件"><a href="#ListView的点击事件" class="headerlink" title="ListView的点击事件"></a>ListView的点击事件</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ListView listView=(ListView) findViewById(R.id.list_view);</span><br><span class="line">listView.setOnItemClickListener(<span class="keyword">new</span> <span class="title class_">AdapterView</span>.OnItemClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onItemClick</span><span class="params">(AdapterView&lt;?&gt; adapterView, View view, <span class="type">int</span> i, <span class="type">long</span> l)</span> &#123;</span><br><span class="line">        Fruit fruit=fruitList.get(i);</span><br><span class="line">        Toast.makeText(MainActivity.<span class="built_in">this</span>, fruit.getName(), Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="RecyclerView"><a href="#RecyclerView" class="headerlink" title="RecyclerView"></a>RecyclerView</h1><h3 id="RecyclerView基本用法"><a href="#RecyclerView基本用法" class="headerlink" title="RecyclerView基本用法"></a>RecyclerView基本用法</h3><p>增强版的ListView<br>使用时也需要提前添加依赖库</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation (<span class="string">&quot;androidx.recyclerview:recyclerview:1.3.2&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>1.首先创建一个新的类作为适配类型，创建一个子项布局<br>2.创建一个适配器让这个适配器继承自RecyclerView.Adapter,并把泛型指定为FruitAdapter.ViewHolder.<br>先建立一个内部类，传入一个参数 这个参数通常是子项的最外层布局，通过findViewById获取实例，然后通过其中的构造函数将数据源传入并赋值给一个全局变量，由于其继承自RecyclerView.Adapter所以要重写onCreateViewHolder,onBindViewHolder,getItemCount三个方法，第一个用于创建ViewHolder实例，第二个用于对数据进行赋值，第三个得到有多少个子项<br>3.写一个InitFruits方法初始化数据，获取recyclerview实例，然后创建一个LinearLayoutManager对象指定布局方式并将其设置到recyclerView中，创建适配器的实例并将水果数据传入其中，最后建立联系</p>
+<p><img src="/../img/img32.jpg"></p>
+<p><img src="/../img/img33.jpg"></p>
+<p><img src="/../img/img34.jpg"></p>
+<h3 id="实现横向滚动"><a href="#实现横向滚动" class="headerlink" title="实现横向滚动"></a>实现横向滚动</h3><p>在原有的代码上进行少量修改：<br>1.修改fruit_item中的代码，将元素改为垂直排列，将ImageView和TextView改为水平居中<br>2.在主活动中添加layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL)即可</p>
+<p><img src="/../img/img35.jpg"></p>
+<h3 id="实现瀑布流布局"><a href="#实现瀑布流布局" class="headerlink" title="实现瀑布流布局"></a>实现瀑布流布局</h3><p>瀑布流布局(GridLayoutManager用于实现网格布局，StaggeredGridLayoutManager用于实现瀑布流布局)<br>在原有代码上修改：<br>1.首先对fruit_item进行细微修改<br>2.在主活动onCreate方法中加入一句代码</p>
+<p><img src="/../img/img36.jpg"></p>
+<p>接受俩参数，第一个用于指定列数，第二个用于指定布局排列方式，到这里瀑布式布局已经完成了，但还可以用一个小技巧使观察的更清晰<br>3.创建一个getRandomLengthName方法，先利用random创造一个随机数，然后将名字重复生成</p>
+<p><img src="/../img/img37.jpg"></p>
+<h3 id="RecyclerView点击事件"><a href="#RecyclerView点击事件" class="headerlink" title="RecyclerView点击事件"></a>RecyclerView点击事件</h3><p>无法直接全部直接注册监听器，需要对具体的View分别注册<br>1.先修改ViewHolder在其中加入变量fruitView来保存子项最外层布局<br>2.在onCreateViewHolder中注册点击事件，在点击事件中先获取用户点击的position，拿到相应的实例，再用Toast弹出不同的内容</p>
+<p><img src="/../img/img38.jpg"></p>
+<hr>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2025 Hexo
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;John Doe
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>

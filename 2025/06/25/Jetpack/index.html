@@ -1,0 +1,421 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Jetpack(Kotlin) | Hexo</title>
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>HEXO</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;HEXO</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>Jetpack(Kotlin)</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/6/25
+        </span>
+        
+        <span class="category">
+            <a href="/categories/Android-Kotlin%E7%89%88/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Android(Kotlin版)
+            </a>
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="Jetpack"><a href="#Jetpack" class="headerlink" title="Jetpack"></a>Jetpack</h1><h3 id="Jetpack全家福"><a href="#Jetpack全家福" class="headerlink" title="Jetpack全家福"></a>Jetpack全家福</h3><p><img src="/../img/img60.jpg"></p>
+<hr>
+<h1 id="ViewModel"><a href="#ViewModel" class="headerlink" title="ViewModel"></a>ViewModel</h1><h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>帮助Activity分担一部分工作，专门用于存放与界面相关的数据的，他可以保证在手机屏幕发生旋转时不会被重新创建，数据不会丢失</p>
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><p><img src="/../img/img61.jpg"></p>
+<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><ul>
+<li><p>添加依赖</p>
+</li>
+<li><p>创建一个ViewModel类继承自ViewModel()</p>
+</li>
+<li><p>把界面相关的数据都放入其中</p>
+</li>
+<li><p>在Activity或fragment中创建其实例</p>
+</li>
+<li><p>构建相关逻辑</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">implementation (<span class="string">&quot;androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2&quot;</span>) <span class="comment">// Kotlin 版本</span></span><br><span class="line">implementation (<span class="string">&quot;androidx.lifecycle:lifecycle-viewmodel:2.6.2&quot;</span>)     <span class="comment">// Java 版本</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MainViewModel</span>(countReserved: <span class="built_in">Int</span>) : ViewModel() &#123;</span><br><span class="line">	<span class="keyword">var</span> counter=<span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MainActivity</span> : <span class="type">AppCompatActivity</span>() &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> binding: ActivityMainBinding</span><br><span class="line">    <span class="keyword">lateinit</span> <span class="keyword">var</span> viewModel: MainViewModel</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        binding=ActivityMainBinding.inflate(layoutInflater)</span><br><span class="line">        setContentView(binding.root)</span><br><span class="line">        <span class="comment">//获取实例</span></span><br><span class="line">        viewModel=ViewModelProvider(<span class="keyword">this</span>).<span class="keyword">get</span>(MainViewModel::<span class="keyword">class</span>.java)</span><br><span class="line">        binding.plus.setOnClickListener &#123;</span><br><span class="line">            viewModel.counter++</span><br><span class="line">            refreshCounter()</span><br><span class="line">        &#125;</span><br><span class="line">        refreshCounter()</span><br><span class="line">&#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">refreshCounter</span><span class="params">()</span></span>&#123;</span><br><span class="line">        binding.infoText.text=viewModel.counter.toString()</span><br><span class="line">    &#125;o</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="像ViewModel传递参数"><a href="#像ViewModel传递参数" class="headerlink" title="像ViewModel传递参数"></a>像ViewModel传递参数</h3><ul>
+<li><p>添加参数</p>
+</li>
+<li><p>新建ViewModelFactory类，实现ViewModelProvider.Factory接口</p>
+</li>
+<li><p>利用SharedPreferences保存数据</p>
+</li>
+<li><p>读取数据，将数据传入到ViewModelFactory的构造函数中</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MainViewModel</span>(countReserved: <span class="built_in">Int</span>) : ViewModel() &#123;</span><br><span class="line">   <span class="keyword">var</span> counter=countReserved</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MainViewModelFactory</span>(<span class="keyword">private</span> <span class="keyword">val</span> countReserved:<span class="built_in">Int</span>):ViewModelProvider.Factory &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="type">&lt;T : ViewModel&gt;</span> <span class="title">create</span><span class="params">(modelClass: <span class="type">Class</span>&lt;<span class="type">T</span>&gt;)</span></span>: T &#123;</span><br><span class="line">        <span class="keyword">return</span> MainViewModel(countReserved) <span class="keyword">as</span> T</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MainActivity</span> : <span class="type">AppCompatActivity</span>() &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> binding: ActivityMainBinding</span><br><span class="line">    <span class="keyword">lateinit</span> <span class="keyword">var</span> viewModel: MainViewModel</span><br><span class="line">    <span class="keyword">lateinit</span> <span class="keyword">var</span> sp:SharedPreferences</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        binding=ActivityMainBinding.inflate(layoutInflater)</span><br><span class="line">        setContentView(binding.root)</span><br><span class="line">        sp=getPreferences(Context.MODE_PRIVATE)</span><br><span class="line">        <span class="keyword">val</span> contReserved=sp.getInt(<span class="string">&quot;count_reserved&quot;</span>,<span class="number">0</span>)</span><br><span class="line">        viewModel=ViewModelProvider(<span class="keyword">this</span>,MainViewModelFactory(contReserved)).<span class="keyword">get</span>(MainViewModel::<span class="keyword">class</span>.java)</span><br><span class="line">        binding.plus.setOnClickListener &#123;</span><br><span class="line">            viewModel.counter++</span><br><span class="line">            refreshCounter()</span><br><span class="line">        &#125;</span><br><span class="line">        binding.clear.setOnClickListener &#123;</span><br><span class="line">            viewModel.counter=<span class="number">0</span></span><br><span class="line">            refreshCounter()</span><br><span class="line">        &#125;</span><br><span class="line">        refreshCounter() </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">refreshCounter</span><span class="params">()</span></span>&#123;</span><br><span class="line">        binding.infoText.text=viewModel.counter.toString()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onPause</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onPause()</span><br><span class="line">        sp.edit &#123;</span><br><span class="line">            putInt(<span class="string">&quot;count_reserved&quot;</span>,viewModel.counter.value?:<span class="number">0</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h1 id="Lifecycles"><a href="#Lifecycles" class="headerlink" title="Lifecycles"></a>Lifecycles</h1><h3 id="作用-1"><a href="#作用-1" class="headerlink" title="作用"></a>作用</h3><p>他可以让任何一个类轻松地感知到Activity生命周期</p>
+<h3 id="用法-1"><a href="#用法-1" class="headerlink" title="用法"></a>用法</h3><ul>
+<li><p>新建一个类</p>
+</li>
+<li><p>借助注解能力编写逻辑代码</p>
+</li>
+<li><p>获取LifecycleOwer实例，Activity或者Fragment本身就是一个LifecycleOwer实例</p>
+</li>
+<li><p>在活动中进行调用(也可以在任何地方调用lifecycle.currentState来主动获取当前生命周期状态)</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyObserver</span>(<span class="keyword">val</span> lifecycle: Lifecycle):LifecycleObserver &#123;</span><br><span class="line">    <span class="meta">@OnLifecycleEvent(Lifecycle.Event.ON_START)</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">activityStart</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Log.d(<span class="string">&quot;MyObserver&quot;</span>, <span class="string">&quot;activityStart: &quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@OnLifecycleEvent(Lifecycle.Event.ON_STOP)</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">activityStop</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Log.d(<span class="string">&quot;MyObserve&quot;</span>, <span class="string">&quot;activityStop: &quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lifecycle.addObserver(MyObserver())</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h1 id="LiveData"><a href="#LiveData" class="headerlink" title="LiveData"></a>LiveData</h1><h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><ul>
+<li><p><strong>添加依赖</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation <span class="string">&quot;androidx.lifecycle:lifecycle-livedata-ktx:2.5.1&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>创建LiveData</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyViewModel</span> (countReserved:<span class="built_in">Int</span>): ViewModel() &#123;</span><br><span class="line">    <span class="comment">// 创建 LiveData</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> _counter = MutableLiveData&lt;<span class="built_in">Int</span>&gt;()</span><br><span class="line">    <span class="keyword">val</span> counter: LiveData&lt;<span class="built_in">Int</span>&gt; <span class="keyword">get</span>() = _counter</span><br><span class="line"></span><br><span class="line">    <span class="keyword">init</span> &#123;</span><br><span class="line">        _counter.value = countReserved</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 更新 LiveData 数据</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">incrementCounter</span><span class="params">()</span></span> &#123;</span><br><span class="line">        _counter.value = (_counter.value ?: <span class="number">0</span>) + <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>MutableLiveData</strong>: 可变的 LiveData 类型，允许数据更新。</li>
+<li><strong>LiveData</strong>: 不可变的 LiveData 类型，只能观察数据，不能直接修改数据。</li>
+</ul>
+</li>
+<li><h4 id="在-Activity-或-Fragment-中观察-LiveData"><a href="#在-Activity-或-Fragment-中观察-LiveData" class="headerlink" title="在 Activity 或 Fragment 中观察 LiveData"></a><strong>在 Activity 或 Fragment 中观察 LiveData</strong></h4><p>在 Activity 或 Fragment 中，你可以通过 <code>observe()</code> 方法观察 LiveData。当数据发生变化时，LiveData 才会发送更新。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MainActivity</span> : <span class="type">AppCompatActivity</span>() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取 ViewModel 实例</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> myViewModel: MyViewModel <span class="keyword">by</span> viewModels()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        setContentView(R.layout.activity_main)</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 观察 LiveData 数据</span></span><br><span class="line">        myViewModel.counter.observe(<span class="keyword">this</span>)&#123; count -&gt;</span><br><span class="line">            <span class="comment">// 更新 UI</span></span><br><span class="line">            counterText.text = count.toString()</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置按钮点击事件</span></span><br><span class="line">        incrementButton.setOnClickListener &#123;</span><br><span class="line">            myViewModel.incrementCounter()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="map和switchMap"><a href="#map和switchMap" class="headerlink" title="map和switchMap"></a>map和switchMap</h3><ul>
+<li><p><strong>map</strong></p>
+<ul>
+<li><p>作用：将实际包含数据的LiveData和仅用于观察数据的LiveData进行转换</p>
+</li>
+<li><p>用法：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyViewModel</span> : <span class="type">ViewModel</span>() &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> _userName = MutableLiveData&lt;String&gt;()</span><br><span class="line">    <span class="keyword">val</span> userName: LiveData&lt;String&gt; <span class="keyword">get</span>() = _userName</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用 map 将原始数据转换为需要的格式</span></span><br><span class="line">    <span class="keyword">val</span> userGreeting: LiveData&lt;String&gt; = userName.map &#123; name -&gt;</span><br><span class="line">        <span class="string">&quot;Hello, <span class="variable">$name</span>&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">updateUserName</span><span class="params">(name: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">        _userName.value = name</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>switchMap</strong></p>
+<ul>
+<li><p>使用场景：当ViewModel中某个liveData对象是调用另外的方法获取的时候用switchMap</p>
+</li>
+<li><p>用法：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyViewModel</span> : <span class="type">ViewModel</span>() &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> _searchQuery = MutableLiveData&lt;String&gt;()</span><br><span class="line">    <span class="keyword">val</span> searchQuery: LiveData&lt;String&gt; <span class="keyword">get</span>() = _searchQuery</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用 switchMap 来根据 searchQuery 触发新的搜索请求</span></span><br><span class="line">    <span class="keyword">val</span> searchResults: LiveData&lt;List&lt;String&gt;&gt; = searchQuery.switchMap &#123; query -&gt;</span><br><span class="line">        <span class="comment">// 假设搜索是一个异步操作，这里模拟为一个简单的列表</span></span><br><span class="line">        MutableLiveData&lt;List&lt;String&gt;&gt;().apply &#123;</span><br><span class="line">            value = listOf(<span class="string">&quot;Result for <span class="variable">$query</span>&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">updateSearchQuery</span><span class="params">(query: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">        _searchQuery.value = query</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>searchQuery</code> 是一个包含搜索关键字的 LiveData。</li>
+<li><code>switchMap</code> 将每次更新的 <code>searchQuery</code> 映射到一个新的 LiveData（这里模拟为搜索结果）。</li>
+<li>当 <code>searchQuery</code> 更新时，<code>switchMap</code> 会取消之前的查询并触发新的查询。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="Room"><a href="#Room" class="headerlink" title="Room"></a>Room</h1><h3 id="基本特征"><a href="#基本特征" class="headerlink" title="基本特征"></a>基本特征</h3><p><strong>Room</strong> 是 Jetpack 提供的一个数据库库，简化了 SQLite 的操作。它提供了一个抽象层，允许开发者更方便、更安全地访问本地数据库。Room 提供了注解（annotation）支持，结合 Kotlin 的数据类和架构组件，能够更高效地管理数据持久化操作。</p>
+<p>Room 提供了一个 <strong>DAO（数据访问对象）</strong> 层来进行数据库操作，DAO 使用 SQL 查询语句来与数据库交互。Room 会在编译时生成实际的实现代码，减少了手动编写 SQL 语句的繁琐。</p>
+<ul>
+<li><strong>简单易用</strong>：相比直接使用 SQLite，Room 提供了更简单、类型安全的 API。</li>
+<li><strong>SQLite 完全支持</strong>：它是基于 SQLite 的，可以执行 SQL 查询、插入、更新和删除操作。</li>
+<li><strong>注解支持</strong>：使用注解定义数据库实体、DAO 和数据库版本。</li>
+<li><strong>与 LiveData 兼容</strong>：Room 支持与 LiveData 结合使用，当数据改变时，Room 可以自动通知观察者。</li>
+</ul>
+<h3 id="添加依赖和插件"><a href="#添加依赖和插件" class="headerlink" title="添加依赖和插件"></a>添加依赖和插件</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kotlin(<span class="string">&quot;kapt&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">implementation(<span class="string">&quot;androidx.room:room-runtime:2.6.1&quot;</span>)  <span class="comment">// Room 的运行时库</span></span><br><span class="line">kapt(<span class="string">&quot;androidx.room:room-compiler:2.6.1&quot;</span>)  <span class="comment">// Room 的编译器，使用 KAPT 注解处理</span></span><br><span class="line">implementation(<span class="string">&quot;androidx.room:room-ktx:2.6.1&quot;</span>)  <span class="comment">// Room 的扩展库，提供了一些扩展函数和属性.</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="定义实体类-Entity"><a href="#定义实体类-Entity" class="headerlink" title="定义实体类(Entity)"></a>定义实体类(Entity)</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">data</span> <span class="keyword">class</span> <span class="title class_">User</span> (<span class="keyword">var</span> firstName:String,<span class="keyword">var</span> lastName:String,<span class="keyword">var</span> age:<span class="built_in">Int</span>)&#123;</span><br><span class="line">    <span class="meta">@PrimaryKey(autoGenerate = true)</span></span><br><span class="line">    <span class="keyword">var</span> id:<span class="built_in">Long</span>=<span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>@Entity</strong> 注解标识这个类是一个数据库表。</li>
+<li><strong>@PrimaryKey</strong> 注解指定主键，并可以设置 <code>autoGenerate = true</code> 让 Room 自动生成主键。</li>
+</ul>
+<h3 id="定义Dao"><a href="#定义Dao" class="headerlink" title="定义Dao"></a>定义Dao</h3><ul>
+<li>Room关键部分，所有数据库操作均封装在这里</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Dao</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">UserDao</span> &#123;</span><br><span class="line">    <span class="meta">@Insert</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">insertUser</span><span class="params">(user:<span class="type">User</span>)</span></span>:<span class="built_in">Long</span></span><br><span class="line">    <span class="meta">@Update</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">updateUser</span><span class="params">(newUser: <span class="type">User</span>)</span></span></span><br><span class="line">    <span class="meta">@Query(<span class="string">&quot;select * from User&quot;</span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">loadAllUsers</span><span class="params">()</span></span>:List&lt;User&gt;</span><br><span class="line">    <span class="meta">@Query(<span class="string">&quot;select * from User where age&gt; :age&quot;</span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">loadUsersOlderThan</span><span class="params">(age:<span class="type">Int</span>)</span></span>:List&lt;User&gt;</span><br><span class="line">    <span class="meta">@Delete</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">deleteUser</span><span class="params">(user: <span class="type">User</span>)</span></span></span><br><span class="line">    <span class="meta">@Query(<span class="string">&quot;delete from User where lastName=:lastName&quot;</span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">deleteUserByLastName</span><span class="params">(lastName:<span class="type">String</span>)</span></span>:<span class="built_in">Int</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>@Dao</strong> 注解标识这个接口是 DAO。</li>
+<li><strong>@Insert</strong> 注解用于插入数据。</li>
+<li><strong>@Query</strong> 注解定义 SQL 查询语句。</li>
+<li><strong>@Update</strong>注解用于更新数据</li>
+<li><strong>@Delete</strong>注解用于删除数据</li>
+<li>利用非实体类参数来增删改数据时都要用**@Query**注解</li>
+</ul>
+<h3 id="定义数据库-Database"><a href="#定义数据库-Database" class="headerlink" title="定义数据库(Database)"></a>定义数据库(Database)</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Database(version = 1, entities = [User::class])</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">AppDatabase</span>:<span class="type">RoomDatabase</span>()&#123;</span><br><span class="line">    <span class="keyword">abstract</span> <span class="function"><span class="keyword">fun</span> <span class="title">userDao</span><span class="params">()</span></span>:UserDao</span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">var</span> instance:AppDatabase?=<span class="literal">null</span></span><br><span class="line">        <span class="meta">@Synchronized</span></span><br><span class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">getDatabase</span><span class="params">(context: <span class="type">Context</span>)</span></span>:AppDatabase&#123;</span><br><span class="line">            instance?.let &#123;</span><br><span class="line">                <span class="keyword">return</span>  it</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> Room.databaseBuilder(context.applicationContext,AppDatabase::<span class="keyword">class</span>.java,<span class="string">&quot;app_database&quot;</span>          </span><br><span class="line">                .build().apply &#123;</span><br><span class="line">                    instance=<span class="keyword">this</span></span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>@Database</strong> 注解用于定义数据库，并指定包含的实体类和数据库版本，实体类之间用逗号隔开。</li>
+<li><code>abstract fun userDao()</code> 方法提供对 DAO 的访问。</li>
+<li>通过 <code>Room.databaseBuilder()</code> 方法获取数据库实例</li>
+<li>由于数据库操作均为耗时操作故需要在子线程中进行</li>
+</ul>
+<h3 id="数据库升级"><a href="#数据库升级" class="headerlink" title="数据库升级"></a>数据库升级</h3><ol>
+<li>更新版本和包含的实体类</li>
+<li>实现 Migration的匿名类</li>
+<li>构建实例时加入addMigrations方法</li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Database(version = 3, entities = [User::class, Book::class])</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">AppDatabase</span> : <span class="type">RoomDatabase</span>() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * UserDao 是用于操作 User 实体的 DAO（Data Access Object）。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">abstract</span> <span class="function"><span class="keyword">fun</span> <span class="title">userDao</span><span class="params">()</span></span>: UserDao</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * BookDao 是用于操作 Book 实体的 DAO（Data Access Object）。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">abstract</span> <span class="function"><span class="keyword">fun</span> <span class="title">bookDao</span><span class="params">()</span></span>: BookDao</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Companion 对象用于存储数据库的迁移信息和实例。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * MIGRATION_1_2 是从数据库版本 1 到 2 的迁移。</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">val</span> MIGRATION_1_2 = <span class="keyword">object</span> : Migration(<span class="number">1</span>, <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * migrate 方法用于执行从版本 1 到 2 的迁移。</span></span><br><span class="line"><span class="comment">             * 在这个例子中，我们创建了一个名为 Book 的新表。</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">migrate</span><span class="params">(database: <span class="type">SupportSQLiteDatabase</span>)</span></span> &#123;</span><br><span class="line">                database.execSQL(<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">                    CREATE TABLE Book (</span></span><br><span class="line"><span class="string">                        id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,</span></span><br><span class="line"><span class="string">                        name TEXT NOT NULL,</span></span><br><span class="line"><span class="string">                        pages INTEGER NOT NULL,</span></span><br><span class="line"><span class="string">                        author TEXT NOT NULL</span></span><br><span class="line"><span class="string">                    )</span></span><br><span class="line"><span class="string">                &quot;&quot;&quot;</span>.trimIndent())</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * MIGRATION_2_3 是从数据库版本 2 到 3 的迁移。</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">val</span> MIGRATION_2_3 = <span class="keyword">object</span> : Migration(<span class="number">2</span>, <span class="number">3</span>) &#123;</span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * migrate 方法用于执行从版本 2 到 3 的迁移。</span></span><br><span class="line"><span class="comment">             * 在这个例子中，我们添加了一个名为 author 的新列到 User 表中。</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">migrate</span><span class="params">(database: <span class="type">SupportSQLiteDatabase</span>)</span></span> &#123;</span><br><span class="line">                database.execSQL(<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">                    ALTER TABLE User ADD COLUMN </span></span><br><span class="line"><span class="string">                    author TEXT NOT NULL DEFAULT &#x27;unknown&#x27;</span></span><br><span class="line"><span class="string">                    &quot;&quot;&quot;</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * instance 是 AppDatabase 的实例。</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">var</span> instance: AppDatabase? = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * getDatabase 方法用于获取 AppDatabase 的实例。</span></span><br><span class="line"><span class="comment">         * 如果实例已经存在，则直接返回实例。</span></span><br><span class="line"><span class="comment">         * 否则，则创建一个新的实例并返回。</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="meta">@Synchronized</span></span><br><span class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">getDatabase</span><span class="params">(context: <span class="type">Context</span>)</span></span>: AppDatabase &#123;</span><br><span class="line">            instance?.let &#123; <span class="keyword">return</span> it &#125;</span><br><span class="line">            <span class="keyword">return</span> Room.databaseBuilder(</span><br><span class="line">                context.applicationContext,</span><br><span class="line">                AppDatabase::<span class="keyword">class</span>.java,</span><br><span class="line">                <span class="string">&quot;app_database&quot;</span></span><br><span class="line">            )</span><br><span class="line">                .addMigrations(MIGRATION_1_2, MIGRATION_2_3)</span><br><span class="line">                .build().apply &#123; instance = <span class="keyword">this</span> &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="WorkManager"><a href="#WorkManager" class="headerlink" title="WorkManager"></a>WorkManager</h1><h3 id="作用-2"><a href="#作用-2" class="headerlink" title="作用"></a>作用</h3><p>处理一些要求定时执行的任务，可以根据操作系统的版本自动选择是使用AlarmManager还是JobScheduler实现。另外还能支持周期性任务，链式任务处理等功能。它很适合执行一些定期和服务器交互的任务，比如周期性的同步数据</p>
+<h3 id="基本用法-1"><a href="#基本用法-1" class="headerlink" title="基本用法"></a>基本用法</h3><ol>
+<li>添加依赖</li>
+</ol>
+   <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">implementation (<span class="string">&quot;androidx.work:work-runtime:2.8.1&quot;</span>) <span class="comment">// Java</span></span><br><span class="line">    implementation (<span class="string">&quot;androidx.work:work-runtime-ktx:2.8.1&quot;</span>) <span class="comment">// Kotlin + Coroutines</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>定义后台任务并实现具体的任务逻辑</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">SimpleWorker</span>(context: Context,params:WorkerParameters):Worker(context,params) &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">doWork</span><span class="params">()</span></span>: Result &#123;</span><br><span class="line">        <span class="comment">//编写具体的后台任务逻辑</span></span><br><span class="line">        Log.d(<span class="string">&quot;SimpleWorker&quot;</span>, <span class="string">&quot;do work in simpleworker&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span>  Result.success()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>返回Result.success()表示成功</li>
+<li>返回Result.failure()表示失败</li>
+<li>返回Result.retry()也表示失败，只是可以结合WorkRequest.Builder的setBackoffCriteria()方法来重新执行任务</li>
+</ul>
+</li>
+<li><p>配置该后台任务的运行条件和约束信息，并构建后台任务请求</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> workRequest = OneTimeWorkRequest.Builder(SimpleWorker::<span class="keyword">class</span>.java)</span><br><span class="line">    .build()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> periodicWorkRequest = PeriodicWorkRequest.Builder(MyWorker::<span class="keyword">class</span>.java, <span class="number">1</span>, TimeUnit.HOURS)</span><br><span class="line">    .build()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>OneTimeWorkRequest</strong> 来执行一次性任务</li>
+<li><strong>PeriodicWorkRequest</strong> 来执行定期任务。</li>
+</ul>
+</li>
+<li><p>将该后台任务请求传入WorkManager的enqueue()的方法中，系统会在合适的时间运行</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WorkManager.getInstance(applicationContext).enqueue(workRequest)</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="处理复杂任务"><a href="#处理复杂任务" class="headerlink" title="处理复杂任务"></a>处理复杂任务</h3><ul>
+<li><p><strong>设置约束信息</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> workRequest = OneTimeWorkRequest.Builder(MyWorker::<span class="keyword">class</span>.java)</span><br><span class="line">	.setInitialDelay(<span class="number">5</span>,TimeUnit.MINUTES)</span><br><span class="line">    .addTag(<span class="string">&quot;simple&quot;</span>)</span><br><span class="line">    .build()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>取消后台任务请求</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WorkManager.getInstance(applicationContext).cancelWorkByTag(<span class="string">&quot;simple&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WorkManager.getInstance(applicationContext).cancelWorkById(workRequest.id)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WorkManager.getInstance(applicationContext).cancelAllwork()<span class="comment">//一次性取消所有后台任务</span></span><br></pre></td></tr></table></figure>
+
+<p>使用id只能取消单个任务，使用标签可以取消同一标签名的所有任务</p>
+</li>
+<li><p><strong>任务重试</strong></p>
+<p>当doWork方法中返回Result.retry()时可以结合setBackoffCriteria方法重新执行任务</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一个参数指的是如果任务再次执行失败，下次重试的时间应以什么形式延迟</span></span><br><span class="line"><span class="keyword">val</span> workRequest = OneTimeWorkRequest.Builder(MyWorker::<span class="keyword">class</span>.java)</span><br><span class="line">    .setBackoffCriteria(BackoffPolicy.EXPONENTIAL, <span class="number">10</span>, TimeUnit.SECONDS)</span><br><span class="line">    .build()</span><br><span class="line"></span><br><span class="line">WorkManager.getInstance(applicationContext).enqueue(workRequest)</span><br></pre></td></tr></table></figure>
+</li>
+<li><h6 id="观察任务状态"><a href="#观察任务状态" class="headerlink" title="观察任务状态"></a><strong>观察任务状态</strong></h6><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">WorkManager.getInstance(applicationContext)</span><br><span class="line">    .getWorkInfoByIdLiveData(workRequest.id)</span><br><span class="line">    .observe(<span class="keyword">this</span>, Observer &#123; workInfo -&gt;</span><br><span class="line">        <span class="keyword">if</span> (workInfo != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">when</span> (workInfo.state) &#123;</span><br><span class="line">                WorkInfo.State.SUCCEEDED -&gt; &#123;</span><br><span class="line">                    <span class="comment">// 任务成功</span></span><br><span class="line">                &#125;</span><br><span class="line">                WorkInfo.State.FAILED -&gt; &#123;</span><br><span class="line">                    <span class="comment">// 任务失败</span></span><br><span class="line">                &#125;</span><br><span class="line">                WorkInfo.State.RUNNING -&gt; &#123;</span><br><span class="line">                    <span class="comment">// 任务正在运行</span></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> -&gt; &#123;</span><br><span class="line">                    <span class="comment">// 任务还未开始或已经完成</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>链式任务</strong></p>
+</li>
+</ul>
+  <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> firstRequest = OneTimeWorkRequest.Builder(MyWorker::<span class="keyword">class</span>.java).build()</span><br><span class="line"><span class="keyword">val</span> secondRequest = OneTimeWorkRequest.Builder(SecondWorker::<span class="keyword">class</span>.java).build()</span><br><span class="line"></span><br><span class="line">WorkManager.getInstance(applicationContext)</span><br><span class="line">    .beginWith(firstRequest)</span><br><span class="line">    .then(secondRequest)</span><br><span class="line">    .enqueue()</span><br></pre></td></tr></table></figure>
+
+<p>  **注：**千万别依赖其去实现一些核心功能，它在国产手机上是不稳定的</p>
+<hr>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2025 Hexo
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;John Doe
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>

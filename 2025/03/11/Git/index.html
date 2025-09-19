@@ -1,0 +1,290 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Git | Hexo</title>
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>HEXO</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;HEXO</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>Git</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/3/11
+        </span>
+        
+        <span class="category">
+            <a href="/categories/Git/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Git
+            </a>
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="创建代码仓库"><a href="#创建代码仓库" class="headerlink" title="创建代码仓库"></a>创建代码仓库</h1><p>首先配置身份，利用：</p>
+<p><code>git config --global user.name  &quot;  &quot;</code></p>
+<p><code>git config --global user.email  &quot;  &quot;</code></p>
+<p>可以利用<code>git config --list</code>对配置信息进行查看</p>
+<p>然后进入到想要创建仓库的相应项目文件中利用 cd </p>
+<p>然后在该目录中输入<code>git init</code></p>
+<p>项目创建完成后会在目录中生成一个隐藏的**.git<strong>文件夹，这个文件夹用来记录本地所有的Git操作，可以通过</strong>ls -al**命令来查看</p>
+<p>如果想删除该仓库，只需删除这个文件夹即可</p>
+<hr>
+<h1 id="提交本地代码"><a href="#提交本地代码" class="headerlink" title="提交本地代码"></a>提交本地代码</h1><p>可以使用<strong>add</strong>和<strong>commit</strong>提交</p>
+<p>add是先将想要提交的代码添加进来，commit则是真正的去执行提交操作</p>
+<p>添加单个文件：git add+文件名</p>
+<p>添加目录：git add+目录名</p>
+<p>添加所有文件：<code>git add .</code></p>
+<p>提交：<code>git commit -m &quot;First commit.&quot;</code>一定要有-m加上提交的描述信息。</p>
+<hr>
+<h1 id="忽略文件"><a href="#忽略文件" class="headerlink" title="忽略文件"></a>忽略文件</h1><p>如果不想把app文件下的内容添加到版本控制中，那么可以修改<strong>app&#x2F;.gitignore</strong>文件中的内容：</p>
+<p>&#x2F;build</p>
+<p>&#x2F;src&#x2F;test</p>
+<p>&#x2F;src&#x2F;androidTest</p>
+<p>现在就可以提交代码：</p>
+<p><code>git add .</code></p>
+<p><code>git commit -m &quot;First commit.&quot;</code></p>
+<hr>
+<h1 id="查看修改内容"><a href="#查看修改内容" class="headerlink" title="查看修改内容"></a>查看修改内容</h1><p>1.在项目根目录下输入以下指令：</p>
+<p><em>git status</em></p>
+<p>2.修改数据后再次使用该指令可以发现文件已更改</p>
+<p>3.利用git diff app&#x2F;src&#x2F;main&#x2F;java&#x2F;com&#x2F;example&#x2F;providertest&#x2F;MainActivity.java查看更改的内容</p>
+<hr>
+<h1 id="撤销未提交的修改"><a href="#撤销未提交的修改" class="headerlink" title="撤销未提交的修改"></a>撤销未提交的修改</h1><p>1.利用git checkout app&#x2F;src&#x2F;main&#x2F;java&#x2F;com&#x2F;example&#x2F;providertest&#x2F;MainActivity.java指令可以使一切修改撤销</p>
+<p>2.输入<em>git status</em>进行检查</p>
+<p>3.不过这种撤销方式只适合于那些没有执行过add添加的文件</p>
+<p>如果是已经添加过的文件需要先使用<code>git reset app/src/main/java/com/example/providertest/MainActivity.java</code>指令取消添加</p>
+<hr>
+<h1 id="查看提交记录"><a href="#查看提交记录" class="headerlink" title="查看提交记录"></a>查看提交记录</h1><p>1.用git log查看历史提交信息</p>
+<p>2.若只想查其中一条记录，可以在命令中指定该条记录的id并加上**-1**参数表示只想看到这一行</p>
+<p>3.如果想看这条记录具体修改了什么可以加个 <strong>-p</strong>，其中减号代表删除，加号代表添加的部分。</p>
+<hr>
+<h1 id="分支的用法"><a href="#分支的用法" class="headerlink" title="分支的用法"></a>分支的用法</h1><ul>
+<li><p>git branch查看分支</p>
+</li>
+<li><p>git branch+名字用于创建分支</p>
+</li>
+<li><p>git checkout +名字 切换分支</p>
+</li>
+<li><p>git checkout+分支1</p>
+<p>git merge+分支2  可以把分支2上修改并提交的内容合并到分支1上</p>
+</li>
+<li><p>git branch -D +分支名用于删除分支</p>
+</li>
+</ul>
+<hr>
+<h1 id="与远程版本库协作"><a href="#与远程版本库协作" class="headerlink" title="与远程版本库协作"></a>与远程版本库协作</h1><ul>
+<li>git clone 地址表示将代码下载到本地</li>
+<li>git push origin master  表示将本地修改的内容同步到远程版本库（origin指定的是远程版本库的Git地址）</li>
+<li>git fetch origin master  表示将远程版本库内容同步到本地，会存放到origin&#x2F;master 分支上</li>
+<li>git diff origin&#x2F;master 查看远程版本库上到底修改了什么</li>
+<li>git merge origin&#x2F;master将origin&#x2F;master分支上的修改合并到主分支上</li>
+<li>git pull origin master相当于将fetch和merge两个命令放一块执行，它可以从远程版本库上获取最新代码并合并到本地</li>
+</ul>
+<hr>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2025 Hexo
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;John Doe
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>

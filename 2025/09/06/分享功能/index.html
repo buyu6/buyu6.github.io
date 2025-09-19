@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>分享功能 | Hexo</title>
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>HEXO</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;HEXO</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>分享功能</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/9/6
+        </span>
+        
+        <span class="category">
+            <a href="/categories/Android%E9%9A%8F%E7%AC%94/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Android随笔
+            </a>
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h3 id="分享纯文本"><a href="#分享纯文本" class="headerlink" title="分享纯文本"></a>分享纯文本</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">shareText</span><span class="params">(text: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> sendIntent = Intent().apply &#123;</span><br><span class="line">        action = Intent.ACTION_SEND</span><br><span class="line">        putExtra(Intent.EXTRA_TEXT, text)</span><br><span class="line">        type = <span class="string">&quot;text/plain&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建一个选择器，让用户选择用哪个 App 分享</span></span><br><span class="line">    <span class="keyword">val</span> shareIntent = Intent.createChooser(sendIntent, <span class="string">&quot;分享文本到...&quot;</span>)</span><br><span class="line">    startActivity(shareIntent)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：始终使用 <code>Intent.createChooser()</code> 是一个好习惯。这会强制系统每次都显示一个应用选择列表，避免用户因为设置了某个应用的“默认操作”而无法选择其他应用。</p>
+<h3 id="分享单张图片或单个文件"><a href="#分享单张图片或单个文件" class="headerlink" title="分享单张图片或单个文件"></a>分享单张图片或单个文件</h3><ul>
+<li><strong>在 <code>AndroidManifest.xml</code> 中声明 <code>FileProvider</code></strong></li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;manifest ...&gt;</span><br><span class="line">    &lt;application ...&gt;</span><br><span class="line">        ...</span><br><span class="line">        &lt;provider</span><br><span class="line">            android:name=<span class="string">&quot;androidx.core.content.FileProvider&quot;</span></span><br><span class="line">            android:authorities=<span class="string">&quot;<span class="subst">$&#123;applicationId&#125;</span>.fileprovider&quot;</span></span><br><span class="line">            android:exported=<span class="string">&quot;false&quot;</span></span><br><span class="line">            android:grantUriPermissions=<span class="string">&quot;true&quot;</span>&gt;</span><br><span class="line">            &lt;meta-<span class="keyword">data</span></span><br><span class="line">                android:name=<span class="string">&quot;android.support.FILE_PROVIDER_PATHS&quot;</span></span><br><span class="line">                android:resource=<span class="string">&quot;@xml/file_paths&quot;</span> /&gt;</span><br><span class="line">        &lt;/provider&gt;</span><br><span class="line">        ...</span><br><span class="line">    &lt;/application&gt;</span><br><span class="line">&lt;/manifest&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>创建 <code>res/xml/file_paths.xml</code> 文件</strong></li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span>?&gt;</span><br><span class="line">&lt;paths xmlns:android=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span><br><span class="line">    &lt;cache-path name=<span class="string">&quot;my_cache_images&quot;</span> path=<span class="string">&quot;images/&quot;</span>/&gt;</span><br><span class="line">    &lt;files-path name=<span class="string">&quot;my_files&quot;</span> path=<span class="string">&quot;docs/&quot;</span>/&gt;</span><br><span class="line">    &lt;<span class="keyword">external</span>-path name=<span class="string">&quot;my_external_files&quot;</span> path=<span class="string">&quot;.&quot;</span>/&gt;</span><br><span class="line">&lt;/paths&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>编写分享代码</strong></li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">saveImgAndGetUri</span><span class="params">(context: <span class="type">Context</span>,bitmap: <span class="type">Bitmap</span>)</span></span>:Uri&#123;</span><br><span class="line">        <span class="keyword">val</span> imageFolder= File(context.cacheDir,<span class="string">&quot;images&quot;</span>)</span><br><span class="line">        <span class="keyword">val</span> uri:Uri?</span><br><span class="line">        imageFolder.mkdirs()</span><br><span class="line">        <span class="keyword">val</span> file= File(imageFolder,<span class="string">&quot;shared_image.png&quot;</span>)</span><br><span class="line">        <span class="keyword">val</span> stream= FileOutputStream(file)</span><br><span class="line">        bitmap.compress(Bitmap.CompressFormat.PNG,<span class="number">90</span>,stream)</span><br><span class="line">        stream.flush()</span><br><span class="line">        stream.close()</span><br><span class="line">        uri = FileProvider.getUriForFile(</span><br><span class="line">            context,</span><br><span class="line">            <span class="string">&quot;com.example.daysmatter.fileprovider&quot;</span>, <span class="comment">// 必须和 Manifest 中的 authorities 一致</span></span><br><span class="line">            file</span><br><span class="line">        )</span><br><span class="line">        <span class="keyword">return</span> uri</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">shareImage</span><span class="params">(context: <span class="type">Context</span>, uri: <span class="type">Uri</span>)</span></span> &#123;</span><br><span class="line">     <span class="comment">// 创建 Intent</span></span><br><span class="line">        <span class="keyword">val</span> shareIntent = Intent().apply &#123;</span><br><span class="line">            action = Intent.ACTION_SEND</span><br><span class="line">            putExtra(Intent.EXTRA_STREAM, uri)</span><br><span class="line">            type = <span class="string">&quot;image/png&quot;</span>            <span class="comment">// 设置正确的 MIME Type</span></span><br><span class="line">           <span class="comment">// 授予临时读取权限</span></span><br><span class="line">            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)</span><br><span class="line">        &#125;</span><br><span class="line">     <span class="comment">// 4. 启动选择器</span></span><br><span class="line">        startActivity(Intent.createChooser(shareIntent, <span class="string">&quot;分享图片到...&quot;</span>))</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="分享多张图片或多个文件"><a href="#分享多张图片或多个文件" class="headerlink" title="分享多张图片或多个文件"></a>分享多张图片或多个文件</h3><p>与分享单张基本相同，有个别点有差异</p>
+<ul>
+<li><p><strong>Intent Action: <code>Intent.ACTION_SEND_MULTIPLE</code></strong></p>
+</li>
+<li><p><strong>分享内容: 使用 <code>putParcelableArrayListExtra(Intent.EXTRA_STREAM, ...)</code> 存放一个包含多个 <code>Uri</code> 的 <code>ArrayList</code>。</strong></p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">fun shareMultipleImages(context: Context, imageFiles: List&lt;File&gt;) &#123;</span><br><span class="line">    val uriList = ArrayList&lt;Uri&gt;()</span><br><span class="line">    imageFiles.forEach &#123; file -&gt;</span><br><span class="line">        val uri = FileProvider.getUriForFile(</span><br><span class="line">            context,</span><br><span class="line">            &quot;$&#123;context.packageName&#125;.fileprovider&quot;,</span><br><span class="line">            file</span><br><span class="line">        )</span><br><span class="line">        uriList.add(uri)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    val shareIntent = Intent().apply &#123;</span><br><span class="line">        action = Intent.ACTION_SEND_MULTIPLE</span><br><span class="line">        putParcelableArrayListExtra(Intent.EXTRA_STREAM, uriList)</span><br><span class="line">        type = &quot;image/*&quot; // 可以使用通配符</span><br><span class="line">        addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    startActivity(Intent.createChooser(shareIntent, &quot;分享多张图片...&quot;))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2025 Hexo
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;John Doe
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>

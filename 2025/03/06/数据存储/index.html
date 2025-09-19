@@ -1,0 +1,310 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>数据存储(Java) | Hexo</title>
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>HEXO</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;HEXO</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>数据存储(Java)</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/3/6
+        </span>
+        
+        <span class="category">
+            <a href="/categories/Android-Java%E7%89%88/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Android(Java版)
+            </a>
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="文件存储"><a href="#文件存储" class="headerlink" title="文件存储"></a>文件存储</h1><h3 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h3><p>1.新建save方法，运用openFileOutput接收(“文件名”，保存模式（强制覆盖：MODE_PRIVATE,增添追加：MODE_APPEND）)，openFileOutput方法返回的是FileOutputStream对象，通过BufferedWriter将其写入到文件中。</p>
+<p>2.重写onDestroy()方法，确保销毁前一定会调用save方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AppCompatActivity</span> &#123;</span><br><span class="line"><span class="keyword">private</span> EditText edit;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        edit=(EditText) findViewById(R.id.edit_text);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//确保销毁时能够调用save方法</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onDestroy</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onDestroy();</span><br><span class="line">        String inputText=edit.getText().toString();</span><br><span class="line">        save(inputText);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//保存输入文本到文件中去</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">save</span><span class="params">(String inputText)</span>&#123;</span><br><span class="line">        FileOutputStream out=<span class="literal">null</span>;<span class="comment">//声明文件输出流</span></span><br><span class="line">        BufferedWriter writer=<span class="literal">null</span>;<span class="comment">//声明缓冲写入流</span></span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            <span class="comment">//打开文件输出流，MODE_PRIVATE表示私有模式，文件只能被该应用访问</span></span><br><span class="line">            out=openFileOutput(<span class="string">&quot;data&quot;</span>, Context.MODE_PRIVATE);</span><br><span class="line">            <span class="comment">//将输出流包装成缓冲写入流，使用UTF-8编码</span></span><br><span class="line">            writer=<span class="keyword">new</span> <span class="title class_">BufferedWriter</span>(<span class="keyword">new</span> <span class="title class_">OutputStreamWriter</span>(out));</span><br><span class="line">            <span class="comment">//将文本写入文件</span></span><br><span class="line">            writer.write(inputText);</span><br><span class="line">        &#125;<span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">            e.printStackTrace();<span class="comment">//捕获并打印异常</span></span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">//关闭writer流</span></span><br><span class="line">                <span class="keyword">if</span> (writer!=<span class="literal">null</span>)&#123;</span><br><span class="line">                    writer.close();</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;<span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">                e.printStackTrace();<span class="comment">//捕获并打印关闭流时的异常</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h3><p>新建load()方法，运用openFileInput接收(“文件名”),通过BufferedReader一行行读取对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> String <span class="title function_">load</span><span class="params">()</span>&#123;</span><br><span class="line">        FileInputStream in=<span class="literal">null</span>;<span class="comment">//声明文件输入流</span></span><br><span class="line">        BufferedReader reader=<span class="literal">null</span>;<span class="comment">//声明缓冲读取流</span></span><br><span class="line">        StringBuilder content=<span class="keyword">new</span> <span class="title class_">StringBuilder</span>();<span class="comment">//来存储读取的内容</span></span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            <span class="comment">//打开文件输入流，读取名为“data”的文件</span></span><br><span class="line">            in=openFileInput(<span class="string">&quot;data&quot;</span>);</span><br><span class="line">            <span class="comment">//将文件输入流包装成缓冲读取流</span></span><br><span class="line">            reader=<span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(in));</span><br><span class="line">            String line=<span class="string">&quot;&quot;</span>;<span class="comment">//用于存储每次读取的一行内容</span></span><br><span class="line">            <span class="keyword">while</span>((line=reader.readLine())!=<span class="literal">null</span>)&#123;</span><br><span class="line">                content.append(line);<span class="comment">//将读取的每一行都追加到content中</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">            e.printStackTrace();<span class="comment">//捕获并打印异常</span></span><br><span class="line">        &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">            <span class="comment">//确保reader流被关闭</span></span><br><span class="line">            <span class="keyword">if</span>(reader!=<span class="literal">null</span>)&#123;</span><br><span class="line">                <span class="keyword">try</span>&#123;</span><br><span class="line">                    reader.close();<span class="comment">//关闭缓冲读取流</span></span><br><span class="line">                &#125;<span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">                    e.printStackTrace();<span class="comment">//捕获并打印关闭流时的异常</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> content.toString();<span class="comment">//返回读取到的所有内容</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>完整代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AppCompatActivity</span> &#123;</span><br><span class="line"><span class="keyword">private</span> EditText edit;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        edit=(EditText) findViewById(R.id.edit_text);</span><br><span class="line">        String inputText=load();</span><br><span class="line">        <span class="keyword">if</span>(!TextUtils.isEmpty(inputText))&#123;</span><br><span class="line">            edit.setText(inputText);</span><br><span class="line">            edit.setSelection(inputText.length());</span><br><span class="line">            Toast.makeText(<span class="built_in">this</span>, <span class="string">&quot;Restoring succeeded&quot;</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onDestroy</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onDestroy();</span><br><span class="line">        String inputText=edit.getText().toString();</span><br><span class="line">        save(inputText);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">save</span><span class="params">(String inputText)</span>&#123;</span><br><span class="line">        FileOutputStream out=<span class="literal">null</span>;</span><br><span class="line">        BufferedWriter writer=<span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            out=openFileOutput(<span class="string">&quot;data&quot;</span>, Context.MODE_APPEND);</span><br><span class="line">            writer=<span class="keyword">new</span> <span class="title class_">BufferedWriter</span>(<span class="keyword">new</span> <span class="title class_">OutputStreamWriter</span>(out));</span><br><span class="line">            writer.write(inputText);</span><br><span class="line">        &#125;<span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (writer!=<span class="literal">null</span>)&#123;</span><br><span class="line">                    writer.close();</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;<span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">load</span><span class="params">()</span>&#123;</span><br><span class="line">        FileInputStream in=<span class="literal">null</span>;</span><br><span class="line">        BufferedReader reader=<span class="literal">null</span>;</span><br><span class="line">        StringBuilder content=<span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            in=openFileInput(<span class="string">&quot;data&quot;</span>);</span><br><span class="line">            reader=<span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(in));</span><br><span class="line">            String line=<span class="string">&quot;&quot;</span>;</span><br><span class="line">            <span class="keyword">while</span>((line=reader.readLine())!=<span class="literal">null</span>)&#123;</span><br><span class="line">                content.append(line);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(reader!=<span class="literal">null</span>)&#123;</span><br><span class="line">                <span class="keyword">try</span>&#123;</span><br><span class="line">                    reader.close();</span><br><span class="line">                &#125;<span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> content.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h1 id="SharedPreferences存储"><a href="#SharedPreferences存储" class="headerlink" title="SharedPreferences存储"></a>SharedPreferences存储</h1><h3 id="数据存储-1"><a href="#数据存储-1" class="headerlink" title="数据存储"></a>数据存储</h3><p>1.用getSharedPreferences设置存放的文件名与模式（唯一）</p>
+<p>2.调用edit()方法</p>
+<p>3.存入数据并调用apply()方法提交</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">   <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">       <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">       setContentView(R.layout.activity_main);</span><br><span class="line">       Button saveData=(Button) findViewById(R.id.save_data);</span><br><span class="line">       saveData.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">               <span class="comment">//获取SharedPreferences对象，存储在“data”文件中，MODE_PRIVATE表示私有模式</span></span><br><span class="line">               SharedPreferences.Editor editor=getSharedPreferences(<span class="string">&quot;data&quot;</span>,MODE_PRIVATE).edit();</span><br><span class="line">               <span class="comment">//使用SharedPreferences.Editor存储数据</span></span><br><span class="line">               editor.putString(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;Tom&quot;</span>);<span class="comment">//存储字符串</span></span><br><span class="line">               editor.putInt(<span class="string">&quot;age&quot;</span>,<span class="number">28</span>);<span class="comment">//存储整型数据</span></span><br><span class="line">               editor.putBoolean(<span class="string">&quot;married&quot;</span>,<span class="literal">false</span>);<span class="comment">//存储布尔值数据</span></span><br><span class="line">               <span class="comment">//提交数据（apply()为异步提交不返回结果）</span></span><br><span class="line">               editor.apply();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="读取数据-1"><a href="#读取数据-1" class="headerlink" title="读取数据"></a>读取数据</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Button restoreData=(Button) findViewById(R.id.restore_data);</span><br><span class="line">       restoreData.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">                <span class="comment">//获取SharedPreferences对象，用于读取“data”文件中的数据</span></span><br><span class="line">               SharedPreferences pref=getSharedPreferences(<span class="string">&quot;data&quot;</span>,MODE_PRIVATE);</span><br><span class="line">               <span class="comment">//从SharedPreferences中读取数据，如果没找到则使用默认值</span></span><br><span class="line">              String name= pref.getString(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;&quot;</span>);</span><br><span class="line">              <span class="type">int</span> age= pref.getInt(<span class="string">&quot;age&quot;</span>,<span class="number">0</span>);</span><br><span class="line">              <span class="type">boolean</span> married=pref.getBoolean(<span class="string">&quot;married&quot;</span>,<span class="literal">false</span>);</span><br><span class="line">               <span class="comment">//输出日志，打印恢复的数据</span></span><br><span class="line">               Log.d(<span class="string">&quot;MainActivity&quot;</span>, <span class="string">&quot;name is &quot;</span>+name);</span><br><span class="line">               Log.d(<span class="string">&quot;MainActivity&quot;</span>, <span class="string">&quot;age is &quot;</span>+age);</span><br><span class="line">               Log.d(<span class="string">&quot;MainActivity&quot;</span>, <span class="string">&quot;married is &quot;</span>+married);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../img/img44.png"></p>
+<hr>
+<h1 id="SQLite数据库存储"><a href="#SQLite数据库存储" class="headerlink" title="SQLite数据库存储"></a>SQLite数据库存储</h1><h3 id="SQL语句"><a href="#SQL语句" class="headerlink" title="SQL语句"></a>SQL语句</h3><p>整型：integer</p>
+<p>浮点型：real</p>
+<p>文本型：text</p>
+<p>二进制型：blob</p>
+<p>创建一个表格：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="number">1.</span><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String CREATE_BOOK=<span class="string">&quot;create table Book(&quot;</span><span class="comment">//创建一个名为Book的表</span></span><br><span class="line">            +<span class="string">&quot;id integer primary key autoincrement, &quot;</span><span class="comment">//定义id字段，设为主键，并设为自增</span></span><br><span class="line">            +<span class="string">&quot;author text, &quot;</span></span><br><span class="line">            +<span class="string">&quot;price real, &quot;</span></span><br><span class="line">            +<span class="string">&quot;pages integer, &quot;</span></span><br><span class="line">            +<span class="string">&quot;name text)&quot;</span>;</span><br><span class="line"><span class="number">2.</span><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String CREATE_TABLE_SQL=<span class="string">&quot;create table&quot;</span>+TABLE_NAME_NOTE+<span class="string">&quot;(id integer primary key autoincrement,title text,content,text,create_time text)&quot;</span>;</span><br><span class="line"><span class="comment">//两种方法都可以使用</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><p>1.新建帮助类MyDatabaseHelper继承自SQLiteOpenHelper</p>
+<p>2.重写构造方法</p>
+<p>3.重写onCreate调用execSQL执行建表语句</p>
+<p>4.重写onUpgrade</p>
+<p>5.之后可以调用getWritableDatabase（）或getReadableDatabase（）获取数据库</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//构造方法，初始化数据库</span></span><br><span class="line"><span class="keyword">public</span> <span class="title function_">MyDatabaseHelper</span><span class="params">(<span class="meta">@Nullable</span> Context context, <span class="meta">@Nullable</span> String name, <span class="meta">@Nullable</span> SQLiteDatabase.CursorFactory factory, <span class="type">int</span> version)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(context, name, factory, version);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//创建数据库表</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(SQLiteDatabase db)</span>&#123;</span><br><span class="line">        db.execSQL(CREATE_BOOK);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//更新数据库，暂时不操作</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onUpgrade</span><span class="params">(SQLiteDatabase db, <span class="type">int</span> i, <span class="type">int</span> i1)</span> &#123;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="升级数据库"><a href="#升级数据库" class="headerlink" title="升级数据库"></a>升级数据库</h3><p>如果需要在已经创建好的数据库的基础上还想添加几类数据就需要升级数据库</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyDatabaseHelper</span> <span class="keyword">extends</span> <span class="title class_">SQLiteOpenHelper</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String CREATE_BOOK=<span class="string">&quot;create table Book(&quot;</span></span><br><span class="line">            +<span class="string">&quot;id integer primary key autoincrement, &quot;</span></span><br><span class="line">            +<span class="string">&quot;author text, &quot;</span></span><br><span class="line">            +<span class="string">&quot;price real, &quot;</span></span><br><span class="line">            +<span class="string">&quot;pages integer, &quot;</span></span><br><span class="line">            +<span class="string">&quot;name text)&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String CREATE_CATEGORY=<span class="string">&quot;create table Category(&quot;</span></span><br><span class="line">            +<span class="string">&quot;id integer primary key autoincrement, &quot;</span></span><br><span class="line">            +<span class="string">&quot;category_name text, &quot;</span></span><br><span class="line">            +<span class="string">&quot;category_code integer)&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Context mContext;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MyDatabaseHelper</span><span class="params">(<span class="meta">@Nullable</span> Context context, <span class="meta">@Nullable</span> String name, <span class="meta">@Nullable</span> SQLiteDatabase.CursorFactory factory, <span class="type">int</span> version)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(context, name, factory, version);</span><br><span class="line">                mContext=context;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(SQLiteDatabase db)</span>&#123;</span><br><span class="line">        db.execSQL(CREATE_BOOK);</span><br><span class="line">        db.execSQL(CREATE_CATEGORY);</span><br><span class="line">        Toast.makeText(mContext, <span class="string">&quot;Create succeeded&quot;</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onUpgrade</span><span class="params">(SQLiteDatabase db, <span class="type">int</span> i, <span class="type">int</span> i1)</span> &#123;</span><br><span class="line">        db.execSQL(<span class="string">&quot;drop table if exists Book&quot;</span>);<span class="comment">//如果存在Book表则删除</span></span><br><span class="line">        db.execSQL(<span class="string">&quot;drop table if exists Category&quot;</span>);<span class="comment">//如果存在Category表则删除</span></span><br><span class="line">        onCreate(db);<span class="comment">//重新创建表格</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>CRUD：Create添加Read查询Update更新Delete删除</strong></p>
+<h3 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h3><p>可以使用insert()方法插入数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">long</span> <span class="title function_">insertData</span><span class="params">(Note note)</span>&#123;             </span><br><span class="line">             SQLiteDatabase db=getWritableDatabase();<span class="comment">//获取数据库</span></span><br><span class="line">              ContentValues values=<span class="keyword">new</span> <span class="title class_">ContentValues</span>();<span class="comment">//创建ContentValues存储插入数据</span></span><br><span class="line">              <span class="comment">//开始组装第一条数据</span></span><br><span class="line">              values.put(<span class="string">&quot;title&quot;</span>,note.getTitle());</span><br><span class="line">              values.put(<span class="string">&quot;content&quot;</span>,note.getContent());</span><br><span class="line">              values.put(<span class="string">&quot;create_time&quot;</span>,note.getCreatTime());</span><br><span class="line">            <span class="keyword">return</span>  db.insert(<span class="string">&quot;Note&quot;</span>,<span class="literal">null</span>,values);<span class="comment">//插入数据，返回插入的行号</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h3><p>利用updata()方法更新</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">updateData</span><span class="params">(Note note)</span>&#123;</span><br><span class="line">                SQLiteDatabase db=getWritableDatabase();</span><br><span class="line">                ContentValues values=<span class="keyword">new</span> <span class="title class_">ContentValues</span>();</span><br><span class="line">                values.put(<span class="string">&quot;title&quot;</span>,note.getTitle());</span><br><span class="line">                values.put(<span class="string">&quot;content&quot;</span>,note.getContent());</span><br><span class="line">                values.put(<span class="string">&quot;create_time&quot;</span>,note.getCreatTime());</span><br><span class="line">                <span class="keyword">return</span> db.update(<span class="string">&quot;Note&quot;</span>,values,<span class="string">&quot;id=?&quot;</span>,<span class="keyword">new</span> <span class="title class_">String</span>[]&#123;note.getId()&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h3><p>用delete()方法删除</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">deleteData</span><span class="params">(String id)</span>&#123;</span><br><span class="line">                SQLiteDatabase db=getWritableDatabase();</span><br><span class="line">               <span class="keyword">return</span> db.delete(<span class="string">&quot;Note&quot;</span>,<span class="string">&quot;id=?&quot;</span>,<span class="keyword">new</span> <span class="title class_">String</span>[]&#123;id&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h3><p>1**.方法：**通过query()方法</p>
+<p>2.**基本语法：**public Cursor query(String table, String[] columns, String selection,String[] selectionArgs, String groupBy, String having, String orderBy)</p>
+<p>3.**参数说明：**table：要查询的表名。<br>columns：要返回的列名数组。可以指定要查询的具体列，若为 null，表示查询所有列。<br>selection：查询条件，相当于 SQL 中的 WHERE 子句。可以为 null，表示没有条件（即返回所有记录）。<br>selectionArgs：selection 中占位符（?）的实际值，必须与 selection 中的 ? 占位符一一对应。如果没有占位符，传入 null。<br>groupBy：对查询结果进行分组的列名数组，通常与 GROUP BY 子句结合使用。如果不需要分组，可以传入 null。<br>having：分组后筛选的条件，相当于 SQL 中的 HAVING 子句。如果不需要筛选分组后的数据，可以传入 null。<br>orderBy：排序方式，相当于 SQL 中的 ORDER BY 子句。如果为 null，则不进行排序。</p>
+<p>4.<strong>返回值：</strong><br>query() 方法返回一个 Cursor 对象，它包含了查询的结果。通过 Cursor，你可以逐行遍历查询结果并获取每一行的数据。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">   SQLiteDatabase db=dbHelper.getWritableDatabase();</span><br><span class="line">   <span class="comment">//查询表中所有数据</span></span><br><span class="line">    Cursor cursor=db.query(<span class="string">&quot;Book&quot;</span>,<span class="literal">null</span>,<span class="literal">null</span>,<span class="literal">null</span>,<span class="literal">null</span>,<span class="literal">null</span>,<span class="literal">null</span>);</span><br><span class="line">    <span class="keyword">if</span>(cursor.moveToFirst())&#123;</span><br><span class="line">        <span class="keyword">do</span>&#123;</span><br><span class="line">            <span class="comment">//遍历表中所有数据，并打印</span></span><br><span class="line">            <span class="meta">@SuppressLint(&quot;Range&quot;)</span> String name=cursor.getString(cursor.getColumnIndex(<span class="string">&quot;name&quot;</span>));</span><br><span class="line">            <span class="meta">@SuppressLint(&quot;Range&quot;)</span> String author=cursor.getString(cursor.getColumnIndex(<span class="string">&quot;author&quot;</span>));</span><br><span class="line">            <span class="meta">@SuppressLint(&quot;Range&quot;)</span> <span class="type">int</span> pages=cursor.getInt(cursor.getColumnIndex(<span class="string">&quot;pages&quot;</span>));</span><br><span class="line">            <span class="meta">@SuppressLint(&quot;Range&quot;)</span> <span class="type">double</span> price=cursor.getDouble(cursor.getColumnIndex(<span class="string">&quot;price&quot;</span>));</span><br><span class="line">            Log.d(<span class="string">&quot;MainActivity&quot;</span>, <span class="string">&quot;book name is: &quot;</span>+name);</span><br><span class="line">            Log.d(<span class="string">&quot;MainActivity&quot;</span>, <span class="string">&quot;book author is: &quot;</span>+author);</span><br><span class="line">            Log.d(<span class="string">&quot;MainActivity&quot;</span>, <span class="string">&quot;book pages is: &quot;</span>+pages);</span><br><span class="line">            Log.d(<span class="string">&quot;MainActivity&quot;</span>, <span class="string">&quot;book price is: &quot;</span>+price);</span><br><span class="line">        &#125;<span class="keyword">while</span>(cursor.moveToNext());</span><br><span class="line">    &#125;</span><br><span class="line">    cursor.close();;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用SQL操作数据库"><a href="#使用SQL操作数据库" class="headerlink" title="使用SQL操作数据库"></a>使用SQL操作数据库</h3><p>添加数据：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.execSQL(<span class="string">&quot;insert into Book(name,author,pages,price) values(? ,?, ?, ?)&quot;</span>,<span class="keyword">new</span> <span class="title class_">String</span>[]&#123;<span class="string">&quot;The Da Vinci Code&quot;</span>,<span class="string">&quot;Dan Brown&quot;</span>,<span class="string">&quot;454&quot;</span>,<span class="string">&quot;16.96&quot;</span>&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>插入数据：</p>
+<p><code>db.execSQL(&quot;update Book set price=? where name=?&quot;,new String[]&#123;&quot;10.99&quot;,&quot;The Da Vinci Code&quot;&#125;);</code></p>
+<p>删除数据：</p>
+<p><code>db.execSQL(&quot;delete from Book where pages&gt;?&quot;,new String[]&#123;&quot;500&quot;&#125;);</code></p>
+<p>查询数据：</p>
+<p><code>db.rawQuery(&quot;select * from Book&quot;,null);</code></p>
+<hr>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2025 Hexo
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;John Doe
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>

@@ -1,0 +1,245 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Android认识以及入门 | Hexo</title>
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>HEXO</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;HEXO</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>Android认识以及入门</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/2/24
+        </span>
+        
+        <span class="category">
+            <a href="/categories/Android-Java%E7%89%88/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Android(Java版)
+            </a>
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="系统架构"><a href="#系统架构" class="headerlink" title="系统架构"></a>系统架构</h1><p>1.Linux内核层:提供底层驱动<br>2.系统运行库层:提供主要的特性支持(通过C&#x2F;C++库)，同样这一层也有Android运行时库，提供了一些核心库，能允许开发者使用Java来编写应用。<br>3.应用框架层:提供了各种API<br>4.应用层:安装到手机上的应用程序都属于这一层</p>
+<hr>
+<h1 id="Android应用开发特色"><a href="#Android应用开发特色" class="headerlink" title="Android应用开发特色"></a>Android应用开发特色</h1><p>1.四大组件:活动，服务，广播接收器，内容提供器。<br>2.丰富的系统控件<br>3.SQLite数据库:让存储数据和读取数据变得更为方便<br>4.强大的多媒体<br>5.地理位置定位</p>
+<hr>
+<h1 id="项目中各个文件的作用"><a href="#项目中各个文件的作用" class="headerlink" title="项目中各个文件的作用"></a>项目中各个文件的作用</h1><p>1.gradle:里面含有gradle wrapper配置文件，需要打开的话必须手动按照“导航栏<del>File</del>Settings<del>Bulid,Execution,Deployment</del>Gradle”这个步骤进行<br>2..gitignore:将指定的目录或文件排除在版本控制之外。<br>3.gradle.properties:这个文件是全局的gradle配置文件，在这里配置的属性将会影响到项目中所有的gradle编译脚本。<br>4.gradlew和gradlew.bat:用来在命令行界面中执行gradle命令的，其中gradle是在Linux或Mac系统使用，gradlew.bat在Windows系统使用</p>
+<hr>
+<h1 id="app目录详解"><a href="#app目录详解" class="headerlink" title="app目录详解"></a>app目录详解</h1><p>1.libs:jar包存放的地方<br>2.Androidtest:编写测试用例，对项目进行自动化测试<br>3.Java:放置Java代码的地方<br>4.res:<br>①图片放在drawable中<br>②布局放在layout中<br>③字符串，样式，颜色等配置放在values中<br>④mipmap中放置一些图标<br>5.AndroidManifest.xml:整个Android项目配置文件，四大组件和活动等都需要在这里注册，经常会使用到这个文件。<br>6.test:编写测试用例，是对项目自动化测试的另一种方式<br>7.build.gradle:这个文件中会指定很多项目构建相关的配置<br>8.proguard-rules.pro:指定项目代码的混淆规则</p>
+<hr>
+<h1 id="主活动的设定"><a href="#主活动的设定" class="headerlink" title="主活动的设定"></a>主活动的设定</h1><p>即首先启动的活动</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;intent-filter&gt;</span><br><span class="line">    &lt;action android:name=<span class="string">&quot;android.intent.action.MAIN&quot;</span>/&gt;</span><br><span class="line">    &lt;category android:name=<span class="string">&quot;android.intent.category.LAUNCHER&quot;</span>/&gt;</span><br><span class="line">&lt;/intent-filter&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="引用的方法"><a href="#引用的方法" class="headerlink" title="引用的方法"></a>引用的方法</h1><p>1.R.string.hello_world<br>2.@string&#x2F;hello_world<br>如果在@和string之间添上一个+就变成了定义<br>其中的string可以替换</p>
+<hr>
+<h1 id="日志工具"><a href="#日志工具" class="headerlink" title="日志工具"></a>日志工具</h1><p>从小到大的顺序<br>Log.v:打印意义最小的信息<br>Log.d:打印调试信息<br>Log.i:比较重要的数据<br>Log.w:警告信息<br>Log.e:错误信息<br>传入两个参数:第一个参数是tag，一般传入类名就好主要用于对打印信息的过滤<br>第二个参数是msg，即想要打印的内容<br>一般与logcat结合使用</p>
+<hr>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2025 Hexo
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;John Doe
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>

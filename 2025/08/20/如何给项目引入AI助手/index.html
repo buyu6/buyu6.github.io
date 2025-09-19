@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>如何给项目引入AI助手 | Hexo</title>
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>HEXO</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;HEXO</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>如何给项目引入AI助手</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/8/20
+        </span>
+        
+        <span class="category">
+            <a href="/categories/AI/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                AI
+            </a>
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="这里拿Gemini进行示范"><a href="#这里拿Gemini进行示范" class="headerlink" title="这里拿Gemini进行示范"></a>这里拿Gemini进行示范</h1><ul>
+<li><h3 id="先根据返回的JSON数据格式写出数据模型"><a href="#先根据返回的JSON数据格式写出数据模型" class="headerlink" title="先根据返回的JSON数据格式写出数据模型"></a>先根据返回的JSON数据格式写出数据模型</h3></li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//AI的api调用请求体和响应体json格式不相同需要区别开来</span></span><br><span class="line"><span class="keyword">data</span> <span class="keyword">class</span> <span class="title class_">GeminiRequestBody</span>(<span class="keyword">val</span> contents:List&lt;Content&gt;)</span><br><span class="line"><span class="keyword">data</span> <span class="keyword">class</span> <span class="title class_">GeminiResponseBody</span>(<span class="keyword">val</span> candidates: List&lt;Candidate&gt;)</span><br><span class="line"><span class="keyword">data</span> <span class="keyword">class</span> <span class="title class_">Candidate</span>(<span class="keyword">val</span> content: Content)</span><br><span class="line"><span class="keyword">data</span> <span class="keyword">class</span> <span class="title class_">Content</span>(<span class="keyword">val</span> parts:List&lt;Part&gt;)</span><br><span class="line"><span class="keyword">data</span> <span class="keyword">class</span> <span class="title class_">Part</span>(<span class="keyword">val</span> text:String)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h3 id="定义接口，这里使用POST注解，GET注解只用于获取数据，这里不适用"><a href="#定义接口，这里使用POST注解，GET注解只用于获取数据，这里不适用" class="headerlink" title="定义接口，这里使用POST注解，GET注解只用于获取数据，这里不适用"></a>定义接口，这里使用<em><strong>POST</strong></em>注解，<em><strong>GET</strong></em>注解只用于获取数据，这里不适用</h3></li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">AIService</span> &#123;</span><br><span class="line">    <span class="meta">@POST(<span class="string">&quot;v1beta/models/gemini-2.5-flash:generateContent&quot;</span>)</span></span><br><span class="line">     <span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">generateContent</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">        <span class="meta">@Query(<span class="string">&quot;key&quot;</span>)</span> apiKey: <span class="type">String</span> = MyApplication.GEMINI_API_KEY,</span></span></span><br><span class="line"><span class="params"><span class="function">        <span class="meta">@Body</span> requestBody: <span class="type">GeminiRequestBody</span></span></span></span><br><span class="line"><span class="params"><span class="function">    )</span></span> :Response&lt;GeminiResponseBody&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h3 id="搭建Retrofit构建器"><a href="#搭建Retrofit构建器" class="headerlink" title="搭建Retrofit构建器"></a>搭建Retrofit构建器</h3></li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">object</span> AICreator &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">const</span> <span class="keyword">val</span> BASE_URL = <span class="string">&quot;https://generativelanguage.googleapis.com/&quot;</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> retrofit = Retrofit.Builder()</span><br><span class="line">        .baseUrl(BASE_URL)</span><br><span class="line">        .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">        .build()</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="type">&lt;T&gt;</span> <span class="title">create</span><span class="params">(serviceClass:<span class="type">Class</span>&lt;<span class="type">T</span>&gt;)</span></span>:T= retrofit.create(serviceClass)</span><br><span class="line">    <span class="keyword">inline</span> <span class="function"><span class="keyword">fun</span> <span class="type">&lt;<span class="keyword">reified</span> T&gt;</span><span class="title">create</span><span class="params">()</span></span>:T=create(T::<span class="keyword">class</span>.java)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h3 id="提交申请并对返回的数据进行解析"><a href="#提交申请并对返回的数据进行解析" class="headerlink" title="提交申请并对返回的数据进行解析"></a>提交申请并对返回的数据进行解析</h3></li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">object</span> AInetwork &#123;</span><br><span class="line">    <span class="comment">//创建接口的动态代理对象</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> aiService = AICreator.create&lt;AIService&gt;()</span><br><span class="line">    <span class="comment">//向AI服务器发送一个请求，并处理返回的结果。</span></span><br><span class="line">    <span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">generateContent</span><span class="params">(requestBody: <span class="type">GeminiRequestBody</span>)</span></span>: Result&lt;GeminiResponseBody&gt; &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">val</span> response = aiService.generateContent(requestBody=requestBody)</span><br><span class="line">            <span class="keyword">if</span> (response.isSuccessful &amp;&amp; response.body() != <span class="literal">null</span>) &#123;</span><br><span class="line">                Result.success(response.body()!!)</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">val</span> errorMessage = response.errorBody()?.string() ?: <span class="string">&quot;未知错误&quot;</span></span><br><span class="line">                Log.e(<span class="string">&quot;AInetwork&quot;</span>, <span class="string">&quot;数据获取失败: <span class="variable">$errorMessage</span>&quot;</span>)</span><br><span class="line">                Result.failure(RuntimeException(<span class="string">&quot;API请求失败: <span class="subst">$&#123;response.code()&#125;</span> - <span class="variable">$errorMessage</span>&quot;</span>))</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (e: Exception) &#123;</span><br><span class="line">            Log.e(<span class="string">&quot;AInetwork&quot;</span>, <span class="string">&quot;网络请求失败: <span class="subst">$&#123;e.message&#125;</span>&quot;</span>, e)</span><br><span class="line">            Result.failure(e)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h3 id="进行调用"><a href="#进行调用" class="headerlink" title="进行调用"></a>进行调用</h3></li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//界面逻辑</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">AIActivity</span> : <span class="type">AppCompatActivity</span>() &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> binder: ActivityAiactivityBinding</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> viewModel: AIViewModel</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span>  msgList=ArrayList&lt;Msg&gt;()</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> adapter: MsgAdapter? = <span class="literal">null</span></span><br><span class="line">        <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        binder = ActivityAiactivityBinding.inflate(layoutInflater)</span><br><span class="line">        setContentView(binder.root)</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 初始化ViewModel</span></span><br><span class="line">        viewModel = ViewModelProvider(<span class="keyword">this</span>)[AIViewModel::<span class="keyword">class</span>.java]</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 设置工具栏</span></span><br><span class="line">        setSupportActionBar(binder.AiToolbar)</span><br><span class="line">        supportActionBar?.let &#123;</span><br><span class="line">            it.title = <span class="string">&quot;&quot;</span></span><br><span class="line">            it.setDisplayHomeAsUpEnabled(<span class="literal">true</span>)</span><br><span class="line">            it.setHomeAsUpIndicator(R.drawable.ic_return)</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 设置RecyclerView</span></span><br><span class="line">        binder.AiRecyclerView.layoutManager = LinearLayoutManager(<span class="keyword">this</span>)</span><br><span class="line">        adapter = MsgAdapter(msgList)</span><br><span class="line">        binder.AiRecyclerView.adapter = adapter</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 设置按钮点击事件</span></span><br><span class="line">        binder.AiButton.setOnClickListener &#123;</span><br><span class="line">            send()</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 观察数据变化</span></span><br><span class="line">        observeViewModel()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 观察ViewModel数据变化</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">observeViewModel</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="comment">// 观察消息列表变化</span></span><br><span class="line">        viewModel.messages.observe(<span class="keyword">this</span>) &#123; messages -&gt;</span><br><span class="line">            adapter?.let &#123; adapter -&gt;</span><br><span class="line">                <span class="comment">// 更新适配器数据</span></span><br><span class="line">                adapter.updateMessages(messages)</span><br><span class="line">                <span class="comment">// 滚动到最新消息</span></span><br><span class="line">                <span class="keyword">if</span> (messages.isNotEmpty()) &#123;</span><br><span class="line">                    binder.AiRecyclerView.scrollToPosition(messages.size - <span class="number">1</span>)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 观察加载状态</span></span><br><span class="line">        viewModel.isLoading.observe(<span class="keyword">this</span>) &#123; isLoading -&gt;</span><br><span class="line">            <span class="comment">// 当AI正在思考时，禁用发送按钮</span></span><br><span class="line">            binder.AiButton.isEnabled = !isLoading</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 发送消息</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">send</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">val</span> content = binder.AiEditText.text.toString()</span><br><span class="line">        <span class="keyword">if</span> (content.isNotEmpty()) &#123;</span><br><span class="line">            Log.d(<span class="string">&quot;AIActivity&quot;</span>, <span class="string">&quot;用户发送问题: <span class="variable">$content</span>&quot;</span>)</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 清空输入框</span></span><br><span class="line">            binder.AiEditText.setText(<span class="string">&quot;&quot;</span>)</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 通过ViewModel发送消息</span></span><br><span class="line">            viewModel.sendMessage(content)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ViewModel部分</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">AIViewModel</span> : <span class="type">ViewModel</span>() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 消息列表</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> _messages = MutableLiveData&lt;List&lt;Msg&gt;&gt;()</span><br><span class="line">    <span class="keyword">val</span> messages: LiveData&lt;List&lt;Msg&gt;&gt; = _messages</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 加载状态</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> _isLoading = MutableLiveData&lt;<span class="built_in">Boolean</span>&gt;()</span><br><span class="line">    <span class="keyword">val</span> isLoading: LiveData&lt;<span class="built_in">Boolean</span>&gt; = _isLoading</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 错误状态</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> _error = MutableLiveData&lt;String?&gt;()</span><br><span class="line">    <span class="keyword">val</span> error: LiveData&lt;String?&gt; = _error</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 内部消息列表</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> messageList = mutableListOf&lt;Msg&gt;()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">init</span> &#123;</span><br><span class="line">        _messages.value = messageList</span><br><span class="line">        _isLoading.value = <span class="literal">false</span></span><br><span class="line">        _error.value = <span class="literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 发送消息</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">sendMessage</span><span class="params">(content: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (content.isBlank()) <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 添加用户消息</span></span><br><span class="line">        addMessage(Msg(content, Msg.TYPE_SENT))</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 请求AI回复</span></span><br><span class="line">        requestAIResponse(content)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 请求AI回复</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">requestAIResponse</span><span class="params">(question: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">        viewModelScope.launch &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                _isLoading.value = <span class="literal">true</span></span><br><span class="line">                _error.value = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">                <span class="comment">// 添加加载提示</span></span><br><span class="line">                addMessage(Msg(<span class="string">&quot;正在思考中...&quot;</span>, Msg.TYPE_RESERVED))</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 在IO线程中执行网络请求</span></span><br><span class="line">                <span class="keyword">val</span> result = withContext(Dispatchers.IO) &#123;</span><br><span class="line">                    <span class="keyword">val</span> requestBody = GeminiRequestBody(</span><br><span class="line">                        contents = listOf(Content(parts = listOf(Part(text = question))))</span><br><span class="line">                    )</span><br><span class="line">                    AInetwork.generateContent(requestBody)</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 移除加载提示</span></span><br><span class="line">                removeLastMessage()</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 处理结果</span></span><br><span class="line">                result.onSuccess &#123; response -&gt;</span><br><span class="line">                    <span class="keyword">val</span> aiResponse = response.candidates.firstOrNull()?.content?.parts?.firstOrNull()?.text</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">if</span> (aiResponse.isNullOrEmpty()) &#123;</span><br><span class="line">                        addMessage(Msg(<span class="string">&quot;抱歉，我暂时无法回答您的问题。&quot;</span>, Msg.TYPE_RESERVED))</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        addMessage(Msg(aiResponse, Msg.TYPE_RESERVED))</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;.onFailure &#123; exception -&gt;</span><br><span class="line">                    <span class="keyword">val</span> errorMsg = <span class="string">&quot;网络请求失败: <span class="subst">$&#123;exception.message&#125;</span>&quot;</span></span><br><span class="line">                    addMessage(Msg(errorMsg, Msg.TYPE_RESERVED))</span><br><span class="line">                    _error.value = errorMsg</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125; <span class="keyword">catch</span> (e: Exception) &#123;</span><br><span class="line">                removeLastMessage()</span><br><span class="line">                <span class="keyword">val</span> errorMsg = <span class="string">&quot;发生未知错误，请稍后重试。&quot;</span></span><br><span class="line">                addMessage(Msg(errorMsg, Msg.TYPE_RESERVED))</span><br><span class="line">                _error.value = errorMsg</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                _isLoading.value = <span class="literal">false</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 添加消息到列表</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">addMessage</span><span class="params">(message: <span class="type">Msg</span>)</span></span> &#123;</span><br><span class="line">        messageList.add(message)</span><br><span class="line">        _messages.value = messageList.toList()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 移除最后一条消息</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">removeLastMessage</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (messageList.isNotEmpty()) &#123;</span><br><span class="line">            messageList.removeAt(messageList.size - <span class="number">1</span>)</span><br><span class="line">            _messages.value = messageList.toList()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2025 Hexo
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;John Doe
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>

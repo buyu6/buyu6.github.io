@@ -1,0 +1,252 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>登陆注册数据备份(手动备份) | Hexo</title>
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>HEXO</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;HEXO</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>登陆注册数据备份(手动备份)</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/9/14
+        </span>
+        
+        <span class="category">
+            <a href="/categories/Android%E9%9A%8F%E7%AC%94/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Android随笔
+            </a>
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p><strong>本博客以firebase服务器为例</strong></p>
+<h3 id="结构图"><a href="#结构图" class="headerlink" title="结构图"></a>结构图</h3><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">users (Collection)</span><br><span class="line">   └── uid1 (Document)</span><br><span class="line">        └── messages (Collection)</span><br><span class="line">            ├── message1 (Document)</span><br><span class="line">            ├── message2 (Document)</span><br><span class="line">   └── uid2 (Document)</span><br><span class="line">        └── messages (Collection)</span><br><span class="line">            ├── message1 (Document)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h3><ul>
+<li>获取auth和firestore对象</li>
+<li>向云端上传用户信息</li>
+<li>利用firestore建立个人档案</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">auth.createUserWithEmailAndPassword(email,password)</span><br><span class="line">    .addOnCompleteListener(<span class="keyword">this</span>)&#123;task -&gt;</span><br><span class="line">        <span class="keyword">if</span> (task.isSuccessful)&#123;</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>, <span class="string">&quot;账户创建成功&quot;</span>, Toast.LENGTH_SHORT).show()</span><br><span class="line">            <span class="keyword">val</span> user= auth.currentUser</span><br><span class="line">            <span class="keyword">val</span> uid=user?.uid</span><br><span class="line">            <span class="keyword">val</span> userProfile=hashMapOf(</span><br><span class="line">                <span class="string">&quot;uid&quot;</span> to uid,</span><br><span class="line">                <span class="string">&quot;email&quot;</span> to email,</span><br><span class="line">                <span class="string">&quot;registTime&quot;</span> to System.currentTimeMillis()</span><br><span class="line">            )</span><br><span class="line">            <span class="comment">//建立个人档案，将数据写入数据库中</span></span><br><span class="line">            db.collection(<span class="string">&quot;users&quot;</span>).document(uid!!)</span><br><span class="line">                .<span class="keyword">set</span>(userProfile)</span><br><span class="line">                .addOnSuccessListener &#123;</span><br><span class="line">                    finish()</span><br><span class="line">                &#125;</span><br><span class="line">                .addOnSuccessListener &#123;</span><br><span class="line">                    Toast.makeText(<span class="keyword">this</span>,<span class="string">&quot;用户信息储存失败请稍后重试&quot;</span>,Toast.LENGTH_SHORT).show()</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>,<span class="string">&quot;账户创建失败&quot;</span>,Toast.LENGTH_SHORT).show()</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">login</span><span class="params">()</span></span>&#123;</span><br><span class="line">       <span class="keyword">val</span> email=binding.email.text.toString()</span><br><span class="line">       <span class="keyword">val</span> password=binding.password.text.toString()</span><br><span class="line">       <span class="keyword">if</span>(email.isEmpty()||password.isEmpty())&#123;</span><br><span class="line">           Toast.makeText(<span class="keyword">this</span>,<span class="string">&quot;邮箱或密码不能为空&quot;</span>,Toast.LENGTH_SHORT).show()</span><br><span class="line">           <span class="keyword">return</span></span><br><span class="line">       &#125;</span><br><span class="line">       auth.signInWithEmailAndPassword(email, password)</span><br><span class="line">           .addOnCompleteListener &#123; task -&gt;</span><br><span class="line">               <span class="keyword">if</span> (task.isSuccessful) &#123;</span><br><span class="line">                   <span class="comment">//这一步是为了实现用户数据隔离</span></span><br><span class="line">                   lifecycleScope.launch &#123;</span><br><span class="line">                       <span class="comment">// 先清空数据库</span></span><br><span class="line">                       dao.clearAllMessages()</span><br><span class="line">                       dao.clearAllCategories()</span><br><span class="line">                       <span class="comment">// 再切回主线程做 UI 操作</span></span><br><span class="line">                           restoreFromFirestore(dao)</span><br><span class="line">                           Toast.makeText(<span class="keyword">this</span><span class="symbol">@LoginActivity</span>, <span class="string">&quot;用户登陆成功&quot;</span>, Toast.LENGTH_SHORT).show()</span><br><span class="line">                           <span class="keyword">val</span> i = Intent(<span class="keyword">this</span><span class="symbol">@LoginActivity</span>, MainActivity::<span class="keyword">class</span>.java)</span><br><span class="line">                           startActivity(i)</span><br><span class="line">                           finish()</span><br><span class="line"></span><br><span class="line">                   &#125;</span><br><span class="line">               &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                   Toast.makeText(</span><br><span class="line">                       <span class="keyword">this</span><span class="symbol">@LoginActivity</span>,</span><br><span class="line">                       <span class="string">&quot;登录失败: <span class="subst">$&#123;task.exception?.message&#125;</span>&quot;</span>,</span><br><span class="line">                       Toast.LENGTH_LONG</span><br><span class="line">                   ).show()</span><br><span class="line">                   binding.email.setText(<span class="string">&quot;&quot;</span>)</span><br><span class="line">                   binding.password.setText(<span class="string">&quot;&quot;</span>)</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据备份"><a href="#数据备份" class="headerlink" title="数据备份"></a>数据备份</h3><ul>
+<li>实现备份</li>
+<li>实现恢复</li>
+<li>在UI层调用</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">backupToFirestore</span><span class="params">(dao: <span class="type">MessageDao</span>)</span></span> &#123;</span><br><span class="line">    <span class="comment">//获取当前已登录的用户</span></span><br><span class="line">        <span class="keyword">val</span> user = FirebaseAuth.getInstance().currentUser ?: <span class="keyword">return</span></span><br><span class="line">    <span class="comment">//获取用户uid值作为唯一标识</span></span><br><span class="line">        <span class="keyword">val</span> uid = user.uid</span><br><span class="line">    <span class="comment">//获取数据库实例</span></span><br><span class="line">        <span class="keyword">val</span> db = FirebaseFirestore.getInstance()</span><br><span class="line"><span class="comment">//加载所有信息</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">val</span> messages = dao.loadAllMessage()</span><br><span class="line"><span class="comment">//在uid文件下创建messages集合作为uid下子集和</span></span><br><span class="line">        <span class="keyword">val</span> userMessagesRef = db.collection(<span class="string">&quot;users&quot;</span>).document(uid).collection(<span class="string">&quot;messages&quot;</span>)</span><br><span class="line">   <span class="comment">//创建一个批量处理操作的对象</span></span><br><span class="line">        <span class="keyword">val</span> batch = db.batch()</span><br><span class="line">    <span class="comment">//便利本地数据库所有数据</span></span><br><span class="line">        <span class="keyword">for</span> (msg <span class="keyword">in</span> messages) &#123;</span><br><span class="line">            <span class="comment">//以信息的id作为文档id用来获取索引或创建</span></span><br><span class="line">            <span class="keyword">val</span> docRef = userMessagesRef.document(msg.id)</span><br><span class="line">            <span class="comment">//将数据转化成键值对形式</span></span><br><span class="line">             <span class="keyword">val</span> msgMap = mapOf(</span><br><span class="line">                 <span class="string">&quot;title&quot;</span> to msg.title,</span><br><span class="line">                  <span class="string">&quot;time&quot;</span> to msg.time,</span><br><span class="line">               <span class="string">&quot;aimdate&quot;</span> to msg.aimdate,</span><br><span class="line">             <span class="string">&quot;isTop&quot;</span> to msg.isTop,</span><br><span class="line">             <span class="string">&quot;categoryIcon&quot;</span> to msg.categoryIcon,</span><br><span class="line">            <span class="string">&quot;categoryName&quot;</span> to msg.categoryName,</span><br><span class="line">             <span class="string">&quot;categoryId&quot;</span> to msg.categoryId</span><br><span class="line">            )</span><br><span class="line">            <span class="comment">//将数据添加到docRef文档下面</span></span><br><span class="line">            batch.<span class="keyword">set</span>(docRef, msgMap)</span><br><span class="line">        &#125;</span><br><span class="line">       </span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line"> <span class="comment">//batch.commit()：提交所有批量写入操作，返回一个 Task。</span></span><br><span class="line"><span class="comment">//await()：挂起当前协程，等待 Task 完成，直到异步操作结束。</span></span><br><span class="line"><span class="comment">//这样，你就可以确保 所有操作都提交成功，并能在操作完成后继续执行下一步逻辑。</span></span><br><span class="line">            batch.commit().await()</span><br><span class="line">            Log.d(<span class="string">&quot;Backup&quot;</span>, <span class="string">&quot;备份成功&quot;</span>)</span><br><span class="line">        &#125; <span class="keyword">catch</span> (e: Exception) &#123;</span><br><span class="line">            Log.e(<span class="string">&quot;Backup&quot;</span>, <span class="string">&quot;备份失败: <span class="subst">$&#123;e.message&#125;</span>&quot;</span>, e)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">restoreFromFirestore</span><span class="params">(dao: <span class="type">MessageDao</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">val</span> user = FirebaseAuth.getInstance().currentUser ?: <span class="keyword">return</span></span><br><span class="line">        <span class="keyword">val</span> uid = user.uid</span><br><span class="line">        <span class="keyword">val</span> db = FirebaseFirestore.getInstance()</span><br><span class="line"><span class="comment">//获取集合中的所有文档，get()方法是异步的所以需要awit()方法</span></span><br><span class="line">        <span class="keyword">val</span> snapshot1 = db.collection(<span class="string">&quot;users&quot;</span>).document(uid).collection(<span class="string">&quot;messages&quot;</span>).<span class="keyword">get</span>().await()</span><br><span class="line">     </span><br><span class="line">        <span class="comment">// 清空本地再导入（防止重复）</span></span><br><span class="line">        dao.clearAllMessages()</span><br><span class="line"></span><br><span class="line"><span class="comment">//遍历所有文档，并把数据添加到本地数据库</span></span><br><span class="line">        <span class="keyword">for</span> (doc <span class="keyword">in</span> snapshot1.documents) &#123;</span><br><span class="line">            <span class="keyword">val</span> id = doc.id</span><br><span class="line">            <span class="keyword">val</span> title: String? = doc.getString(<span class="string">&quot;title&quot;</span>)?:<span class="string">&quot;&quot;</span></span><br><span class="line">            <span class="keyword">val</span> time: <span class="built_in">Int</span>= doc.getLong(<span class="string">&quot;time&quot;</span>)?.toInt() ?: <span class="number">0</span></span><br><span class="line">            <span class="keyword">val</span> aimdate: String?=doc.getString(<span class="string">&quot;aimdate&quot;</span>)</span><br><span class="line">            <span class="keyword">val</span> isTop =doc.getBoolean(<span class="string">&quot;isTop&quot;</span>)?:<span class="literal">false</span></span><br><span class="line">            <span class="keyword">val</span> categoryIcon:<span class="built_in">Int</span>?= doc.getLong(<span class="string">&quot;categoryIcon&quot;</span>)?.toInt()</span><br><span class="line">            <span class="keyword">val</span> categoryName: String?=doc.getString(<span class="string">&quot;categoryName&quot;</span>)</span><br><span class="line">            <span class="keyword">val</span> categoryId: String= doc.getString(<span class="string">&quot;categoryId&quot;</span>).toString()</span><br><span class="line">            <span class="keyword">val</span> msg = Message(title,time,aimdate,isTop,id,categoryIcon,categoryName,categoryId)</span><br><span class="line">            dao.insertMessage(msg)</span><br><span class="line">        &#125;</span><br><span class="line">     <span class="comment">//加载数据</span></span><br><span class="line">        dao.loadAllMessage()</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2025 Hexo
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;John Doe
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>

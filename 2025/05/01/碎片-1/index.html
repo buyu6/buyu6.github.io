@@ -1,0 +1,308 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>碎片(Kotlin) | Hexo</title>
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>HEXO</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;HEXO</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>碎片(Kotlin)</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/5/1
+        </span>
+        
+        <span class="category">
+            <a href="/categories/Android-Kotlin%E7%89%88/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Android(Kotlin版)
+            </a>
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="Fragment使用方式"><a href="#Fragment使用方式" class="headerlink" title="Fragment使用方式"></a>Fragment使用方式</h1><h3 id="简单用法"><a href="#简单用法" class="headerlink" title="简单用法"></a>简单用法</h3><p>1.新建碎片布局</p>
+<p>2.新建碎片类继承Fragment并在碎片类中动态加载碎片布局</p>
+<p>3.将碎片引入活动布局</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//左碎片布局</span></span><br><span class="line">&lt;LinearLayout xmlns:android=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="line">    android:orientation=<span class="string">&quot;vertical&quot;</span></span><br><span class="line">    android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">    android:layout_height=<span class="string">&quot;match_parent&quot;</span>&gt;</span><br><span class="line">    &lt;Button</span><br><span class="line">        android:id=<span class="string">&quot;@+id/button&quot;</span></span><br><span class="line">        android:layout_width=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">        android:layout_gravity=<span class="string">&quot;center_horizontal&quot;</span></span><br><span class="line">        android:text=<span class="string">&quot;Button&quot;</span>/&gt;</span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">LeftFragment</span>: <span class="type">Fragment</span>() &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreateView</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">        inflater: <span class="type">LayoutInflater</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">        container: <span class="type">ViewGroup</span>?,</span></span></span><br><span class="line"><span class="params"><span class="function">        savedInstanceState: <span class="type">Bundle</span>?</span></span></span><br><span class="line"><span class="params"><span class="function">    )</span></span>: View? &#123;</span><br><span class="line">       <span class="keyword">return</span> inflater.inflate(R.layout.left_fragment,container,<span class="literal">false</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//右碎片布局</span></span><br><span class="line">&lt;LinearLayout xmlns:android=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="line">    android:orientation=<span class="string">&quot;vertical&quot;</span></span><br><span class="line">    android:background=<span class="string">&quot;#00ff00&quot;</span></span><br><span class="line">    android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">    android:layout_height=<span class="string">&quot;match_parent&quot;</span>&gt;</span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:layout_width=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">        android:layout_gravity=<span class="string">&quot;center_horizontal&quot;</span></span><br><span class="line">        android:textSize=<span class="string">&quot;24sp&quot;</span></span><br><span class="line">        android:text=<span class="string">&quot;This is right fragment&quot;</span>/&gt;</span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">RightFragment</span>:<span class="type">Fragment</span>() &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreateView</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">        inflater: <span class="type">LayoutInflater</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">        container: <span class="type">ViewGroup</span>?,</span></span></span><br><span class="line"><span class="params"><span class="function">        savedInstanceState: <span class="type">Bundle</span>?</span></span></span><br><span class="line"><span class="params"><span class="function">    )</span></span>: View? &#123;</span><br><span class="line">        <span class="keyword">return</span> inflater.inflate(R.layout.right_fragment,container,<span class="literal">false</span>)</span><br><span class="line">            &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//主活动布局</span></span><br><span class="line">&lt;LinearLayout xmlns:android=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="line">    android:orientation=<span class="string">&quot;horizontal&quot;</span></span><br><span class="line">    android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">    android:layout_height=<span class="string">&quot;match_parent&quot;</span>&gt;</span><br><span class="line">    &lt;fragment</span><br><span class="line">        android:id=<span class="string">&quot;@+id/leftFrag&quot;</span></span><br><span class="line">        android:name=<span class="string">&quot;com.example.fragmenttest.LeftFragment&quot;</span></span><br><span class="line">        android:layout_width=<span class="string">&quot;0dp&quot;</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">        android:layout_weight=<span class="string">&quot;1&quot;</span>/&gt;</span><br><span class="line">    &lt;fragment</span><br><span class="line">        android:id=<span class="string">&quot;@+id/rightFrag&quot;</span></span><br><span class="line">        android:name=<span class="string">&quot;com.example.fragmenttest.RightFragment&quot;</span></span><br><span class="line">        android:layout_width=<span class="string">&quot;0dp&quot;</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">        android:layout_weight=<span class="string">&quot;3&quot;</span>/&gt;</span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="动态添加Fragment"><a href="#动态添加Fragment" class="headerlink" title="动态添加Fragment"></a>动态添加Fragment</h3><ul>
+<li>创建待添加的实例</li>
+<li>获取FragmentManager对象</li>
+<li>开启一个事务使用beginTransaction()方法开启</li>
+<li>向容器内添加或替换fragment</li>
+<li>提交事务，用commit()完成</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//新碎片布局</span></span><br><span class="line">&lt;LinearLayout xmlns:android=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="line">    android:orientation=<span class="string">&quot;vertical&quot;</span></span><br><span class="line">    android:background=<span class="string">&quot;#00ff00&quot;</span></span><br><span class="line">    android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">    android:layout_height=<span class="string">&quot;match_parent&quot;</span>&gt;</span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:layout_width=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">        android:layout_gravity=<span class="string">&quot;center_horizontal&quot;</span></span><br><span class="line">        android:textSize=<span class="string">&quot;24sp&quot;</span></span><br><span class="line">        android:text=<span class="string">&quot;This is another right fragment&quot;</span>/&gt;</span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//加载新碎片布局</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">AnotherRightFragment</span>:<span class="type">Fragment</span>() &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreateView</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">        inflater: <span class="type">LayoutInflater</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">        container: <span class="type">ViewGroup</span>?,</span></span></span><br><span class="line"><span class="params"><span class="function">        savedInstanceState: <span class="type">Bundle</span>?</span></span></span><br><span class="line"><span class="params"><span class="function">    )</span></span>: View? &#123;</span><br><span class="line">        <span class="keyword">return</span> inflater.inflate(R.layout.another_right_fragment,container,<span class="literal">false</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//主活动布局</span></span><br><span class="line">&lt;LinearLayout xmlns:android=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="line">    android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">    android:layout_height=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">    android:orientation=<span class="string">&quot;horizontal&quot;</span></span><br><span class="line">    &gt;</span><br><span class="line"></span><br><span class="line">    &lt;fragment</span><br><span class="line">        android:id=<span class="string">&quot;@+id/leftFrag&quot;</span></span><br><span class="line">        android:name=<span class="string">&quot;com.example.fragmenttest.LeftFragment&quot;</span></span><br><span class="line">        android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;match_parent&quot;</span> /&gt;</span><br><span class="line">    &lt;FrameLayout</span><br><span class="line">        android:id=<span class="string">&quot;@+id/rightLayout&quot;</span></span><br><span class="line">        android:layout_width=<span class="string">&quot;0dp&quot;</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">        android:layout_weight=<span class="string">&quot;1&quot;</span>&gt;</span><br><span class="line">        </span><br><span class="line">    &lt;/FrameLayout&gt;</span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MainActivity</span> : <span class="type">AppCompatActivity</span>() &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> binding: ActivityMainBinding</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        binding = ActivityMainBinding.inflate(layoutInflater)</span><br><span class="line">        setContentView(binding.root)</span><br><span class="line">        <span class="keyword">val</span> button:Button=findViewById(R.id.button)</span><br><span class="line">        button.setOnClickListener &#123;</span><br><span class="line">            replaceFragment(AnotherRightFragment())</span><br><span class="line">        &#125;</span><br><span class="line">        replaceFragment(RightFragment())</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">replaceFragment</span><span class="params">(fragment: <span class="type">Fragment</span>)</span></span> &#123;</span><br><span class="line">        <span class="comment">//获取fragmentManager对象</span></span><br><span class="line">        <span class="keyword">val</span> fragmentManager = supportFragmentManager</span><br><span class="line">        <span class="comment">//开启事务</span></span><br><span class="line">        <span class="keyword">val</span> transaction = fragmentManager.beginTransaction()</span><br><span class="line">        <span class="comment">//向容器内添加碎片</span></span><br><span class="line">        transaction.replace(R.id.rightLayout,fragment)</span><br><span class="line">        <span class="comment">//将事务添加到返回栈</span></span><br><span class="line">        transaction.addToBackStack(<span class="literal">null</span>)</span><br><span class="line">        <span class="comment">//提交事务</span></span><br><span class="line">        transaction.commit()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Fragment和Activity交互"><a href="#Fragment和Activity交互" class="headerlink" title="Fragment和Activity交互"></a>Fragment和Activity交互</h3><p><strong>在活动中调用碎片：</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> fragment=supportFragmentManager.findFragmentById(R.id.leftFrag) <span class="keyword">as</span> LeftFragment</span><br></pre></td></tr></table></figure>
+
+<p><strong>在碎片中调用活动：</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(activity!=<span class="literal">null</span>)&#123;</span><br><span class="line">    <span class="keyword">val</span> mainActivity = activity <span class="keyword">as</span> MainActivity</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>不同的碎片之间通信：</strong></p>
+<p>1.在一个碎片中得到与之关联的活动</p>
+<p>2.然后在这个Activity中去获取另一个Fragment实例</p>
+<hr>
+<h1 id="Fragment的生命周期"><a href="#Fragment的生命周期" class="headerlink" title="Fragment的生命周期"></a>Fragment的生命周期</h1><h3 id="fragment的状态"><a href="#fragment的状态" class="headerlink" title="fragment的状态"></a>fragment的状态</h3><p>（1）运行状态：</p>
+<p>当一个碎片是可见的，并且它所关联的活动正处于运行状态时，该碎片也处于运行状态</p>
+<p>（2）暂停状态：</p>
+<p>当一个活动进入暂停状态时(由于另一个未占满屏幕的活动被添加到了栈顶)，与它相关联的可见碎片就会进入到暂停状态。</p>
+<p>（3）停止状态：</p>
+<p>当一个活动进入到停止状态时，与它相关联的碎片就会进入到停止状态，或者通过调用FragmentTransaction的remove(),replace()方法将碎片从活动中移除，但如果在事务提交之前使用addToBackStack()方法，这时的碎片也会进入到停止状态。总的来说，进入到停止状态的碎片对用户来说完全不可见，有可能被系统回收。</p>
+<p>（4）销毁状态：</p>
+<p>碎片总是依附于活动而存在，因此当活动被销毁时，与它相关联的碎片就会进入到销毁状态。或者通过调用FragmentTransaction的remove(),replace()方法将碎片从活动中移除，但如果在事务提交之前没有使用addToBackStack()方法，这时碎片也会进入到销毁状态。</p>
+<h3 id="fragment的回调方法"><a href="#fragment的回调方法" class="headerlink" title="fragment的回调方法"></a>fragment的回调方法</h3><ul>
+<li><p>onAttach().当碎片和活动建立起关联的时候调用</p>
+</li>
+<li><p>onCreateView().为碎片加载布局时调用</p>
+</li>
+<li><p>onActivityCreated().确保与碎片相关联的活动一定已经创建完毕时使用</p>
+</li>
+<li><p>onDestroyView().当与碎片相关联的视图被移除的时候调用</p>
+</li>
+<li><p>onDetach().当碎片和活动解除关联时调用</p>
+</li>
+</ul>
+<p>碎片的完整生命周期示意图：</p>
+<p><img src="/../img/img39.jpg"></p>
+<h3 id="体验生命周期"><a href="#体验生命周期" class="headerlink" title="体验生命周期"></a>体验生命周期</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">RightFragment</span>:<span class="type">Fragment</span>() &#123;</span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span>&#123;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">val</span> TAG=<span class="string">&quot;RightFragment&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onAttach</span><span class="params">(context: <span class="type">Context</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onAttach(context)</span><br><span class="line">        Log.d(TAG, <span class="string">&quot;onAttach: &quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        Log.d(TAG, <span class="string">&quot;onCreate: &quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreateView</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">        inflater: <span class="type">LayoutInflater</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">        container: <span class="type">ViewGroup</span>?,</span></span></span><br><span class="line"><span class="params"><span class="function">        savedInstanceState: <span class="type">Bundle</span>?</span></span></span><br><span class="line"><span class="params"><span class="function">    )</span></span>: View? &#123;</span><br><span class="line">        Log.d(TAG, <span class="string">&quot;onCreateView: &quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> inflater.inflate(R.layout.right_fragment,container,<span class="literal">false</span>)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onActivityCreated</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onActivityCreated(savedInstanceState)</span><br><span class="line">        Log.d(TAG, <span class="string">&quot;onActivityCreated: &quot;</span>)</span><br><span class="line">    &#125;       </span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onStart</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onStart()</span><br><span class="line">        Log.d(TAG, <span class="string">&quot;onStart: &quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onResume</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onResume()</span><br><span class="line">        Log.d(TAG, <span class="string">&quot;onResume: &quot;</span>)</span><br><span class="line">    &#125;   </span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onPause</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onPause()</span><br><span class="line">        Log.d(TAG, <span class="string">&quot;onPause: &quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onStop</span><span class="params">()</span></span> &#123;</span><br><span class="line">           <span class="keyword">super</span>.onStop()</span><br><span class="line">        Log.d(TAG, <span class="string">&quot;onStop: &quot;</span>)</span><br><span class="line">    &#125;   </span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onDestroyView</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onDestroyView()</span><br><span class="line">        Log.d(TAG, <span class="string">&quot;onDestroyView: &quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onDestroy</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onDestroy()</span><br><span class="line">        Log.d(TAG, <span class="string">&quot;onDestroy: &quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onDetach</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onDetach()</span><br><span class="line">        Log.d(TAG, <span class="string">&quot;onDetach: &quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="限定符"><a href="#限定符" class="headerlink" title="限定符"></a>限定符</h1><h3 id="使用限定符"><a href="#使用限定符" class="headerlink" title="使用限定符"></a>使用限定符</h3><ul>
+<li><p>使用限定符新建一个layout文件夹(layout-large)</p>
+</li>
+<li><p>在里面新建一个活动布局</p>
+</li>
+<li><p>小屏设备加载layout下布局，大屏加载layout-large下布局</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//layou-large下布局</span></span><br><span class="line">&lt;LinearLayout xmlns:android=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="line">android:orientation=<span class="string">&quot;horizontal&quot;</span></span><br><span class="line">android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">android:layout_height=<span class="string">&quot;match_parent&quot;</span>&gt;</span><br><span class="line">&lt;fragment</span><br><span class="line">android:id=<span class="string">&quot;@+id/leftFrag&quot;</span></span><br><span class="line">android:name=<span class="string">&quot;com.example.fragmenttest.LeftFragment&quot;</span></span><br><span class="line">android:layout_width=<span class="string">&quot;0dp&quot;</span></span><br><span class="line">android:layout_height=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">android:layout_weight=<span class="string">&quot;1&quot;</span>/&gt;</span><br><span class="line">&lt;fragment</span><br><span class="line">android:id=<span class="string">&quot;@+id/rightFrag&quot;</span></span><br><span class="line">android:name=<span class="string">&quot;com.example.fragmenttest.RightFragment&quot;</span></span><br><span class="line">android:layout_width=<span class="string">&quot;0dp&quot;</span></span><br><span class="line">android:layout_height=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">android:layout_weight=<span class="string">&quot;3&quot;</span>/&gt;</span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//layout下布局</span></span><br><span class="line">&lt;LinearLayout xmlns:android=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="line">    android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">    android:layout_height=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">    android:orientation=<span class="string">&quot;horizontal&quot;</span></span><br><span class="line">    &gt;</span><br><span class="line"></span><br><span class="line">    &lt;fragment</span><br><span class="line">        android:id=<span class="string">&quot;@+id/leftFrag&quot;</span></span><br><span class="line">        android:name=<span class="string">&quot;com.example.fragmenttest.LeftFragment&quot;</span></span><br><span class="line">        android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;match_parent&quot;</span> /&gt;</span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>常见的限定符：</strong></p>
+<p><img src="/../img/img40.jpg"></p>
+<p><img src="/../img/img41.jpg"></p>
+<h3 id="最小宽度限定符"><a href="#最小宽度限定符" class="headerlink" title="最小宽度限定符"></a>最小宽度限定符</h3><p>**实例：**layout-sw600dp</p>
+<p>**作用：**宽度大于等于600的会加载layout-sw600dp中布局，反之加载layout中布局</p>
+<hr>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2025 Hexo
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;John Doe
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>

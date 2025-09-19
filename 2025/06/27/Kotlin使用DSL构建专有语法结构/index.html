@@ -1,0 +1,245 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Kotlin使用DSL构建专有语法结构 | Hexo</title>
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>HEXO</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;HEXO</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>Kotlin使用DSL构建专有语法结构</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/6/27
+        </span>
+        
+        <span class="category">
+            <a href="/categories/Kotlin/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Kotlin
+            </a>
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h3 id="DSL构建专有的语法结构"><a href="#DSL构建专有的语法结构" class="headerlink" title="DSL构建专有的语法结构"></a>DSL构建专有的语法结构</h3><p>DSL 是专为特定领域（如数据库查询、配置文件、UI布局等）设计的编程语言或语言的一个子集。Kotlin 提供了丰富的支持，帮助开发者用 Kotlin 代码构建出自己的 DSL 语言结构，以使得代码更加易读和易写。</p>
+<ul>
+<li><strong>扩展函数</strong>：你可以通过扩展函数给现有类添加自定义功能，从而实现新的语法结构。</li>
+<li><strong>高阶函数</strong>：Kotlin 允许将函数作为参数传递给其他函数，这使得定义和构建 DSL 成为可能。</li>
+<li><strong>Lambda 表达式</strong>：你可以通过 lambda 表达式使代码更加简洁，形成类似声明式的语法。</li>
+<li><strong>智能类型推断</strong>：这使得你无需显式声明类型，语法更清晰，推导更自然。</li>
+</ul>
+<h3 id="Lambda-with-Receiver（接收者-lambda）"><a href="#Lambda-with-Receiver（接收者-lambda）" class="headerlink" title="Lambda with Receiver（接收者 lambda）"></a>Lambda with Receiver（接收者 lambda）</h3><p>接收者 lambda 允许在 lambda 中访问外部对象的成员，而不需要显式的引用对象。通过这种方式，你可以通过一个语法块来访问和操作对象，类似于嵌套调用的结构。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">DSL</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">sayHello</span><span class="params">()</span></span> = println(<span class="string">&quot;Hello, World!&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">dslExample</span><span class="params">(<span class="keyword">init</span>: <span class="type">DSL</span>.() -&gt; <span class="type">Unit</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> dsl = DSL()</span><br><span class="line">    dsl.<span class="keyword">init</span>()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    dslExample &#123;</span><br><span class="line">        sayHello()  <span class="comment">// 直接调用 DSL 中的方法，类似于在 &quot;this&quot; 上调用方法</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，<code>init</code> 是一个扩展函数 <code>DSL.() -&gt; Unit</code>，其中 <code>DSL</code> 是接收者类型，而 <code>init</code> 是一个 lambda 表达式，它可以直接访问 <code>DSL</code> 类的成员。</p>
+<h3 id="构建层次结构"><a href="#构建层次结构" class="headerlink" title="构建层次结构"></a>构建层次结构</h3><p>你可以使用 lambda 表达式来构建一个嵌套的结构，这在构建树形结构或配置文件时特别有用。例如，构建 UI 或 HTML 模板时，嵌套的 DSL 会让代码看起来更简洁。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Td</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> content=<span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">html</span><span class="params">()</span></span>=<span class="string">&quot;\n\t\t&lt;td&gt;<span class="variable">$content</span>&lt;/td&gt;&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Tr</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> children=ArrayList&lt;Td&gt;()</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">td</span><span class="params">(block:<span class="type">Td</span>.()-&gt;<span class="type">String</span>)</span></span>&#123;</span><br><span class="line">        <span class="keyword">val</span> td=Td()</span><br><span class="line">        td.content=td.block()</span><br><span class="line">        children.add(td)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">html</span><span class="params">()</span></span>:String&#123;</span><br><span class="line">        <span class="keyword">val</span> builder=StringBuilder()</span><br><span class="line">        builder.append(<span class="string">&quot;\n\t&lt;tr&gt;&quot;</span>)</span><br><span class="line">        <span class="keyword">for</span> (childTag <span class="keyword">in</span> children)&#123;</span><br><span class="line">            builder.append(childTag.html())</span><br><span class="line">        &#125;</span><br><span class="line">        builder.append(<span class="string">&quot;\n\t&lt;tr&gt;&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> builder.toString()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Table</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> children=ArrayList&lt;Tr&gt;()</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">tr</span><span class="params">(block: <span class="type">Tr</span>.() -&gt; <span class="type">Unit</span>)</span></span>&#123;</span><br><span class="line">        <span class="keyword">val</span> tr=Tr()</span><br><span class="line">        tr.block()</span><br><span class="line">        children.add(tr)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">html</span><span class="params">()</span></span>:String&#123;</span><br><span class="line">        <span class="keyword">val</span> builder=StringBuilder()</span><br><span class="line">        builder.append(<span class="string">&quot;&lt;table&gt;&quot;</span>)</span><br><span class="line">        <span class="keyword">for</span> (childTag <span class="keyword">in</span> children)&#123;</span><br><span class="line">            builder.append(childTag.html())</span><br><span class="line">        &#125;</span><br><span class="line">        builder.append(<span class="string">&quot;\n&lt;/table&gt;&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> builder.toString()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">table</span><span class="params">(block:<span class="type">Table</span>.()-&gt;<span class="type">Unit</span>)</span></span>:String&#123;</span><br><span class="line">    <span class="keyword">val</span> table=Table()</span><br><span class="line">    table.block()</span><br><span class="line">    <span class="keyword">return</span> table.html()</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">/*val table=Table()</span></span><br><span class="line"><span class="comment">    table.tr &#123;</span></span><br><span class="line"><span class="comment">        td&#123;&quot;Apple&quot;&#125;</span></span><br><span class="line"><span class="comment">        td&#123;&quot;Grape&quot;&#125;</span></span><br><span class="line"><span class="comment">        td&#123;&quot;Orange&quot;&#125;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    table.tr &#123;</span></span><br><span class="line"><span class="comment">        td&#123;&quot;Pear&quot;&#125;</span></span><br><span class="line"><span class="comment">        td&#123;&quot;Banana&quot;&#125;</span></span><br><span class="line"><span class="comment">        td&#123;&quot;Watermelon&quot;&#125;</span></span><br><span class="line"><span class="comment">    &#125;*/</span></span><br><span class="line">    <span class="keyword">val</span> html= table &#123;</span><br><span class="line">        tr &#123;</span><br><span class="line">            td&#123;<span class="string">&quot;Apple&quot;</span>&#125;</span><br><span class="line">            td&#123;<span class="string">&quot;Grape&quot;</span>&#125;</span><br><span class="line">            td&#123;<span class="string">&quot;Orange&quot;</span>&#125;</span><br><span class="line">        &#125;</span><br><span class="line">        tr &#123;</span><br><span class="line">            td&#123;<span class="string">&quot;Pear&quot;</span>&#125;</span><br><span class="line">            td&#123;<span class="string">&quot;Banana&quot;</span>&#125;</span><br><span class="line">            td&#123;<span class="string">&quot;Watermelon&quot;</span>&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    println(html)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里，我们创建了一个简单的 HTML 构建器 DSL。你可以在外部 <code>html</code> 块中定义结构，从而形成一个层次化的结构。</p>
+<hr>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2025 Hexo
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;John Doe
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>

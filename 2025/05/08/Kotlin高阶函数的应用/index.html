@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Kotlin高阶函数的应用 | Hexo</title>
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>HEXO</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;HEXO</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>Kotlin高阶函数的应用</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/5/8
+        </span>
+        
+        <span class="category">
+            <a href="/categories/Kotlin/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Kotlin
+            </a>
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="简化SharedPreferences的用法"><a href="#简化SharedPreferences的用法" class="headerlink" title="简化SharedPreferences的用法"></a>简化SharedPreferences的用法</h1><ul>
+<li><p>通过扩展函数方式像其中添加open函数</p>
+</li>
+<li><p>接收函数类型</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> SharedPreferences.<span class="title">open</span><span class="params">(block:<span class="type">SharedPreferences</span>.<span class="type">Editor</span>.()-&gt;<span class="type">Unit</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">val</span> editor=edit()</span><br><span class="line">    editor.block()</span><br><span class="line">    editor.apply()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//调用</span></span><br><span class="line">getSharedPreferences(<span class="string">&quot;data&quot;</span>,Context.MODE_PRIVATE).<span class="keyword">open</span>&#123;</span><br><span class="line">    putString(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;Tom&quot;</span>)</span><br><span class="line">    putInt(<span class="string">&quot;age&quot;</span>,<span class="number">19</span>)</span><br><span class="line">    putBoolean(<span class="string">&quot;married&quot;</span>,<span class="literal">false</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>Android Studio自带扩展可以直接使用：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">getSharedPreferences(<span class="string">&quot;data&quot;</span>,Context.MODE_PRIVATE).edit&#123;</span><br><span class="line">    putString(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;Tom&quot;</span>)</span><br><span class="line">    putInt(<span class="string">&quot;age&quot;</span>,<span class="number">19</span>)</span><br><span class="line">    putBoolean(<span class="string">&quot;married&quot;</span>,<span class="literal">false</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="简化ContentValues的用法"><a href="#简化ContentValues的用法" class="headerlink" title="简化ContentValues的用法"></a>简化ContentValues的用法</h1><ul>
+<li><p>定义cvOf方法</p>
+</li>
+<li><p>获取ContentValues对象</p>
+</li>
+<li><p>遍历pairs列表</p>
+</li>
+<li><p>利用when语句意义判断数值类型</p>
+<p>**varage关键字：**对应java的可变参数列表</p>
+<p><strong>Pair：<strong>键值对数据结构，由于数值类型多所以指定为</strong>Any?<strong>相当于java中的</strong>Object</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">cvOf</span><span class="params">(<span class="keyword">vararg</span> pairs:<span class="type">Pair</span>&lt;<span class="type">String</span>,Any?&gt;)</span></span>:ContentValues&#123;</span><br><span class="line">    <span class="keyword">val</span> cv=ContentValues()</span><br><span class="line">    <span class="keyword">for</span>(pair <span class="keyword">in</span> pairs)&#123;</span><br><span class="line">        <span class="keyword">val</span> key=pair.first</span><br><span class="line">        <span class="keyword">val</span> value=pair.second</span><br><span class="line">        <span class="keyword">when</span>(value)&#123;</span><br><span class="line">            <span class="keyword">is</span> <span class="built_in">Int</span>-&gt;cv.put(key, value)</span><br><span class="line">            <span class="keyword">is</span> <span class="built_in">Long</span>-&gt;cv.put(key, value)</span><br><span class="line">            <span class="keyword">is</span> <span class="built_in">Short</span>-&gt;cv.put(key, value)</span><br><span class="line">            <span class="keyword">is</span> <span class="built_in">Float</span>-&gt;cv.put(key, value)</span><br><span class="line">            <span class="keyword">is</span> <span class="built_in">Double</span>-&gt;cv.put(key, value)</span><br><span class="line">            <span class="keyword">is</span> <span class="built_in">Boolean</span>-&gt;cv.put(key, value)</span><br><span class="line">            <span class="keyword">is</span> String-&gt;cv.put(key, value)</span><br><span class="line">            <span class="keyword">is</span> <span class="built_in">Byte</span>-&gt;cv.put(key, value)</span><br><span class="line">            <span class="keyword">is</span> ByteArray-&gt;cv.put(key, value)</span><br><span class="line">            <span class="literal">null</span>-&gt;cv.putNull(key)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cv</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//调用</span></span><br><span class="line"><span class="keyword">val</span> values=cvOf(<span class="string">&quot;name&quot;</span> to <span class="string">&quot;Game of Thrones&quot;</span>,<span class="string">&quot;author&quot;</span> to <span class="string">&quot;George Martin&quot;</span>,<span class="string">&quot;pages&quot;</span> to <span class="number">720</span>,<span class="string">&quot;price&quot;</span> to <span class="number">20.85</span>)</span><br><span class="line">db.insert(<span class="string">&quot;Book&quot;</span>,<span class="literal">null</span>,values)</span><br></pre></td></tr></table></figure>
+
+<p><strong>利用apply简化</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">cvOf</span><span class="params">(<span class="keyword">vararg</span> pairs:<span class="type">Pair</span>&lt;<span class="type">String</span>,Any?&gt;)</span></span>=ContentValues().apply&#123;</span><br><span class="line">    <span class="keyword">for</span>(pair <span class="keyword">in</span> pairs)&#123;</span><br><span class="line">        <span class="keyword">val</span> key=pair.first</span><br><span class="line">        <span class="keyword">val</span> value=pair.second</span><br><span class="line">        <span class="keyword">when</span>(value)&#123;</span><br><span class="line">            <span class="keyword">is</span> <span class="built_in">Int</span>-&gt;put(key, value)</span><br><span class="line">            <span class="keyword">is</span> <span class="built_in">Long</span>-&gt;put(key, value)</span><br><span class="line">            <span class="keyword">is</span> <span class="built_in">Short</span>-&gt;put(key, value)</span><br><span class="line">            <span class="keyword">is</span> <span class="built_in">Float</span>-&gt;put(key, value)</span><br><span class="line">            <span class="keyword">is</span> <span class="built_in">Double</span>-&gt;put(key, value)</span><br><span class="line">            <span class="keyword">is</span> <span class="built_in">Boolean</span>-&gt;put(key, value)</span><br><span class="line">            <span class="keyword">is</span> String-&gt;put(key, value)</span><br><span class="line">            <span class="keyword">is</span> <span class="built_in">Byte</span>-&gt;put(key, value)</span><br><span class="line">            <span class="keyword">is</span> ByteArray-&gt;put(key, value)</span><br><span class="line">            <span class="literal">null</span>-&gt;putNull(key)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>KTX库提供同样功能的contentValuesOf方法</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> values=contentValuesOf(<span class="string">&quot;name&quot;</span> to <span class="string">&quot;Game of Thrones&quot;</span>,<span class="string">&quot;author&quot;</span> to <span class="string">&quot;George Martin&quot;</span>,<span class="string">&quot;pages&quot;</span> to <span class="number">720</span>,<span class="string">&quot;price&quot;</span> to <span class="number">20.85</span>)</span><br><span class="line">db.insert(<span class="string">&quot;Book&quot;</span>,<span class="literal">null</span>,values)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2025 Hexo
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;John Doe
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>
