@@ -3,8 +3,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>Hexo</title>
-    <meta name="author" content="John Doe" />
+    <title>Auroraの秘密空间</title>
+    <meta name="author" content="Aurora" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta
@@ -61,39 +61,34 @@
         <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
     <nav id="desktop-menu">
         <a class="title" href="/">
-            <span>HEXO</span>
+            <span>AURORAの秘密空间</span>
         </a>
         
         <a href="/">
             <i class="fa-solid fa-house fa-fw"></i>
-            <span>&ensp;Home</span>
+            <span>&ensp;首页</span>
         </a>
         
         <a href="/about">
             <i class="fa-solid fa-id-card fa-fw"></i>
-            <span>&ensp;About</span>
+            <span>&ensp;关于博客</span>
         </a>
         
         <a href="/archives">
             <i class="fa-solid fa-box-archive fa-fw"></i>
-            <span>&ensp;Archives</span>
+            <span>&ensp;档案</span>
         </a>
         
         <a href="/categories">
             <i class="fa-solid fa-bookmark fa-fw"></i>
-            <span>&ensp;Categories</span>
-        </a>
-        
-        <a href="/tags">
-            <i class="fa-solid fa-tags fa-fw"></i>
-            <span>&ensp;Tags</span>
+            <span>&ensp;文章分类</span>
         </a>
         
     </nav>
     <nav id="mobile-menu">
         <div class="title" @click="showMenuItems = !showMenuItems">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;HEXO</span>
+            <span>&emsp;AURORAの秘密空间</span>
         </div>
         <transition name="slide">
             <div class="items" v-show="showMenuItems">
@@ -103,7 +98,7 @@
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-house fa-fw"></i>
                         </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">首页</div>
                     </div>
                 </a>
                 
@@ -112,7 +107,7 @@
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-id-card fa-fw"></i>
                         </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">关于博客</div>
                     </div>
                 </a>
                 
@@ -121,7 +116,7 @@
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-box-archive fa-fw"></i>
                         </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">档案</div>
                     </div>
                 </a>
                 
@@ -130,16 +125,7 @@
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-bookmark fa-fw"></i>
                         </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
-                    </div>
-                </a>
-                
-                <a href="/tags">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-tags fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">文章分类</div>
                     </div>
                 </a>
                 
@@ -165,7 +151,7 @@
         <span class="loop"></span>
         <span class="info">
             <div class="wrap">
-                <h1>Hexo</h1>
+                <h1>Auroraの秘密空间</h1>
                 <h3></h3>
                 <h5></h5>
             </div>
@@ -207,14 +193,11 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ul>
-<li>检验字符串是否满足规则</li>
-<li>在一段文本中查找满足要求的内容</li>
-</ul>
-<h3 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h3><p><img src="/../img/img120.png"></p>
-<p><img src="/../img/img121.png"></p>
-<p><img src="/../img/img122.png"></p>
+            作用
+ * 检验字符串是否满足规则
+ * 在一段文本中查找满足要求的内容
 
+规则
             
         </div>
     </div>
@@ -244,20 +227,23 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+Quick Start
+Create a new post
+1
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+$ hexo new "My New Post"
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 
+More info: Writing
+
+Run server
+1
+
+
+$ hexo s
             
         </div>
     </div>
@@ -296,30 +282,31 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <p><strong>本博客以firebase服务器为例</strong></p>
-<h3 id="结构图"><a href="#结构图" class="headerlink" title="结构图"></a>结构图</h3><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">users (Collection)</span><br><span class="line">   └── uid1 (Document)</span><br><span class="line">        └── messages (Collection)</span><br><span class="line">            ├── message1 (Document)</span><br><span class="line">            ├── message2 (Document)</span><br><span class="line">   └── uid2 (Document)</span><br><span class="line">        └── messages (Collection)</span><br><span class="line">            ├── message1 (Document)</span><br></pre></td></tr></table></figure>
+            本博客以firebase服务器为例
+
+结构图
+1
+2
+3
+4
+5
+6
+7
+8
 
 
-
-<h3 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h3><ul>
-<li>获取auth和firestore对象</li>
-<li>向云端上传用户信息</li>
-<li>利用firestore建立个人档案</li>
-</ul>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">auth.createUserWithEmailAndPassword(email,password)</span><br><span class="line">    .addOnCompleteListener(<span class="keyword">this</span>)&#123;task -&gt;</span><br><span class="line">        <span class="keyword">if</span> (task.isSuccessful)&#123;</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>, <span class="string">&quot;账户创建成功&quot;</span>, Toast.LENGTH_SHORT).show()</span><br><span class="line">            <span class="keyword">val</span> user= auth.currentUser</span><br><span class="line">            <span class="keyword">val</span> uid=user?.uid</span><br><span class="line">            <span class="keyword">val</span> userProfile=hashMapOf(</span><br><span class="line">                <span class="string">&quot;uid&quot;</span> to uid,</span><br><span class="line">                <span class="string">&quot;email&quot;</span> to email,</span><br><span class="line">                <span class="string">&quot;registTime&quot;</span> to System.currentTimeMillis()</span><br><span class="line">            )</span><br><span class="line">            <span class="comment">//建立个人档案，将数据写入数据库中</span></span><br><span class="line">            db.collection(<span class="string">&quot;users&quot;</span>).document(uid!!)</span><br><span class="line">                .<span class="keyword">set</span>(userProfile)</span><br><span class="line">                .addOnSuccessListener &#123;</span><br><span class="line">                    finish()</span><br><span class="line">                &#125;</span><br><span class="line">                .addOnSuccessListener &#123;</span><br><span class="line">                    Toast.makeText(<span class="keyword">this</span>,<span class="string">&quot;用户信息储存失败请稍后重试&quot;</span>,Toast.LENGTH_SHORT).show()</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>,<span class="string">&quot;账户创建失败&quot;</span>,Toast.LENGTH_SHORT).show()</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">login</span><span class="params">()</span></span>&#123;</span><br><span class="line">       <span class="keyword">val</span> email=binding.email.text.toString()</span><br><span class="line">       <span class="keyword">val</span> password=binding.password.text.toString()</span><br><span class="line">       <span class="keyword">if</span>(email.isEmpty()||password.isEmpty())&#123;</span><br><span class="line">           Toast.makeText(<span class="keyword">this</span>,<span class="string">&quot;邮箱或密码不能为空&quot;</span>,Toast.LENGTH_SHORT).show()</span><br><span class="line">           <span class="keyword">return</span></span><br><span class="line">       &#125;</span><br><span class="line">       auth.signInWithEmailAndPassword(email, password)</span><br><span class="line">           .addOnCompleteListener &#123; task -&gt;</span><br><span class="line">               <span class="keyword">if</span> (task.isSuccessful) &#123;</span><br><span class="line">                   <span class="comment">//这一步是为了实现用户数据隔离</span></span><br><span class="line">                   lifecycleScope.launch &#123;</span><br><span class="line">                       <span class="comment">// 先清空数据库</span></span><br><span class="line">                       dao.clearAllMessages()</span><br><span class="line">                       dao.clearAllCategories()</span><br><span class="line">                       <span class="comment">// 再切回主线程做 UI 操作</span></span><br><span class="line">                           restoreFromFirestore(dao)</span><br><span class="line">                           Toast.makeText(<span class="keyword">this</span><span class="symbol">@LoginActivity</span>, <span class="string">&quot;用户登陆成功&quot;</span>, Toast.LENGTH_SHORT).show()</span><br><span class="line">                           <span class="keyword">val</span> i = Intent(<span class="keyword">this</span><span class="symbol">@LoginActivity</span>, MainActivity::<span class="keyword">class</span>.java)</span><br><span class="line">                           startActivity(i)</span><br><span class="line">                           finish()</span><br><span class="line"></span><br><span class="line">                   &#125;</span><br><span class="line">               &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                   Toast.makeText(</span><br><span class="line">                       <span class="keyword">this</span><span class="symbol">@LoginActivity</span>,</span><br><span class="line">                       <span class="string">&quot;登录失败: <span class="subst">$&#123;task.exception?.message&#125;</span>&quot;</span>,</span><br><span class="line">                       Toast.LENGTH_LONG</span><br><span class="line">                   ).show()</span><br><span class="line">                   binding.email.setText(<span class="string">&quot;&quot;</span>)</span><br><span class="line">                   binding.password.setText(<span class="string">&quot;&quot;</span>)</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="数据备份"><a href="#数据备份" class="headerlink" title="数据备份"></a>数据备份</h3><ul>
-<li>实现备份</li>
-<li>实现恢复</li>
-<li>在UI层调用</li>
-</ul>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">backupToFirestore</span><span class="params">(dao: <span class="type">MessageDao</span>)</span></span> &#123;</span><br><span class="line">    <span class="comment">//获取当前已登录的用户</span></span><br><span class="line">        <span class="keyword">val</span> user = FirebaseAuth.getInstance().currentUser ?: <span class="keyword">return</span></span><br><span class="line">    <span class="comment">//获取用户uid值作为唯一标识</span></span><br><span class="line">        <span class="keyword">val</span> uid = user.uid</span><br><span class="line">    <span class="comment">//获取数据库实例</span></span><br><span class="line">        <span class="keyword">val</span> db = FirebaseFirestore.getInstance()</span><br><span class="line"><span class="comment">//加载所有信息</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">val</span> messages = dao.loadAllMessage()</span><br><span class="line"><span class="comment">//在uid文件下创建messages集合作为uid下子集和</span></span><br><span class="line">        <span class="keyword">val</span> userMessagesRef = db.collection(<span class="string">&quot;users&quot;</span>).document(uid).collection(<span class="string">&quot;messages&quot;</span>)</span><br><span class="line">   <span class="comment">//创建一个批量处理操作的对象</span></span><br><span class="line">        <span class="keyword">val</span> batch = db.batch()</span><br><span class="line">    <span class="comment">//便利本地数据库所有数据</span></span><br><span class="line">        <span class="keyword">for</span> (msg <span class="keyword">in</span> messages) &#123;</span><br><span class="line">            <span class="comment">//以信息的id作为文档id用来获取索引或创建</span></span><br><span class="line">            <span class="keyword">val</span> docRef = userMessagesRef.document(msg.id)</span><br><span class="line">            <span class="comment">//将数据转化成键值对形式</span></span><br><span class="line">             <span class="keyword">val</span> msgMap = mapOf(</span><br><span class="line">                 <span class="string">&quot;title&quot;</span> to msg.title,</span><br><span class="line">                  <span class="string">&quot;time&quot;</span> to msg.time,</span><br><span class="line">               <span class="string">&quot;aimdate&quot;</span> to msg.aimdate,</span><br><span class="line">             <span class="string">&quot;isTop&quot;</span> to msg.isTop,</span><br><span class="line">             <span class="string">&quot;categoryIcon&quot;</span> to msg.categoryIcon,</span><br><span class="line">            <span class="string">&quot;categoryName&quot;</span> to msg.categoryName,</span><br><span class="line">             <span class="string">&quot;categoryId&quot;</span> to msg.categoryId</span><br><span class="line">            )</span><br><span class="line">            <span class="comment">//将数据添加到docRef文档下面</span></span><br><span class="line">            batch.<span class="keyword">set</span>(docRef, msgMap)</span><br><span class="line">        &#125;</span><br><span class="line">       </span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line"> <span class="comment">//batch.commit()：提交所有批量写入操作，返回一个 Task。</span></span><br><span class="line"><span class="comment">//await()：挂起当前协程，等待 Task 完成，直到异步操作结束。</span></span><br><span class="line"><span class="comment">//这样，你就可以确保 所有操作都提交成功，并能在操作完成后继续执行下一步逻辑。</span></span><br><span class="line">            batch.commit().await()</span><br><span class="line">            Log.d(<span class="string">&quot;Backup&quot;</span>, <span class="string">&quot;备份成功&quot;</span>)</span><br><span class="line">        &#125; <span class="keyword">catch</span> (e: Exception) &#123;</span><br><span class="line">            Log.e(<span class="string">&quot;Backup&quot;</span>, <span class="string">&quot;备份失败: <span class="subst">$&#123;e.message&#125;</span>&quot;</span>, e)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">restoreFromFirestore</span><span class="params">(dao: <span class="type">MessageDao</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">val</span> user = FirebaseAuth.getInstance().currentUser ?: <span class="keyword">return</span></span><br><span class="line">        <span class="keyword">val</span> uid = user.uid</span><br><span class="line">        <span class="keyword">val</span> db = FirebaseFirestore.getInstance()</span><br><span class="line"><span class="comment">//获取集合中的所有文档，get()方法是异步的所以需要awit()方法</span></span><br><span class="line">        <span class="keyword">val</span> snapshot1 = db.collection(<span class="string">&quot;users&quot;</span>).document(uid).collection(<span class="string">&quot;messages&quot;</span>).<span class="keyword">get</span>().await()</span><br><span class="line">     </span><br><span class="line">        <span class="comment">// 清空本地再导入（防止重复）</span></span><br><span class="line">        dao.clearAllMessages()</span><br><span class="line"></span><br><span class="line"><span class="comment">//遍历所有文档，并把数据添加到本地数据库</span></span><br><span class="line">        <span class="keyword">for</span> (doc <span class="keyword">in</span> snapshot1.documents) &#123;</span><br><span class="line">            <span class="keyword">val</span> id = doc.id</span><br><span class="line">            <span class="keyword">val</span> title: String? = doc.getString(<span class="string">&quot;title&quot;</span>)?:<span class="string">&quot;&quot;</span></span><br><span class="line">            <span class="keyword">val</span> time: <span class="built_in">Int</span>= doc.getLong(<span class="string">&quot;time&quot;</span>)?.toInt() ?: <span class="number">0</span></span><br><span class="line">            <span class="keyword">val</span> aimdate: String?=doc.getString(<span class="string">&quot;aimdate&quot;</span>)</span><br><span class="line">            <span class="keyword">val</span> isTop =doc.getBoolean(<span class="string">&quot;isTop&quot;</span>)?:<span class="literal">false</span></span><br><span class="line">            <span class="keyword">val</span> categoryIcon:<span class="built_in">Int</span>?= doc.getLong(<span class="string">&quot;categoryIcon&quot;</span>)?.toInt()</span><br><span class="line">            <span class="keyword">val</span> categoryName: String?=doc.getString(<span class="string">&quot;categoryName&quot;</span>)</span><br><span class="line">            <span class="keyword">val</span> categoryId: String= doc.getString(<span class="string">&quot;categoryId&quot;</span>).toString()</span><br><span class="line">            <span class="keyword">val</span> msg = Message(title,time,aimdate,isTop,id,categoryIcon,categoryName,categoryId)</span><br><span class="line">            dao.insertMessage(msg)</span><br><span class="line">        &#125;</span><br><span class="line">     <span class="comment">//加载数据</span></span><br><span class="line">        dao.loadAllMessage()</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+users (Collection)
+   └── uid1 (Document)
+        └── messages (Collection)
+            ├── message1 (Document)
+            ├── message2 (Document)
+   └── uid2 (Document)
+        └── messages (Collection)
+            ├── message1 (Document)
 
 
+注册
+ * 获取auth和fir
             
         </div>
     </div>
@@ -358,34 +345,29 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h3 id="分享纯文本"><a href="#分享纯文本" class="headerlink" title="分享纯文本"></a>分享纯文本</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">shareText</span><span class="params">(text: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> sendIntent = Intent().apply &#123;</span><br><span class="line">        action = Intent.ACTION_SEND</span><br><span class="line">        putExtra(Intent.EXTRA_TEXT, text)</span><br><span class="line">        type = <span class="string">&quot;text/plain&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建一个选择器，让用户选择用哪个 App 分享</span></span><br><span class="line">    <span class="keyword">val</span> shareIntent = Intent.createChooser(sendIntent, <span class="string">&quot;分享文本到...&quot;</span>)</span><br><span class="line">    startActivity(shareIntent)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>注意</strong>：始终使用 <code>Intent.createChooser()</code> 是一个好习惯。这会强制系统每次都显示一个应用选择列表，避免用户因为设置了某个应用的“默认操作”而无法选择其他应用。</p>
-<h3 id="分享单张图片或单个文件"><a href="#分享单张图片或单个文件" class="headerlink" title="分享单张图片或单个文件"></a>分享单张图片或单个文件</h3><ul>
-<li><strong>在 <code>AndroidManifest.xml</code> 中声明 <code>FileProvider</code></strong></li>
-</ul>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;manifest ...&gt;</span><br><span class="line">    &lt;application ...&gt;</span><br><span class="line">        ...</span><br><span class="line">        &lt;provider</span><br><span class="line">            android:name=<span class="string">&quot;androidx.core.content.FileProvider&quot;</span></span><br><span class="line">            android:authorities=<span class="string">&quot;<span class="subst">$&#123;applicationId&#125;</span>.fileprovider&quot;</span></span><br><span class="line">            android:exported=<span class="string">&quot;false&quot;</span></span><br><span class="line">            android:grantUriPermissions=<span class="string">&quot;true&quot;</span>&gt;</span><br><span class="line">            &lt;meta-<span class="keyword">data</span></span><br><span class="line">                android:name=<span class="string">&quot;android.support.FILE_PROVIDER_PATHS&quot;</span></span><br><span class="line">                android:resource=<span class="string">&quot;@xml/file_paths&quot;</span> /&gt;</span><br><span class="line">        &lt;/provider&gt;</span><br><span class="line">        ...</span><br><span class="line">    &lt;/application&gt;</span><br><span class="line">&lt;/manifest&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>创建 <code>res/xml/file_paths.xml</code> 文件</strong></li>
-</ul>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span>?&gt;</span><br><span class="line">&lt;paths xmlns:android=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span><br><span class="line">    &lt;cache-path name=<span class="string">&quot;my_cache_images&quot;</span> path=<span class="string">&quot;images/&quot;</span>/&gt;</span><br><span class="line">    &lt;files-path name=<span class="string">&quot;my_files&quot;</span> path=<span class="string">&quot;docs/&quot;</span>/&gt;</span><br><span class="line">    &lt;<span class="keyword">external</span>-path name=<span class="string">&quot;my_external_files&quot;</span> path=<span class="string">&quot;.&quot;</span>/&gt;</span><br><span class="line">&lt;/paths&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>编写分享代码</strong></li>
-</ul>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">saveImgAndGetUri</span><span class="params">(context: <span class="type">Context</span>,bitmap: <span class="type">Bitmap</span>)</span></span>:Uri&#123;</span><br><span class="line">        <span class="keyword">val</span> imageFolder= File(context.cacheDir,<span class="string">&quot;images&quot;</span>)</span><br><span class="line">        <span class="keyword">val</span> uri:Uri?</span><br><span class="line">        imageFolder.mkdirs()</span><br><span class="line">        <span class="keyword">val</span> file= File(imageFolder,<span class="string">&quot;shared_image.png&quot;</span>)</span><br><span class="line">        <span class="keyword">val</span> stream= FileOutputStream(file)</span><br><span class="line">        bitmap.compress(Bitmap.CompressFormat.PNG,<span class="number">90</span>,stream)</span><br><span class="line">        stream.flush()</span><br><span class="line">        stream.close()</span><br><span class="line">        uri = FileProvider.getUriForFile(</span><br><span class="line">            context,</span><br><span class="line">            <span class="string">&quot;com.example.daysmatter.fileprovider&quot;</span>, <span class="comment">// 必须和 Manifest 中的 authorities 一致</span></span><br><span class="line">            file</span><br><span class="line">        )</span><br><span class="line">        <span class="keyword">return</span> uri</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">shareImage</span><span class="params">(context: <span class="type">Context</span>, uri: <span class="type">Uri</span>)</span></span> &#123;</span><br><span class="line">     <span class="comment">// 创建 Intent</span></span><br><span class="line">        <span class="keyword">val</span> shareIntent = Intent().apply &#123;</span><br><span class="line">            action = Intent.ACTION_SEND</span><br><span class="line">            putExtra(Intent.EXTRA_STREAM, uri)</span><br><span class="line">            type = <span class="string">&quot;image/png&quot;</span>            <span class="comment">// 设置正确的 MIME Type</span></span><br><span class="line">           <span class="comment">// 授予临时读取权限</span></span><br><span class="line">            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)</span><br><span class="line">        &#125;</span><br><span class="line">     <span class="comment">// 4. 启动选择器</span></span><br><span class="line">        startActivity(Intent.createChooser(shareIntent, <span class="string">&quot;分享图片到...&quot;</span>))</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="分享多张图片或多个文件"><a href="#分享多张图片或多个文件" class="headerlink" title="分享多张图片或多个文件"></a>分享多张图片或多个文件</h3><p>与分享单张基本相同，有个别点有差异</p>
-<ul>
-<li><p><strong>Intent Action: <code>Intent.ACTION_SEND_MULTIPLE</code></strong></p>
-</li>
-<li><p><strong>分享内容: 使用 <code>putParcelableArrayListExtra(Intent.EXTRA_STREAM, ...)</code> 存放一个包含多个 <code>Uri</code> 的 <code>ArrayList</code>。</strong></p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">fun shareMultipleImages(context: Context, imageFiles: List&lt;File&gt;) &#123;</span><br><span class="line">    val uriList = ArrayList&lt;Uri&gt;()</span><br><span class="line">    imageFiles.forEach &#123; file -&gt;</span><br><span class="line">        val uri = FileProvider.getUriForFile(</span><br><span class="line">            context,</span><br><span class="line">            &quot;$&#123;context.packageName&#125;.fileprovider&quot;,</span><br><span class="line">            file</span><br><span class="line">        )</span><br><span class="line">        uriList.add(uri)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    val shareIntent = Intent().apply &#123;</span><br><span class="line">        action = Intent.ACTION_SEND_MULTIPLE</span><br><span class="line">        putParcelableArrayListExtra(Intent.EXTRA_STREAM, uriList)</span><br><span class="line">        type = &quot;image/*&quot; // 可以使用通配符</span><br><span class="line">        addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    startActivity(Intent.createChooser(shareIntent, &quot;分享多张图片...&quot;))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            分享纯文本
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 
 
+fun shareText(text: String) {
+    val sendIntent = Intent().apply {
+        action = Intent.ACTION_SEND
+        putExtra(Intent.EXTRA_TEXT, text)
+        type = "text/plain"
+    }
+
+    // 创建一个选择器，让用户选择用哪个 App 分享
+    val shareIntent = Intent.createChooser(sendIntent, "
             
         </div>
     </div>
@@ -424,15 +406,12 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <ul>
-<li><strong>计算机主要以二进制存储数据</strong></li>
-<li><strong>二进制以0b开头</strong></li>
-<li><strong>八进制以0开头</strong></li>
-<li><strong>十六进制以0x开头</strong></li>
-<li><strong>十进制转任意进制使用除基取余法：数据除以基数记录余数直到商为0再将余数逆序排列</strong></li>
-<li><strong>任意进制转十进制：系数*基数的权次幂 相加</strong></li>
-</ul>
-
+            * 计算机主要以二进制存储数据
+ * 二进制以0b开头
+ * 八进制以0开头
+ * 十六进制以0x开头
+ * 十进制转任意进制使用除基取余法：数据除以基数记录余数直到商为0再将余数逆序排列
+ * 任意进制转十进制：系数*基数的权次幂 相加
             
         </div>
     </div>
@@ -471,24 +450,39 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h3 id="三者关系"><a href="#三者关系" class="headerlink" title="三者关系"></a>三者关系</h3><p><img src="/../img/img117.png"></p>
-<h3 id="原码的弊端"><a href="#原码的弊端" class="headerlink" title="原码的弊端"></a>原码的弊端</h3><p><img src="/../img/img118.png"></p>
-<h3 id="反码出现的目的"><a href="#反码出现的目的" class="headerlink" title="反码出现的目的"></a>反码出现的目的</h3><p>解决原码不能计算负数的问题</p>
-<h3 id="反码的弊端"><a href="#反码的弊端" class="headerlink" title="反码的弊端"></a>反码的弊端</h3><p>负数计算时结果不跨0没有任何问题，但是结果跨0会和实际结果有1的偏差</p>
-<h3 id="补码出现的目的"><a href="#补码出现的目的" class="headerlink" title="补码出现的目的"></a>补码出现的目的</h3><p>解决反码计算时的跨0问题</p>
-<p><strong>注意：</strong></p>
-<ul>
-<li><p><strong>计算机中数据的存储及运算都是以补码的形式进行的，补码完美解决了二进制负数的运算问题</strong></p>
-</li>
-<li><p><strong>原码反码的范围是-127~+127</strong></p>
-</li>
-<li><p><strong>补码的范围是-128~+127</strong></p>
-</li>
-</ul>
-<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><p><img src="/../img/img119.png"></p>
-<p><strong>左移一次相当于乘2</strong></p>
-<p><strong>右移一次相当于除2</strong></p>
+            三者关系
 
+
+原码的弊端
+
+
+反码出现的目的
+解决原码不能计算负数的问题
+
+反码的弊端
+负数计算时结果不跨0没有任何问题，但是结果跨0会和实际结果有1的偏差
+
+补码出现的目的
+解决反码计算时的跨0问题
+
+注意：
+
+ * 计算机中数据的存储及运算都是以补码的形式进行的，补码完美解决了二进制负数的运算问题
+   
+   
+ * 原码反码的范围是-127~+127
+   
+   
+ * 补码的范围是-128~+127
+   
+   
+
+运算符
+
+
+左移一次相当于乘2
+
+右移一次相当于除2
             
         </div>
     </div>
@@ -527,41 +521,30 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h3 id="运算符与表达式"><a href="#运算符与表达式" class="headerlink" title="运算符与表达式"></a>运算符与表达式</h3><p><img src="/../img/img109.png"></p>
-<h3 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h3><p>+（加），-（减），*（乘），&#x2F;（除），%（取模&#x2F;取余）</p>
-<p><strong>如果有小数参与运算，结果有可能不准确</strong></p>
-<h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><ul>
-<li><p><strong>隐式转换</strong>（自动类型提升）</p>
-<p>定义：把取值范围小的数据转成取值范围大的数据</p>
-<p>提升规则：</p>
-<ol>
-<li>取值范围小的和取值范围大的进行运算，小的会先转成大的再进行运算</li>
-<li>byte，short，char三种类型数据进行运算会优先转成int类型再进行运算</li>
-</ol>
-</li>
-<li><p><strong>强制转换</strong></p>
-<p>定义：把取值范围大的数据赋值给取值范围小的变量</p>
-<p>格式：目标数据类型 变量&#x3D;（目标数据类型）被强制转化的数据</p>
-</li>
-</ul>
-<h3 id="字符串的”＋“操作"><a href="#字符串的”＋“操作" class="headerlink" title="字符串的”＋“操作"></a>字符串的”＋“操作</h3><p><img src="/../img/img110.png"></p>
-<p><img src="/../img/img111.png"></p>
-<h3 id="字符相加（字符与字符，字符与数字）"><a href="#字符相加（字符与字符，字符与数字）" class="headerlink" title="字符相加（字符与字符，字符与数字）"></a>字符相加（字符与字符，字符与数字）</h3><p>字符相加时会先将字符转换成ASCII码表对应的int类型数值再进行计算</p>
-<h3 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h3><p><img src="/../img/img112.png"></p>
-<p>扩展的赋值运算符隐含了强制类型转换</p>
-<h3 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h3><p><img src="/../img/img113.png"></p>
-<p>关系运算符的结果都是boolean类型</p>
-<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><p><img src="/../img/img114.png"></p>
-<h3 id="短路逻辑运算符"><a href="#短路逻辑运算符" class="headerlink" title="短路逻辑运算符"></a>短路逻辑运算符</h3><p><img src="/../img/img115.png"></p>
-<h2 id="三元运算符格式"><a href="#三元运算符格式" class="headerlink" title="三元运算符格式"></a>三元运算符格式</h2><p>关系表达式？表达式1：表达式2；</p>
-<p>计算规则：</p>
-<ol>
-<li>首先计算关系表达式的值</li>
-<li>为true返回表达式1</li>
-<li>为false返回表达式2</li>
-</ol>
-<h3 id="运算符的优先级"><a href="#运算符的优先级" class="headerlink" title="运算符的优先级"></a>运算符的优先级</h3><p><img src="/../img/img116.png"></p>
+            运算符与表达式
 
+
+算术运算符
++（加），-（减），*（乘），/（除），%（取模/取余）
+
+如果有小数参与运算，结果有可能不准确
+
+类型转换
+ * 隐式转换（自动类型提升）
+   
+   定义：把取值范围小的数据转成取值范围大的数据
+   
+   提升规则：
+   
+    1. 取值范围小的和取值范围大的进行运算，小的会先转成大的再进行运算
+    2. byte，short，char三种类型数据进行运算会优先转成int类型再进行运算
+   
+   
+ * 强制转换
+   
+   定义：把取值范围大的数据赋值给取值范围小的变量
+   
+   格式：目标数据类型 变量=（目标数据类型）被强制转
             
         </div>
     </div>
@@ -600,55 +583,49 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><h3 id="注释的定义"><a href="#注释的定义" class="headerlink" title="注释的定义"></a>注释的定义</h3><ul>
-<li>注释是在程序指定位置添加的说明性信息</li>
-<li>对代码的解释，不参与编译</li>
-</ul>
-<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><ul>
-<li>单行注释  格式<code>//注释信息</code></li>
-<li>多行注释  格式<code>/* 注释信息 */</code></li>
-<li>文档注释 格式<code>/**注释信息*/</code></li>
-</ul>
-<hr>
-<h1 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h1><h3 id="特点及定义"><a href="#特点及定义" class="headerlink" title="特点及定义"></a>特点及定义</h3><ul>
-<li>被java赋予特定含义的英文单词</li>
-<li>关键字字母全部小写</li>
-</ul>
-<h3 id="class"><a href="#class" class="headerlink" title="class"></a>class</h3><ul>
-<li>用于创建或定义一个类</li>
-<li>类是java最基本的组成单元</li>
-</ul>
-<hr>
-<h1 id="字面量"><a href="#字面量" class="headerlink" title="字面量"></a>字面量</h1><h3 id="分类-1"><a href="#分类-1" class="headerlink" title="分类"></a>分类</h3><p><img src="/../img/img107.png"></p>
-<h3 id="‘-t’制表符"><a href="#‘-t’制表符" class="headerlink" title="‘\t’制表符"></a>‘\t’制表符</h3><p>在打印的时候，把前面字符串的长度补齐到8，或者8的整数倍。最少补1个空格，最多补8个。</p>
-<hr>
-<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><h3 id="分类-2"><a href="#分类-2" class="headerlink" title="分类"></a>分类</h3><p>基本数据类型和引用数据类型</p>
-<h3 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h3><p><img src="/../img/img108.png"></p>
-<ul>
-<li><strong>long</strong>和<strong>float</strong>数据类型后面需要分别加上<strong>L</strong>和<strong>F</strong>标识</li>
-</ul>
-<h3 id="取值范围大小关系"><a href="#取值范围大小关系" class="headerlink" title="取值范围大小关系"></a>取值范围大小关系</h3><p>double&gt;float&gt;long&gt;int&gt;short&gt;byte</p>
-<hr>
-<h1 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h1><h3 id="命名规则—–硬性规则"><a href="#命名规则—–硬性规则" class="headerlink" title="命名规则—–硬性规则"></a>命名规则—–硬性规则</h3><ul>
-<li>由数字，字母，下划线，美元符组成</li>
-<li>不能以数字开头</li>
-<li>不能是关键字</li>
-<li>区分大小写</li>
-</ul>
-<h3 id="命名规则—–软性建议"><a href="#命名规则—–软性建议" class="headerlink" title="命名规则—–软性建议"></a>命名规则—–软性建议</h3><ol>
-<li><strong>小驼峰命名法(适用于方法，变量)</strong><ul>
-<li>标识符是一个单词时，全部小写</li>
-<li>标识符是多个单词时，第一个单词首字母小写其他单词首字母大写</li>
-</ul>
-</li>
-<li><strong>大驼峰命名法(适用于类名)</strong><ul>
-<li>标识符是一个单词时，首字母大写</li>
-<li>标识符是多个单词时，每个单词的首字母大写</li>
-</ul>
-</li>
-</ol>
-<hr>
+            注释
+注释的定义
+ * 注释是在程序指定位置添加的说明性信息
+ * 对代码的解释，不参与编译
 
+分类
+ * 单行注释 格式//注释信息
+ * 多行注释 格式/* 注释信息 */
+ * 文档注释 格式/**注释信息*/
+
+
+
+
+关键字
+特点及定义
+ * 被java赋予特定含义的英文单词
+ * 关键字字母全部小写
+
+class
+ * 用于创建或定义一个类
+ * 类是java最基本的组成单元
+
+
+
+
+字面量
+分类
+
+
+‘\t’制表符
+在打印的时候，把前面字符串的长度补齐到8，或者8的整数倍。最少补1个空格，最多补8个。
+
+
+
+
+数据类型
+分类
+基本数据类型和引用数据类型
+
+基本数据类型
+
+
+ * l
             
         </div>
     </div>
@@ -687,12 +664,9 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <ul>
-<li>通过虚拟机实现的</li>
-<li>Java语言不是直接运行在操作系统里面的，而是运行在虚拟机中</li>
-<li>针对于不同的操作系统，安装不同的虚拟机即可</li>
-</ul>
-
+            * 通过虚拟机实现的
+ * Java语言不是直接运行在操作系统里面的，而是运行在虚拟机中
+ * 针对于不同的操作系统，安装不同的虚拟机即可
             
         </div>
     </div>
@@ -731,17 +705,15 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h3 id="常见CMD命令"><a href="#常见CMD命令" class="headerlink" title="常见CMD命令"></a>常见CMD命令</h3><ul>
-<li><strong>盘符名称+冒号</strong>切换盘符</li>
-<li><strong>dir</strong>查看当前路径下内容(隐藏的也会展示出来)</li>
-<li><strong>cd+目录</strong>进入单级目录</li>
-<li>**cd 目录1\目录2\ **进入多级目录</li>
-<li>**cd ..**回退上一级目录</li>
-<li>**cd \ **回退到盘符目录</li>
-<li><strong>cls</strong> 清屏</li>
-<li><strong>exit</strong> 退出命令窗口</li>
-</ul>
-
+            常见CMD命令
+ * 盘符名称+冒号切换盘符
+ * dir查看当前路径下内容(隐藏的也会展示出来)
+ * cd+目录进入单级目录
+ * **cd 目录1\目录2\ **进入多级目录
+ * **cd ..**回退上一级目录
+ * **cd \ **回退到盘符目录
+ * cls 清屏
+ * exit 退出命令窗口
             
         </div>
     </div>
@@ -786,9 +758,9 @@
         <div class="avatar">
             <img src="/images/avatar.jpg" alt="avatar" />
         </div>
-        <div class="name">John Doe</div>
+        <div class="name">Aurora</div>
         <div class="description">
-            <p>Description<br>…</p>
+            <p>欢迎来到我的博客，喜欢的话点个赞</p>
 
         </div>
         
@@ -796,7 +768,7 @@
         <div class="friend-links">
             
             <div class="friend-link">
-                <a target="_blank" rel="noopener" href="https://argvchs.github.io">Argvchs</a>
+                <a href="https://buyu6.github.io/">Argvchs</a>
             </div>
             
         </div>
@@ -812,11 +784,11 @@
     <div id="footer-wrap">
         <div>
             &copy;
-            2022 - 2025 Hexo
+            2022 Customize the server domain name ICP - 2025 Auroraの秘密空间
             <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
-            &commat;John Doe
+            &commat;Aurora
         </div>
         <div>
             Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;

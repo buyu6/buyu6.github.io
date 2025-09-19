@@ -3,8 +3,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>Hexo</title>
-    <meta name="author" content="John Doe" />
+    <title>Auroraの秘密空间</title>
+    <meta name="author" content="Aurora" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta
@@ -61,39 +61,34 @@
         <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
     <nav id="desktop-menu">
         <a class="title" href="/">
-            <span>HEXO</span>
+            <span>AURORAの秘密空间</span>
         </a>
         
         <a href="/">
             <i class="fa-solid fa-house fa-fw"></i>
-            <span>&ensp;Home</span>
+            <span>&ensp;首页</span>
         </a>
         
         <a href="/about">
             <i class="fa-solid fa-id-card fa-fw"></i>
-            <span>&ensp;About</span>
+            <span>&ensp;关于博客</span>
         </a>
         
         <a href="/archives">
             <i class="fa-solid fa-box-archive fa-fw"></i>
-            <span>&ensp;Archives</span>
+            <span>&ensp;档案</span>
         </a>
         
         <a href="/categories">
             <i class="fa-solid fa-bookmark fa-fw"></i>
-            <span>&ensp;Categories</span>
-        </a>
-        
-        <a href="/tags">
-            <i class="fa-solid fa-tags fa-fw"></i>
-            <span>&ensp;Tags</span>
+            <span>&ensp;文章分类</span>
         </a>
         
     </nav>
     <nav id="mobile-menu">
         <div class="title" @click="showMenuItems = !showMenuItems">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;HEXO</span>
+            <span>&emsp;AURORAの秘密空间</span>
         </div>
         <transition name="slide">
             <div class="items" v-show="showMenuItems">
@@ -103,7 +98,7 @@
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-house fa-fw"></i>
                         </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">首页</div>
                     </div>
                 </a>
                 
@@ -112,7 +107,7 @@
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-id-card fa-fw"></i>
                         </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">关于博客</div>
                     </div>
                 </a>
                 
@@ -121,7 +116,7 @@
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-box-archive fa-fw"></i>
                         </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">档案</div>
                     </div>
                 </a>
                 
@@ -130,16 +125,7 @@
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-bookmark fa-fw"></i>
                         </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
-                    </div>
-                </a>
-                
-                <a href="/tags">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-tags fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">文章分类</div>
                     </div>
                 </a>
                 
@@ -165,7 +151,7 @@
         <span class="loop"></span>
         <span class="info">
             <div class="wrap">
-                <h1>Hexo</h1>
+                <h1>Auroraの秘密空间</h1>
                 <h3></h3>
                 <h5></h5>
             </div>
@@ -207,62 +193,18 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h1 id="运行时权限"><a href="#运行时权限" class="headerlink" title="运行时权限"></a>运行时权限</h1><h3 id="危险权限表格"><a href="#危险权限表格" class="headerlink" title="危险权限表格"></a>危险权限表格</h3><p><img src="/../img/img45.jpg"></p>
-<h3 id="运行时申请权限-以打电话为例"><a href="#运行时申请权限-以打电话为例" class="headerlink" title="运行时申请权限(以打电话为例)"></a>运行时申请权限(以打电话为例)</h3><p>1.先借助ContextCompat.checkSelfPermission()方法判断用户是否进行了授权。</p>
-<p>checkSelfPermission()接收两个参数，第一个是Context，第二个是具体的权限名</p>
-<p>2.使用方法的返回值和PackageManager.PERMISSION_GRANTED作比较，不等表示未授权，相等表示已授权</p>
-<p>3.把打电话的逻辑封装在**call()<strong>方法当中如果授权直接执行该方法，如果未授权，利用</strong>ActivityCompat.requestPermissions()**方法向用户申请授权，**requestPermissions()**接收三个参数，第一个是Activity实例，第二个是String数组，把权限名放入其中，第三个是请求码，只要是唯一值就行。</p>
-<p>4.调用<strong>requestPermissions()<strong>方法后最终会回调到</strong>onRequestPermissionResult()<strong>方法，而授权结果会封装在</strong>grantResults</strong>参数中，判断最后的授权结果</p>
-<p><strong>完整的实例：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AppCompatActivity</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        Button makeCall=(Button) findViewById(R.id.make_call);</span><br><span class="line">        makeCall.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">                <span class="keyword">if</span>(ContextCompat.checkSelfPermission(MainActivity.<span class="built_in">this</span>,Manifest.permission.CALL_PHONE)!= PackageManager.PERMISSION_GRANTED)&#123;</span><br><span class="line">                    ActivityCompat.requestPermissions(MainActivity.<span class="built_in">this</span>,<span class="keyword">new</span> <span class="title class_">String</span>[]&#123;Manifest.permission.CALL_PHONE&#125;,<span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    call();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">call</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            Intent intent=<span class="keyword">new</span> <span class="title class_">Intent</span>(Intent.ACTION_CALL);</span><br><span class="line">            intent.setData(Uri.parse(<span class="string">&quot;tel:10086&quot;</span>));</span><br><span class="line">            startActivity(intent);</span><br><span class="line">        &#125;<span class="keyword">catch</span> (SecurityException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@SuppressLint(&quot;MissingSuperCall&quot;)</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onRequestPermissionsResult</span><span class="params">(<span class="type">int</span> requestCode,String[] permissions,<span class="type">int</span>[] grantResults)</span>&#123;</span><br><span class="line">        <span class="keyword">switch</span>(requestCode)&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">if</span>(grantResults.length&gt;<span class="number">0</span> &amp;&amp; grantResults[<span class="number">0</span>]== PERMISSION_GRANTED)&#123;</span><br><span class="line">                    call();</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    Toast.makeText(<span class="built_in">this</span>, <span class="string">&quot;You denied the permission&quot;</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            运行时权限
+危险权限表格
 
 
+运行时申请权限(以打电话为例)
+1.先借助ContextCompat.checkSelfPermission()方法判断用户是否进行了授权。
 
-<hr>
-<h1 id="访问其他程序的数据"><a href="#访问其他程序的数据" class="headerlink" title="访问其他程序的数据"></a>访问其他程序的数据</h1><h3 id="ContentResolver的基本用法"><a href="#ContentResolver的基本用法" class="headerlink" title="ContentResolver的基本用法"></a>ContentResolver的基本用法</h3><p>通过getContentResolver()方法获取ContentResolver实例ContentResolver提供了一系列方法，用于对数据进行CRUD和SQLite相似但参数上略有一些区别。</p>
-<p>不同于数据库的是表名参数被Uri参数代替，主要由两部分组成authority和path，authority一般以程序包名进行命名，path则对同一程序不同表进行区分，标准格式为：content:&#x2F;&#x2F;com.example.app.provider&#x2F;table1,还需要将其解析才可以作为参数传入，</p>
-<p><code>Uri uri=Uri.parse(&quot;content://com.example.app.provider/table1&quot;)</code></p>
-<h3 id="Query"><a href="#Query" class="headerlink" title="Query( )"></a>Query( )</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Cursor cursor=getContentResolver().query(uri,projection,selection,selectionArgs,sortOrder);</span><br><span class="line"><span class="keyword">if</span>(cursor!=<span class="literal">null</span>)&#123;</span><br><span class="line">    <span class="keyword">while</span>(cursor.moveToNext())&#123;</span><br><span class="line">        String column1=cursor.getString(cursor.getColumnIndex(<span class="string">&quot;column1&quot;</span>));</span><br><span class="line">         <span class="type">int</span> column2=cursor.getInt(cursor.getColumnIndex(<span class="string">&quot;column2&quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    cursor.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+checkSelfPermission()接收两个参数，第一个是Context，第二个是具体的权限名
 
-<h3 id="Insert"><a href="#Insert" class="headerlink" title="Insert( )"></a>Insert( )</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ContentValues values=<span class="keyword">new</span> <span class="title class_">ContentValues</span>();</span><br><span class="line">values.put(<span class="string">&quot;column1&quot;</span>,<span class="string">&quot;text&quot;</span>);</span><br><span class="line">values.put(<span class="string">&quot;column2&quot;</span>,<span class="number">1</span>);</span><br><span class="line">getContentResolver().insert(uri,values);</span><br></pre></td></tr></table></figure>
+2.使用方法的返回值和PackageManager.PERMISSION_GRANTED作比较，不等表示未授权，相等表示已授权
 
-<h3 id="update"><a href="#update" class="headerlink" title="update( )"></a>update( )</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ContentValues values=<span class="keyword">new</span> <span class="title class_">ContentValues</span>();</span><br><span class="line">values.put(<span class="string">&quot;column1&quot;</span>,<span class="string">&quot;&quot;</span>);</span><br><span class="line">getContentResolver().update(uri,values,<span class="string">&quot;column1=? and column2=?&quot;</span>,<span class="keyword">new</span> <span class="title class_">String</span>[]&#123;<span class="string">&quot;text&quot;</span>,<span class="string">&quot;1&quot;</span>&#125;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="delete"><a href="#delete" class="headerlink" title="delete( )"></a>delete( )</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getContentResolver().delete(uri,<span class="string">&quot;column2=?&quot;</span>,<span class="keyword">new</span> <span class="title class_">String</span>[]&#123;<span class="string">&quot;1&quot;</span>&#125;);</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="读取系统联系人"><a href="#读取系统联系人" class="headerlink" title="读取系统联系人"></a>读取系统联系人</h3><p><strong>完整实例：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AppCompatActivity</span> &#123;</span><br><span class="line">    ArrayAdapter&lt;String&gt;adapter;</span><br><span class="line">    List&lt;String&gt;contactsList=<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        ListView contactsView=(ListView) findViewById(R.id.contacts_view);</span><br><span class="line">        adapter=<span class="keyword">new</span> <span class="title class_">ArrayAdapter</span>&lt;String&gt;(<span class="built_in">this</span>,android.R.layout.simple_list_item_1,contactsList);</span><br><span class="line">        contactsView.setAdapter(adapter);</span><br><span class="line">        <span class="keyword">if</span>(ContextCompat.checkSelfPermission(<span class="built_in">this</span>, Manifest.permission.READ_CONTACTS)!= PackageManager.PERMISSION_GRANTED)&#123;</span><br><span class="line">            ActivityCompat.requestPermissions(<span class="built_in">this</span>,<span class="keyword">new</span> <span class="title class_">String</span>[]&#123;Manifest.permission.READ_CONTACTS&#125;,<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            readContacts();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">readContacts</span><span class="params">()</span> &#123;</span><br><span class="line">        Cursor cursor=<span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            cursor=getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,<span class="literal">null</span>,<span class="literal">null</span>,<span class="literal">null</span>,<span class="literal">null</span>);</span><br><span class="line">            <span class="keyword">if</span>(cursor!=<span class="literal">null</span>)&#123;</span><br><span class="line">                <span class="keyword">while</span>(cursor.moveToNext())&#123;</span><br><span class="line">                    <span class="meta">@SuppressLint(&quot;Range&quot;)</span> String displayName=cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));</span><br><span class="line">                    <span class="meta">@SuppressLint(&quot;Range&quot;)</span> String number=cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));</span><br><span class="line">                    contactsList.add(displayName+<span class="string">&quot;\n&quot;</span>+number);</span><br><span class="line">                &#125;</span><br><span class="line">                adapter.notifyDataSetChanged();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(cursor!=<span class="literal">null</span>)&#123;</span><br><span class="line">                cursor.close();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@SuppressLint(&quot;MissingSuperCall&quot;)</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onRequestPermissionsResult</span><span class="params">(<span class="type">int</span> requestCode, <span class="meta">@NonNull</span> String[] permissions, <span class="meta">@NonNull</span> <span class="type">int</span>[] grantResults)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(requestCode==<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(grantResults.length&gt;<span class="number">0</span>&amp;&amp;grantResults[<span class="number">0</span>]==PackageManager.PERMISSION_GRANTED)&#123;</span><br><span class="line">                readContacts();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                Toast.makeText(<span class="built_in">this</span>, <span class="string">&quot;You denied the permission&quot;</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>重点看readContacts()方法 里面的uri与前面讲的不太一样，这是为什么呢？这是因为ContactsContract.CommonDataKinds.Phone类已经帮我们做好了封装，提供另一个CONTENT_URI常量，而这个常量就是Uri.parse解析出来的结果。</p>
-<hr>
-<h1 id="创建内容提供器"><a href="#创建内容提供器" class="headerlink" title="创建内容提供器"></a>创建内容提供器</h1><p>1.利用Android Studio创建一个Content Provider，已经在在AndroidManifest.xml中自动注册。</p>
-<p>onCraete():返回true表示创建成功，返回false表示创建失败。</p>
-<p>query():返回值为Cursor类型</p>
-<p>insert():返回一个表示这条新记录的URI</p>
-<p>update():更新已有数据</p>
-<p>delete():被删除的行数将作为返回值返回</p>
-<p>getType():根据传入的URI来返回相应的MIME类型。</p>
-<p>使用通配符表示两种格式的URI：</p>
-<p>***：*<em>表示匹配任意长度的任意字符。例子content:&#x2F;&#x2F;com.example.app.provider&#x2F;</em></p>
-<p>**#：**表示匹配任意长度的数字。例子content:&#x2F;&#x2F;com.example.app.provider&#x2F;table1&#x2F;#</p>
-<p>2.可以借助UriMatcher这个类实现匹配内容URI的功能，利用UriMatcher中的addURI（）方法，接受三个参数，第一个是authority第二个是path第三个是自定义代码，这样当调用match()方法时就能匹配相应的表数据。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> TABLE1_DIR=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> TABLE1_ITEM=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> TABLE2_DIR=<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> TABLE2_ITEM=<span class="number">3</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> UriMatcher uriMatcher;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        uriMatcher=<span class="keyword">new</span> <span class="title class_">UriMatcher</span>(UriMatcher.NO_MATCH);</span><br><span class="line">        uriMatcher.addURI(<span class="string">&quot;com.example.app.provider&quot;</span>,<span class="string">&quot;table1&quot;</span>,TABLE1_DIR);</span><br><span class="line">        uriMatcher.addURI(<span class="string">&quot;com.example.app.provider&quot;</span>,<span class="string">&quot;table1&quot;</span>,TABLE1_DIR);</span><br><span class="line">        uriMatcher.addURI(<span class="string">&quot;com.example.app.provider&quot;</span>,<span class="string">&quot;table1&quot;</span>,TABLE1_DIR);</span><br><span class="line">        uriMatcher.addURI(<span class="string">&quot;com.example.app.provider&quot;</span>,<span class="string">&quot;table1&quot;</span>,TABLE1_DIR);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Cursor <span class="title function_">query</span><span class="params">(<span class="meta">@NonNull</span> Uri uri, <span class="meta">@Nullable</span> String[] strings, <span class="meta">@Nullable</span> String s, <span class="meta">@Nullable</span> String[] strings1, <span class="meta">@Nullable</span> String s1)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(uriMatcher.match(uri)==TABLE1_DIR)&#123;</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (uriMatcher.match(uri)==TABLE1_ITEM) &#123;</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (uriMatcher.match(uri)==TABLE2_DIR) &#123;</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (uriMatcher.match(uri) == TABLE2_ITEM) &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>3.getType()方法一个URI内容对应的MIME字符由三部分组成：</p>
-<p>&lt;必须以vnd开头&gt;</p>
-<p>&lt;如果内容以路径结尾，则后接android.cursor.dir&#x2F;，如果以id结尾则后接android.cursor.item&#x2F;.&gt;</p>
-<p>&lt;最后接上vnd.<authority>.<path>&gt;</p>
-<p>URI为“content:&#x2F;&#x2F;com.example.app.provider&#x2F;table1”对应的MIME类型为“vnd.android.cursor.dir&#x2F;vnd.com.example.app.provider.table1”</p>
-<p>URI为“content:&#x2F;&#x2F;com.example.app.provider&#x2F;table1&#x2F;1”对应的MIME类型为“vnd.android.cursor.item&#x2F;vnd.com.example.app.provider.table1”</p>
-<p>实例：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">   <span class="keyword">public</span> String <span class="title function_">getType</span><span class="params">(<span class="meta">@NonNull</span> Uri uri)</span> &#123;</span><br><span class="line">       <span class="keyword">if</span>(uriMatcher.match(uri)==TABLE1_DIR)&#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="string">&quot;vnd.android.cursor.dir/vnd.com.example.app.provider.table1&quot;</span>;</span><br><span class="line">       &#125; <span class="keyword">else</span> <span class="keyword">if</span> (uriMatcher.match(uri)==TABLE1_ITEM) &#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="string">&quot;vnd.android.cursor.item/vnd.com.example.app.provider.table1&quot;</span>;</span><br><span class="line">       &#125; <span class="keyword">else</span> <span class="keyword">if</span> (uriMatcher.match(uri)==TABLE2_DIR) &#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="string">&quot;vnd.android.cursor.dir/vnd.com.example.app.provider.table2&quot;</span>;</span><br><span class="line">       &#125; <span class="keyword">else</span> <span class="keyword">if</span> (uriMatcher.match(uri) == TABLE2_ITEM) &#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="string">&quot;vnd.android.cursor.item/vnd.com.example.app.provider.table2&quot;</span>;</span><br><span class="line">       &#125; </span><br><span class="line">       <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-
+3.把打电话的逻辑封装在**call()方法当中如果授权直接执行该方法，如果未授权，利用ActivityCompat.requestPermissions()**方法向用户申请授权，**req
             
         </div>
     </div>
@@ -301,68 +243,30 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h1 id="创建代码仓库"><a href="#创建代码仓库" class="headerlink" title="创建代码仓库"></a>创建代码仓库</h1><p>首先配置身份，利用：</p>
-<p><code>git config --global user.name  &quot;  &quot;</code></p>
-<p><code>git config --global user.email  &quot;  &quot;</code></p>
-<p>可以利用<code>git config --list</code>对配置信息进行查看</p>
-<p>然后进入到想要创建仓库的相应项目文件中利用 cd </p>
-<p>然后在该目录中输入<code>git init</code></p>
-<p>项目创建完成后会在目录中生成一个隐藏的**.git<strong>文件夹，这个文件夹用来记录本地所有的Git操作，可以通过</strong>ls -al**命令来查看</p>
-<p>如果想删除该仓库，只需删除这个文件夹即可</p>
-<hr>
-<h1 id="提交本地代码"><a href="#提交本地代码" class="headerlink" title="提交本地代码"></a>提交本地代码</h1><p>可以使用<strong>add</strong>和<strong>commit</strong>提交</p>
-<p>add是先将想要提交的代码添加进来，commit则是真正的去执行提交操作</p>
-<p>添加单个文件：git add+文件名</p>
-<p>添加目录：git add+目录名</p>
-<p>添加所有文件：<code>git add .</code></p>
-<p>提交：<code>git commit -m &quot;First commit.&quot;</code>一定要有-m加上提交的描述信息。</p>
-<hr>
-<h1 id="忽略文件"><a href="#忽略文件" class="headerlink" title="忽略文件"></a>忽略文件</h1><p>如果不想把app文件下的内容添加到版本控制中，那么可以修改<strong>app&#x2F;.gitignore</strong>文件中的内容：</p>
-<p>&#x2F;build</p>
-<p>&#x2F;src&#x2F;test</p>
-<p>&#x2F;src&#x2F;androidTest</p>
-<p>现在就可以提交代码：</p>
-<p><code>git add .</code></p>
-<p><code>git commit -m &quot;First commit.&quot;</code></p>
-<hr>
-<h1 id="查看修改内容"><a href="#查看修改内容" class="headerlink" title="查看修改内容"></a>查看修改内容</h1><p>1.在项目根目录下输入以下指令：</p>
-<p><em>git status</em></p>
-<p>2.修改数据后再次使用该指令可以发现文件已更改</p>
-<p>3.利用git diff app&#x2F;src&#x2F;main&#x2F;java&#x2F;com&#x2F;example&#x2F;providertest&#x2F;MainActivity.java查看更改的内容</p>
-<hr>
-<h1 id="撤销未提交的修改"><a href="#撤销未提交的修改" class="headerlink" title="撤销未提交的修改"></a>撤销未提交的修改</h1><p>1.利用git checkout app&#x2F;src&#x2F;main&#x2F;java&#x2F;com&#x2F;example&#x2F;providertest&#x2F;MainActivity.java指令可以使一切修改撤销</p>
-<p>2.输入<em>git status</em>进行检查</p>
-<p>3.不过这种撤销方式只适合于那些没有执行过add添加的文件</p>
-<p>如果是已经添加过的文件需要先使用<code>git reset app/src/main/java/com/example/providertest/MainActivity.java</code>指令取消添加</p>
-<hr>
-<h1 id="查看提交记录"><a href="#查看提交记录" class="headerlink" title="查看提交记录"></a>查看提交记录</h1><p>1.用git log查看历史提交信息</p>
-<p>2.若只想查其中一条记录，可以在命令中指定该条记录的id并加上**-1**参数表示只想看到这一行</p>
-<p>3.如果想看这条记录具体修改了什么可以加个 <strong>-p</strong>，其中减号代表删除，加号代表添加的部分。</p>
-<hr>
-<h1 id="分支的用法"><a href="#分支的用法" class="headerlink" title="分支的用法"></a>分支的用法</h1><ul>
-<li><p>git branch查看分支</p>
-</li>
-<li><p>git branch+名字用于创建分支</p>
-</li>
-<li><p>git checkout +名字 切换分支</p>
-</li>
-<li><p>git checkout+分支1</p>
-<p>git merge+分支2  可以把分支2上修改并提交的内容合并到分支1上</p>
-</li>
-<li><p>git branch -D +分支名用于删除分支</p>
-</li>
-</ul>
-<hr>
-<h1 id="与远程版本库协作"><a href="#与远程版本库协作" class="headerlink" title="与远程版本库协作"></a>与远程版本库协作</h1><ul>
-<li>git clone 地址表示将代码下载到本地</li>
-<li>git push origin master  表示将本地修改的内容同步到远程版本库（origin指定的是远程版本库的Git地址）</li>
-<li>git fetch origin master  表示将远程版本库内容同步到本地，会存放到origin&#x2F;master 分支上</li>
-<li>git diff origin&#x2F;master 查看远程版本库上到底修改了什么</li>
-<li>git merge origin&#x2F;master将origin&#x2F;master分支上的修改合并到主分支上</li>
-<li>git pull origin master相当于将fetch和merge两个命令放一块执行，它可以从远程版本库上获取最新代码并合并到本地</li>
-</ul>
-<hr>
+            创建代码仓库
+首先配置身份，利用：
 
+git config --global user.name " "
+
+git config --global user.email " "
+
+可以利用git config --list对配置信息进行查看
+
+然后进入到想要创建仓库的相应项目文件中利用 cd 
+
+然后在该目录中输入git init
+
+项目创建完成后会在目录中生成一个隐藏的**.git文件夹，这个文件夹用来记录本地所有的Git操作，可以通过ls -al**命令来查看
+
+如果想删除该仓库，只需删除这个文件夹即可
+
+
+
+
+提交本地代码
+可以使用add和commit提交
+
+add是先将想要提交的代码添
             
         </div>
     </div>
@@ -401,73 +305,30 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <p>在 Java 中，<code>try</code>、<code>catch</code> 和 <code>finally</code> 是异常处理机制的核心部分。它们用于捕获、处理异常，并确保无论是否发生异常，某些代码都会被执行。下面是对它们的详细解释：</p>
-<h1 id="try块"><a href="#try块" class="headerlink" title="try块"></a>try块</h1><p><code>try</code> 块用于包含可能会抛出异常的代码。如果 <code>try</code> 块中的代码抛出了异常，程序会立即跳转到匹配的 <code>catch</code> 块进行处理。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    <span class="comment">//可能抛出异常的代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            在 Java 中，try、catch 和 finally 是异常处理机制的核心部分。它们用于捕获、处理异常，并确保无论是否发生异常，某些代码都会被执行。下面是对它们的详细解释：
 
-<ul>
-<li><p><code>try</code> 中的代码是你认为可能会发生异常的部分。例如，读取文件、连接数据库等操作可能会抛出异常。</p>
-<hr>
-</li>
-</ul>
-<h1 id="catch块"><a href="#catch块" class="headerlink" title="catch块"></a>catch块</h1><p><code>catch</code> 块用于捕获和处理异常。如果 <code>try</code> 块中的代码抛出了异常，程序会跳转到与异常类型匹配的 <code>catch</code> 块来处理这个异常。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// 可能抛出异常的代码</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (ExceptionType1 e1) &#123;</span><br><span class="line">    <span class="comment">// 处理异常类型 1</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (ExceptionType2 e2) &#123;</span><br><span class="line">    <span class="comment">// 处理异常类型 2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+try块
+try 块用于包含可能会抛出异常的代码。如果 try 块中的代码抛出了异常，程序会立即跳转到匹配的 catch 块进行处理。
 
-<ul>
-<li>你可以有多个 <code>catch</code> 块来处理不同类型的异常。<code>catch</code> 块中传入的参数（如 <code>ExceptionType1 e1</code>）是捕获到的异常对象，你可以通过它来访问异常的详细信息（如异常的消息、堆栈跟踪等）。</li>
-<li>如果 <code>try</code> 块抛出的异常类型与某个 <code>catch</code> 块中的异常类型匹配，那么该 <code>catch</code> 块将会被执行。</li>
-</ul>
-<hr>
-<h1 id="finally块"><a href="#finally块" class="headerlink" title="finally块"></a>finally块</h1><p><code>finally</code> 块中的代码总会在 <code>try-catch</code> 执行完后执行，无论是否发生异常。这使得 <code>finally</code> 块非常适合用于清理资源、关闭流等操作。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// 可能抛出异常的代码</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (ExceptionType e) &#123;</span><br><span class="line">    <span class="comment">// 处理异常</span></span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="comment">// 总会执行的代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+1
+2
+3
 
-<ul>
-<li><p><code>finally</code> 块中的代码不受是否发生异常的影响，无论 <code>try</code> 块中的代码是否抛出异常，<code>finally</code> 块都会执行，除非程序被强制中断（如调用 <code>System.exit()</code>，或者发生严重的错误）。</p>
-</li>
-<li><p><code>finally</code> 常用于关闭资源（如文件流、数据库连接等），确保即使在出现异常时资源也能被正确释放。</p>
-</li>
-<li><p><strong>例子：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="type">FileReader</span> <span class="variable">reader</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileReader</span>(<span class="string">&quot;somefile.txt&quot;</span>);</span><br><span class="line">    <span class="comment">// 处理文件</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;文件操作失败: &quot;</span> + e.getMessage());</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="comment">// 确保文件流关闭</span></span><br><span class="line">    System.out.println(<span class="string">&quot;关闭文件流&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<hr>
-<h1 id="try-catch-finally-的完整流程"><a href="#try-catch-finally-的完整流程" class="headerlink" title="try-catch-finally 的完整流程"></a>try-catch-finally 的完整流程</h1><ol>
-<li><p>执行 <code>try</code> 块：</p>
-<ul>
-<li>如果 <code>try</code> 块中的代码没有抛出异常，<code>catch</code> 块会被跳过，接着执行 <code>finally</code> 块。</li>
-<li>如果 <code>try</code> 块中的代码抛出了异常，程序会跳转到匹配的 <code>catch</code> 块执行，<code>finally</code> 块会被执行。</li>
-</ul>
-</li>
-<li><p>执行 <code>catch</code> 块：</p>
-<ul>
-<li>如果有异常发生并且与某个 <code>catch</code> 块中的异常类型匹配，该 <code>catch</code> 块会处理异常。多个 <code>catch</code> 块可以用来捕获不同类型的异常。</li>
-</ul>
-</li>
-<li><p>执行 <code>finally</code> 块：</p>
-<ul>
-<li><code>finally</code> 块会在 <code>try</code> 和 <code>catch</code> 完成后执行，无论是否发生异常。即使在 <code>try</code> 或 <code>catch</code> 块中调用了 <code>return</code> 语句，<code>finally</code> 也会执行。</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-<h3 id="完整的语法实例："><a href="#完整的语法实例：" class="headerlink" title="完整的语法实例："></a>完整的语法实例：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// 可能抛出异常的代码</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> <span class="number">10</span> / <span class="number">0</span>; <span class="comment">// 这里会抛出 ArithmeticException</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (ArithmeticException e) &#123;</span><br><span class="line">    <span class="comment">// 捕获并处理 ArithmeticException</span></span><br><span class="line">    System.out.println(<span class="string">&quot;发生异常: &quot;</span> + e.getMessage());</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="comment">// 无论是否发生异常，都会执行的代码</span></span><br><span class="line">    System.out.println(<span class="string">&quot;最终执行：无论异常与否都执行&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+try{
+    //可能抛出异常的代码
+}
 
-<h3 id="运行过程："><a href="#运行过程：" class="headerlink" title="运行过程："></a>运行过程：</h3><ul>
-<li>执行 <code>try</code> 块，抛出 <code>ArithmeticException</code>。</li>
-<li>跳到 <code>catch</code> 块，处理该异常。</li>
-<li>无论是否发生异常，<code>finally</code> 块都将被执行。</li>
-</ul>
-<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a><strong>总结：</strong></h3><ul>
-<li><code>try</code>：用于包含可能抛出异常的代码。</li>
-<li><code>catch</code>：用于捕获并处理异常。如果 <code>try</code> 块抛出异常，程序跳到合适的 <code>catch</code> 块处理异常。</li>
-<li><code>finally</code>：用于包含必须执行的代码，通常用于资源清理或关闭文件等操作。它无论是否发生异常都会执行。</li>
-</ul>
-<p>这种异常处理机制帮助开发者处理程序中可能出现的错误，并保证程序在发生错误时不会崩溃，还能执行一些必要的清理工作。</p>
-<hr>
-<blockquote>
-<p>​     内容源于github用户11111-beep的Android学习笔记&#96;&#96;</p>
-</blockquote>
 
+ * try 中的代码是你认为可能会发生异常的部分。例如，读取文件、连接数据库等操作可能会抛出异常。
+   
+   
+   
+   
+   
+
+catch块
+catch 块用于捕获和处理异常。如果 try 块中的代码
             
         </div>
     </div>
@@ -506,88 +367,52 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h1 id="文件存储"><a href="#文件存储" class="headerlink" title="文件存储"></a>文件存储</h1><h3 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h3><p>1.新建save方法，运用openFileOutput接收(“文件名”，保存模式（强制覆盖：MODE_PRIVATE,增添追加：MODE_APPEND）)，openFileOutput方法返回的是FileOutputStream对象，通过BufferedWriter将其写入到文件中。</p>
-<p>2.重写onDestroy()方法，确保销毁前一定会调用save方法。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AppCompatActivity</span> &#123;</span><br><span class="line"><span class="keyword">private</span> EditText edit;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        edit=(EditText) findViewById(R.id.edit_text);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//确保销毁时能够调用save方法</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onDestroy</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onDestroy();</span><br><span class="line">        String inputText=edit.getText().toString();</span><br><span class="line">        save(inputText);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//保存输入文本到文件中去</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">save</span><span class="params">(String inputText)</span>&#123;</span><br><span class="line">        FileOutputStream out=<span class="literal">null</span>;<span class="comment">//声明文件输出流</span></span><br><span class="line">        BufferedWriter writer=<span class="literal">null</span>;<span class="comment">//声明缓冲写入流</span></span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            <span class="comment">//打开文件输出流，MODE_PRIVATE表示私有模式，文件只能被该应用访问</span></span><br><span class="line">            out=openFileOutput(<span class="string">&quot;data&quot;</span>, Context.MODE_PRIVATE);</span><br><span class="line">            <span class="comment">//将输出流包装成缓冲写入流，使用UTF-8编码</span></span><br><span class="line">            writer=<span class="keyword">new</span> <span class="title class_">BufferedWriter</span>(<span class="keyword">new</span> <span class="title class_">OutputStreamWriter</span>(out));</span><br><span class="line">            <span class="comment">//将文本写入文件</span></span><br><span class="line">            writer.write(inputText);</span><br><span class="line">        &#125;<span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">            e.printStackTrace();<span class="comment">//捕获并打印异常</span></span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">//关闭writer流</span></span><br><span class="line">                <span class="keyword">if</span> (writer!=<span class="literal">null</span>)&#123;</span><br><span class="line">                    writer.close();</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;<span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">                e.printStackTrace();<span class="comment">//捕获并打印关闭流时的异常</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            文件存储
+数据存储
+1.新建save方法，运用openFileOutput接收(“文件名”，保存模式（强制覆盖：MODE_PRIVATE,增添追加：MODE_APPEND）)，openFileOutput方法返回的是FileOutputStream对象，通过BufferedWriter将其写入到文件中。
 
+2.重写onDestroy()方法，确保销毁前一定会调用save方法。
 
-
-<h3 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h3><p>新建load()方法，运用openFileInput接收(“文件名”),通过BufferedReader一行行读取对象</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> String <span class="title function_">load</span><span class="params">()</span>&#123;</span><br><span class="line">        FileInputStream in=<span class="literal">null</span>;<span class="comment">//声明文件输入流</span></span><br><span class="line">        BufferedReader reader=<span class="literal">null</span>;<span class="comment">//声明缓冲读取流</span></span><br><span class="line">        StringBuilder content=<span class="keyword">new</span> <span class="title class_">StringBuilder</span>();<span class="comment">//来存储读取的内容</span></span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            <span class="comment">//打开文件输入流，读取名为“data”的文件</span></span><br><span class="line">            in=openFileInput(<span class="string">&quot;data&quot;</span>);</span><br><span class="line">            <span class="comment">//将文件输入流包装成缓冲读取流</span></span><br><span class="line">            reader=<span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(in));</span><br><span class="line">            String line=<span class="string">&quot;&quot;</span>;<span class="comment">//用于存储每次读取的一行内容</span></span><br><span class="line">            <span class="keyword">while</span>((line=reader.readLine())!=<span class="literal">null</span>)&#123;</span><br><span class="line">                content.append(line);<span class="comment">//将读取的每一行都追加到content中</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">            e.printStackTrace();<span class="comment">//捕获并打印异常</span></span><br><span class="line">        &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">            <span class="comment">//确保reader流被关闭</span></span><br><span class="line">            <span class="keyword">if</span>(reader!=<span class="literal">null</span>)&#123;</span><br><span class="line">                <span class="keyword">try</span>&#123;</span><br><span class="line">                    reader.close();<span class="comment">//关闭缓冲读取流</span></span><br><span class="line">                &#125;<span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">                    e.printStackTrace();<span class="comment">//捕获并打印关闭流时的异常</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> content.toString();<span class="comment">//返回读取到的所有内容</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>完整代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AppCompatActivity</span> &#123;</span><br><span class="line"><span class="keyword">private</span> EditText edit;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        edit=(EditText) findViewById(R.id.edit_text);</span><br><span class="line">        String inputText=load();</span><br><span class="line">        <span class="keyword">if</span>(!TextUtils.isEmpty(inputText))&#123;</span><br><span class="line">            edit.setText(inputText);</span><br><span class="line">            edit.setSelection(inputText.length());</span><br><span class="line">            Toast.makeText(<span class="built_in">this</span>, <span class="string">&quot;Restoring succeeded&quot;</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onDestroy</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onDestroy();</span><br><span class="line">        String inputText=edit.getText().toString();</span><br><span class="line">        save(inputText);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">save</span><span class="params">(String inputText)</span>&#123;</span><br><span class="line">        FileOutputStream out=<span class="literal">null</span>;</span><br><span class="line">        BufferedWriter writer=<span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            out=openFileOutput(<span class="string">&quot;data&quot;</span>, Context.MODE_APPEND);</span><br><span class="line">            writer=<span class="keyword">new</span> <span class="title class_">BufferedWriter</span>(<span class="keyword">new</span> <span class="title class_">OutputStreamWriter</span>(out));</span><br><span class="line">            writer.write(inputText);</span><br><span class="line">        &#125;<span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (writer!=<span class="literal">null</span>)&#123;</span><br><span class="line">                    writer.close();</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;<span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">load</span><span class="params">()</span>&#123;</span><br><span class="line">        FileInputStream in=<span class="literal">null</span>;</span><br><span class="line">        BufferedReader reader=<span class="literal">null</span>;</span><br><span class="line">        StringBuilder content=<span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            in=openFileInput(<span class="string">&quot;data&quot;</span>);</span><br><span class="line">            reader=<span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(in));</span><br><span class="line">            String line=<span class="string">&quot;&quot;</span>;</span><br><span class="line">            <span class="keyword">while</span>((line=reader.readLine())!=<span class="literal">null</span>)&#123;</span><br><span class="line">                content.append(line);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(reader!=<span class="literal">null</span>)&#123;</span><br><span class="line">                <span class="keyword">try</span>&#123;</span><br><span class="line">                    reader.close();</span><br><span class="line">                &#125;<span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> content.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h1 id="SharedPreferences存储"><a href="#SharedPreferences存储" class="headerlink" title="SharedPreferences存储"></a>SharedPreferences存储</h1><h3 id="数据存储-1"><a href="#数据存储-1" class="headerlink" title="数据存储"></a>数据存储</h3><p>1.用getSharedPreferences设置存放的文件名与模式（唯一）</p>
-<p>2.调用edit()方法</p>
-<p>3.存入数据并调用apply()方法提交</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">   <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">       <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">       setContentView(R.layout.activity_main);</span><br><span class="line">       Button saveData=(Button) findViewById(R.id.save_data);</span><br><span class="line">       saveData.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">               <span class="comment">//获取SharedPreferences对象，存储在“data”文件中，MODE_PRIVATE表示私有模式</span></span><br><span class="line">               SharedPreferences.Editor editor=getSharedPreferences(<span class="string">&quot;data&quot;</span>,MODE_PRIVATE).edit();</span><br><span class="line">               <span class="comment">//使用SharedPreferences.Editor存储数据</span></span><br><span class="line">               editor.putString(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;Tom&quot;</span>);<span class="comment">//存储字符串</span></span><br><span class="line">               editor.putInt(<span class="string">&quot;age&quot;</span>,<span class="number">28</span>);<span class="comment">//存储整型数据</span></span><br><span class="line">               editor.putBoolean(<span class="string">&quot;married&quot;</span>,<span class="literal">false</span>);<span class="comment">//存储布尔值数据</span></span><br><span class="line">               <span class="comment">//提交数据（apply()为异步提交不返回结果）</span></span><br><span class="line">               editor.apply();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="读取数据-1"><a href="#读取数据-1" class="headerlink" title="读取数据"></a>读取数据</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Button restoreData=(Button) findViewById(R.id.restore_data);</span><br><span class="line">       restoreData.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">                <span class="comment">//获取SharedPreferences对象，用于读取“data”文件中的数据</span></span><br><span class="line">               SharedPreferences pref=getSharedPreferences(<span class="string">&quot;data&quot;</span>,MODE_PRIVATE);</span><br><span class="line">               <span class="comment">//从SharedPreferences中读取数据，如果没找到则使用默认值</span></span><br><span class="line">              String name= pref.getString(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;&quot;</span>);</span><br><span class="line">              <span class="type">int</span> age= pref.getInt(<span class="string">&quot;age&quot;</span>,<span class="number">0</span>);</span><br><span class="line">              <span class="type">boolean</span> married=pref.getBoolean(<span class="string">&quot;married&quot;</span>,<span class="literal">false</span>);</span><br><span class="line">               <span class="comment">//输出日志，打印恢复的数据</span></span><br><span class="line">               Log.d(<span class="string">&quot;MainActivity&quot;</span>, <span class="string">&quot;name is &quot;</span>+name);</span><br><span class="line">               Log.d(<span class="string">&quot;MainActivity&quot;</span>, <span class="string">&quot;age is &quot;</span>+age);</span><br><span class="line">               Log.d(<span class="string">&quot;MainActivity&quot;</span>, <span class="string">&quot;married is &quot;</span>+married);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br></pre></td></tr></table></figure>
-
-<p><img src="/../img/img44.png"></p>
-<hr>
-<h1 id="SQLite数据库存储"><a href="#SQLite数据库存储" class="headerlink" title="SQLite数据库存储"></a>SQLite数据库存储</h1><h3 id="SQL语句"><a href="#SQL语句" class="headerlink" title="SQL语句"></a>SQL语句</h3><p>整型：integer</p>
-<p>浮点型：real</p>
-<p>文本型：text</p>
-<p>二进制型：blob</p>
-<p>创建一个表格：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="number">1.</span><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String CREATE_BOOK=<span class="string">&quot;create table Book(&quot;</span><span class="comment">//创建一个名为Book的表</span></span><br><span class="line">            +<span class="string">&quot;id integer primary key autoincrement, &quot;</span><span class="comment">//定义id字段，设为主键，并设为自增</span></span><br><span class="line">            +<span class="string">&quot;author text, &quot;</span></span><br><span class="line">            +<span class="string">&quot;price real, &quot;</span></span><br><span class="line">            +<span class="string">&quot;pages integer, &quot;</span></span><br><span class="line">            +<span class="string">&quot;name text)&quot;</span>;</span><br><span class="line"><span class="number">2.</span><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String CREATE_TABLE_SQL=<span class="string">&quot;create table&quot;</span>+TABLE_NAME_NOTE+<span class="string">&quot;(id integer primary key autoincrement,title text,content,text,create_time text)&quot;</span>;</span><br><span class="line"><span class="comment">//两种方法都可以使用</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><p>1.新建帮助类MyDatabaseHelper继承自SQLiteOpenHelper</p>
-<p>2.重写构造方法</p>
-<p>3.重写onCreate调用execSQL执行建表语句</p>
-<p>4.重写onUpgrade</p>
-<p>5.之后可以调用getWritableDatabase（）或getReadableDatabase（）获取数据库</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//构造方法，初始化数据库</span></span><br><span class="line"><span class="keyword">public</span> <span class="title function_">MyDatabaseHelper</span><span class="params">(<span class="meta">@Nullable</span> Context context, <span class="meta">@Nullable</span> String name, <span class="meta">@Nullable</span> SQLiteDatabase.CursorFactory factory, <span class="type">int</span> version)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(context, name, factory, version);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//创建数据库表</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(SQLiteDatabase db)</span>&#123;</span><br><span class="line">        db.execSQL(CREATE_BOOK);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//更新数据库，暂时不操作</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onUpgrade</span><span class="params">(SQLiteDatabase db, <span class="type">int</span> i, <span class="type">int</span> i1)</span> &#123;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="升级数据库"><a href="#升级数据库" class="headerlink" title="升级数据库"></a>升级数据库</h3><p>如果需要在已经创建好的数据库的基础上还想添加几类数据就需要升级数据库</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyDatabaseHelper</span> <span class="keyword">extends</span> <span class="title class_">SQLiteOpenHelper</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String CREATE_BOOK=<span class="string">&quot;create table Book(&quot;</span></span><br><span class="line">            +<span class="string">&quot;id integer primary key autoincrement, &quot;</span></span><br><span class="line">            +<span class="string">&quot;author text, &quot;</span></span><br><span class="line">            +<span class="string">&quot;price real, &quot;</span></span><br><span class="line">            +<span class="string">&quot;pages integer, &quot;</span></span><br><span class="line">            +<span class="string">&quot;name text)&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String CREATE_CATEGORY=<span class="string">&quot;create table Category(&quot;</span></span><br><span class="line">            +<span class="string">&quot;id integer primary key autoincrement, &quot;</span></span><br><span class="line">            +<span class="string">&quot;category_name text, &quot;</span></span><br><span class="line">            +<span class="string">&quot;category_code integer)&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Context mContext;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MyDatabaseHelper</span><span class="params">(<span class="meta">@Nullable</span> Context context, <span class="meta">@Nullable</span> String name, <span class="meta">@Nullable</span> SQLiteDatabase.CursorFactory factory, <span class="type">int</span> version)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(context, name, factory, version);</span><br><span class="line">                mContext=context;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(SQLiteDatabase db)</span>&#123;</span><br><span class="line">        db.execSQL(CREATE_BOOK);</span><br><span class="line">        db.execSQL(CREATE_CATEGORY);</span><br><span class="line">        Toast.makeText(mContext, <span class="string">&quot;Create succeeded&quot;</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onUpgrade</span><span class="params">(SQLiteDatabase db, <span class="type">int</span> i, <span class="type">int</span> i1)</span> &#123;</span><br><span class="line">        db.execSQL(<span class="string">&quot;drop table if exists Book&quot;</span>);<span class="comment">//如果存在Book表则删除</span></span><br><span class="line">        db.execSQL(<span class="string">&quot;drop table if exists Category&quot;</span>);<span class="comment">//如果存在Category表则删除</span></span><br><span class="line">        onCreate(db);<span class="comment">//重新创建表格</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>CRUD：Create添加Read查询Update更新Delete删除</strong></p>
-<h3 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h3><p>可以使用insert()方法插入数据</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">long</span> <span class="title function_">insertData</span><span class="params">(Note note)</span>&#123;             </span><br><span class="line">             SQLiteDatabase db=getWritableDatabase();<span class="comment">//获取数据库</span></span><br><span class="line">              ContentValues values=<span class="keyword">new</span> <span class="title class_">ContentValues</span>();<span class="comment">//创建ContentValues存储插入数据</span></span><br><span class="line">              <span class="comment">//开始组装第一条数据</span></span><br><span class="line">              values.put(<span class="string">&quot;title&quot;</span>,note.getTitle());</span><br><span class="line">              values.put(<span class="string">&quot;content&quot;</span>,note.getContent());</span><br><span class="line">              values.put(<span class="string">&quot;create_time&quot;</span>,note.getCreatTime());</span><br><span class="line">            <span class="keyword">return</span>  db.insert(<span class="string">&quot;Note&quot;</span>,<span class="literal">null</span>,values);<span class="comment">//插入数据，返回插入的行号</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h3><p>利用updata()方法更新</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">updateData</span><span class="params">(Note note)</span>&#123;</span><br><span class="line">                SQLiteDatabase db=getWritableDatabase();</span><br><span class="line">                ContentValues values=<span class="keyword">new</span> <span class="title class_">ContentValues</span>();</span><br><span class="line">                values.put(<span class="string">&quot;title&quot;</span>,note.getTitle());</span><br><span class="line">                values.put(<span class="string">&quot;content&quot;</span>,note.getContent());</span><br><span class="line">                values.put(<span class="string">&quot;create_time&quot;</span>,note.getCreatTime());</span><br><span class="line">                <span class="keyword">return</span> db.update(<span class="string">&quot;Note&quot;</span>,values,<span class="string">&quot;id=?&quot;</span>,<span class="keyword">new</span> <span class="title class_">String</span>[]&#123;note.getId()&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h3><p>用delete()方法删除</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">deleteData</span><span class="params">(String id)</span>&#123;</span><br><span class="line">                SQLiteDatabase db=getWritableDatabase();</span><br><span class="line">               <span class="keyword">return</span> db.delete(<span class="string">&quot;Note&quot;</span>,<span class="string">&quot;id=?&quot;</span>,<span class="keyword">new</span> <span class="title class_">String</span>[]&#123;id&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h3><p>1**.方法：**通过query()方法</p>
-<p>2.**基本语法：**public Cursor query(String table, String[] columns, String selection,String[] selectionArgs, String groupBy, String having, String orderBy)</p>
-<p>3.**参数说明：**table：要查询的表名。<br>columns：要返回的列名数组。可以指定要查询的具体列，若为 null，表示查询所有列。<br>selection：查询条件，相当于 SQL 中的 WHERE 子句。可以为 null，表示没有条件（即返回所有记录）。<br>selectionArgs：selection 中占位符（?）的实际值，必须与 selection 中的 ? 占位符一一对应。如果没有占位符，传入 null。<br>groupBy：对查询结果进行分组的列名数组，通常与 GROUP BY 子句结合使用。如果不需要分组，可以传入 null。<br>having：分组后筛选的条件，相当于 SQL 中的 HAVING 子句。如果不需要筛选分组后的数据，可以传入 null。<br>orderBy：排序方式，相当于 SQL 中的 ORDER BY 子句。如果为 null，则不进行排序。</p>
-<p>4.<strong>返回值：</strong><br>query() 方法返回一个 Cursor 对象，它包含了查询的结果。通过 Cursor，你可以逐行遍历查询结果并获取每一行的数据。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">   SQLiteDatabase db=dbHelper.getWritableDatabase();</span><br><span class="line">   <span class="comment">//查询表中所有数据</span></span><br><span class="line">    Cursor cursor=db.query(<span class="string">&quot;Book&quot;</span>,<span class="literal">null</span>,<span class="literal">null</span>,<span class="literal">null</span>,<span class="literal">null</span>,<span class="literal">null</span>,<span class="literal">null</span>);</span><br><span class="line">    <span class="keyword">if</span>(cursor.moveToFirst())&#123;</span><br><span class="line">        <span class="keyword">do</span>&#123;</span><br><span class="line">            <span class="comment">//遍历表中所有数据，并打印</span></span><br><span class="line">            <span class="meta">@SuppressLint(&quot;Range&quot;)</span> String name=cursor.getString(cursor.getColumnIndex(<span class="string">&quot;name&quot;</span>));</span><br><span class="line">            <span class="meta">@SuppressLint(&quot;Range&quot;)</span> String author=cursor.getString(cursor.getColumnIndex(<span class="string">&quot;author&quot;</span>));</span><br><span class="line">            <span class="meta">@SuppressLint(&quot;Range&quot;)</span> <span class="type">int</span> pages=cursor.getInt(cursor.getColumnIndex(<span class="string">&quot;pages&quot;</span>));</span><br><span class="line">            <span class="meta">@SuppressLint(&quot;Range&quot;)</span> <span class="type">double</span> price=cursor.getDouble(cursor.getColumnIndex(<span class="string">&quot;price&quot;</span>));</span><br><span class="line">            Log.d(<span class="string">&quot;MainActivity&quot;</span>, <span class="string">&quot;book name is: &quot;</span>+name);</span><br><span class="line">            Log.d(<span class="string">&quot;MainActivity&quot;</span>, <span class="string">&quot;book author is: &quot;</span>+author);</span><br><span class="line">            Log.d(<span class="string">&quot;MainActivity&quot;</span>, <span class="string">&quot;book pages is: &quot;</span>+pages);</span><br><span class="line">            Log.d(<span class="string">&quot;MainActivity&quot;</span>, <span class="string">&quot;book price is: &quot;</span>+price);</span><br><span class="line">        &#125;<span class="keyword">while</span>(cursor.moveToNext());</span><br><span class="line">    &#125;</span><br><span class="line">    cursor.close();;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="使用SQL操作数据库"><a href="#使用SQL操作数据库" class="headerlink" title="使用SQL操作数据库"></a>使用SQL操作数据库</h3><p>添加数据：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.execSQL(<span class="string">&quot;insert into Book(name,author,pages,price) values(? ,?, ?, ?)&quot;</span>,<span class="keyword">new</span> <span class="title class_">String</span>[]&#123;<span class="string">&quot;The Da Vinci Code&quot;</span>,<span class="string">&quot;Dan Brown&quot;</span>,<span class="string">&quot;454&quot;</span>,<span class="string">&quot;16.96&quot;</span>&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>插入数据：</p>
-<p><code>db.execSQL(&quot;update Book set price=? where name=?&quot;,new String[]&#123;&quot;10.99&quot;,&quot;The Da Vinci Code&quot;&#125;);</code></p>
-<p>删除数据：</p>
-<p><code>db.execSQL(&quot;delete from Book where pages&gt;?&quot;,new String[]&#123;&quot;500&quot;&#125;);</code></p>
-<p>查询数据：</p>
-<p><code>db.rawQuery(&quot;select * from Book&quot;,null);</code></p>
-<hr>
-
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+4
             
         </div>
     </div>
@@ -626,59 +451,22 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h1 id="广播机制简介"><a href="#广播机制简介" class="headerlink" title="广播机制简介"></a>广播机制简介</h1><h3 id="标准广播"><a href="#标准广播" class="headerlink" title="标准广播"></a>标准广播</h3><p><img src="/../img/img42.jpg"></p>
-<h3 id="有序广播"><a href="#有序广播" class="headerlink" title="有序广播"></a>有序广播</h3><p><img src="/../img/img43.jpg"></p>
-<hr>
-<h1 id="接收系统广播"><a href="#接收系统广播" class="headerlink" title="接收系统广播"></a>接收系统广播</h1><h3 id="动态注册监听网络变化"><a href="#动态注册监听网络变化" class="headerlink" title="动态注册监听网络变化"></a>动态注册监听网络变化</h3><h4 id="简易版"><a href="#简易版" class="headerlink" title="简易版"></a>简易版</h4><p>首先先创建一个类，按例子来是建立一个内部类，并在里面重写父类的onReceive()方法。</p>
-<p>然后在onCreate()方法中首先创建一个IntentFilter的实例，并给他添加一个值为”android.net.conn.CONNECTIVITY_CHANGE”的action，<strong>为什么添加这个值</strong>，就是因为当网络状态发生变化时，系统发出的正是一条值为”android.net.conn.CONNECTIVITY_CHANGE”的广播，也就是说想监听什么广播就要添加相应的action。接下来创建内部类实例然后调用 registerReceiver()方法进行注册，然后把NetworkChangeReceiver实例和IntentFilter实例都传进去。</p>
-<p>最后记的也要取消注册，在onDestroy()中调用 unregisterReceiver实现。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AppCompatActivity</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> IntentFilter intentFilter;</span><br><span class="line">    <span class="keyword">private</span> NetworkChangeReceiver networkChangeReceiver;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        intentFilter=<span class="keyword">new</span> <span class="title class_">IntentFilter</span>();</span><br><span class="line">        intentFilter.addAction(<span class="string">&quot;android.net.conn.CONNECTIVITY_CHANGE&quot;</span>);</span><br><span class="line">       networkChangeReceiver=<span class="keyword">new</span> <span class="title class_">NetworkChangeReceiver</span>();</span><br><span class="line">        registerReceiver(networkChangeReceiver, intentFilter);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onDestroy</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onDestroy();</span><br><span class="line">        unregisterReceiver( networkChangeReceiver);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">NetworkChangeReceiver</span> <span class="keyword">extends</span> <span class="title class_">BroadcastReceiver</span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onReceive</span><span class="params">(Context context, Intent intent)</span> &#123;</span><br><span class="line">            Toast.makeText(context, <span class="string">&quot;network changes&quot;</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            广播机制简介
+标准广播
 
-<h4 id="优化版"><a href="#优化版" class="headerlink" title="优化版"></a>优化版</h4><p>使提醒网络发生变化更人性化，可以进一步修改：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">NetworkChangeReceiver</span> <span class="keyword">extends</span> <span class="title class_">BroadcastReceiver</span> &#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onReceive</span><span class="params">(Context context, Intent intent)</span> &#123;</span><br><span class="line">   ConnectivityManager connectivityManager=(ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);</span><br><span class="line">   NetworkInfo networkInfo=connectivityManager.getActiveNetworkInfo();</span><br><span class="line">   <span class="keyword">if</span>(networkInfo!=<span class="literal">null</span>&amp;&amp;networkInfo.isAvailable())&#123;</span><br><span class="line">    Toast.makeText(context, <span class="string">&quot;network is available&quot;</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">else</span>&#123;</span><br><span class="line">    Toast.makeText(context, <span class="string">&quot;network is unavailable&quot;</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">   &#125;</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 
-<p>首先通过getSystemService()方法得到ConnectivityManager实例，这是一个系统服务类，专门用于管理网络连接。然后调用他的getActiveNetworkInfo方法得到NetworkInfo实例，然后用它的isAvailable()方法判断是否有网络</p>
-<p><code>&lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot;/&gt;</code></p>
-<h3 id="静态注册实现开机启动"><a href="#静态注册实现开机启动" class="headerlink" title="静态注册实现开机启动"></a>静态注册实现开机启动</h3><p>动态注册的广播必须在程序启动之后才能实现，而静态注册的可以实现开机启动。</p>
-<p>先用Android Studio提供的快捷方式来创建一个广播接收器&lt;右击包-&gt;New-&gt;Other-&gt;Broadcast Receiver&gt;，然后修改其中代码，作为广播内容。</p>
-<p>其次静态注册的广播需要在Androidmanifest.xml中进行注册&lt;快捷方式创建，注册自动完成&gt;，然后在注册的receiver里面添加一条action</p>
-<p><code>&lt;intent-filter&gt;</code><br>    <code>&lt;action android:name=&quot;android.intent.action.BOOT_COMPLETED&quot; /&gt;</code><br><code>&lt;/intent-filter&gt;</code></p>
-<p>最后也要添加一项权限</p>
-<p><code>&lt;uses-permission android:name=&quot;android.permission.RECEIVE_BOOT_COMPLETED&quot;/&gt;</code></p>
-<hr>
-<h1 id="自定义广播"><a href="#自定义广播" class="headerlink" title="自定义广播"></a>自定义广播</h1><h3 id="发送标准广播"><a href="#发送标准广播" class="headerlink" title="发送标准广播"></a>发送标准广播</h3><p>首先新建一个广播接收器</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyBroadcastReceiver</span> <span class="keyword">extends</span> <span class="title class_">BroadcastReceiver</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onReceive</span><span class="params">(Context context, Intent intent)</span> &#123;</span><br><span class="line">        Toast.makeText(context, <span class="string">&quot;received in MyBroadcastReceiver&quot;</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+有序广播
 
-<p>然后在AndroidManifest中 添加一条action</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;intent-filter&gt;</span><br><span class="line">    &lt;action android:name=<span class="string">&quot;com.example.broadcasttest.MY_BROADCAST&quot;</span>/&gt;</span><br><span class="line">&lt;/intent-filter&gt;</span><br></pre></td></tr></table></figure>
 
-<p>接着可以定义一个按钮作为触发点</p>
-<p>然后修改主活动中的代码，首先构建出来一个Intent对象，并把要发送的广播的值传入，然后调用sendBroadcast()方法将广播消息发送，这样所有监听”com.example.broadcasttest.MY_BROADCAST”这条广播的接收器都会收到消息</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> Button button=(Button) findViewById(R.id.button);</span><br><span class="line"> button.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">   Intent intent=<span class="keyword">new</span> <span class="title class_">Intent</span>(<span class="string">&quot;com.example.casttest.MY_BROADCAST&quot;</span>);</span><br><span class="line">   intent.setPackage(getPackageName());</span><br><span class="line">   sendBroadcast(intent);</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="发送有序广播"><a href="#发送有序广播" class="headerlink" title="发送有序广播"></a>发送有序广播</h3><p>先新建一个广播接收器，用于接收自定义广播。并在广播接收器中添加想要显示的内容</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AnotherBroadcastReceiver</span> <span class="keyword">extends</span> <span class="title class_">BroadcastReceiver</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onReceive</span><span class="params">(Context context, Intent intent)</span> &#123;</span><br><span class="line">        Toast.makeText(context, <span class="string">&quot;received in AnotherBroadcastReceiver&quot;</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>然后在AndroidManifest.xml中对该接收器进行修改添加一条action</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;intent-filter&gt;</span><br><span class="line">      &lt;action android:name=<span class="string">&quot;com.example.broadcasttest.MY_BROADCAST&quot;</span>/&gt;</span><br><span class="line"> &lt;/intent-filter&gt;</span><br></pre></td></tr></table></figure>
 
-<p>使用sendOrderedBroadcast()发送有序广播</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Intent intent=<span class="keyword">new</span> <span class="title class_">Intent</span>(<span class="string">&quot;com.example.broadcasttest.MY_BROADCAST&quot;</span>);</span><br><span class="line">intent.setPackage(getPackageName());</span><br><span class="line">sendOrderedBroadcast(intent,<span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
+接收系统广播
+动态注册监听网络变化
+简易版
+首先先创建一个类，按例子来是建立一个内部类，并在里面重写父类的onReceive()方法。
 
-<p>设置优先级(在AndroidManifest中使用android:priority&#x3D;””设置优先级，优先级大的先执行)并利用abortBroadcast截断广播</p>
-<p><code>&lt;intent-filter android:priority=&quot;100&quot;&gt;</code></p>
-<p>在优先级高的广播接收器中使用abortBroadcast方法</p>
-<hr>
-<h1 id="本地广播"><a href="#本地广播" class="headerlink" title="本地广播"></a>本地广播</h1><!--解决了安全性问题-->
-
-<!--无法通过静态注册-->
-
-<p>基本上和之前动态注册广播一样，只是首先通过LocalBroadcastManager的getInstance()方法获取一个他的实例，然后注册的时候调用LocalBroadcastManager的registerReceiver()方法，发送广播的时候调用LocalBroadcastManager的sendBroadcast()方法，仅此而已。</p>
-<p>以下是完整的代码展示：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AppCompatActivity</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> IntentFilter intentFilter;</span><br><span class="line">    <span class="keyword">private</span> LocalReceiver localReceiver;</span><br><span class="line">    <span class="keyword">private</span> LocalBroadcastManager localBroadcastManager;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        localBroadcastManager = LocalBroadcastManager.getInstance(<span class="built_in">this</span>);</span><br><span class="line">        <span class="type">Button</span> <span class="variable">button</span> <span class="operator">=</span> (Button) findViewById(R.id.button);</span><br><span class="line">        button.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">                <span class="type">Intent</span> <span class="variable">intent</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Intent</span>(<span class="string">&quot;com.example.broadcasttest.LOCAL_BROADCAST&quot;</span>);</span><br><span class="line">                localBroadcastManager.sendBroadcast(intent);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        intentFilter = <span class="keyword">new</span> <span class="title class_">IntentFilter</span>();</span><br><span class="line">        intentFilter.addAction(<span class="string">&quot;com.example.broadcasttest.LOCAL_BROADCAST&quot;</span>);</span><br><span class="line">        localReceiver = <span class="keyword">new</span> <span class="title class_">LocalReceiver</span>();</span><br><span class="line">        localBroadcastManager.registerReceiver(localReceiver, intentFilter);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onDestroy</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onDestroy();</span><br><span class="line">        localBroadcastManager.unregisterReceiver(localReceiver);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">LocalReceiver</span> <span class="keyword">extends</span> <span class="title class_">BroadcastReceiver</span> &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onReceive</span><span class="params">(Context context, Intent intent)</span> &#123;</span><br><span class="line">            Toast.makeText(context, <span class="string">&quot;received local broadcast&quot;</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-
+然后在onCreate()方法中首先创建一个IntentFilter的实例，并给他添加一个值为”android.net.conn.CONNECTIVITY_CHANGE”的action，为什么添加这个值，就是因为当网络状态发生变化时，系统发出的正是一条值为”android.net.conn.CONNECTIVITY_CHANGE”的广播，也就是说想监听什么广播就要添加相应的action。接下来创建内部类实例然后
             
         </div>
     </div>
@@ -717,74 +505,33 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h1 id="碎片是什么"><a href="#碎片是什么" class="headerlink" title="碎片是什么"></a>碎片是什么</h1><p>碎片是一种可以嵌入在活动当中的UI片段，它能让程序更加合理充分地利用大屏幕的空间，因而在平板上应用广泛。</p>
-<hr>
-<h1 id="碎片的使用方式"><a href="#碎片的使用方式" class="headerlink" title="碎片的使用方式"></a>碎片的使用方式</h1><h3 id="碎片的简单用法"><a href="#碎片的简单用法" class="headerlink" title="碎片的简单用法"></a>碎片的简单用法</h3><p>新建一个左侧碎片布局left_fragment.xml:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;LinearLayout xmlns:android=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="line">    android:orientation=<span class="string">&quot;vertical&quot;</span></span><br><span class="line">    android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">    android:layout_height=<span class="string">&quot;match_parent&quot;</span>&gt;</span><br><span class="line">    &lt;Button</span><br><span class="line">        android:id=<span class="string">&quot;@+id/button&quot;</span></span><br><span class="line">        android:layout_width=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">        android:layout_gravity=<span class="string">&quot;center_horizontal&quot;</span></span><br><span class="line">        android:text=<span class="string">&quot;Button&quot;</span>/&gt;</span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
+            碎片是什么
+碎片是一种可以嵌入在活动当中的UI片段，它能让程序更加合理充分地利用大屏幕的空间，因而在平板上应用广泛。
 
-<p>新建一个右侧碎片布局right_fragment.xml:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;LinearLayout xmlns:android=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="line">    android:orientation=<span class="string">&quot;vertical&quot;</span></span><br><span class="line">    android:background=<span class="string">&quot;#00ff00&quot;</span></span><br><span class="line">    android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">    android:layout_height=<span class="string">&quot;match_parent&quot;</span>&gt;</span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:layout_width=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">        android:layout_gravity=<span class="string">&quot;center_horizontal&quot;</span></span><br><span class="line">        android:textSize=<span class="string">&quot;20sp&quot;</span></span><br><span class="line">        android:text=<span class="string">&quot;This is right fragment&quot;</span>/&gt;</span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
 
-<p>新建一个LeftFragment类继承自Fragment(<strong>通过LayoutInflater的inflate()方法将定义的碎片布局动态加载进去</strong>):</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LeftFragment</span> <span class="keyword">extends</span> <span class="title class_">Fragment</span> &#123;</span><br><span class="line">    <span class="meta">@Nullable</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> View <span class="title function_">onCreateView</span><span class="params">(<span class="meta">@NonNull</span> LayoutInflater inflater, <span class="meta">@Nullable</span> ViewGroup container, <span class="meta">@Nullable</span> Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        View view=inflater.inflate(R.layout.left_fragment,container,<span class="literal">false</span>);</span><br><span class="line">        <span class="keyword">return</span> view;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>同样的方法新建一个RightFragment类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RightFragment</span> <span class="keyword">extends</span> <span class="title class_">Fragment</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> View <span class="title function_">onCreateView</span><span class="params">(<span class="meta">@NonNull</span> LayoutInflater inflater, <span class="meta">@Nullable</span> ViewGroup container, <span class="meta">@Nullable</span> Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        View view=inflater.inflate(R.layout.right_fragment,container,<span class="literal">false</span>);</span><br><span class="line">        <span class="keyword">return</span> view;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>接下来修改activity_main布局中的代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;LinearLayout xmlns:android=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="line">    android:orientation=<span class="string">&quot;horizontal&quot;</span></span><br><span class="line">    android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">    android:layout_height=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">    &gt;</span><br><span class="line">   &lt;fragment</span><br><span class="line">       android:id=<span class="string">&quot;@+id/left_fragment&quot;</span></span><br><span class="line">       android:name=<span class="string">&quot;com.example.fragmenttest.LeftFragment&quot;</span></span><br><span class="line">       android:layout_width=<span class="string">&quot;0dp&quot;</span></span><br><span class="line">       android:layout_height=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">       android:layout_weight=<span class="string">&quot;1&quot;</span>/&gt;</span><br><span class="line">   &lt;fragment</span><br><span class="line">       android:id=<span class="string">&quot;@+id/right_fragment&quot;</span></span><br><span class="line">       android:name=<span class="string">&quot;com.example.fragmenttest.RightFragment&quot;</span></span><br><span class="line">       android:layout_width=<span class="string">&quot;0dp&quot;</span></span><br><span class="line">       android:layout_height=<span class="string">&quot;match_parent&quot;</span> </span><br><span class="line">       android:layout_weight=<span class="string">&quot;1&quot;</span>/&gt;</span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
+碎片的使用方式
+碎片的简单用法
+新建一个左侧碎片布局left_fragment.xml:
 
-<h3 id="动态添加碎片"><a href="#动态添加碎片" class="headerlink" title="动态添加碎片"></a>动态添加碎片</h3><p>(1)创建待添加的碎片实例(another_right_fragment.xml)</p>
-<p>创建布局以及加载实例</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;LinearLayout xmlns:android=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="line">    android:orientation=<span class="string">&quot;vertical&quot;</span></span><br><span class="line">    android:background=<span class="string">&quot;#ffff00&quot;</span></span><br><span class="line">    android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">    android:layout_height=<span class="string">&quot;match_parent&quot;</span>&gt;</span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:layout_width=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">        android:layout_gravity=<span class="string">&quot;center_horizontal&quot;</span></span><br><span class="line">        android:textSize=<span class="string">&quot;20sp&quot;</span></span><br><span class="line">        android:text=<span class="string">&quot;This is another right fragment&quot;</span>/&gt;</span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AnotherRightFragment</span> <span class="keyword">extends</span> <span class="title class_">Fragment</span> &#123;</span><br><span class="line">    <span class="meta">@Nullable</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> View <span class="title function_">onCreateView</span><span class="params">(<span class="meta">@NonNull</span> LayoutInflater inflater, <span class="meta">@Nullable</span> ViewGroup container, <span class="meta">@Nullable</span> Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        View view=inflater.inflate(R.layout.another_right_fragment,container,<span class="literal">false</span>);</span><br><span class="line">        <span class="keyword">return</span> view;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>修改主活动布局文件：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;LinearLayout xmlns:android=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="line">    android:orientation=<span class="string">&quot;horizontal&quot;</span></span><br><span class="line">    android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">    android:layout_height=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">    &gt;</span><br><span class="line">   &lt;fragment</span><br><span class="line">       android:id=<span class="string">&quot;@+id/left_fragment&quot;</span></span><br><span class="line">       android:name=<span class="string">&quot;com.example.fragmenttest.LeftFragment&quot;</span></span><br><span class="line">       android:layout_width=<span class="string">&quot;0dp&quot;</span></span><br><span class="line">       android:layout_height=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">       android:layout_weight=<span class="string">&quot;1&quot;</span>/&gt;</span><br><span class="line">   &lt;FrameLayout</span><br><span class="line">       android:id=<span class="string">&quot;@+id/right_layout&quot;</span></span><br><span class="line">       android:layout_width=<span class="string">&quot;0dp&quot;</span></span><br><span class="line">       android:layout_height=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">       android:layout_weight=<span class="string">&quot;1&quot;</span>&gt;</span><br><span class="line">     &lt;/FrameLayout&gt;</span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
-
-<p>(2)获取FragmentManager，在活动中可以直接通过调用getSupportFragmentManager()方法得到</p>
-<p>(3)开启一个事务，通过调用beginTransaction()方法开启</p>
-<p>(4)向容器内添加或替换碎片，一般使用replace()方法实现，需要传入容器的id和待添加的碎片实例</p>
-<p>(5)提交事务，调用commit()方法来完成</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AppCompatActivity</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">       Button button=(Button) findViewById(R.id.button);</span><br><span class="line">        button.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">          <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">                <span class="keyword">if</span>(view.getId()==R.id.button)&#123;</span><br><span class="line">                    replaceFragment(<span class="keyword">new</span> <span class="title class_">AnotherRightFragment</span>());</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">      replaceFragment(<span class="keyword">new</span> <span class="title class_">RightFragment</span>());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">replaceFragment</span><span class="params">(Fragment fragement)</span>&#123;</span><br><span class="line">        FragmentManager fragmentManager=getSupportFragmentManager();</span><br><span class="line">        FragmentTransaction transaction=fragmentManager.beginTransaction();</span><br><span class="line">        transaction.replace(R.id.right_layout,fragement);</span><br><span class="line">        transaction.commit();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="在碎片中模拟返回栈"><a href="#在碎片中模拟返回栈" class="headerlink" title="在碎片中模拟返回栈"></a>在碎片中模拟返回栈</h3><p>利用addToBackStack()方法可以将一个事务添加到返回栈中</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">replaceFragment</span><span class="params">(Fragment fragement)</span>&#123;</span><br><span class="line">        FragmentManager fragmentManager=getSupportFragmentManager();</span><br><span class="line">        FragmentTransaction transaction=fragmentManager.beginTransaction();</span><br><span class="line">        transaction.replace(R.id.right_layout,fragement);</span><br><span class="line">        transaction.addToBackStack(<span class="literal">null</span>);</span><br><span class="line">        transaction.commit();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="碎片与活动之间进行通信"><a href="#碎片与活动之间进行通信" class="headerlink" title="碎片与活动之间进行通信"></a>碎片与活动之间进行通信</h3><p>调用FragmentManager的findFragmentById()方法在活动中得到相应碎片的实例，然后就能轻松调用碎片里的方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RightFragment rightFragment=(RightFragment) getFragmentManager().findFragmentById(R.id.right_fragment);</span><br></pre></td></tr></table></figure>
-
-<p>通过getActivity可以在碎片中调用活动中的方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ManinActivity activity=(ManinActivity) getActivity(); </span><br></pre></td></tr></table></figure>
-
-<hr>
-<h1 id="碎片的生命周期"><a href="#碎片的生命周期" class="headerlink" title="碎片的生命周期"></a>碎片的生命周期</h1><h3 id="碎片的状态"><a href="#碎片的状态" class="headerlink" title="碎片的状态"></a>碎片的状态</h3><p>（1）运行状态：</p>
-<p>当一个碎片是可见的，并且它所关联的活动正处于运行状态时，该碎片也处于运行状态</p>
-<p>（2）暂停状态：</p>
-<p>当一个活动进入暂停状态时(由于另一个未占满屏幕的活动被添加到了栈顶)，与它相关联的可见碎片就会进入到暂停状态。</p>
-<p>（3）停止状态：</p>
-<p>当一个活动进入到停止状态时，与它相关联的碎片就会进入到停止状态，或者通过调用FragmentTransaction的remove(),replace()方法将碎片从活动中移除，但如果在事务提交之前使用addToBackStack()方法，这时的碎片也会进入到停止状态。总的来说，进入到停止状态的碎片对用户来说完全不可见，有可能被系统回收。</p>
-<p>（4）销毁状态：</p>
-<p>碎片总是依附于活动而存在，因此当活动被销毁时，与它相关联的碎片就会进入到销毁状态。或者通过调用FragmentTransaction的remove(),replace()方法将碎片从活动中移除，但如果在事务提交之前没有使用addToBackStack()方法，这时碎片也会进入到销毁状态。</p>
-<h3 id="碎片的回调方法"><a href="#碎片的回调方法" class="headerlink" title="碎片的回调方法"></a>碎片的回调方法</h3><p>onAttach().当碎片和活动建立起关联的时候调用</p>
-<p>onCreateView().为碎片加载布局时调用</p>
-<p>onActivityCreated().确保与碎片相关联的活动一定已经创建完毕时使用</p>
-<p>onDestroyView().当与碎片相关联的视图被移除的时候调用</p>
-<p>onDetach().当碎片和活动解除关联时调用</p>
-<p>碎片的完整生命周期示意图：</p>
-<p><img src="/../img/img39.jpg"></p>
-<h3 id="体验碎片的生命周期"><a href="#体验碎片的生命周期" class="headerlink" title="体验碎片的生命周期"></a>体验碎片的生命周期</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RightFragment</span> <span class="keyword">extends</span> <span class="title class_">Fragment</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG=<span class="string">&quot;RightFragment&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onAttach</span><span class="params">(<span class="meta">@NonNull</span> Context context)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onAttach(context);</span><br><span class="line">        Log.d(TAG, <span class="string">&quot;onAttach&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(<span class="meta">@Nullable</span> Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        Log.d(TAG, <span class="string">&quot;onCreate&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Nullable</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> View <span class="title function_">onCreateView</span><span class="params">(<span class="meta">@NonNull</span> LayoutInflater inflater, <span class="meta">@Nullable</span> ViewGroup container, <span class="meta">@Nullable</span> Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        Log.d(TAG, <span class="string">&quot;onCreateView&quot;</span>);</span><br><span class="line">        View view=inflater.inflate(R.layout.right_fragment,container,<span class="literal">false</span>);</span><br><span class="line">        <span class="keyword">return</span> view;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onActivityCreated</span><span class="params">(<span class="meta">@Nullable</span> Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onActivityCreated(savedInstanceState);</span><br><span class="line">        Log.d(TAG, <span class="string">&quot;onActivityCreated&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onStart</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onStart();</span><br><span class="line">        Log.d(TAG, <span class="string">&quot;onStart&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onResume</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onResume();</span><br><span class="line">        Log.d(TAG, <span class="string">&quot;onResume&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onPause</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onPause();</span><br><span class="line">        Log.d(TAG, <span class="string">&quot;onPause&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onStop</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onStop();</span><br><span class="line">        Log.d(TAG, <span class="string">&quot;onStop&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onDestroyView</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onDestroyView();</span><br><span class="line">        Log.d(TAG, <span class="string">&quot;onDestroyView&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onDestroy</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onDestroy();</span><br><span class="line">        Log.d(TAG, <span class="string">&quot;onDestroy&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onDetach</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onDetach();</span><br><span class="line">        Log.d(TAG, <span class="string">&quot;onDetach&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h1 id="加载动态布局的技巧"><a href="#加载动态布局的技巧" class="headerlink" title="加载动态布局的技巧"></a>加载动态布局的技巧</h1><h3 id="使用限定符"><a href="#使用限定符" class="headerlink" title="使用限定符"></a>使用限定符</h3><p>新建一个layout-large文件夹并在里面添加activity_main布局，layout中布局是单页模式，layout-large中布局是双页模式。其中large便是限定符，那些屏幕大的会自动识别并使用layout-large布局,屏幕小的则使用layout布局</p>
-<h3 id="常见限定符如下图所示"><a href="#常见限定符如下图所示" class="headerlink" title="常见限定符如下图所示"></a>常见限定符如下图所示</h3><p><img src="/../img/img40.jpg"></p>
-<p><img src="/../img/img41.jpg"></p>
-<h3 id="使用最小宽度限定符"><a href="#使用最小宽度限定符" class="headerlink" title="使用最小宽度限定符"></a>使用最小宽度限定符</h3><p>想更加灵活地为不同设备加载布局，这时就可以用到最小宽度限定符，这允许我们对屏幕宽度指定一个最小值，以这个值为临界，比这个大的加载一个布局，比这个小的加载另一个布局。</p>
-<p>例子：</p>
-<p>在res下新建layout-sw600dp文件夹，宽度大于600dp的加载layout-sw600dp上的布局，宽度小于600dp的加载layout上的布局</p>
-<hr>
-
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layou
             
         </div>
     </div>
@@ -823,113 +570,15 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h1 id="常用控件"><a href="#常用控件" class="headerlink" title="常用控件"></a>常用控件</h1><h3 id="TextView"><a href="#TextView" class="headerlink" title="TextView"></a>TextView</h3><p>1.android:id定义唯一标识符<br>2.android:layout_width指定宽度有match_parent和wrap_content两个选项，第一个表示当前控件大小和父布局大小一样，第二个表示当前控件大小刚好能包住里面的内容<br>3.android:layout_height指定高度，选项和上相同<br>4.android:text指定文本显示的内容<br>5.android:gravity指定文字对齐方式可选值有top,bottom,left,right,center等，可以用“|”来指定多个值<br>6.android:textSize指定文字大小，用sp做单位<br>7.android:textColor指定文字颜色</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;TextView</span><br><span class="line">       android:id=<span class="string">&quot;@+id/text_view&quot;</span></span><br><span class="line">       android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">       android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">       android:gravity=<span class="string">&quot;center&quot;</span></span><br><span class="line">       android:text=<span class="string">&quot;@string/this_is_textview&quot;</span></span><br><span class="line">       android:textColor=<span class="string">&quot;#00ff00&quot;</span></span><br><span class="line">       android:textSize=<span class="string">&quot;24sp&quot;</span></span><br><span class="line">      /&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Button"><a href="#Button" class="headerlink" title="Button"></a>Button</h3><p>1.android:id确定唯一标识符<br>2.android:layout_width指定宽度<br>3.android:layout_height指定高度<br>4.android:text指定文本内容<br>5.android:textAllCaps是否对字母进行大写转换<br><strong>含有的板块与TextView中的差不多，其余的不再过多赘述</strong><br><strong>重点:设定完按钮后在活动中要给其注册一个相应的点击事件(注册一个监听器)</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;Button</span><br><span class="line">       android:id=<span class="string">&quot;@+id/button&quot;</span></span><br><span class="line">       android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">       android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">       android:text=<span class="string">&quot;@string/button&quot;</span></span><br><span class="line">       android:textAllCaps=<span class="string">&quot;false&quot;</span> /&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Button button=(Button) findViewById(R.id.button);</span><br><span class="line">button.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">               <span class="type">ProgressDialog</span> <span class="variable">dialog</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ProgressDialog</span>(MainActivity.<span class="built_in">this</span>);</span><br><span class="line">              <span class="comment">//此处添加逻辑代码</span></span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="EditText"><a href="#EditText" class="headerlink" title="EditText"></a>EditText</h3><p>1.android:id唯一标识符<br>2.android:layout-width确定宽度<br>3.android:layout_height高度<br>4.android:hint指定一段提示性文字，输入内容后文字会自己消失<br>5.android:maxLines指定文本输入的最大行数<br>6.EditText与Button可以结合使用，首先使用findViewById方法得到EditText的实例，然后在按钮点击事件里修改通过getText获取文本内容利用toString转换成字符串，最后利用Toast将内容通过按钮显示</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;EditText</span><br><span class="line">      android:id=<span class="string">&quot;@+id/edit_text&quot;</span></span><br><span class="line">      android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">      android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">      android:hint=<span class="string">&quot;@string/type_something_here&quot;</span></span><br><span class="line">      android:textSize=<span class="string">&quot;20sp&quot;</span></span><br><span class="line">      android:maxLines=<span class="string">&quot;2&quot;</span></span><br><span class="line">      /&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> EditText editText;</span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line">   <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">       <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">       setContentView(R.layout.activity_main);</span><br><span class="line">        Button button=(Button) findViewById(R.id.button);</span><br><span class="line">       editText=(EditText) findViewById(R.id.edit_text);    </span><br><span class="line">       button.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">             String inputText=editText.getText().toString;</span><br><span class="line">             Toast.makeText(MainActivity.<span class="built_in">this</span>,inputText,Toast.LENGTH_SHORT).show();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="ImageView"><a href="#ImageView" class="headerlink" title="ImageView"></a>ImageView</h3><p>1.android:id<br>2.android:layout_width<br>3.android:layout_height<br>4.android:src选择显示的图片<br>5.可以和按钮一起使用动态的更改图片</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;ImageView</span><br><span class="line">      android:id=<span class="string">&quot;@+id/image_view&quot;</span></span><br><span class="line">      android:layout_width=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">      android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">      android:src=<span class="string">&quot;@drawable/img_1&quot;</span></span><br><span class="line">       /&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> ImageView imageView;  </span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    setContentView(R.layout.activity_main);</span><br><span class="line">    Button button=(Button) findViewById(R.id.button);</span><br><span class="line">     imageView=(ImageView) findViewById(R.id.image_view) ;</span><br><span class="line">    button.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">         imageView.setImageResource(R.drawable.img_2);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="ProgressBar"><a href="#ProgressBar" class="headerlink" title="ProgressBar"></a>ProgressBar</h3><p>用途:用于显示进度条<br>1.android:id<br>2.android:layout_width<br>3.android:layout_height<br>4.android:max设置进度条最大值<br>5.style设置进度条的种类<br>6.通过按钮可以实现，进度条可见变为不可见，不可见变为可见<br>7.通过按钮可以使进度条发生动态变化</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;ProgressBar</span><br><span class="line">       android:id=<span class="string">&quot;@+id/progress_bar&quot;</span></span><br><span class="line">       android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">       android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">       style=<span class="string">&quot;?android:attr/progressBarStyleHorizontal&quot;</span></span><br><span class="line">       android:max=<span class="string">&quot;100&quot;</span>/&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> ProgressBar progressBar;</span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line"> <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">     <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">     setContentView(R.layout.activity_main);</span><br><span class="line">     Button button=(Button) findViewById(R.id.button);</span><br><span class="line">      progressBar=(ProgressBar) findViewById(R.id.progress_bar);</span><br><span class="line">     button.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">         <span class="meta">@Override</span></span><br><span class="line">         <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">           <span class="comment">/*6.if(progressBar.getVisibility()==View.GONE)&#123;</span></span><br><span class="line"><span class="comment">           progressBar.setVisibility(View.VISIBLE);</span></span><br><span class="line"><span class="comment">           &#125; else&#123;</span></span><br><span class="line"><span class="comment">           progressBar.setVisibility(View.GONE);</span></span><br><span class="line"><span class="comment">           &#125;</span></span><br><span class="line"><span class="comment">           */</span></span><br><span class="line">           <span class="comment">/*7.int progress = progressBar.getProgress();</span></span><br><span class="line"><span class="comment">               progress=progress+10;</span></span><br><span class="line"><span class="comment">               progressBar.setProgress(progress);</span></span><br><span class="line"><span class="comment">           */</span></span><br><span class="line">         &#125;</span><br><span class="line">     &#125;);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="AlertDialog"><a href="#AlertDialog" class="headerlink" title="AlertDialog"></a>AlertDialog</h3><p>作用:弹出对话框，用于提示一些重要信息</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">AlertDialog.<span class="type">Builder</span> <span class="variable">dialog</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AlertDialog</span>.Builder(MainActivity.<span class="built_in">this</span>);</span><br><span class="line">dialog.setTitle(<span class="string">&quot;This is a dialog&quot;</span>);<span class="comment">//标题</span></span><br><span class="line">dialog.setMessage(<span class="string">&quot;Something important&quot;</span>);<span class="comment">//内容</span></span><br><span class="line">dialog.setCancelable(<span class="literal">false</span>);<span class="comment">//是否可以通过点击其他区域来关闭对话框</span></span><br><span class="line">dialog.setPositiveButton(<span class="string">&quot;OK&quot;</span>,<span class="keyword">new</span> <span class="title class_">DialogInterface</span>.OnClickListener()&#123;</span><br><span class="line">    <span class="meta">@Overrid</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Click</span><span class="params">(DialogInterface dialogInterface,<span class="type">int</span> i)</span>&#123;&#125;</span><br><span class="line">&#125;);</span><br><span class="line">dialog.setNegativeButton(<span class="string">&quot;No&quot;</span>,<span class="keyword">new</span> <span class="title class_">DialogInterface</span>.OnClickListener()&#123;</span><br><span class="line">    <span class="meta">@Overrid</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Click</span><span class="params">(DialogInterface dialogInterface,<span class="type">int</span> i)</span>&#123;&#125;</span><br><span class="line">&#125;);</span><br><span class="line">dialog.show();</span><br></pre></td></tr></table></figure>
-
-<h3 id="ProgressDialog"><a href="#ProgressDialog" class="headerlink" title="ProgressDialog"></a>ProgressDialog</h3><p>作用:同AlertDialog相似，不过是在弹出的窗口中有一个进度条</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ProgressDialog</span> <span class="variable">dialog</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ProgressDialog</span>(MainActivity.<span class="built_in">this</span>);</span><br><span class="line">dialog.setTitle(<span class="string">&quot;This is a dialog&quot;</span>);<span class="comment">//标题</span></span><br><span class="line">dialog.setMessage(<span class="string">&quot;Loading......&quot;</span>);<span class="comment">//内容</span></span><br><span class="line">dialog.setCancelable(<span class="literal">true</span>);<span class="comment">//是否可以通过点击其他区域来关闭对话框</span></span><br><span class="line">dialog.show();</span><br></pre></td></tr></table></figure>
-
-<p>如果setCancelable()中传入的是false，此时无法通过back键退出，这时在数据加载完成之后一定要调用dismiss()方法关闭对话框</p>
-<hr>
-<h1 id="四种基本布局"><a href="#四种基本布局" class="headerlink" title="四种基本布局"></a>四种基本布局</h1><h3 id="线性布局"><a href="#线性布局" class="headerlink" title="线性布局"></a>线性布局</h3><p>又叫做<LinearLayout><br>1.android:orientation表示排列方向，有两个选择vertical垂直方向，如果排列方向是这个时高度不能是match_parent，horizontal表示水平方向，如果排列方向是这个时，控件宽度不能设置为match_parent,默认为horizontal<br>2.android:layout_width宽度<br>3.android:layout_height高度<br>4.android:layout_gravity指定控件在布局中的对齐方式，如果排列方式是horizontal是只有垂直方向上的对齐方式才会生效，排列方向是vertical时与之相同</p>
-<p><img src="/../img/img15.jpg"></p>
-<p>5.android:layout_weight这个属性允许我们使用比例的方式来指定控件的大小。使用这个时要把layout_width的值设为“0dp”</p>
-<p><img src="/../img/img16.jpg"></p>
-<p>使用这个属性时，也可以仅部分控件使用可以达到更好的效果</p>
-<h3 id="相对布局"><a href="#相对布局" class="headerlink" title="相对布局"></a>相对布局</h3><p>RelativeLayout又称相对布局，也是一种非常常用的布局，它可以通过定位的方式让控件出现在布局的任意位置<br>1.相对于父布局进行定位</p>
-<p><img src="/../img/img17.jpg"></p>
-<p><img src="/../img/img18.jpg"></p>
-<p>2.相对于控件进行定位:<br>android:layout_above一个控件在另一个控件上面<br>android:layout_below一个控件在另一个控件下面<br>android:layout_toLeft0f一个控件在另一个控件左侧<br>android:layout_toRight0f一个控件在另一个控件右侧<br>注:引用的控件应该放在前面</p>
-<p><img src="/../img/img19.jpg"></p>
-<p><img src="/../img/img20.jpg"></p>
-<p>3.其他定位属性:<br>android:layout_alignLeft表示让一个控件的左边缘同另一个控件左边缘对齐<br>android:layout_alignRight表示让一个控件的右边缘同另一个控件右边缘对齐<br>android:layout_alignTop<br>android:layout_alignBottom</p>
-<h3 id="帧布局"><a href="#帧布局" class="headerlink" title="帧布局"></a>帧布局</h3><p>FrameLayout又叫帧布局，应用场景较少，所有控件都会默认摆在布局左上角，也可以使用android:layout_gravity进行对齐操作，此方法应用场景过少，不做过多赘述</p>
-<h3 id="百分比布局"><a href="#百分比布局" class="headerlink" title="百分比布局"></a>百分比布局</h3><p>百分比布局是对帧布局和相对布局两种布局方式的扩展<br>重点:使用前要先添加百分比布局库的依赖</p>
-<p><img src="/../img/img21.jpg"></p>
-<p>(1)帧布局的百分比布局<br>需要定义一个app空间</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xmlns:app=“http:<span class="comment">//schemas.android.com/apk/res-auto”</span></span><br></pre></td></tr></table></figure>
-
-<p>1.app:layout_widthPercent<br>2.app:layout_heightPercent<br>其余继承FrameLayout</p>
-<p><img src="/../img/img22.jpg"></p>
-<p><img src="/../img/img23.jpg"></p>
-<p>(2)相对布局的百分比布局:与上述相似</p>
-<hr>
-<h1 id="创建自定义控件"><a href="#创建自定义控件" class="headerlink" title="创建自定义控件"></a>创建自定义控件</h1><h3 id="引入布局"><a href="#引入布局" class="headerlink" title="引入布局"></a>引入布局</h3><p>1.新建一个布局，在里面写需要的代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;include layout=<span class="string">&quot;@layout/title&quot;</span>/&gt;</span><br></pre></td></tr></table></figure>
-
-<p>2.利用include语句引入<br>3.利用ActionBar隐藏自带标题</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ActionBar actionBar=getSupportActionBar();</span><br><span class="line"><span class="keyword">if</span>(actionBar!=<span class="literal">null</span>)&#123;</span><br><span class="line">    actionBar.hide();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="创建自定义控件-1"><a href="#创建自定义控件-1" class="headerlink" title="创建自定义控件"></a>创建自定义控件</h3><p>1.创建通用的布局代码。</p>
-<p>2.新建一个类继承自LinearLayout</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TitleLayout</span> <span class="keyword">extends</span> <span class="title class_">LinearLayout</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">TitleLayout</span><span class="params">(Context context, AttributeSet attrs)</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>(context,attrs);</span><br><span class="line">        LayoutInflater.from(context).inflate(R.layout.title,<span class="built_in">this</span>);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<p>3.将创建好的控件添加到布局文件中</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;com.example.uicustomviews.TitleLayout</span><br><span class="line">     android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">     android:layout_height=<span class="string">&quot;wrap_content&quot;</span>/&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>4.可以为按钮注册点击事件在新建那个类中</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TitleLayout</span> <span class="keyword">extends</span> <span class="title class_">LinearLayout</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">TitleLayout</span><span class="params">(Context context, AttributeSet attrs)</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>(context,attrs);</span><br><span class="line">        LayoutInflater.from(context).inflate(R.layout.title,<span class="built_in">this</span>);</span><br><span class="line">        <span class="type">Button</span> <span class="variable">titleBack</span> <span class="operator">=</span> (Button) findViewById(R.id.title_back);</span><br><span class="line">        Button titleEdit=(Button) findViewById(R.id.title_edit);</span><br><span class="line">        titleBack.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">                ( (Activity) getContext()).finish();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        titleEdit.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View view)</span> &#123;</span><br><span class="line">                Toast.makeText(getContext(), <span class="string">&quot;You clicked &quot;</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h1 id="ListView"><a href="#ListView" class="headerlink" title="ListView"></a>ListView</h1><h3 id="ListView的简单用法"><a href="#ListView的简单用法" class="headerlink" title="ListView的简单用法"></a>ListView的简单用法</h3><p>以一个数组数据进行举例讲解<br>1.在布局中直接加入<ListView>布局<br>2.数组中的数据无法直接传给ListView,故需借助适配器完成，这里推荐使用ArrayAdapter,这里需要传入三个数据上下文，Listview子项布局id及适配数据<br>3.创建一个listview对象调用setAdapter传入适配器，这样就关联好了</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;ListView</span><br><span class="line">     android:id=<span class="string">&quot;@+id/list_view&quot;</span></span><br><span class="line">     android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">     android:layout_height=<span class="string">&quot;match_parent&quot;</span>/&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/../img/img24.jpg"></p>
-<h3 id="定制ListView界面"><a href="#定制ListView界面" class="headerlink" title="定制ListView界面"></a>定制ListView界面</h3><p>1.先定义一个实体类作为listview的适配类型</p>
-<p><img src="/../img/img25.jpg"></p>
-<p>2.然后给listview的子项指定一个自定义的布局，用imageview显示图片，textview显示名字</p>
-<p><img src="/../img/img26.jpg"></p>
-<p>3.接下来创建一个自定义适配器继承自ArrayAdapter,将上下文，子项布局的id和数据都传入进来，通过getItem方法获取实例，然后使用LayoutInflater来为子项加载布局，这里LayoutInflater中的inflate方法接收三个数据，第三个参数指定为false表示只让父布局中声明的layout属性失效，但不为这个View添加父布局，因为一旦View有了父布局，它就不能再添加到ListView中了</p>
-<p><img src="/../img/img27.jpg"></p>
-<p>4.添加一个initFruits方法，对数据进行初始化，将水果名称及图片这些数据传入列表中，并利用新建的那个适配器传递给ListView</p>
-<p><img src="/../img/img28.jpg"></p>
-<p><img src="/../img/img29.jpg"></p>
-<h3 id="提升ListView运行效率"><a href="#提升ListView运行效率" class="headerlink" title="提升ListView运行效率"></a>提升ListView运行效率</h3><p>主要在适配器中进行修改<br>1.原本布局需要多次重复加载，这样性能很低，所以可以利用convertView对其进行修改，用它来对布局进行缓存，重复利用。<br>2.控件也需要多次创建，这个可以通过建立一个内部类viewHolder对控件进行缓存，利用setTag进行缓存，用getTag进行取出，可以得到更好的性能</p>
-<p><img src="/../img/img30.jpg"></p>
-<p><img src="/../img/img31.jpg"></p>
-<h3 id="ListView的点击事件"><a href="#ListView的点击事件" class="headerlink" title="ListView的点击事件"></a>ListView的点击事件</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ListView listView=(ListView) findViewById(R.id.list_view);</span><br><span class="line">listView.setOnItemClickListener(<span class="keyword">new</span> <span class="title class_">AdapterView</span>.OnItemClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onItemClick</span><span class="params">(AdapterView&lt;?&gt; adapterView, View view, <span class="type">int</span> i, <span class="type">long</span> l)</span> &#123;</span><br><span class="line">        Fruit fruit=fruitList.get(i);</span><br><span class="line">        Toast.makeText(MainActivity.<span class="built_in">this</span>, fruit.getName(), Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h1 id="RecyclerView"><a href="#RecyclerView" class="headerlink" title="RecyclerView"></a>RecyclerView</h1><h3 id="RecyclerView基本用法"><a href="#RecyclerView基本用法" class="headerlink" title="RecyclerView基本用法"></a>RecyclerView基本用法</h3><p>增强版的ListView<br>使用时也需要提前添加依赖库</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation (<span class="string">&quot;androidx.recyclerview:recyclerview:1.3.2&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>1.首先创建一个新的类作为适配类型，创建一个子项布局<br>2.创建一个适配器让这个适配器继承自RecyclerView.Adapter,并把泛型指定为FruitAdapter.ViewHolder.<br>先建立一个内部类，传入一个参数 这个参数通常是子项的最外层布局，通过findViewById获取实例，然后通过其中的构造函数将数据源传入并赋值给一个全局变量，由于其继承自RecyclerView.Adapter所以要重写onCreateViewHolder,onBindViewHolder,getItemCount三个方法，第一个用于创建ViewHolder实例，第二个用于对数据进行赋值，第三个得到有多少个子项<br>3.写一个InitFruits方法初始化数据，获取recyclerview实例，然后创建一个LinearLayoutManager对象指定布局方式并将其设置到recyclerView中，创建适配器的实例并将水果数据传入其中，最后建立联系</p>
-<p><img src="/../img/img32.jpg"></p>
-<p><img src="/../img/img33.jpg"></p>
-<p><img src="/../img/img34.jpg"></p>
-<h3 id="实现横向滚动"><a href="#实现横向滚动" class="headerlink" title="实现横向滚动"></a>实现横向滚动</h3><p>在原有的代码上进行少量修改：<br>1.修改fruit_item中的代码，将元素改为垂直排列，将ImageView和TextView改为水平居中<br>2.在主活动中添加layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL)即可</p>
-<p><img src="/../img/img35.jpg"></p>
-<h3 id="实现瀑布流布局"><a href="#实现瀑布流布局" class="headerlink" title="实现瀑布流布局"></a>实现瀑布流布局</h3><p>瀑布流布局(GridLayoutManager用于实现网格布局，StaggeredGridLayoutManager用于实现瀑布流布局)<br>在原有代码上修改：<br>1.首先对fruit_item进行细微修改<br>2.在主活动onCreate方法中加入一句代码</p>
-<p><img src="/../img/img36.jpg"></p>
-<p>接受俩参数，第一个用于指定列数，第二个用于指定布局排列方式，到这里瀑布式布局已经完成了，但还可以用一个小技巧使观察的更清晰<br>3.创建一个getRandomLengthName方法，先利用random创造一个随机数，然后将名字重复生成</p>
-<p><img src="/../img/img37.jpg"></p>
-<h3 id="RecyclerView点击事件"><a href="#RecyclerView点击事件" class="headerlink" title="RecyclerView点击事件"></a>RecyclerView点击事件</h3><p>无法直接全部直接注册监听器，需要对具体的View分别注册<br>1.先修改ViewHolder在其中加入变量fruitView来保存子项最外层布局<br>2.在onCreateViewHolder中注册点击事件，在点击事件中先获取用户点击的position，拿到相应的实例，再用Toast弹出不同的内容</p>
-<p><img src="/../img/img38.jpg"></p>
-<hr>
-
+            常用控件
+TextView
+1.android:id定义唯一标识符
+2.android:layout_width指定宽度有match_parent和wrap_content两个选项，第一个表示当前控件大小和父布局大小一样，第二个表示当前控件大小刚好能包住里面的内容
+3.android:layout_height指定高度，选项和上相同
+4.android:text指定文本显示的内容
+5.android:gravity指定文字对齐方式可选值有top,bottom,left,right,center等，可以用“|”来指定多个值
+6.android:textSize指定文字大小，用sp做单位
+7.an
             
         </div>
     </div>
@@ -968,108 +617,30 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h1 id="手动创建一个活动的全过程"><a href="#手动创建一个活动的全过程" class="headerlink" title="手动创建一个活动的全过程"></a>手动创建一个活动的全过程</h1><p>1.创建一个活动<br>2.创建和加载布局(根元素一般选用LinearLayout的):</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;LinearLayout xmlns:android=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="line">    android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">    android:layout_height=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">    android:orientation=<span class="string">&quot;vertical&quot;</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;Button</span><br><span class="line">        android:id=<span class="string">&quot;@+id/button_1&quot;</span></span><br><span class="line">        android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">        android:text=<span class="string">&quot;Button 1&quot;</span> /&gt;</span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
+            手动创建一个活动的全过程
+1.创建一个活动
+2.创建和加载布局(根元素一般选用LinearLayout的):
 
-<p>①添加按钮用Button控件<br>②利用setContentView()方法加载布局<br>3.在AndroidManifest中注册<br>4.配置主活动(也可以用label给活动添加个标题，标题栏显示在最顶部)</p>
-<hr>
-<h1 id="Toast"><a href="#Toast" class="headerlink" title="Toast"></a>Toast</h1><p>1.定义:一种提醒方式，信息出现一段时间会自己消失，不会占用屏幕空间<br>2.使用方式:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Toast.makeText(FirstActivity.<span class="built_in">this</span>, <span class="string">&quot;You clicked Button 1&quot;</span>, Toast.LENGTH_SHORT).show();</span><br></pre></td></tr></table></figure>
-
-<p>3.利用makeText()创建一个Toast对象，传入三个参数，第一个参数是Context,也就是上下文，第二个参数是文本内容，第三个参数是显示时长</p>
-<hr>
-<h1 id="Menu"><a href="#Menu" class="headerlink" title="Menu"></a>Menu</h1><p>1.要现在res目录下创建一个新的文件夹menu<br>2.创建Menu resource file<br>3.修改其中的代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;item</span><br><span class="line">    android:id=<span class="string">&quot;@+id/add_item&quot;</span></span><br><span class="line">    android:title=<span class="string">&quot;Add&quot;</span>/&gt;</span><br><span class="line">&lt;item</span><br><span class="line">    android:id=<span class="string">&quot;@+id/remove_item&quot;</span></span><br><span class="line">    android:title=<span class="string">&quot;Remove&quot;</span>/&gt;</span><br></pre></td></tr></table></figure>
-
-<p>其中 <strong>item</strong> 标签就是用来创建具体的某一个菜单项</p>
-<p>4.接着重写onCreateOptionsMenu()方法</p>
-<p><img src="/../img/img1.jpg"></p>
-<p>5.然后利用onOptionsItemSelected()方法定义菜单响应事件</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">   <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">onOptionsItemSelected</span><span class="params">(MenuItem item)</span>&#123;</span><br><span class="line">       <span class="keyword">if</span>(item.getItemId()==R.id.add_item)&#123;</span><br><span class="line">               Toast.makeText(<span class="built_in">this</span>, <span class="string">&quot;You clicked Add&quot;</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">       &#125; <span class="keyword">else</span> <span class="keyword">if</span> (item.getItemId()==R.id.remove_item) &#123;</span><br><span class="line">           Toast.makeText(<span class="built_in">this</span>, <span class="string">&quot;You clicked Remove&quot;</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h1 id="Intent"><a href="#Intent" class="headerlink" title="Intent"></a>Intent</h1><p>用途:启动活动，启动服务，发送广播</p>
-<h3 id="显式Intent"><a href="#显式Intent" class="headerlink" title="显式Intent"></a>显式Intent</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Intent</span> <span class="variable">intent</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Intent</span>(FirstActivity.<span class="built_in">this</span>,SecondActivity.class);</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
-
-<p> Intent构造函数接收两个参数，第一个参数是Context上下文，第二个是想要启动的活动目标 然后通过startActivity()方法执行这个intent </p>
-<h3 id="隐式Intent"><a href="#隐式Intent" class="headerlink" title="隐式Intent"></a>隐式Intent</h3><p>1.在<strong>activity</strong>下配置<strong>intent-filter</strong>，指定当前活动能响应的<strong>action</strong>和<strong>category</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;intent-filter&gt;</span><br><span class="line">     &lt;action android:name=<span class="string">&quot;com.example.activitytest.ACTION_START&quot;</span> /&gt;</span><br><span class="line"></span><br><span class="line">     &lt;category android:name=<span class="string">&quot;android.intent.category.DEFAULT&quot;</span> /&gt;</span><br><span class="line">&lt;/intent-filter&gt;</span><br></pre></td></tr></table></figure>
-
-<p>2.只有<strong>action</strong>和<strong>category</strong>能够同时匹配上intent指定的action和category时，活动才能响应该intent</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Intent</span> <span class="variable">intent</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Intent</span>(<span class="string">&quot;com.example.activitytest.ACTION_START&quot;</span>);</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
-
-<p>3.每个intent只能指定一个action却可以指定多个category </p>
-<p>4.可以利用addCategory()方法来添加category，在活动中添加一个category同时也需要在<strong>intent-filter</strong>下进行一个声明 </p>
-<h3 id="更多隐式intent用法"><a href="#更多隐式intent用法" class="headerlink" title="更多隐式intent用法"></a>更多隐式intent用法</h3><p>1.通过Intent启动浏览器等:</p>
-<p><img src="/../img/img2.jpg"></p>
-<p>同时我们还应该在<strong>intent-filter</strong>中配置一<strong>data</strong>标签 </p>
-<p><img src="/../img/img3.jpg"></p>
-<p>除了浏览器也可以是其他的网址: </p>
-<p><img src="/../img/img4.jpg"></p>
-<h3 id="向下一个活动传递数据"><a href="#向下一个活动传递数据" class="headerlink" title="向下一个活动传递数据"></a>向下一个活动传递数据</h3><p>1.可以利用putExtra()方法，把我们想要传递的数据存在intent中，启动一个活动后，只需要再把数据取出就可以了。<br>2.putExtra()方法使用需要两个参数，第一个是键用于后面取值，第二个是要传递的数据。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String data=<span class="string">&quot;Hello SecondAcitivity&quot;</span>;</span><br><span class="line">Intent intent=<span class="keyword">new</span> <span class="title class_">Intent</span>(FirstActivity.<span class="built_in">this</span>,SecondActivity.class);</span><br><span class="line">intent.putExtra(<span class="string">&quot;extra_data&quot;</span>,data);</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 
 
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-<p>3.取值时首先要通过getIntent()方法获取intent，然后调用getStringExtra()方法获取数据</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Intent</span> <span class="variable">intent</span> <span class="operator">=</span> getIntent();</span><br><span class="line">String data=intent.getStringExtra(<span class="string">&quot;extra_data&quot;</span>);</span><br><span class="line">Log.d(<span class="string">&quot;SecondAcitivity&quot;</span>,data);</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="返回数据给上一个活动"><a href="#返回数据给上一个活动" class="headerlink" title="返回数据给上一个活动"></a>返回数据给上一个活动</h3><p>1.利用startActivityForResult()方法来启动活动<br>2.调用setResult()方法用于向上一个活动返回数据<br>3.用startActivityForResult()方法启动活动该活动销毁后会调回上一个活动的onActivityResult()方法，所以重写该方法可以得到返回的数据</p>
-<p>例子：</p>
-<p><img src="/../img/img6.jpg"></p>
-<p><img src="/../img/img5.jpg"></p>
-<p><img src="/../img/img7.jpg"></p>
-<p>4.如果通过back键销毁活动则可以通过重写onBackPressed()方法解决</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">   public void onBackPressed() &#123;</span><br><span class="line">      super.onBackPressed();</span><br><span class="line">      Intent intent = new Intent();</span><br><span class="line">      intent.putExtra(&quot;data_return&quot;, &quot;Hello FirstActivity&quot;);</span><br><span class="line">      setResult(RESULT_OK, intent);</span><br><span class="line">      finish();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h1 id="活动的生命周期"><a href="#活动的生命周期" class="headerlink" title="活动的生命周期"></a>活动的生命周期</h1><h3 id="返回栈"><a href="#返回栈" class="headerlink" title="返回栈"></a>返回栈</h3><p>一个任务就是一组存放在栈里的集合，这个栈也叫返回栈</p>
-<h3 id="活动状态"><a href="#活动状态" class="headerlink" title="活动状态"></a>活动状态</h3><p>1.运行状态:处于栈顶<br>2.暂停状态:不在栈顶但仍然可见<br>3.停止状态:不在栈顶且不可见<br>4.销毁状态:从返回栈中移除</p>
-<h3 id="生存期"><a href="#生存期" class="headerlink" title="生存期"></a>生存期</h3><p>1.七种回调方法:<br>①·onCreate():初始化操作<br>②·onStart():活动由不可见变为可见<br>③·onResume():此时活动一定处于栈顶且运行状态<br>④·onPause():在准备启动或恢复另一个活动时调用<br>⑤·onStop():活动完全不可见时用，如果启动的新活动是对话框式的，则会调用onPause(),而onStop()不会执行<br>⑥·onDestroy():销毁之前调用<br>⑦·onRestart():活动由停止变为运行状态前调用<br>完整生存期:①到⑥之间经历的方法<br>可见生存期:②到⑤之间<br>前台生存期:③到④之间</p>
-<p><img src="/../img/img8.jpg"></p>
-<p>  对话框式的主题需要在AndroidManifest中更改配置如下所示:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:theme=<span class="string">&quot;@style/Theme.Appcompat.Light.Dialog.Alert&quot;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h1 id="活动被回收了怎么办"><a href="#活动被回收了怎么办" class="headerlink" title="活动被回收了怎么办"></a>活动被回收了怎么办</h1><p>1.利用onSaveInstanceState()方法回调，这个方法会携带一个Bundle类型参数，该类型提供了一系列方法保存数据<br>2.例子:</p>
-<p><img src="/../img/img9.jpg"></p>
-<p><img src="/../img/img10.jpg"></p>
-<hr>
-<h1 id="活动的启动模式"><a href="#活动的启动模式" class="headerlink" title="活动的启动模式"></a>活动的启动模式</h1><p>在AndroidManifest中用android:launchMode更改模式<br>(1)standard:默认启动模式</p>
-<p><img src="/../img/img14.jpg"></p>
-<p>(2)singleTop:在启动活动时如果发现栈顶已经是该活动，则可以直接使用他，不再创建新活动</p>
-<p><img src="/../img/img13.jpg"></p>
-<p>(3)singleTask:每次启动活动时会先检查存不存在该活动，如果存在直接调用此活动，并把该活动上面的活动通通出栈</p>
-<p><img src="/../img/img11.jpg"></p>
-<p>(4)singleInstance:会启用一个新的返回栈来管理活动</p>
-<p><img src="/../img/img12.jpg"></p>
-<hr>
-<h1 id="知晓当前在哪一个活动"><a href="#知晓当前在哪一个活动" class="headerlink" title="知晓当前在哪一个活动"></a>知晓当前在哪一个活动</h1><p>1.创建一个新的Java类继承AppCompatActivity并重写onCreate方法在该类中获得当前实例的类名</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BaseActivity</span> <span class="keyword">extends</span> <span class="title class_">AppCompatActivity</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(<span class="meta">@Nullable</span> Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        Log.d(<span class="string">&quot;BaseActivity&quot;</span>, getClass().getSimpleName());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>2.让其他的活动都继承新建的类<br>3.观察logcat中各界面的打印信息即可得出结论</p>
-<hr>
-<h1 id="随时随地的退出程序"><a href="#随时随地的退出程序" class="headerlink" title="随时随地的退出程序"></a>随时随地的退出程序</h1><p>1.可以创建一个专门的集合对所有活动进行管理就可以了</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ActivityCollector</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> List&lt;BaseActivity&gt; activities=<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">addActivity</span><span class="params">(BaseActivity activity)</span>&#123;</span><br><span class="line">        activities.add(activity);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">removeActivity</span><span class="params">(BaseActivity activity)</span>&#123;</span><br><span class="line">        activities.remove(activity);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">finishAll</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(BaseActivity activity:activities)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!activity.isFinishing())&#123;</span><br><span class="line">                activity.finish();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>2.设计好管理类接下来对BaseActivity类进行修改</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BaseActivity</span> <span class="keyword">extends</span> <span class="title class_">AppCompatActivity</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(<span class="meta">@Nullable</span> Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        Log.d(<span class="string">&quot;BaseActivity&quot;</span>, getClass().getSimpleName());</span><br><span class="line">        ActivityCollector.addActivity(<span class="built_in">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onDestroy</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onDestroy();</span><br><span class="line">        ActivityCollector.removeActivity(<span class="built_in">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>3.这两步操作完，如果以后想直接退出程序直接使用finishAll()方法即可</p>
-<hr>
-<h1 id="启动活动的最佳写法"><a href="#启动活动的最佳写法" class="headerlink" title="启动活动的最佳写法"></a>启动活动的最佳写法</h1><p>利用actionStart()方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">actionStart</span><span class="params">(Context context,String data1,String data2)</span>&#123;</span><br><span class="line">   <span class="type">Intent</span> <span class="variable">intent</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Intent</span>(context,SecondActivity.class);</span><br><span class="line">   intent.putExtra(<span class="string">&quot;param1&quot;</span>,data1);</span><br><span class="line">   intent.putExtra(<span class="string">&quot;param2&quot;</span>,data2);</span><br><span class="line">   context.startActivity(intent);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SecondActivity.actionStart(FirstActivity.<span class="built_in">this</span>,<span class="string">&quot;data1&quot;</span>,<span class="string">&quot;data2&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>用上面这句话直接启动</p>
-
+    <Button
+        android
             
         </div>
     </div>
@@ -1108,23 +679,27 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h1 id="系统架构"><a href="#系统架构" class="headerlink" title="系统架构"></a>系统架构</h1><p>1.Linux内核层:提供底层驱动<br>2.系统运行库层:提供主要的特性支持(通过C&#x2F;C++库)，同样这一层也有Android运行时库，提供了一些核心库，能允许开发者使用Java来编写应用。<br>3.应用框架层:提供了各种API<br>4.应用层:安装到手机上的应用程序都属于这一层</p>
-<hr>
-<h1 id="Android应用开发特色"><a href="#Android应用开发特色" class="headerlink" title="Android应用开发特色"></a>Android应用开发特色</h1><p>1.四大组件:活动，服务，广播接收器，内容提供器。<br>2.丰富的系统控件<br>3.SQLite数据库:让存储数据和读取数据变得更为方便<br>4.强大的多媒体<br>5.地理位置定位</p>
-<hr>
-<h1 id="项目中各个文件的作用"><a href="#项目中各个文件的作用" class="headerlink" title="项目中各个文件的作用"></a>项目中各个文件的作用</h1><p>1.gradle:里面含有gradle wrapper配置文件，需要打开的话必须手动按照“导航栏<del>File</del>Settings<del>Bulid,Execution,Deployment</del>Gradle”这个步骤进行<br>2..gitignore:将指定的目录或文件排除在版本控制之外。<br>3.gradle.properties:这个文件是全局的gradle配置文件，在这里配置的属性将会影响到项目中所有的gradle编译脚本。<br>4.gradlew和gradlew.bat:用来在命令行界面中执行gradle命令的，其中gradle是在Linux或Mac系统使用，gradlew.bat在Windows系统使用</p>
-<hr>
-<h1 id="app目录详解"><a href="#app目录详解" class="headerlink" title="app目录详解"></a>app目录详解</h1><p>1.libs:jar包存放的地方<br>2.Androidtest:编写测试用例，对项目进行自动化测试<br>3.Java:放置Java代码的地方<br>4.res:<br>①图片放在drawable中<br>②布局放在layout中<br>③字符串，样式，颜色等配置放在values中<br>④mipmap中放置一些图标<br>5.AndroidManifest.xml:整个Android项目配置文件，四大组件和活动等都需要在这里注册，经常会使用到这个文件。<br>6.test:编写测试用例，是对项目自动化测试的另一种方式<br>7.build.gradle:这个文件中会指定很多项目构建相关的配置<br>8.proguard-rules.pro:指定项目代码的混淆规则</p>
-<hr>
-<h1 id="主活动的设定"><a href="#主活动的设定" class="headerlink" title="主活动的设定"></a>主活动的设定</h1><p>即首先启动的活动</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;intent-filter&gt;</span><br><span class="line">    &lt;action android:name=<span class="string">&quot;android.intent.action.MAIN&quot;</span>/&gt;</span><br><span class="line">    &lt;category android:name=<span class="string">&quot;android.intent.category.LAUNCHER&quot;</span>/&gt;</span><br><span class="line">&lt;/intent-filter&gt;</span><br></pre></td></tr></table></figure>
+            系统架构
+1.Linux内核层:提供底层驱动
+2.系统运行库层:提供主要的特性支持(通过C/C++库)，同样这一层也有Android运行时库，提供了一些核心库，能允许开发者使用Java来编写应用。
+3.应用框架层:提供了各种API
+4.应用层:安装到手机上的应用程序都属于这一层
 
-<hr>
-<h1 id="引用的方法"><a href="#引用的方法" class="headerlink" title="引用的方法"></a>引用的方法</h1><p>1.R.string.hello_world<br>2.@string&#x2F;hello_world<br>如果在@和string之间添上一个+就变成了定义<br>其中的string可以替换</p>
-<hr>
-<h1 id="日志工具"><a href="#日志工具" class="headerlink" title="日志工具"></a>日志工具</h1><p>从小到大的顺序<br>Log.v:打印意义最小的信息<br>Log.d:打印调试信息<br>Log.i:比较重要的数据<br>Log.w:警告信息<br>Log.e:错误信息<br>传入两个参数:第一个参数是tag，一般传入类名就好主要用于对打印信息的过滤<br>第二个参数是msg，即想要打印的内容<br>一般与logcat结合使用</p>
-<hr>
 
+
+
+Android应用开发特色
+1.四大组件:活动，服务，广播接收器，内容提供器。
+2.丰富的系统控件
+3.SQLite数据库:让存储数据和读取数据变得更为方便
+4.强大的多媒体
+5.地理位置定位
+
+
+
+
+项目中各个文件的作用
+1.gradle:里面含有gradle wrapper配置文件，需要打开的话必须手动按照
             
         </div>
     </div>
@@ -1160,9 +735,9 @@
         <div class="avatar">
             <img src="/images/avatar.jpg" alt="avatar" />
         </div>
-        <div class="name">John Doe</div>
+        <div class="name">Aurora</div>
         <div class="description">
-            <p>Description<br>…</p>
+            <p>欢迎来到我的博客，喜欢的话点个赞</p>
 
         </div>
         
@@ -1170,7 +745,7 @@
         <div class="friend-links">
             
             <div class="friend-link">
-                <a target="_blank" rel="noopener" href="https://argvchs.github.io">Argvchs</a>
+                <a href="https://buyu6.github.io/">Argvchs</a>
             </div>
             
         </div>
@@ -1186,11 +761,11 @@
     <div id="footer-wrap">
         <div>
             &copy;
-            2022 - 2025 Hexo
+            2022 Customize the server domain name ICP - 2025 Auroraの秘密空间
             <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
-            &commat;John Doe
+            &commat;Aurora
         </div>
         <div>
             Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;

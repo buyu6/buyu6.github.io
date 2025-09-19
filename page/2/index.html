@@ -3,8 +3,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>Hexo</title>
-    <meta name="author" content="John Doe" />
+    <title>Auroraの秘密空间</title>
+    <meta name="author" content="Aurora" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta
@@ -61,39 +61,34 @@
         <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
     <nav id="desktop-menu">
         <a class="title" href="/">
-            <span>HEXO</span>
+            <span>AURORAの秘密空间</span>
         </a>
         
         <a href="/">
             <i class="fa-solid fa-house fa-fw"></i>
-            <span>&ensp;Home</span>
+            <span>&ensp;首页</span>
         </a>
         
         <a href="/about">
             <i class="fa-solid fa-id-card fa-fw"></i>
-            <span>&ensp;About</span>
+            <span>&ensp;关于博客</span>
         </a>
         
         <a href="/archives">
             <i class="fa-solid fa-box-archive fa-fw"></i>
-            <span>&ensp;Archives</span>
+            <span>&ensp;档案</span>
         </a>
         
         <a href="/categories">
             <i class="fa-solid fa-bookmark fa-fw"></i>
-            <span>&ensp;Categories</span>
-        </a>
-        
-        <a href="/tags">
-            <i class="fa-solid fa-tags fa-fw"></i>
-            <span>&ensp;Tags</span>
+            <span>&ensp;文章分类</span>
         </a>
         
     </nav>
     <nav id="mobile-menu">
         <div class="title" @click="showMenuItems = !showMenuItems">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;HEXO</span>
+            <span>&emsp;AURORAの秘密空间</span>
         </div>
         <transition name="slide">
             <div class="items" v-show="showMenuItems">
@@ -103,7 +98,7 @@
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-house fa-fw"></i>
                         </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">首页</div>
                     </div>
                 </a>
                 
@@ -112,7 +107,7 @@
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-id-card fa-fw"></i>
                         </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">关于博客</div>
                     </div>
                 </a>
                 
@@ -121,7 +116,7 @@
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-box-archive fa-fw"></i>
                         </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">档案</div>
                     </div>
                 </a>
                 
@@ -130,16 +125,7 @@
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-bookmark fa-fw"></i>
                         </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
-                    </div>
-                </a>
-                
-                <a href="/tags">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-tags fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">文章分类</div>
                     </div>
                 </a>
                 
@@ -165,7 +151,7 @@
         <span class="loop"></span>
         <span class="info">
             <div class="wrap">
-                <h1>Hexo</h1>
+                <h1>Auroraの秘密空间</h1>
                 <h3></h3>
                 <h5></h5>
             </div>
@@ -207,34 +193,24 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h1 id="这里拿Gemini进行示范"><a href="#这里拿Gemini进行示范" class="headerlink" title="这里拿Gemini进行示范"></a>这里拿Gemini进行示范</h1><ul>
-<li><h3 id="先根据返回的JSON数据格式写出数据模型"><a href="#先根据返回的JSON数据格式写出数据模型" class="headerlink" title="先根据返回的JSON数据格式写出数据模型"></a>先根据返回的JSON数据格式写出数据模型</h3></li>
-</ul>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//AI的api调用请求体和响应体json格式不相同需要区别开来</span></span><br><span class="line"><span class="keyword">data</span> <span class="keyword">class</span> <span class="title class_">GeminiRequestBody</span>(<span class="keyword">val</span> contents:List&lt;Content&gt;)</span><br><span class="line"><span class="keyword">data</span> <span class="keyword">class</span> <span class="title class_">GeminiResponseBody</span>(<span class="keyword">val</span> candidates: List&lt;Candidate&gt;)</span><br><span class="line"><span class="keyword">data</span> <span class="keyword">class</span> <span class="title class_">Candidate</span>(<span class="keyword">val</span> content: Content)</span><br><span class="line"><span class="keyword">data</span> <span class="keyword">class</span> <span class="title class_">Content</span>(<span class="keyword">val</span> parts:List&lt;Part&gt;)</span><br><span class="line"><span class="keyword">data</span> <span class="keyword">class</span> <span class="title class_">Part</span>(<span class="keyword">val</span> text:String)</span><br></pre></td></tr></table></figure>
+            这里拿Gemini进行示范
+ * 先根据返回的JSON数据格式写出数据模型
+   
 
-<ul>
-<li><h3 id="定义接口，这里使用POST注解，GET注解只用于获取数据，这里不适用"><a href="#定义接口，这里使用POST注解，GET注解只用于获取数据，这里不适用" class="headerlink" title="定义接口，这里使用POST注解，GET注解只用于获取数据，这里不适用"></a>定义接口，这里使用<em><strong>POST</strong></em>注解，<em><strong>GET</strong></em>注解只用于获取数据，这里不适用</h3></li>
-</ul>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">AIService</span> &#123;</span><br><span class="line">    <span class="meta">@POST(<span class="string">&quot;v1beta/models/gemini-2.5-flash:generateContent&quot;</span>)</span></span><br><span class="line">     <span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">generateContent</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">        <span class="meta">@Query(<span class="string">&quot;key&quot;</span>)</span> apiKey: <span class="type">String</span> = MyApplication.GEMINI_API_KEY,</span></span></span><br><span class="line"><span class="params"><span class="function">        <span class="meta">@Body</span> requestBody: <span class="type">GeminiRequestBody</span></span></span></span><br><span class="line"><span class="params"><span class="function">    )</span></span> :Response&lt;GeminiResponseBody&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><h3 id="搭建Retrofit构建器"><a href="#搭建Retrofit构建器" class="headerlink" title="搭建Retrofit构建器"></a>搭建Retrofit构建器</h3></li>
-</ul>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">object</span> AICreator &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">const</span> <span class="keyword">val</span> BASE_URL = <span class="string">&quot;https://generativelanguage.googleapis.com/&quot;</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> retrofit = Retrofit.Builder()</span><br><span class="line">        .baseUrl(BASE_URL)</span><br><span class="line">        .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">        .build()</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="type">&lt;T&gt;</span> <span class="title">create</span><span class="params">(serviceClass:<span class="type">Class</span>&lt;<span class="type">T</span>&gt;)</span></span>:T= retrofit.create(serviceClass)</span><br><span class="line">    <span class="keyword">inline</span> <span class="function"><span class="keyword">fun</span> <span class="type">&lt;<span class="keyword">reified</span> T&gt;</span><span class="title">create</span><span class="params">()</span></span>:T=create(T::<span class="keyword">class</span>.java)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><h3 id="提交申请并对返回的数据进行解析"><a href="#提交申请并对返回的数据进行解析" class="headerlink" title="提交申请并对返回的数据进行解析"></a>提交申请并对返回的数据进行解析</h3></li>
-</ul>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">object</span> AInetwork &#123;</span><br><span class="line">    <span class="comment">//创建接口的动态代理对象</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> aiService = AICreator.create&lt;AIService&gt;()</span><br><span class="line">    <span class="comment">//向AI服务器发送一个请求，并处理返回的结果。</span></span><br><span class="line">    <span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">generateContent</span><span class="params">(requestBody: <span class="type">GeminiRequestBody</span>)</span></span>: Result&lt;GeminiResponseBody&gt; &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">val</span> response = aiService.generateContent(requestBody=requestBody)</span><br><span class="line">            <span class="keyword">if</span> (response.isSuccessful &amp;&amp; response.body() != <span class="literal">null</span>) &#123;</span><br><span class="line">                Result.success(response.body()!!)</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">val</span> errorMessage = response.errorBody()?.string() ?: <span class="string">&quot;未知错误&quot;</span></span><br><span class="line">                Log.e(<span class="string">&quot;AInetwork&quot;</span>, <span class="string">&quot;数据获取失败: <span class="variable">$errorMessage</span>&quot;</span>)</span><br><span class="line">                Result.failure(RuntimeException(<span class="string">&quot;API请求失败: <span class="subst">$&#123;response.code()&#125;</span> - <span class="variable">$errorMessage</span>&quot;</span>))</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (e: Exception) &#123;</span><br><span class="line">            Log.e(<span class="string">&quot;AInetwork&quot;</span>, <span class="string">&quot;网络请求失败: <span class="subst">$&#123;e.message&#125;</span>&quot;</span>, e)</span><br><span class="line">            Result.failure(e)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><h3 id="进行调用"><a href="#进行调用" class="headerlink" title="进行调用"></a>进行调用</h3></li>
-</ul>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//界面逻辑</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">AIActivity</span> : <span class="type">AppCompatActivity</span>() &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> binder: ActivityAiactivityBinding</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> viewModel: AIViewModel</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span>  msgList=ArrayList&lt;Msg&gt;()</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> adapter: MsgAdapter? = <span class="literal">null</span></span><br><span class="line">        <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        binder = ActivityAiactivityBinding.inflate(layoutInflater)</span><br><span class="line">        setContentView(binder.root)</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 初始化ViewModel</span></span><br><span class="line">        viewModel = ViewModelProvider(<span class="keyword">this</span>)[AIViewModel::<span class="keyword">class</span>.java]</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 设置工具栏</span></span><br><span class="line">        setSupportActionBar(binder.AiToolbar)</span><br><span class="line">        supportActionBar?.let &#123;</span><br><span class="line">            it.title = <span class="string">&quot;&quot;</span></span><br><span class="line">            it.setDisplayHomeAsUpEnabled(<span class="literal">true</span>)</span><br><span class="line">            it.setHomeAsUpIndicator(R.drawable.ic_return)</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 设置RecyclerView</span></span><br><span class="line">        binder.AiRecyclerView.layoutManager = LinearLayoutManager(<span class="keyword">this</span>)</span><br><span class="line">        adapter = MsgAdapter(msgList)</span><br><span class="line">        binder.AiRecyclerView.adapter = adapter</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 设置按钮点击事件</span></span><br><span class="line">        binder.AiButton.setOnClickListener &#123;</span><br><span class="line">            send()</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 观察数据变化</span></span><br><span class="line">        observeViewModel()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 观察ViewModel数据变化</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">observeViewModel</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="comment">// 观察消息列表变化</span></span><br><span class="line">        viewModel.messages.observe(<span class="keyword">this</span>) &#123; messages -&gt;</span><br><span class="line">            adapter?.let &#123; adapter -&gt;</span><br><span class="line">                <span class="comment">// 更新适配器数据</span></span><br><span class="line">                adapter.updateMessages(messages)</span><br><span class="line">                <span class="comment">// 滚动到最新消息</span></span><br><span class="line">                <span class="keyword">if</span> (messages.isNotEmpty()) &#123;</span><br><span class="line">                    binder.AiRecyclerView.scrollToPosition(messages.size - <span class="number">1</span>)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 观察加载状态</span></span><br><span class="line">        viewModel.isLoading.observe(<span class="keyword">this</span>) &#123; isLoading -&gt;</span><br><span class="line">            <span class="comment">// 当AI正在思考时，禁用发送按钮</span></span><br><span class="line">            binder.AiButton.isEnabled = !isLoading</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 发送消息</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">send</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">val</span> content = binder.AiEditText.text.toString()</span><br><span class="line">        <span class="keyword">if</span> (content.isNotEmpty()) &#123;</span><br><span class="line">            Log.d(<span class="string">&quot;AIActivity&quot;</span>, <span class="string">&quot;用户发送问题: <span class="variable">$content</span>&quot;</span>)</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 清空输入框</span></span><br><span class="line">            binder.AiEditText.setText(<span class="string">&quot;&quot;</span>)</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 通过ViewModel发送消息</span></span><br><span class="line">            viewModel.sendMessage(content)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ViewModel部分</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">AIViewModel</span> : <span class="type">ViewModel</span>() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 消息列表</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> _messages = MutableLiveData&lt;List&lt;Msg&gt;&gt;()</span><br><span class="line">    <span class="keyword">val</span> messages: LiveData&lt;List&lt;Msg&gt;&gt; = _messages</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 加载状态</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> _isLoading = MutableLiveData&lt;<span class="built_in">Boolean</span>&gt;()</span><br><span class="line">    <span class="keyword">val</span> isLoading: LiveData&lt;<span class="built_in">Boolean</span>&gt; = _isLoading</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 错误状态</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> _error = MutableLiveData&lt;String?&gt;()</span><br><span class="line">    <span class="keyword">val</span> error: LiveData&lt;String?&gt; = _error</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 内部消息列表</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> messageList = mutableListOf&lt;Msg&gt;()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">init</span> &#123;</span><br><span class="line">        _messages.value = messageList</span><br><span class="line">        _isLoading.value = <span class="literal">false</span></span><br><span class="line">        _error.value = <span class="literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 发送消息</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">sendMessage</span><span class="params">(content: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (content.isBlank()) <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 添加用户消息</span></span><br><span class="line">        addMessage(Msg(content, Msg.TYPE_SENT))</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 请求AI回复</span></span><br><span class="line">        requestAIResponse(content)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 请求AI回复</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">requestAIResponse</span><span class="params">(question: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">        viewModelScope.launch &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                _isLoading.value = <span class="literal">true</span></span><br><span class="line">                _error.value = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">                <span class="comment">// 添加加载提示</span></span><br><span class="line">                addMessage(Msg(<span class="string">&quot;正在思考中...&quot;</span>, Msg.TYPE_RESERVED))</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 在IO线程中执行网络请求</span></span><br><span class="line">                <span class="keyword">val</span> result = withContext(Dispatchers.IO) &#123;</span><br><span class="line">                    <span class="keyword">val</span> requestBody = GeminiRequestBody(</span><br><span class="line">                        contents = listOf(Content(parts = listOf(Part(text = question))))</span><br><span class="line">                    )</span><br><span class="line">                    AInetwork.generateContent(requestBody)</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 移除加载提示</span></span><br><span class="line">                removeLastMessage()</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 处理结果</span></span><br><span class="line">                result.onSuccess &#123; response -&gt;</span><br><span class="line">                    <span class="keyword">val</span> aiResponse = response.candidates.firstOrNull()?.content?.parts?.firstOrNull()?.text</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">if</span> (aiResponse.isNullOrEmpty()) &#123;</span><br><span class="line">                        addMessage(Msg(<span class="string">&quot;抱歉，我暂时无法回答您的问题。&quot;</span>, Msg.TYPE_RESERVED))</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        addMessage(Msg(aiResponse, Msg.TYPE_RESERVED))</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;.onFailure &#123; exception -&gt;</span><br><span class="line">                    <span class="keyword">val</span> errorMsg = <span class="string">&quot;网络请求失败: <span class="subst">$&#123;exception.message&#125;</span>&quot;</span></span><br><span class="line">                    addMessage(Msg(errorMsg, Msg.TYPE_RESERVED))</span><br><span class="line">                    _error.value = errorMsg</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125; <span class="keyword">catch</span> (e: Exception) &#123;</span><br><span class="line">                removeLastMessage()</span><br><span class="line">                <span class="keyword">val</span> errorMsg = <span class="string">&quot;发生未知错误，请稍后重试。&quot;</span></span><br><span class="line">                addMessage(Msg(errorMsg, Msg.TYPE_RESERVED))</span><br><span class="line">                _error.value = errorMsg</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                _isLoading.value = <span class="literal">false</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 添加消息到列表</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">addMessage</span><span class="params">(message: <span class="type">Msg</span>)</span></span> &#123;</span><br><span class="line">        messageList.add(message)</span><br><span class="line">        _messages.value = messageList.toList()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 移除最后一条消息</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">removeLastMessage</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (messageList.isNotEmpty()) &#123;</span><br><span class="line">            messageList.removeAt(messageList.size - <span class="number">1</span>)</span><br><span class="line">            _messages.value = messageList.toList()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+1
+2
+3
+4
+5
+6
 
 
+//AI的api调用请求体和响应体json格式不相同需要区别开来
+data class GeminiRequestBody(val contents:List<Content>)
+data class GeminiResponseBody(val candidates: List<Candidate>)
+data class Candidate(val content: Content)
+data class Content(val parts:List<Part>)
+data c
             
         </div>
     </div>
@@ -273,28 +249,45 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><img src="/../img/img101.png"></p>
-<ul>
-<li><strong>默认MYSQL事务是自动提交的，所以需要手动开启事务，手动提交事务，有异常手动回滚事务</strong></li>
-</ul>
-<hr>
-<h3 id="事务操作"><a href="#事务操作" class="headerlink" title="事务操作"></a>事务操作</h3><ul>
-<li><p><strong>方法一</strong></p>
-<p><img src="/../img/img102.png"></p>
-</li>
-<li><p><strong>方法二</strong></p>
-<p><img src="/../img/img103.png"></p>
-</li>
-</ul>
-<hr>
-<h3 id="事务四大特性"><a href="#事务四大特性" class="headerlink" title="事务四大特性"></a>事务四大特性</h3><p><img src="/../img/img104.png"></p>
-<hr>
-<h3 id="并发事务问题"><a href="#并发事务问题" class="headerlink" title="并发事务问题"></a>并发事务问题</h3><p><img src="/../img/img105.png"></p>
-<hr>
-<h3 id="事务隔离级别"><a href="#事务隔离级别" class="headerlink" title="事务隔离级别"></a>事务隔离级别</h3><p><img src="/../img/img106.png"></p>
-<p><strong>注意</strong>：事务隔离级别越高，安全性越高，性能越低</p>
-<hr>
+            简介
 
+
+ * 默认MYSQL事务是自动提交的，所以需要手动开启事务，手动提交事务，有异常手动回滚事务
+
+
+
+
+事务操作
+ * 方法一
+   
+   
+   
+   
+ * 方法二
+   
+   
+   
+   
+
+
+
+
+事务四大特性
+
+
+
+
+
+并发事务问题
+
+
+
+
+
+事务隔离级别
+
+
+注意：事务隔离级别越高，安全性越高，性能越低
             
         </div>
     </div>
@@ -333,46 +326,90 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h3 id="多表关系"><a href="#多表关系" class="headerlink" title="多表关系"></a>多表关系</h3><ul>
-<li><p><strong>一对多</strong></p>
-<p><img src="/../img/img88.png"></p>
-</li>
-<li><p><strong>多对多</strong></p>
-<p><img src="/../img/img89.png"></p>
-</li>
-<li><p><strong>一对一</strong></p>
-<p><img src="/../img/img90.png"></p>
-</li>
-</ul>
-<hr>
-<h3 id="多表查询概述"><a href="#多表查询概述" class="headerlink" title="多表查询概述"></a>多表查询概述</h3><ul>
-<li><p><strong>笛卡尔积</strong></p>
-<p>在数学中，两个集合A,B的所有组合情况(多表查询中，需要消除无效的笛卡尔积)</p>
-</li>
-<li><p><strong>多表查询分类</strong></p>
-<p><img src="/../img/img91.png"></p>
-</li>
-</ul>
-<hr>
-<h3 id="内连接"><a href="#内连接" class="headerlink" title="内连接"></a>内连接</h3><p><img src="/../img/img92.png"></p>
-<hr>
-<h3 id="外连接"><a href="#外连接" class="headerlink" title="外连接"></a>外连接</h3><p><img src="/../img/img93.png"></p>
-<hr>
-<h3 id="自连接"><a href="#自连接" class="headerlink" title="自连接"></a>自连接</h3><p><img src="/../img/img94.png"></p>
-<hr>
-<h3 id="联合查询"><a href="#联合查询" class="headerlink" title="联合查询"></a>联合查询</h3><p><img src="/../img/img95.png"></p>
-<hr>
-<h3 id="子查询概述"><a href="#子查询概述" class="headerlink" title="子查询概述"></a>子查询概述</h3><p><img src="/../img/img96.png"></p>
-<hr>
-<h3 id="标量子查询"><a href="#标量子查询" class="headerlink" title="标量子查询"></a>标量子查询</h3><p><img src="/../img/img97.png"></p>
-<hr>
-<h3 id="列子查询"><a href="#列子查询" class="headerlink" title="列子查询"></a>列子查询</h3><p><img src="/../img/img98.png"></p>
-<hr>
-<h3 id="行子查询"><a href="#行子查询" class="headerlink" title="行子查询"></a>行子查询</h3><p><img src="/../img/img99.png"></p>
-<hr>
-<h3 id="表子查询"><a href="#表子查询" class="headerlink" title="表子查询"></a>表子查询</h3><p><img src="/../img/img100.png"></p>
-<hr>
+            多表关系
+ * 一对多
+   
+   
+   
+   
+ * 多对多
+   
+   
+   
+   
+ * 一对一
+   
+   
+   
+   
 
+
+
+
+多表查询概述
+ * 笛卡尔积
+   
+   在数学中，两个集合A,B的所有组合情况(多表查询中，需要消除无效的笛卡尔积)
+   
+   
+ * 多表查询分类
+   
+   
+   
+   
+
+
+
+
+内连接
+
+
+
+
+
+外连接
+
+
+
+
+
+自连接
+
+
+
+
+
+联合查询
+
+
+
+
+
+子查询概述
+
+
+
+
+
+标量子查询
+
+
+
+
+
+列子查询
+
+
+
+
+
+行子查询
+
+
+
+
+
+表子查询
             
         </div>
     </div>
@@ -411,11 +448,13 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p><img src="/../img/img85.png"></p>
-<h3 id="外键约束"><a href="#外键约束" class="headerlink" title="外键约束"></a>外键约束</h3><p><img src="/../img/img86.png"></p>
-<h3 id="外键删除更新行为"><a href="#外键删除更新行为" class="headerlink" title="外键删除更新行为"></a>外键删除更新行为</h3><p><img src="/../img/img87.png"></p>
-<hr>
+            概述
 
+
+外键约束
+
+
+外键删除更新行为
             
         </div>
     </div>
@@ -454,12 +493,16 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h3 id="字符串函数"><a href="#字符串函数" class="headerlink" title="字符串函数"></a>字符串函数</h3><p><img src="/../img/img81.png"></p>
-<h3 id="数值函数"><a href="#数值函数" class="headerlink" title="数值函数"></a>数值函数</h3><p><img src="/../img/img82.png"></p>
-<h3 id="日期函数"><a href="#日期函数" class="headerlink" title="日期函数"></a>日期函数</h3><p><img src="/../img/img83.png"></p>
-<h3 id="流程函数"><a href="#流程函数" class="headerlink" title="流程函数"></a>流程函数</h3><p><img src="/../img/img84.png"></p>
-<hr>
+            字符串函数
 
+
+数值函数
+
+
+日期函数
+
+
+流程函数
             
         </div>
     </div>
@@ -498,65 +541,44 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h1 id="SQL通用语法及其分类"><a href="#SQL通用语法及其分类" class="headerlink" title="SQL通用语法及其分类"></a>SQL通用语法及其分类</h1><h3 id="通用语法"><a href="#通用语法" class="headerlink" title="通用语法"></a>通用语法</h3><p><img src="/../img/img62.png"></p>
-<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><p><img src="/../img/img63.png"></p>
-<hr>
-<h1 id="DDL"><a href="#DDL" class="headerlink" title="DDL"></a>DDL</h1><h3 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h3><ul>
-<li><p><strong>查询</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> databases;#查询所有数据库</span><br><span class="line"><span class="keyword">select</span> database();#查询当前数据库</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>创建</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> database [IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>] 数据库名 [<span class="keyword">DEFAULT</span> CHARSET 字符集] [<span class="keyword">COLLATE</span> 排列规则];</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>删除</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> DATABASE [IF <span class="keyword">EXISTS</span>] 数据库名;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>使用</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">USE 数据库名;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="表操作"><a href="#表操作" class="headerlink" title="表操作"></a>表操作</h3><ul>
-<li><p><strong>查询</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> TABLES;#查询当前数据库所有表格</span><br><span class="line"><span class="keyword">DESC</span> 表名;#查询表结构</span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">CREATE TABLE</span> 表名;#查询指定表的建表语句</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>创建</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> 表名(</span><br><span class="line">	字段<span class="number">1</span> 字段<span class="number">1</span>类型[COMMENT 字段<span class="number">1</span>注释]</span><br><span class="line">    字段<span class="number">2</span> 字段<span class="number">2</span>类型[COMMENT 字段<span class="number">2</span>注释]</span><br><span class="line">    字段<span class="number">3</span> 字段<span class="number">3</span>类型[COMMENT 字段<span class="number">3</span>注释]</span><br><span class="line">    . . . . . . .</span><br><span class="line">    字段n 字段n类型[COMMENT 字段n注释]</span><br><span class="line">)[COMMENT 表注释]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>修改</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER TABLE</span> 表名 <span class="keyword">ADD</span> 字段名 类型(长度) [COMMENT 注释] [约束];#添加字段</span><br><span class="line"><span class="keyword">ALTER TABLE</span> 表名 MODIFY 字段名 新数据类型(长度);#修改数据类型</span><br><span class="line"><span class="keyword">ALTER TABLE</span> 表名 CHANGE 旧字段名 新字段名 类型(长度) [COMMENT 注释] [约束];#修改字段名和字段类型</span><br><span class="line"><span class="keyword">ALTER TABLE</span> 表名 RENAME <span class="keyword">TO</span> 新表名;#修改表名</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>删除</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter table</span> 表名 <span class="keyword">drop</span> 字段名;#删除字段</span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> [if <span class="keyword">exists</span>] 表名;#删除表</span><br><span class="line"><span class="keyword">truncate</span> <span class="keyword">table</span> 表名;#删除指定表，并重新创建该表</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><ul>
-<li><p><strong>字符串类型</strong></p>
-<p><img src="/../img/img64.png"></p>
-</li>
-<li><p><strong>数值类型</strong></p>
-<p><img src="/../img/img65.png"></p>
-</li>
-<li><p><strong>日期类型</strong></p>
-<p><img src="/../img/img66.png"></p>
-</li>
-</ul>
-<hr>
-<h1 id="DML"><a href="#DML" class="headerlink" title="DML"></a>DML</h1><h3 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h3><p><img src="/../img/img67.png"></p>
-<h3 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h3><p><img src="/../img/img68.png"></p>
-<h3 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h3><p><img src="/../img/img69.png"></p>
-<hr>
-<h1 id="DQL"><a href="#DQL" class="headerlink" title="DQL"></a>DQL</h1><h3 id="通用语法-1"><a href="#通用语法-1" class="headerlink" title="通用语法"></a>通用语法</h3><p><img src="/../img/img70.png"></p>
-<h3 id="基本查询"><a href="#基本查询" class="headerlink" title="基本查询"></a>基本查询</h3><p><img src="/../img/img71.png"></p>
-<h3 id="条件查询"><a href="#条件查询" class="headerlink" title="条件查询"></a>条件查询</h3><p><img src="/../img/img72.png"></p>
-<h3 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h3><p><img src="/../img/img73.png"></p>
-<h3 id="分组查询"><a href="#分组查询" class="headerlink" title="分组查询"></a>分组查询</h3><p><img src="/../img/img74.png"></p>
-<h3 id="排序查询"><a href="#排序查询" class="headerlink" title="排序查询"></a>排序查询</h3><p><img src="/../img/img75.png"></p>
-<h3 id="分页查询"><a href="#分页查询" class="headerlink" title="分页查询"></a>分页查询</h3><p><img src="/../img/img76.png"></p>
-<h3 id="执行顺序"><a href="#执行顺序" class="headerlink" title="执行顺序"></a>执行顺序</h3><p><img src="/../img/img77.png"></p>
-<hr>
-<h1 id="DCL"><a href="#DCL" class="headerlink" title="DCL"></a>DCL</h1><h3 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h3><p><img src="/../img/img78.png"></p>
-<h3 id="权限控制"><a href="#权限控制" class="headerlink" title="权限控制"></a>权限控制</h3><p><img src="/../img/img79.png"></p>
-<p><img src="/../img/img80.png"></p>
-<hr>
+            SQL通用语法及其分类
+通用语法
 
+
+分类
+
+
+
+
+
+DDL
+数据库操作
+ * 查询
+   
+   1
+   2
+   
+   
+   show databases;#查询所有数据库
+   select database();#查询当前数据库
+   
+   
+   
+ * 创建
+   
+   1
+   
+   
+   create database [IF NOT EXISTS] 数据库名 [DEFAULT CHARSET 字符集] [COLLATE 排列规则];
+   
+   
+   
+ * 删除
+   
+   1
+   
+   
+   DROP DATABASE [IF EXISTS] 数
             
         </div>
     </div>
@@ -595,18 +617,11 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>类似于自定义布局</p>
-<h3 id="职责"><a href="#职责" class="headerlink" title="职责"></a>职责</h3><p>ViewGroup相当于一个放置View的容器，并且我们在写布局xml的时候，会告诉容器（凡是以layout为开头的属性，都是为用于告诉容器的），我们的宽度（layout_width）、高度（layout_height）、对齐方式（layout_gravity）等；当然还有margin等；于是乎，ViewGroup的职能为：给childView计算出建议的宽和高和测量模式 ；决定childView的位置；为什么只是建议的宽和高，而不是直接确定呢，别忘了childView宽和高可以设置为wrap_content，这样只有childView才能计算出自己的宽和高。</p>
-<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ul>
-<li><strong>决定该ViewGroup的LayoutParams</strong></li>
-<li><strong>重写onMeasure方法</strong></li>
-<li><strong>重写onLayout方法</strong></li>
-<li><strong>使用该布局</strong></li>
-</ul>
-<h3 id="完整代码实例"><a href="#完整代码实例" class="headerlink" title="完整代码实例"></a>完整代码实例</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ViewLayout</span>(context: Context, attrs: AttributeSet?):ViewGroup(context,attrs) &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">generateLayoutParams</span><span class="params">(attrs: <span class="type">AttributeSet</span>?)</span></span>: ViewGroup.LayoutParams &#123;</span><br><span class="line">        <span class="keyword">return</span> MarginLayoutParams(context,attrs)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 计算所有ChildView的宽度和高度 然后根据ChildView的计算结果，设置自己的宽和高</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onMeasure</span><span class="params">(widthMeasureSpec: <span class="type">Int</span>, heightMeasureSpec: <span class="type">Int</span>)</span></span> &#123;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 获得此ViewGroup上级容器为其推荐的宽和高，以及计算模式</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">val</span> widthMode = MeasureSpec.getMode(widthMeasureSpec)</span><br><span class="line">        <span class="keyword">val</span> heightMode = MeasureSpec.getMode(heightMeasureSpec)</span><br><span class="line">        <span class="keyword">val</span> sizeWidth = MeasureSpec.getSize(widthMeasureSpec)</span><br><span class="line">        <span class="keyword">val</span> sizeHeight = MeasureSpec.getSize(heightMeasureSpec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 计算出所有的childView的宽和高</span></span><br><span class="line">        measureChildren(widthMeasureSpec, heightMeasureSpec)</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 记录如果是wrap_content是设置的宽和高</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">var</span> width = <span class="number">0</span></span><br><span class="line">        <span class="keyword">var</span> height = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">val</span> cCount = childCount</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> cWidth = <span class="number">0</span></span><br><span class="line">        <span class="keyword">var</span> cHeight = <span class="number">0</span></span><br><span class="line">        <span class="keyword">var</span> cParams: MarginLayoutParams? = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 用于计算左边两个childView的高度</span></span><br><span class="line">        <span class="keyword">var</span> lHeight = <span class="number">0</span></span><br><span class="line">        <span class="comment">// 用于计算右边两个childView的高度，最终高度取二者之间大值</span></span><br><span class="line">        <span class="keyword">var</span> rHeight = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 用于计算上边两个childView的宽度</span></span><br><span class="line">        <span class="keyword">var</span> tWidth = <span class="number">0</span></span><br><span class="line">        <span class="comment">// 用于计算下面两个childiew的宽度，最终宽度取二者之间大值</span></span><br><span class="line">        <span class="keyword">var</span> bWidth = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 根据childView计算的出的宽和高，以及设置的margin计算容器的宽和高，主要用于容器是warp_content时</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">0.</span>.&lt;cCount) &#123;</span><br><span class="line">            <span class="keyword">val</span> childView = getChildAt(i)</span><br><span class="line">            cWidth = childView.measuredWidth</span><br><span class="line">            cHeight = childView.measuredHeight</span><br><span class="line">            cParams = childView.layoutParams <span class="keyword">as</span> MarginLayoutParams</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            <span class="comment">// 上面两个childView</span></span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">0</span> || i == <span class="number">1</span>) &#123;</span><br><span class="line">                tWidth += cWidth + cParams!!.leftMargin + cParams!!.rightMargin</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">2</span> || i == <span class="number">3</span>) &#123;</span><br><span class="line">                bWidth += cWidth + cParams!!.leftMargin + cParams!!.rightMargin</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">0</span> || i == <span class="number">2</span>) &#123;</span><br><span class="line">                lHeight += cHeight + cParams!!.topMargin + cParams!!.bottomMargin</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">1</span> || i == <span class="number">3</span>) &#123;</span><br><span class="line">                rHeight += cHeight + cParams!!.topMargin + cParams!!.bottomMargin</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        width = max(tWidth.toDouble(), bWidth.toDouble()).toInt()</span><br><span class="line">        height = max(lHeight.toDouble(), rHeight.toDouble()).toInt()</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 如果是wrap_content设置为我们计算的值</span></span><br><span class="line"><span class="comment">         * 否则：直接设置为父容器计算的值</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        setMeasuredDimension(</span><br><span class="line">            <span class="keyword">if</span> (widthMode == MeasureSpec.EXACTLY)</span><br><span class="line">                sizeWidth</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                width, <span class="keyword">if</span> (heightMode == MeasureSpec.EXACTLY)</span><br><span class="line">                sizeHeight</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                height</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// abstract method in viewgroup</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onLayout</span><span class="params">(changed: <span class="type">Boolean</span>, l: <span class="type">Int</span>, t: <span class="type">Int</span>, r: <span class="type">Int</span>, b: <span class="type">Int</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">val</span> cCount = childCount</span><br><span class="line">        <span class="keyword">var</span> cWidth = <span class="number">0</span></span><br><span class="line">        <span class="keyword">var</span> cHeight = <span class="number">0</span></span><br><span class="line">        <span class="keyword">var</span> cParams: MarginLayoutParams? = <span class="literal">null</span></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 遍历所有childView根据其宽和高，以及margin进行布局</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">0.</span>.&lt;cCount) &#123;</span><br><span class="line">            <span class="keyword">val</span> childView = getChildAt(i)</span><br><span class="line">            cWidth = childView.measuredWidth</span><br><span class="line">            cHeight = childView.measuredHeight</span><br><span class="line">            cParams = childView.layoutParams <span class="keyword">as</span> MarginLayoutParams</span><br><span class="line"></span><br><span class="line">            <span class="keyword">var</span> cl = <span class="number">0</span></span><br><span class="line">            <span class="keyword">var</span> ct = <span class="number">0</span></span><br><span class="line">            <span class="keyword">var</span> cr = <span class="number">0</span></span><br><span class="line">            <span class="keyword">var</span> cb = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">when</span> (i) &#123;</span><br><span class="line">                <span class="number">0</span> -&gt; &#123;</span><br><span class="line">                    cl = cParams!!.leftMargin</span><br><span class="line">                    ct = cParams!!.topMargin</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="number">1</span> -&gt; &#123;</span><br><span class="line">                    cl = (width - cWidth - cParams!!.rightMargin)</span><br><span class="line">                    ct = cParams!!.topMargin</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="number">2</span> -&gt; &#123;</span><br><span class="line">                    cl = cParams!!.leftMargin</span><br><span class="line">                    ct = height - cHeight - cParams!!.bottomMargin</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="number">3</span> -&gt; &#123;</span><br><span class="line">                    cl = (width - cWidth - cParams!!.rightMargin)</span><br><span class="line">                    ct = height - cHeight - cParams!!.bottomMargin</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            cr = cl + cWidth</span><br><span class="line">            cb = cHeight + ct</span><br><span class="line">            childView.layout(cl, ct, cr, cb)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            作用
+类似于自定义布局
 
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">&lt;com.example.studyviewgrope.ViewLayout xmlns:android=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="line">    xmlns:tools=<span class="string">&quot;http://schemas.android.com/tools&quot;</span></span><br><span class="line">    android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">    android:layout_height=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">    android:background=<span class="string">&quot;#AA333333&quot;</span> &gt;</span><br><span class="line"></span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:layout_width=<span class="string">&quot;150dp&quot;</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;150dp&quot;</span></span><br><span class="line">        android:background=<span class="string">&quot;#E5ED05&quot;</span></span><br><span class="line">        android:gravity=<span class="string">&quot;center&quot;</span></span><br><span class="line">        android:text=<span class="string">&quot;0&quot;</span></span><br><span class="line">        android:textColor=<span class="string">&quot;#FFFFFF&quot;</span></span><br><span class="line">        android:textSize=<span class="string">&quot;22sp&quot;</span></span><br><span class="line">        android:textStyle=<span class="string">&quot;bold&quot;</span> /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:layout_width=<span class="string">&quot;50dp&quot;</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;50dp&quot;</span></span><br><span class="line">        android:background=<span class="string">&quot;#00ff00&quot;</span></span><br><span class="line">        android:gravity=<span class="string">&quot;center&quot;</span></span><br><span class="line">        android:text=<span class="string">&quot;1&quot;</span></span><br><span class="line">        android:textColor=<span class="string">&quot;#FFFFFF&quot;</span></span><br><span class="line">        android:textSize=<span class="string">&quot;22sp&quot;</span></span><br><span class="line">        android:textStyle=<span class="string">&quot;bold&quot;</span> /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:layout_width=<span class="string">&quot;50dp&quot;</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;50dp&quot;</span></span><br><span class="line">        android:background=<span class="string">&quot;#ff0000&quot;</span></span><br><span class="line">        android:gravity=<span class="string">&quot;center&quot;</span></span><br><span class="line">        android:text=<span class="string">&quot;2&quot;</span></span><br><span class="line">        android:textColor=<span class="string">&quot;#FFFFFF&quot;</span></span><br><span class="line">        android:textSize=<span class="string">&quot;22sp&quot;</span></span><br><span class="line">        android:textStyle=<span class="string">&quot;bold&quot;</span> /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:layout_width=<span class="string">&quot;150dp&quot;</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;150dp&quot;</span></span><br><span class="line">        android:background=<span class="string">&quot;#0000ff&quot;</span></span><br><span class="line">        android:gravity=<span class="string">&quot;center&quot;</span></span><br><span class="line">        android:text=<span class="string">&quot;3&quot;</span></span><br><span class="line">        android:textColor=<span class="string">&quot;#FFFFFF&quot;</span></span><br><span class="line">        android:textSize=<span class="string">&quot;22sp&quot;</span></span><br><span class="line">        android:textStyle=<span class="string">&quot;bold&quot;</span> /&gt;</span><br><span class="line"></span><br><span class="line">&lt;/com.example.studyviewgrope.ViewLayout&gt;</span><br></pre></td></tr></table></figure>
-
+职责
+ViewGroup相当于一个放置View的容器，并且我们在写布局xml的时候，会告诉容器（凡是以layout为开头的属性，都是为用于告诉容器的），我们的宽度（layout_width）、高度（layout_height）、对齐方式（layout_gravity）等；当然还有margin等；于是乎，ViewGroup的职能为：给childView计算出建议的宽和高和测量模式 ；决定childView的位置；为什么只是建议的宽和高，而不是直接确定呢，别忘了childView宽和高可以设置为wrap_content，这样只有childView才能计算出自己的宽和高。
 
             
         </div>
@@ -646,34 +661,38 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><p>自定义View显示一张图片，下面包含图片的文本介绍</p>
-<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><ul>
-<li><strong>自定义属性</strong></li>
-</ul>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;resources&gt;</span><br><span class="line">    &lt;attr name=<span class="string">&quot;titleText&quot;</span> format=<span class="string">&quot;string&quot;</span> /&gt;</span><br><span class="line">    &lt;attr name=<span class="string">&quot;titleTextColor&quot;</span> format=<span class="string">&quot;color&quot;</span> /&gt;</span><br><span class="line">    &lt;attr name=<span class="string">&quot;titleTextSize&quot;</span> format=<span class="string">&quot;dimension&quot;</span> /&gt;</span><br><span class="line">    &lt;attr name=<span class="string">&quot;image&quot;</span> format=<span class="string">&quot;reference&quot;</span>/&gt;</span><br><span class="line">    &lt;attr name=<span class="string">&quot;imageScaleType&quot;</span>&gt;</span><br><span class="line">        &lt;<span class="keyword">enum</span> name=<span class="string">&quot;fillXY&quot;</span> value=<span class="string">&quot;0&quot;</span> /&gt;</span><br><span class="line">        &lt;<span class="keyword">enum</span> name=<span class="string">&quot;center&quot;</span> value=<span class="string">&quot;1&quot;</span> /&gt;</span><br><span class="line">    &lt;/attr&gt;</span><br><span class="line"></span><br><span class="line">    &lt;declare-styleable name=<span class="string">&quot;MyView&quot;</span>&gt;</span><br><span class="line">        &lt;attr name=<span class="string">&quot;titleText&quot;</span> /&gt;</span><br><span class="line">        &lt;attr name=<span class="string">&quot;titleTextColor&quot;</span> /&gt;</span><br><span class="line">        &lt;attr name=<span class="string">&quot;titleTextSize&quot;</span> /&gt;</span><br><span class="line">        &lt;attr name=<span class="string">&quot;image&quot;</span>/&gt;</span><br><span class="line">        &lt;attr name=<span class="string">&quot;imageScaleType&quot;</span>/&gt;</span><br><span class="line">    &lt;/declare-styleable&gt;</span><br><span class="line">&lt;/resources&gt;</span><br></pre></td></tr></table></figure>
+            目的
+自定义View显示一张图片，下面包含图片的文本介绍
 
-<ul>
-<li><strong>获取自定义属性</strong></li>
-</ul>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 自定义View类，继承自View</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyView</span> <span class="meta">@JvmOverloads</span> <span class="keyword">constructor</span>(</span><br><span class="line">    context: Context, <span class="comment">// 上下文对象</span></span><br><span class="line">    attrs: AttributeSet? = <span class="literal">null</span>, <span class="comment">// XML属性集，可为空</span></span><br><span class="line">    defStyleAttr: <span class="built_in">Int</span> = <span class="number">0</span>  <span class="comment">// 默认样式属性，支持style属性</span></span><br><span class="line">) : View(context, attrs, defStyleAttr) &#123;</span><br><span class="line">    <span class="comment">// 声明位图变量，用于存储图片</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> mImage: Bitmap? = <span class="literal">null</span></span><br><span class="line">    <span class="comment">// 声明图片缩放类型变量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> mImageScale: <span class="built_in">Int</span> = <span class="number">0</span></span><br><span class="line">    <span class="comment">// 声明标题文本变量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> mTitle: String = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="comment">// 声明文本颜色变量，默认为黑色</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> mTextColor: <span class="built_in">Int</span> = Color.BLACK</span><br><span class="line">    <span class="comment">// 声明文本大小变量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> mTextSize: <span class="built_in">Int</span> = <span class="number">0</span></span><br><span class="line">    <span class="comment">// 声明View宽度变量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> mWidth=<span class="number">0</span></span><br><span class="line">    <span class="comment">// 声明View高度变量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> mHeight=<span class="number">0</span></span><br><span class="line">    <span class="comment">// 声明矩形对象，用于定义绘制区域</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> rect = Rect()</span><br><span class="line">    <span class="comment">// 声明画笔对象，用于绘制图形</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> mPaint = Paint()</span><br><span class="line">    <span class="comment">// 声明文本边界矩形，用于计算文本尺寸</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> mTextBound = Rect()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 初始化代码块</span></span><br><span class="line">    <span class="keyword">init</span> &#123;</span><br><span class="line">        <span class="comment">// 获取主题中的样式属性</span></span><br><span class="line">        <span class="keyword">val</span> a = context.theme.obtainStyledAttributes(</span><br><span class="line">            attrs, <span class="comment">// 属性集</span></span><br><span class="line">            R.styleable.MyView, <span class="comment">// 自定义属性数组</span></span><br><span class="line">            defStyleAttr, <span class="comment">// 默认样式</span></span><br><span class="line">            <span class="number">0</span> <span class="comment">// 默认值</span></span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 遍历所有属性</span></span><br><span class="line">        <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">0</span> until a.indexCount) &#123;</span><br><span class="line">            <span class="comment">// 根据属性类型进行不同处理</span></span><br><span class="line">            <span class="keyword">when</span> (<span class="keyword">val</span> attr = a.getIndex(i)) &#123;</span><br><span class="line">                <span class="comment">// 处理图片属性</span></span><br><span class="line">                R.styleable.MyView_image -&gt; &#123;</span><br><span class="line">                    <span class="comment">// 获取资源ID</span></span><br><span class="line">                    <span class="keyword">val</span> resId = a.getResourceId(attr, <span class="number">0</span>)</span><br><span class="line">                    <span class="comment">// 如果资源ID有效，则解码位图</span></span><br><span class="line">                    <span class="keyword">if</span> (resId != <span class="number">0</span>) &#123;</span><br><span class="line">                        mImage = BitmapFactory.decodeResource(resources, resId)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 处理图片缩放类型属性</span></span><br><span class="line">                R.styleable.MyView_imageScaleType -&gt; &#123;</span><br><span class="line">                    mImageScale = a.getInt(attr, <span class="number">0</span>)</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 处理标题文本属性</span></span><br><span class="line">                R.styleable.MyView_titleText -&gt; &#123;</span><br><span class="line">                    mTitle = a.getString(attr) ?: <span class="string">&quot;&quot;</span></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 处理标题文本颜色属性</span></span><br><span class="line">                R.styleable.MyView_titleTextColor -&gt; &#123;</span><br><span class="line">                    mTextColor = a.getColor(attr, Color.BLACK)</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 处理标题文本大小属性</span></span><br><span class="line">                R.styleable.MyView_titleTextSize -&gt; &#123;</span><br><span class="line">                    mTextSize = a.getDimensionPixelSize(</span><br><span class="line">                        attr, <span class="comment">// 属性索引</span></span><br><span class="line">                        <span class="comment">// 默认值：16sp转换为像素</span></span><br><span class="line">                        TypedValue.applyDimension(</span><br><span class="line">                            TypedValue.COMPLEX_UNIT_SP, <span class="comment">// 单位类型：sp</span></span><br><span class="line">                            <span class="number">16f</span>, <span class="comment">// 默认大小：16</span></span><br><span class="line">                            resources.displayMetrics <span class="comment">// 显示指标</span></span><br><span class="line">                        ).toInt() <span class="comment">// 转换为整数</span></span><br><span class="line">                    )</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 回收属性对象，释放资源</span></span><br><span class="line">        a.recycle()</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置画笔的文本大小</span></span><br><span class="line">        mPaint.textSize = mTextSize.toFloat()</span><br><span class="line">        <span class="comment">// 计算文本边界，获取文本的宽高信息</span></span><br><span class="line">        mPaint.getTextBounds(mTitle, <span class="number">0</span>, mTitle.length, mTextBound)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+实现
+ * 自定义属性
 
-<ul>
-<li><strong>重写onMeasure方法</strong></li>
-</ul>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 重写测量方法，计算View的尺寸</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onMeasure</span><span class="params">(widthMeasureSpec: <span class="type">Int</span>, heightMeasureSpec: <span class="type">Int</span>)</span></span> &#123;</span><br><span class="line">        <span class="comment">// 处理宽度测量</span></span><br><span class="line">        <span class="keyword">var</span> specMode = MeasureSpec.getMode(widthMeasureSpec) <span class="comment">// 获取宽度测量模式</span></span><br><span class="line">        <span class="keyword">var</span> specSize = MeasureSpec.getSize(widthMeasureSpec) <span class="comment">// 获取宽度测量大小</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 根据测量模式计算宽度</span></span><br><span class="line">        mWidth = <span class="keyword">when</span> (specMode) &#123;</span><br><span class="line">            <span class="comment">// 精确模式：直接使用指定的大小</span></span><br><span class="line">            MeasureSpec.EXACTLY -&gt; &#123;</span><br><span class="line">                Log.e(<span class="string">&quot;xxx&quot;</span>, <span class="string">&quot;EXACTLY&quot;</span>) <span class="comment">// 输出日志</span></span><br><span class="line">                specSize</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 最大模式：不能超过指定大小</span></span><br><span class="line">            MeasureSpec.AT_MOST -&gt; &#123;</span><br><span class="line">                <span class="comment">// 根据图片计算期望宽度</span></span><br><span class="line">                <span class="keyword">val</span> desireByImg = paddingLeft + paddingRight + (mImage?.width ?: <span class="number">0</span>)</span><br><span class="line">                <span class="comment">// 根据文本计算期望宽度</span></span><br><span class="line">                <span class="keyword">val</span> desireByTitle = paddingLeft + paddingRight + mTextBound.width()</span><br><span class="line">                <span class="comment">// 取两者中的最大值</span></span><br><span class="line">                <span class="keyword">val</span> desire = maxOf(desireByImg, desireByTitle)</span><br><span class="line">                Log.e(<span class="string">&quot;xxx&quot;</span>, <span class="string">&quot;AT_MOST&quot;</span>) <span class="comment">// 输出日志</span></span><br><span class="line">                <span class="comment">// 返回期望值和指定值中的较小值</span></span><br><span class="line">                minOf(desire, specSize)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 未指定模式：使用期望的大小</span></span><br><span class="line">            <span class="keyword">else</span> -&gt; &#123; <span class="comment">// MeasureSpec.UNSPECIFIED</span></span><br><span class="line">                <span class="comment">// 根据图片计算期望宽度</span></span><br><span class="line">                <span class="keyword">val</span> desireByImg = paddingLeft + paddingRight + (mImage?.width ?: <span class="number">0</span>)</span><br><span class="line">                <span class="comment">// 根据文本计算期望宽度</span></span><br><span class="line">                <span class="keyword">val</span> desireByTitle = paddingLeft + paddingRight + mTextBound.width()</span><br><span class="line">                <span class="comment">// 返回两者中的最大值</span></span><br><span class="line">                maxOf(desireByImg, desireByTitle)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 处理高度测量</span></span><br><span class="line">        specMode = MeasureSpec.getMode(heightMeasureSpec) <span class="comment">// 获取高度测量模式</span></span><br><span class="line">        specSize = MeasureSpec.getSize(heightMeasureSpec) <span class="comment">// 获取高度测量大小</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 根据测量模式计算高度</span></span><br><span class="line">        mHeight = <span class="keyword">when</span> (specMode) &#123;</span><br><span class="line">            <span class="comment">// 精确模式：直接使用指定的大小</span></span><br><span class="line">            MeasureSpec.EXACTLY -&gt; specSize</span><br><span class="line">            <span class="comment">// 最大模式：不能超过指定大小</span></span><br><span class="line">            MeasureSpec.AT_MOST -&gt; &#123;</span><br><span class="line">                <span class="comment">// 计算期望高度：内边距 + 图片高度 + 文本高度</span></span><br><span class="line">                <span class="keyword">val</span> desire = paddingTop + paddingBottom + (mImage?.height ?: <span class="number">0</span>) + mTextBound.height()</span><br><span class="line">                <span class="comment">// 返回期望值和指定值中的较小值</span></span><br><span class="line">                minOf(desire, specSize)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 未指定模式：使用期望的大小</span></span><br><span class="line">            <span class="keyword">else</span> -&gt; &#123;</span><br><span class="line">                <span class="comment">// 计算期望高度：内边距 + 图片高度 + 文本高度</span></span><br><span class="line">                paddingTop + paddingBottom + (mImage?.height ?: <span class="number">0</span>) + mTextBound.height()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置测量结果，告诉父View我们的尺寸</span></span><br><span class="line">        setMeasuredDimension(mWidth, mHeight)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
 
-<ul>
-<li><strong>重写onDraw方法</strong></li>
-</ul>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 重写绘制方法，在画布上绘制内容</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onDraw</span><span class="params">(canvas: <span class="type">Canvas</span>)</span></span> &#123;</span><br><span class="line">        <span class="comment">// 绘制边框</span></span><br><span class="line">        mPaint.strokeWidth = <span class="number">4f</span> <span class="comment">// 设置边框宽度为4像素</span></span><br><span class="line">        mPaint.style = Paint.Style.STROKE <span class="comment">// 设置画笔样式为描边</span></span><br><span class="line">        mPaint.color = Color.CYAN <span class="comment">// 设置边框颜色为青色</span></span><br><span class="line">        <span class="comment">// 绘制矩形边框，覆盖整个View区域</span></span><br><span class="line">        canvas.drawRect(<span class="number">0f</span>, <span class="number">0f</span>, measuredWidth.toFloat(), measuredHeight.toFloat(), mPaint)</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 初始化绘图区域，考虑内边距</span></span><br><span class="line">        rect.left = paddingLeft <span class="comment">// 左边界</span></span><br><span class="line">        rect.right = mWidth - paddingRight <span class="comment">// 右边界</span></span><br><span class="line">        rect.top = paddingTop <span class="comment">// 上边界</span></span><br><span class="line">        rect.bottom = mHeight - paddingBottom <span class="comment">// 下边界</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置文字画笔样式</span></span><br><span class="line">        mPaint.color = mTextColor <span class="comment">// 设置文本颜色</span></span><br><span class="line">        mPaint.style = Paint.Style.FILL <span class="comment">// 设置画笔样式为填充</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 判断文字是否需要省略显示</span></span><br><span class="line">        <span class="keyword">val</span> displayText = <span class="keyword">if</span> (mTextBound.width() &gt; mWidth) &#123;</span><br><span class="line">            <span class="comment">// 如果文本宽度超过View宽度，需要省略</span></span><br><span class="line">            <span class="keyword">val</span> textPaint = TextPaint(mPaint) <span class="comment">// 创建文本画笔</span></span><br><span class="line">            <span class="comment">// 使用省略号处理文本</span></span><br><span class="line">            TextUtils.ellipsize(</span><br><span class="line">                mTitle, <span class="comment">// 原始文本</span></span><br><span class="line">                textPaint, <span class="comment">// 文本画笔</span></span><br><span class="line">                (mWidth - paddingLeft - paddingRight).toFloat(), <span class="comment">// 可用宽度</span></span><br><span class="line">                TextUtils.TruncateAt.END <span class="comment">// 在末尾添加省略号</span></span><br><span class="line">            ).toString()</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 如果文本宽度不超过View宽度，直接使用原文本</span></span><br><span class="line">            mTitle</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 计算文字位置并绘制</span></span><br><span class="line">        <span class="keyword">val</span> textX = <span class="keyword">if</span> (displayText == mTitle) &#123;</span><br><span class="line">            <span class="comment">// 如果是原文本，居中显示</span></span><br><span class="line">            mWidth / <span class="number">2f</span> - mTextBound.width() / <span class="number">2f</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 如果是省略文本，左对齐显示</span></span><br><span class="line">            paddingLeft.toFloat()</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">val</span> textY = (mHeight - paddingBottom).toFloat() <span class="comment">// 文本Y坐标，考虑下内边距</span></span><br><span class="line">        canvas.drawText(displayText, textX, textY, mPaint) <span class="comment">// 绘制文本</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 图片绘制区域去掉文字高度部分</span></span><br><span class="line">        rect.bottom -= mTextBound.height() <span class="comment">// 减去文本高度，为图片留出空间</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 绘制图片</span></span><br><span class="line">        mImage?.let &#123; bitmap -&gt;</span><br><span class="line">            <span class="keyword">if</span> (mImageScale == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="comment">// 缩放模式：图片填充整个可用区域</span></span><br><span class="line">                canvas.drawBitmap(bitmap, <span class="literal">null</span>, rect, mPaint)</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 居中模式：图片居中显示，保持原始大小</span></span><br><span class="line">                <span class="comment">// 计算图片的居中绘制区域</span></span><br><span class="line">                rect.left = mWidth / <span class="number">2</span> - bitmap.width / <span class="number">2</span> <span class="comment">// 左边界居中</span></span><br><span class="line">                rect.right = mWidth / <span class="number">2</span> + bitmap.width / <span class="number">2</span> <span class="comment">// 右边界居中</span></span><br><span class="line">                rect.top = (mHeight - mTextBound.height()) / <span class="number">2</span> - bitmap.height / <span class="number">2</span> <span class="comment">// 上边界居中</span></span><br><span class="line">                rect.bottom = (mHeight - mTextBound.height()) / <span class="number">2</span> + bitmap.height / <span class="number">2</span> <span class="comment">// 下边界居中</span></span><br><span class="line">                canvas.drawBitmap(bitmap, <span class="literal">null</span>, rect, mPaint) <span class="comment">// 绘制位图</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li><strong>引入布局</strong></li>
-</ul>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&lt;LinearLayout  xmlns:android=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="line">    xmlns:tools=<span class="string">&quot;http://schemas.android.com/tools&quot;</span></span><br><span class="line">    xmlns:example=<span class="string">&quot;http://schemas.android.com/apk/res-auto&quot;</span></span><br><span class="line">    android:layout_height=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">    android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">    android:orientation=<span class="string">&quot;vertical&quot;</span></span><br><span class="line">    tools:ignore=<span class="string">&quot;ResAuto&quot;</span>&gt;</span><br><span class="line">    &lt;com.example.viewtest.MyView</span><br><span class="line">        android:layout_width=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">        android:layout_margin=<span class="string">&quot;10dp&quot;</span></span><br><span class="line">        android:padding=<span class="string">&quot;10dp&quot;</span></span><br><span class="line">        example:image=<span class="string">&quot;@drawable/custom_img&quot;</span></span><br><span class="line">        example:imageScaleType=<span class="string">&quot;center&quot;</span></span><br><span class="line">        example:titleText=<span class="string">&quot;hello andorid ! &quot;</span></span><br><span class="line">        example:titleTextColor=<span class="string">&quot;#ff0000&quot;</span></span><br><span class="line">        example:titleTextSize=<span class="string">&quot;30sp&quot;</span> /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;com.example.viewtest.MyView</span><br><span class="line">        android:layout_width=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">        android:layout_margin=<span class="string">&quot;10dp&quot;</span></span><br><span class="line">        android:padding=<span class="string">&quot;10dp&quot;</span></span><br><span class="line">        example:image=<span class="string">&quot;@drawable/vol_01&quot;</span></span><br><span class="line">        example:imageScaleType=<span class="string">&quot;center&quot;</span></span><br><span class="line">        example:titleText=<span class="string">&quot;helloworld&quot;</span></span><br><span class="line">        example:titleTextColor=<span class="string">&quot;#00ff00&quot;</span></span><br><span class="line">        example:titleTextSize=<span class="string">&quot;20sp&quot;</span> /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;com.example.viewtest.MyView</span><br><span class="line">        android:layout_width=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">        android:layout_margin=<span class="string">&quot;10dp&quot;</span></span><br><span class="line">        android:padding=<span class="string">&quot;10dp&quot;</span></span><br><span class="line">        example:image=<span class="string">&quot;@drawable/vol_02&quot;</span></span><br><span class="line">        example:imageScaleType=<span class="string">&quot;fillXY&quot;</span></span><br><span class="line">        example:titleText=<span class="string">&quot;妹子~&quot;</span></span><br><span class="line">        example:titleTextColor=<span class="string">&quot;#ff0000&quot;</span></span><br><span class="line">        example:titleTextSize=<span class="string">&quot;12sp&quot;</span> /&gt;</span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
-
-<hr>
-
+<resources>
+    <attr name="titleText" format="string" />
+    <attr name="titleTextColor" format="color" />
+    <attr name="titleTextSize" format="dimension" />
+    <attr name="image" format="reference"/>
+    <
             
         </div>
     </div>
@@ -712,72 +731,21 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h1 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a>基本步骤</h1><h3 id="自定义View的属性"><a href="#自定义View的属性" class="headerlink" title="自定义View的属性"></a>自定义View的属性</h3><ul>
-<li><p><strong>format取值类型：</strong></p>
-<table>
-<thead>
-<tr>
-<th>格式类型</th>
-<th>含义说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>reference</code></td>
-<td>资源引用，例如 <code>@string/app_name</code>、<code>@drawable/icon</code></td>
-</tr>
-<tr>
-<td><code>string</code></td>
-<td>字符串文本，例如 <code>&quot;Hello&quot;</code></td>
-</tr>
-<tr>
-<td><code>integer</code></td>
-<td>整数，例如 <code>42</code></td>
-</tr>
-<tr>
-<td><code>boolean</code></td>
-<td>布尔值，例如 <code>true</code>、<code>false</code></td>
-</tr>
-<tr>
-<td><code>color</code></td>
-<td>颜色值，例如 <code>#FF0000</code> 或 <code>@color/primary</code></td>
-</tr>
-<tr>
-<td><code>dimension</code></td>
-<td>尺寸值，例如 <code>16dp</code>、<code>12sp</code></td>
-</tr>
-<tr>
-<td><code>float</code></td>
-<td>浮点数，例如 <code>3.14</code></td>
-</tr>
-<tr>
-<td><code>enum</code></td>
-<td>枚举值（需配合 <code>&lt;enum&gt;</code> 使用）</td>
-</tr>
-<tr>
-<td><code>flag</code></td>
-<td>位标志（可多选，需配合 <code>&lt;flag&gt;</code> 使用）</td>
-</tr>
-</tbody></table>
-</li>
-</ul>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span>?&gt;</span><br><span class="line">&lt;resources&gt;</span><br><span class="line">    &lt;attr name=<span class="string">&quot;titleText&quot;</span> format=<span class="string">&quot;string&quot;</span> /&gt;</span><br><span class="line">    &lt;attr name=<span class="string">&quot;titleTextColor&quot;</span> format=<span class="string">&quot;color&quot;</span> /&gt;</span><br><span class="line">    &lt;attr name=<span class="string">&quot;titleTextSize&quot;</span> format=<span class="string">&quot;dimension&quot;</span> /&gt;</span><br><span class="line">    &lt;declare-styleable name=<span class="string">&quot;MyView&quot;</span>&gt;</span><br><span class="line">        &lt;attr name=<span class="string">&quot;titleText&quot;</span> /&gt;</span><br><span class="line">        &lt;attr name=<span class="string">&quot;titleTextColor&quot;</span> /&gt;</span><br><span class="line">        &lt;attr name=<span class="string">&quot;titleTextSize&quot;</span> /&gt;</span><br><span class="line">    &lt;/declare-styleable&gt;</span><br><span class="line">&lt;/resources&gt;</span><br></pre></td></tr></table></figure>
+            基本步骤
+自定义View的属性
+ * format取值类型：
+   
+   格式类型含义说明reference资源引用，例如 @string/app_name、@drawable/iconstring字符串文本，例如 "Hello"integer整数，例如 42boolean布尔值，例如 true、falsecolor颜色值，例如 #FF0000 或 @color/primarydimension尺寸值，例如 16dp、12spfloat浮点数，例如 3.14enum枚举值（需配合 <enum> 使用）flag位标志（可多选，需配合 <flag> 使用）
 
-<h3 id="在View的构造方法中获得我们自定义的属性"><a href="#在View的构造方法中获得我们自定义的属性" class="headerlink" title="在View的构造方法中获得我们自定义的属性"></a>在View的构造方法中获得我们自定义的属性</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 自定义 View，支持自定义属性</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyView</span> <span class="meta">@JvmOverloads</span> <span class="keyword">constructor</span>(</span><br><span class="line">    context: Context,</span><br><span class="line">    attrs: AttributeSet? = <span class="literal">null</span>,</span><br><span class="line">    defStyleAttr: <span class="built_in">Int</span> = <span class="number">0</span>  <span class="comment">// 支持 style 属性</span></span><br><span class="line">) : View(context, attrs, defStyleAttr) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 显示的文本</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> mTitleText: String = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 文本颜色</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> mTitleTextColor: <span class="built_in">Int</span> = Color.BLACK</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 文本大小（像素）</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> mTitleTextSize: <span class="built_in">Int</span> = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 用于记录文本的边界矩形</span></span><br><span class="line">    <span class="comment">//用于 存储当前文字的实际宽高，以便在 onMeasure() 和 onDraw() 中正确地布局和绘制文字。</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> mBound: Rect = Rect()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 画笔对象,用于绘制文本、图形、颜色等</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> mPaint: Paint = Paint()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">init</span> &#123;</span><br><span class="line">        <span class="comment">// 读取自定义属性</span></span><br><span class="line">        attrs?.let &#123;</span><br><span class="line">            <span class="comment">//从 XML 中获取自定义属性值（包括默认值、主题值）并赋给你的 View 成员变量</span></span><br><span class="line">            <span class="keyword">val</span> typedArray = context.theme.obtainStyledAttributes(</span><br><span class="line">                it,</span><br><span class="line">                R.styleable.MyView, <span class="comment">// 需要在 attrs.xml 中声明</span></span><br><span class="line">                defStyleAttr,</span><br><span class="line">                <span class="number">0</span></span><br><span class="line">            )</span><br><span class="line"></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">// 获取 titleText 属性</span></span><br><span class="line">                mTitleText = typedArray.getString(R.styleable.MyView_titleText) ?: <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">                <span class="comment">// 获取 titleTextColor 属性，默认为黑色</span></span><br><span class="line">                mTitleTextColor = typedArray.getColor(</span><br><span class="line">                    R.styleable.MyView_titleTextColor,</span><br><span class="line">                    Color.BLACK</span><br><span class="line">                )</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 获取 titleTextSize 属性，默认为 16sp</span></span><br><span class="line">                mTitleTextSize = typedArray.getDimensionPixelSize(</span><br><span class="line">                    R.styleable.MyView_titleTextSize,</span><br><span class="line">                    TypedValue.applyDimension(</span><br><span class="line">                        TypedValue.COMPLEX_UNIT_SP, <span class="number">16f</span>, resources.displayMetrics</span><br><span class="line">                    ).toInt()</span><br><span class="line">                )</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                typedArray.recycle() <span class="comment">// 回收 TypedArray，防止内存泄漏</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 初始化画笔</span></span><br><span class="line">        mPaint.textSize = mTitleTextSize.toFloat()</span><br><span class="line">        mPaint.color = mTitleTextColor</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 计算文本的边界</span></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * | 参数                  | 含义                         |</span></span><br><span class="line"><span class="comment">         * | ------------------- | -------------------------- |</span></span><br><span class="line"><span class="comment">         * | `mTitleText`        | 你要测量的文字内容                  |</span></span><br><span class="line"><span class="comment">         * | `0`                 | 起始字符索引                     |</span></span><br><span class="line"><span class="comment">         * | `mTitleText.length` | 结束字符索引（不包含）                |</span></span><br><span class="line"><span class="comment">         * | `mBound`            | 用来存储文字所占矩形区域的对象，类型是 `Rect` |</span></span><br><span class="line"><span class="comment">         *</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        mPaint.getTextBounds(mTitleText, <span class="number">0</span>, mTitleText.length, mBound)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="重写onMeasure-方法-（并非必要）"><a href="#重写onMeasure-方法-（并非必要）" class="headerlink" title="[重写onMeasure()方法]（并非必要）"></a>[重写onMeasure()方法]（并非必要）</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 测量 View 的宽高</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onMeasure</span><span class="params">(widthMeasureSpec: <span class="type">Int</span>, heightMeasureSpec: <span class="type">Int</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">val</span> widthMode = MeasureSpec.getMode(widthMeasureSpec)</span><br><span class="line">        <span class="keyword">val</span> widthSize = MeasureSpec.getSize(widthMeasureSpec)</span><br><span class="line">        <span class="keyword">val</span> heightMode = MeasureSpec.getMode(heightMeasureSpec)</span><br><span class="line">        <span class="keyword">val</span> heightSize = MeasureSpec.getSize(heightMeasureSpec)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> width: <span class="built_in">Int</span></span><br><span class="line">        <span class="keyword">var</span> height: <span class="built_in">Int</span></span><br><span class="line"></span><br><span class="line">        mPaint.textSize = mTitleTextSize.toFloat()</span><br><span class="line">        <span class="keyword">if</span> (mTitleText.isNotEmpty()) &#123;</span><br><span class="line">            mPaint.getTextBounds(mTitleText, <span class="number">0</span>, mTitleText.length, mBound)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">val</span> textWidth = mBound.width()</span><br><span class="line">        <span class="keyword">val</span> textHeight = mBound.height()</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 根据测量模式决定最终宽度</span></span><br><span class="line">        width = <span class="keyword">when</span> (widthMode) &#123;</span><br><span class="line">            MeasureSpec.EXACTLY -&gt; widthSize</span><br><span class="line">            MeasureSpec.AT_MOST -&gt; minOf(widthSize, paddingLeft + textWidth + paddingRight)</span><br><span class="line">            MeasureSpec.UNSPECIFIED -&gt; paddingLeft + textWidth + paddingRight</span><br><span class="line">            <span class="keyword">else</span> -&gt; paddingLeft + textWidth + paddingRight</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 根据测量模式决定最终高度</span></span><br><span class="line">        height = <span class="keyword">when</span> (heightMode) &#123;</span><br><span class="line">            MeasureSpec.EXACTLY -&gt; heightSize</span><br><span class="line">            MeasureSpec.AT_MOST -&gt; minOf(heightSize, paddingTop + textHeight + paddingBottom)</span><br><span class="line">            MeasureSpec.UNSPECIFIED -&gt; paddingTop + textHeight + paddingBottom</span><br><span class="line">            <span class="keyword">else</span> -&gt; paddingTop + textHeight + paddingBottom</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="comment">//提交尺寸</span></span><br><span class="line">        setMeasuredDimension(width, height)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="重写onDraw-方法"><a href="#重写onDraw-方法" class="headerlink" title="重写onDraw()方法"></a>重写onDraw()方法</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 绘制内容</span></span><br><span class="line">   <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onDraw</span><span class="params">(canvas: <span class="type">Canvas</span>)</span></span> &#123;</span><br><span class="line">       <span class="comment">// 绘制黄色背景</span></span><br><span class="line">       mPaint.color = Color.YELLOW</span><br><span class="line">       <span class="comment">/**</span></span><br><span class="line"><span class="comment">        * | 参数       | 值                          | 含义                 |</span></span><br><span class="line"><span class="comment">        * | -------- | -------------------------- | ------------------ |</span></span><br><span class="line"><span class="comment">        * | `left`   | `0f`                       | 矩形左边缘坐标            |</span></span><br><span class="line"><span class="comment">        * | `top`    | `0f`                       | 矩形上边缘坐标            |</span></span><br><span class="line"><span class="comment">        * | `right`  | `measuredWidth.toFloat()`  | 矩形右边缘（整个 View 的宽度） |</span></span><br><span class="line"><span class="comment">        * | `bottom` | `measuredHeight.toFloat()` | 矩形下边缘（整个 View 的高度） |</span></span><br><span class="line"><span class="comment">        * | `mPaint` | 一个 `Paint` 对象              | 描述画笔颜色、样式、粗细等      |</span></span><br><span class="line"><span class="comment">        *</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">       canvas.drawRect(<span class="number">0f</span>, <span class="number">0f</span>, measuredWidth.toFloat(), measuredHeight.toFloat(), mPaint)</span><br><span class="line"></span><br><span class="line">       <span class="comment">// 绘制文本</span></span><br><span class="line">       mPaint.color = mTitleTextColor</span><br><span class="line">       <span class="comment">/**</span></span><br><span class="line"><span class="comment">        * | 参数           | 含义                            |</span></span><br><span class="line"><span class="comment">        * | ------------ | ----------------------------- |</span></span><br><span class="line"><span class="comment">        * | `mTitleText` | 要绘制的文字内容                      |</span></span><br><span class="line"><span class="comment">        * | `x`          | 水平位置，**文字的起点 x 坐标**           |</span></span><br><span class="line"><span class="comment">        * | `y`          | 垂直位置，**文字的 baseline（基线）y 坐标** |</span></span><br><span class="line"><span class="comment">        * | `mPaint`     | 用于绘制的画笔，包括颜色、字体、大小等           |</span></span><br><span class="line"><span class="comment">        *</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">       canvas.drawText(</span><br><span class="line">           mTitleText,</span><br><span class="line">           (width / <span class="number">2</span> - mBound.width() / <span class="number">2</span>).toFloat(), <span class="comment">// 水平居中</span></span><br><span class="line">           (height / <span class="number">2</span> + mBound.height() / <span class="number">2</span>).toFloat(), <span class="comment">// 垂直居中</span></span><br><span class="line">           mPaint</span><br><span class="line">       )</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果还需要点击事件，可以在init{}里面加上注册监听器语句</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.setOnClickListener &#123;</span><br><span class="line">           <span class="comment">//写出具体逻辑</span></span><br><span class="line">           postInvalidate() <span class="comment">// 重新绘制</span></span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="引入布局"><a href="#引入布局" class="headerlink" title="引入布局"></a>引入布局</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span>?&gt;</span><br><span class="line">&lt;RelativeLayout xmlns:android=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="line">    xmlns:app=<span class="string">&quot;http://schemas.android.com/apk/res-auto&quot;</span></span><br><span class="line">    xmlns:custom=<span class="string">&quot;http://schemas.android.com/apk/res-auto&quot;</span><span class="comment">//必须自定义命名空间</span></span><br><span class="line">    xmlns:tools=<span class="string">&quot;http://schemas.android.com/tools&quot;</span></span><br><span class="line">    android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">    android:layout_height=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">    tools:ignore=<span class="string">&quot;ResAuto&quot;</span>&gt;</span><br><span class="line">    &lt;com.example.studyview.MyView</span><br><span class="line">        android:layout_width=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">        android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">        custom:titleText=<span class="string">&quot;3712&quot;</span></span><br><span class="line">        android:padding=<span class="string">&quot;10dp&quot;</span></span><br><span class="line">        custom:titleTextColor=<span class="string">&quot;#ff0000&quot;</span></span><br><span class="line">        android:layout_centerInParent=<span class="string">&quot;true&quot;</span></span><br><span class="line">        custom:titleTextSize=<span class="string">&quot;40sp&quot;</span></span><br><span class="line">         /&gt;</span><br><span class="line"></span><br><span class="line">&lt;/RelativeLayout&gt;</span><br></pre></td></tr></table></figure>
-
-<hr>
+1
+2
+3
+4
+5
+6
+7
+8
+9
 
             
         </div>
@@ -817,42 +785,36 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h1 id="全局获取Context的技巧"><a href="#全局获取Context的技巧" class="headerlink" title="全局获取Context的技巧"></a>全局获取Context的技巧</h1><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyApplication</span> : <span class="type">Application</span>() &#123;</span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> &#123;</span><br><span class="line">        <span class="meta">@SuppressLint(<span class="string">&quot;StaticFieldLeak&quot;</span>)</span></span><br><span class="line">        <span class="keyword">lateinit</span> <span class="keyword">var</span> context: Context</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate()</span><br><span class="line">        context = applicationContext</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            全局获取Context的技巧
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
 
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;application</span><br><span class="line">        android:name=<span class="string">&quot;.MyApplication&quot;</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Toast.makeText(MyApplication.context, <span class="string">&quot;onCreate&quot;</span>, Toast.LENGTH_SHORT).show()</span><br></pre></td></tr></table></figure>
+class MyApplication : Application() {
+    companion object {
+        @SuppressLint("StaticFieldLeak")
+        lateinit var context: Context
+    }
+    override fun onCreate() {
+        super.onCreate()
+        context = applicationContext
+    }
+}
 
-<hr>
-<h1 id="Intent传递对象"><a href="#Intent传递对象" class="headerlink" title="Intent传递对象"></a>Intent传递对象</h1><h3 id="Serializable方式"><a href="#Serializable方式" class="headerlink" title="Serializable方式"></a>Serializable方式</h3><ul>
-<li><p><strong>特点</strong>：<code>Serializable</code> 是 Java 提供的一个接口，它标志着一个类可以被序列化</p>
-</li>
-<li><p><strong>用法</strong>：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义一个可以序列化的对象</span></span><br><span class="line"><span class="keyword">data</span> <span class="keyword">class</span> <span class="title class_">User</span>(<span class="keyword">val</span> name: String, <span class="keyword">val</span> age: <span class="built_in">Int</span>) : Serializable</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在第一个Activity中传递对象</span></span><br><span class="line"><span class="keyword">val</span> user = User(<span class="string">&quot;John&quot;</span>, <span class="number">30</span>)</span><br><span class="line"><span class="keyword">val</span> intent = Intent(<span class="keyword">this</span>, SecondActivity::<span class="keyword">class</span>.java)</span><br><span class="line">intent.putExtra(<span class="string">&quot;user_data&quot;</span>, user)</span><br><span class="line">startActivity(intent)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在第二个Activity中接收对象</span></span><br><span class="line"><span class="keyword">val</span> user = intent.getSerializableExtra(<span class="string">&quot;user_data&quot;</span>) <span class="keyword">as</span> User</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="Parcelable方式"><a href="#Parcelable方式" class="headerlink" title="Parcelable方式"></a>Parcelable方式</h3><ul>
-<li><p><strong>特点</strong>：<code>Parcelable</code> 是 Android 提供的一种对象序列化机制，它与 <code>Serializable</code> 类似，目的是将对象转换为可以通过 <code>Intent</code> 或 <code>Bundle</code> 等传递的字节流，但它的实现更加高效。与 Java 标准的 <code>Serializable</code> 相比，<code>Parcelable</code> 更加高效，因为它不会依赖于反射，使用了特定的内存块和优化的序列化方式。</p>
-</li>
-<li><p><strong>用法</strong>：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义一个实现 Parcelable 的对象</span></span><br><span class="line"><span class="keyword">data</span> <span class="keyword">class</span> <span class="title class_">User</span>() : Parcelable &#123;</span><br><span class="line">    <span class="keyword">val</span> name=<span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">val</span> age=<span class="number">0</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">writeToParcel</span><span class="params">(parcel: <span class="type">Parcel</span>, flags: <span class="type">Int</span>)</span></span> &#123;</span><br><span class="line">        parcel.writeString(name)<span class="comment">//写出name</span></span><br><span class="line">        parcel.writeInt(age)<span class="comment">//写出age</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">describeContents</span><span class="params">()</span></span>: <span class="built_in">Int</span> = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span>  CREATOR: Parcelable.Creator&lt;User&gt;&#123;</span><br><span class="line">            <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">createFromParcel</span><span class="params">(parcel: <span class="type">Parcel</span>)</span></span>: User &#123;</span><br><span class="line">                <span class="keyword">val</span> user = User()</span><br><span class="line">               user.name=parcel.readString()?:<span class="string">&quot;&quot;</span><span class="comment">//读取name</span></span><br><span class="line">                user.age=parcel.readInt()<span class="comment">//读取age</span></span><br><span class="line">                <span class="keyword">return</span> user</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">newArray</span><span class="params">(size: <span class="type">Int</span>)</span></span>: Array&lt;User?&gt; &#123;</span><br><span class="line">                <span class="keyword">return</span> arrayOfNulls(size)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在第一个Activity中传递对象</span></span><br><span class="line"><span class="keyword">val</span> user = User()</span><br><span class="line">user.name=<span class="string">&quot;John&quot;</span></span><br><span class="line">user.age=<span class="number">18</span></span><br><span class="line"><span class="keyword">val</span> intent = Intent(<span class="keyword">this</span>, SecondActivity::<span class="keyword">class</span>.java)</span><br><span class="line">intent.putExtra(<span class="string">&quot;user_data&quot;</span>, user)</span><br><span class="line">startActivity(intent)</span><br><span class="line"><span class="comment">// 在第二个Activity中接收对象</span></span><br><span class="line"><span class="keyword">val</span> user = intent.getParcelableExtra(<span class="string">&quot;user_data&quot;</span>) <span class="keyword">as</span> User</span><br></pre></td></tr></table></figure>
 
-<p><strong>注意</strong>：这里的读取顺序和写出的顺序一定要完全相同</p>
-<p>更简单的方法：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Parcelable</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>(<span class="keyword">var</span> name:String,<span class="keyword">var</span> age:<span class="built_in">Int</span>):Parcelable</span><br></pre></td></tr></table></figure></li>
-</ul>
-<hr>
-<h1 id="定制自己的日志工具"><a href="#定制自己的日志工具" class="headerlink" title="定制自己的日志工具"></a>定制自己的日志工具</h1><ul>
-<li>开发阶段将level指定成VERBOSE，正式上线时将其指定成ERROR</li>
-</ul>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">object</span> LogUtil &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">const</span> <span class="keyword">val</span> VERBOSE = <span class="number">1</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">const</span> <span class="keyword">val</span> DEBUG = <span class="number">2</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">const</span> <span class="keyword">val</span> INFO = <span class="number">3</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">const</span> <span class="keyword">val</span> WARN = <span class="number">4</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">const</span> <span class="keyword">val</span> ERROR = <span class="number">5</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> level = VERBOSE</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">v</span><span class="params">(tag: <span class="type">String</span>, msg: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (level &lt;= VERBOSE) &#123;</span><br><span class="line">            Log.v(tag, msg)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">d</span><span class="params">(tag: <span class="type">String</span>, msg: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (level &lt;= DEBUG) &#123;</span><br><span class="line">            Log.d(tag, msg)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">i</span><span class="params">(tag: <span class="type">String</span>, msg: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (level &lt;= INFO) &#123;</span><br><span class="line">            Log.i(tag, msg)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">w</span><span class="params">(tag: <span class="type">String</span>, msg: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (level &lt;= WARN) &#123;</span><br><span class="line">            Log.w(tag, msg)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">e</span><span class="params">(tag: <span class="type">String</span>, msg: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (level &lt;= ERROR) &#123;</span><br><span class="line">            Log.e(tag, msg)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+1
+2
 
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LogUtil.d(<span class="string">&quot;TAG&quot;</span>, <span class="string">&quot;debug log&quot;</span>)</span><br></pre></td></tr></table></figure>
 
-<hr>
-<h1 id="深色主题"><a href="#深色主题" class="headerlink" title="深色主题"></a>深色主题</h1><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">toggleTheme</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> currentMode = AppCompatDelegate.getDefaultNightMode()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (currentMode == AppCompatDelegate.MODE_NIGHT_YES) &#123;</span><br><span class="line">        <span class="comment">// 当前是深色主题，切换到浅色主题</span></span><br><span class="line">        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 当前是浅色主题，切换到深色主题</span></span><br><span class="line">        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 你可以在这里保存用户的选择，以便下次启动时保持一致</span></span><br><span class="line">    <span class="keyword">val</span> sharedPreferences = getSharedPreferences(<span class="string">&quot;settings&quot;</span>, MODE_PRIVATE)</span><br><span class="line">    <span class="keyword">val</span> editor = sharedPreferences.edit()</span><br><span class="line">    editor.putBoolean(<span class="string">&quot;dark_mode&quot;</span>, currentMode == AppCompatDelegate.MODE_NIGHT_YES)</span><br><span class="line">    editor.apply()</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<hr>
-
+<applica
             
         </div>
     </div>
@@ -903,9 +865,9 @@
         <div class="avatar">
             <img src="/images/avatar.jpg" alt="avatar" />
         </div>
-        <div class="name">John Doe</div>
+        <div class="name">Aurora</div>
         <div class="description">
-            <p>Description<br>…</p>
+            <p>欢迎来到我的博客，喜欢的话点个赞</p>
 
         </div>
         
@@ -913,7 +875,7 @@
         <div class="friend-links">
             
             <div class="friend-link">
-                <a target="_blank" rel="noopener" href="https://argvchs.github.io">Argvchs</a>
+                <a href="https://buyu6.github.io/">Argvchs</a>
             </div>
             
         </div>
@@ -929,11 +891,11 @@
     <div id="footer-wrap">
         <div>
             &copy;
-            2022 - 2025 Hexo
+            2022 Customize the server domain name ICP - 2025 Auroraの秘密空间
             <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
-            &commat;John Doe
+            &commat;Aurora
         </div>
         <div>
             Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
