@@ -1,9 +1,8 @@
 ---
-title: 高级技巧(Kotlin)
+title: 高级技巧Kotlin
 date: 2025-06-27 02:02:24
 categories:
 - Android(Kotlin版)
-tags:
 ---
 
 # 全局获取Context的技巧
@@ -21,9 +20,9 @@ class MyApplication : Application() {
 }
 ```
 
-```kotlin
+```xml
 <application
-        android:name=".MyApplication"
+         android:name=".MyApplication" />
 ```
 
 ```kotlin

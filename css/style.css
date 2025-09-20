@@ -1,3 +1,6 @@
+body {
+    background-color: red !important;
+}
 #comments {
   padding: 2.5em;
   background: #fff;
@@ -589,7 +592,7 @@
   height: 40px;
   color: rgba(255,255,255,0.7);
   position: relative;
-  white-space: nowrap;
+  white-space: pre-wrap;
   overflow: hidden;
   z-index: 1;
 }
@@ -839,7 +842,7 @@
   border-radius: 0 5px 5px 0;
   margin: 5px 9px 5px 8px;
   display: inline-block;
-  white-space: nowrap;
+  white-space: pre-wrap;
   text-overflow: ellipsis;
 }
 .nav-right .title-list #outline-list {
@@ -895,7 +898,7 @@
   display: block;
   position: relative;
   padding: 4px 0 4px 12px;
-  white-space: nowrap;
+  white-space: pre-wrap;
   overflow: hidden;
   text-overflow: ellipsis;
   transition: none;
@@ -994,7 +997,7 @@
   padding-left: 32px;
   font-size: 16px;
   line-height: 22px;
-  white-space: nowrap;
+  white-space: pre-wrap;
   text-decoration: none;
   text-overflow: ellipsis;
   color: #55606f;
@@ -1299,7 +1302,7 @@
   position: relative;
   border-radius: 0 5px 5px 0;
   margin: 5px 4px 5px 8px;
-  white-space: nowrap;
+  white-space: pre-wrap;
   display: inline-block;
 }
 #post .pjax article .article-meta .tag a:hover {
@@ -2065,4 +2068,9 @@ font-size
   .shang_box .shang_payselect {
     font-size: 16px;
   }
+}
+/* 精确修复代码块的换行问题 */
+.code-content {
+    white-space: pre-wrap;  /* 允许保留空白符并自动换行 */
+    word-wrap: break-word;    /* 允许长单词或链接内部断开换行 */
 }
