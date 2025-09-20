@@ -160,17 +160,17 @@
 
 
 <div class="post">
-    <a href="/2025/08/20/%E5%A6%82%E4%BD%95%E7%BB%99%E9%A1%B9%E7%9B%AE%E5%BC%95%E5%85%A5AI%E5%8A%A9%E6%89%8B/">
-        <h2 class="post-title">如何给项目引入AI助手</h2>
+    <a href="/2025/02/26/%E7%A2%8E%E7%89%87/">
+        <h2 class="post-title">碎片(Java)</h2>
     </a>
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/AI/">
+            <a href="/categories/Android-Java%E7%89%88/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                AI
+                Android(Java版)
             </a>
         </span>
         
@@ -178,7 +178,7 @@
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2025/8/20
+            2025/2/26
         </span>
         
         
@@ -186,9 +186,15 @@
     <div class="description">
         <div class="content" v-pre>
             
-            这里拿Gemini进行示范
- * 先根据返回的JSON数据格式写出数据模型
-   
+            碎片是什么
+碎片是一种可以嵌入在活动当中的UI片段，它能让程序更加合理充分地利用大屏幕的空间，因而在平板上应用广泛。
+
+
+
+
+碎片的使用方式
+碎片的简单用法
+新建一个左侧碎片布局left_fragment.xml:
 
 1
 2
@@ -196,14 +202,17 @@
 4
 5
 6
+7
+8
+9
+10
+11
 
 
-//AI的api调用请求体和响应体json格式不相同需要区别开来
-data class GeminiRequestBody(val contents:List<Content>)
-data class GeminiResponseBody(val candidates: List<Candidate>)
-data class Candidate(val content: Content)
-data class Content(val parts:List<Part>)
-data c
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layou
             
         </div>
     </div>
@@ -212,21 +221,21 @@ data c
         
         
     </div>
-    <a href="/2025/08/20/%E5%A6%82%E4%BD%95%E7%BB%99%E9%A1%B9%E7%9B%AE%E5%BC%95%E5%85%A5AI%E5%8A%A9%E6%89%8B/" class="go-post">阅读全文</a>
+    <a href="/2025/02/26/%E7%A2%8E%E7%89%87/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
-    <a href="/2025/08/09/%E4%BA%8B%E5%8A%A1%E7%AF%87/">
-        <h2 class="post-title">事务篇</h2>
+    <a href="/2025/02/25/UI%E5%BC%80%E5%8F%91/">
+        <h2 class="post-title">UI开发(Java)</h2>
     </a>
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-SQL/">
+            <a href="/categories/Android-Java%E7%89%88/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                数据库(SQL)
+                Android(Java版)
             </a>
         </span>
         
@@ -234,7 +243,7 @@ data c
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2025/8/9
+            2025/2/25
         </span>
         
         
@@ -242,45 +251,15 @@ data c
     <div class="description">
         <div class="content" v-pre>
             
-            简介
-
-
- * 默认MYSQL事务是自动提交的，所以需要手动开启事务，手动提交事务，有异常手动回滚事务
-
-
-
-
-事务操作
- * 方法一
-   
-   
-   
-   
- * 方法二
-   
-   
-   
-   
-
-
-
-
-事务四大特性
-
-
-
-
-
-并发事务问题
-
-
-
-
-
-事务隔离级别
-
-
-注意：事务隔离级别越高，安全性越高，性能越低
+            常用控件
+TextView
+1.android:id定义唯一标识符
+2.android:layout_width指定宽度有match_parent和wrap_content两个选项，第一个表示当前控件大小和父布局大小一样，第二个表示当前控件大小刚好能包住里面的内容
+3.android:layout_height指定高度，选项和上相同
+4.android:text指定文本显示的内容
+5.android:gravity指定文字对齐方式可选值有top,bottom,left,right,center等，可以用“|”来指定多个值
+6.android:textSize指定文字大小，用sp做单位
+7.an
             
         </div>
     </div>
@@ -289,21 +268,21 @@ data c
         
         
     </div>
-    <a href="/2025/08/09/%E4%BA%8B%E5%8A%A1%E7%AF%87/" class="go-post">阅读全文</a>
+    <a href="/2025/02/25/UI%E5%BC%80%E5%8F%91/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
-    <a href="/2025/08/07/SQL%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/">
-        <h2 class="post-title">SQL多表查询</h2>
+    <a href="/2025/02/24/%E6%B4%BB%E5%8A%A8/">
+        <h2 class="post-title">活动(Java)</h2>
     </a>
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-SQL/">
+            <a href="/categories/Android-Java%E7%89%88/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                数据库(SQL)
+                Android(Java版)
             </a>
         </span>
         
@@ -311,7 +290,7 @@ data c
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2025/8/7
+            2025/2/24
         </span>
         
         
@@ -319,90 +298,30 @@ data c
     <div class="description">
         <div class="content" v-pre>
             
-            多表关系
- * 一对多
-   
-   
-   
-   
- * 多对多
-   
-   
-   
-   
- * 一对一
-   
-   
-   
-   
+            手动创建一个活动的全过程
+1.创建一个活动
+2.创建和加载布局(根元素一般选用LinearLayout的):
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 
 
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-
-多表查询概述
- * 笛卡尔积
-   
-   在数学中，两个集合A,B的所有组合情况(多表查询中，需要消除无效的笛卡尔积)
-   
-   
- * 多表查询分类
-   
-   
-   
-   
-
-
-
-
-内连接
-
-
-
-
-
-外连接
-
-
-
-
-
-自连接
-
-
-
-
-
-联合查询
-
-
-
-
-
-子查询概述
-
-
-
-
-
-标量子查询
-
-
-
-
-
-列子查询
-
-
-
-
-
-行子查询
-
-
-
-
-
-表子查询
+    <Button
+        android
             
         </div>
     </div>
@@ -411,21 +330,21 @@ data c
         
         
     </div>
-    <a href="/2025/08/07/SQL%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/" class="go-post">阅读全文</a>
+    <a href="/2025/02/24/%E6%B4%BB%E5%8A%A8/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
-    <a href="/2025/08/06/SQL%E5%AD%97%E6%AE%B5%E7%BA%A6%E6%9D%9F/">
-        <h2 class="post-title">SQL字段约束</h2>
+    <a href="/2025/02/24/Android%E8%AE%A4%E8%AF%86%E4%BB%A5%E5%8F%8A%E5%85%A5%E9%97%A8/">
+        <h2 class="post-title">Android认识以及入门</h2>
     </a>
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-SQL/">
+            <a href="/categories/Android-Java%E7%89%88/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                数据库(SQL)
+                Android(Java版)
             </a>
         </span>
         
@@ -433,7 +352,7 @@ data c
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2025/8/6
+            2025/2/24
         </span>
         
         
@@ -441,13 +360,27 @@ data c
     <div class="description">
         <div class="content" v-pre>
             
-            概述
+            系统架构
+1.Linux内核层:提供底层驱动
+2.系统运行库层:提供主要的特性支持(通过C/C++库)，同样这一层也有Android运行时库，提供了一些核心库，能允许开发者使用Java来编写应用。
+3.应用框架层:提供了各种API
+4.应用层:安装到手机上的应用程序都属于这一层
 
 
-外键约束
 
 
-外键删除更新行为
+Android应用开发特色
+1.四大组件:活动，服务，广播接收器，内容提供器。
+2.丰富的系统控件
+3.SQLite数据库:让存储数据和读取数据变得更为方便
+4.强大的多媒体
+5.地理位置定位
+
+
+
+
+项目中各个文件的作用
+1.gradle:里面含有gradle wrapper配置文件，需要打开的话必须手动按照
             
         </div>
     </div>
@@ -456,84 +389,21 @@ data c
         
         
     </div>
-    <a href="/2025/08/06/SQL%E5%AD%97%E6%AE%B5%E7%BA%A6%E6%9D%9F/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2025/08/05/SQL%E5%87%BD%E6%95%B0%E7%AF%87/">
-        <h2 class="post-title">SQL函数篇</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-SQL/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                数据库(SQL)
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/8/5
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            字符串函数
-
-
-数值函数
-
-
-日期函数
-
-
-流程函数
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2025/08/05/SQL%E5%87%BD%E6%95%B0%E7%AF%87/" class="go-post">阅读全文</a>
+    <a href="/2025/02/24/Android%E8%AE%A4%E8%AF%86%E4%BB%A5%E5%8F%8A%E5%85%A5%E9%97%A8/" class="go-post">阅读全文</a>
 </div>
 
         <div class="page-current">
     
-    <a class="page-num" href="/page/2/">
+    <a class="page-num" href="/page/11/">
         <i class="fa-solid fa-caret-left fa-fw"></i>
     </a>
     <a class="page-num" href="/">1</a>
     <span class="page-omit">...</span>
     
-    <span class="current">3</span>
-    
-    <a class="page-num" href="/page/4">
-        4
-    </a>
+    <span class="current">12</span>
     
     
-    <a class="page-num" href="/page/5">
-        5
-    </a>
     
-    
-    <span class="page-omit">...</span>
-    <a class="page-num" href="/page/12">12</a>
-    
-    
-    <a class="page-num" href="/page/4/">
-        <i class="fa-solid fa-caret-right fa-fw"></i>
-    </a>
     
 </div>
 

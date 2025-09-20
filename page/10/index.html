@@ -160,17 +160,17 @@
 
 
 <div class="post">
-    <a href="/2025/08/20/%E5%A6%82%E4%BD%95%E7%BB%99%E9%A1%B9%E7%9B%AE%E5%BC%95%E5%85%A5AI%E5%8A%A9%E6%89%8B/">
-        <h2 class="post-title">如何给项目引入AI助手</h2>
+    <a href="/2025/03/28/%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7/">
+        <h2 class="post-title">高级技巧(Java)</h2>
     </a>
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/AI/">
+            <a href="/categories/Android-Java%E7%89%88/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                AI
+                Android(Java版)
             </a>
         </span>
         
@@ -178,7 +178,7 @@
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2025/8/20
+            2025/3/28
         </span>
         
         
@@ -186,9 +186,12 @@
     <div class="description">
         <div class="content" v-pre>
             
-            这里拿Gemini进行示范
- * 先根据返回的JSON数据格式写出数据模型
-   
+            全局获取Context
+1.定制自己的Application类
+
+2.在Manifest.xml中进行初始化
+
+3.如果有LitePal则在Application中调用LitePal初始化方法就行
 
 1
 2
@@ -196,14 +199,22 @@
 4
 5
 6
+7
+8
+9
+10
+11
+12
+13
+14
 
 
-//AI的api调用请求体和响应体json格式不相同需要区别开来
-data class GeminiRequestBody(val contents:List<Content>)
-data class GeminiResponseBody(val candidates: List<Candidate>)
-data class Candidate(val content: Content)
-data class Content(val parts:List<Part>)
-data c
+public class MyApplication extends Application {
+    private static Context context;
+
+    @SuppressLint("MissingSuperCall")
+    @Override
+    public void onCreate() 
             
         </div>
     </div>
@@ -212,21 +223,21 @@ data c
         
         
     </div>
-    <a href="/2025/08/20/%E5%A6%82%E4%BD%95%E7%BB%99%E9%A1%B9%E7%9B%AE%E5%BC%95%E5%85%A5AI%E5%8A%A9%E6%89%8B/" class="go-post">阅读全文</a>
+    <a href="/2025/03/28/%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
-    <a href="/2025/08/09/%E4%BA%8B%E5%8A%A1%E7%AF%87/">
-        <h2 class="post-title">事务篇</h2>
+    <a href="/2025/03/25/Material-Design/">
+        <h2 class="post-title">Material Design(Java)</h2>
     </a>
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-SQL/">
+            <a href="/categories/Android-Java%E7%89%88/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                数据库(SQL)
+                Android(Java版)
             </a>
         </span>
         
@@ -234,7 +245,7 @@ data c
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2025/8/9
+            2025/3/25
         </span>
         
         
@@ -242,45 +253,35 @@ data c
     <div class="description">
         <div class="content" v-pre>
             
-            简介
+            Toolbar
+1.设置主题为Theme.AppCompat.Light.NoActionBar(淡色主题)
 
+2.在layout中使用Toolbar
 
- * 默认MYSQL事务是自动提交的，所以需要手动开启事务，手动提交事务，有异常手动回滚事务
+3..在Mainactivity获取toolbar实例
 
-
-
-
-事务操作
- * 方法一
-   
-   
-   
-   
- * 方法二
-   
-   
-   
-   
+4.设置menu并在Mainactivity中使用
 
 
 
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
 
-事务四大特性
 
-
-
-
-
-并发事务问题
-
-
-
-
-
-事务隔离级别
-
-
-注意：事务隔离级别越高，安全性越高，性能越低
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Th
             
         </div>
     </div>
@@ -289,21 +290,21 @@ data c
         
         
     </div>
-    <a href="/2025/08/09/%E4%BA%8B%E5%8A%A1%E7%AF%87/" class="go-post">阅读全文</a>
+    <a href="/2025/03/25/Material-Design/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
-    <a href="/2025/08/07/SQL%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/">
-        <h2 class="post-title">SQL多表查询</h2>
+    <a href="/2025/03/24/%E6%9C%8D%E5%8A%A1/">
+        <h2 class="post-title">服务(Java)</h2>
     </a>
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-SQL/">
+            <a href="/categories/Android-Java%E7%89%88/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                数据库(SQL)
+                Android(Java版)
             </a>
         </span>
         
@@ -311,7 +312,7 @@ data c
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2025/8/7
+            2025/3/24
         </span>
         
         
@@ -319,90 +320,45 @@ data c
     <div class="description">
         <div class="content" v-pre>
             
-            多表关系
- * 一对多
-   
-   
-   
-   
- * 多对多
-   
-   
-   
-   
- * 一对一
-   
-   
-   
-   
+            Android多线程编程
+线程的基本用法
+（1）1.新建一个类继承自Thread，并重写run方法
+
+​ 2.启动线程
+
+1
+2
+3
+4
+5
+6
+7
 
 
+class MyThread extends Thread{
+    @Override
+    public void run(){
+        //处理具体逻辑
+    }
+}
+new MyThread().start();
 
 
-多表查询概述
- * 笛卡尔积
-   
-   在数学中，两个集合A,B的所有组合情况(多表查询中，需要消除无效的笛卡尔积)
-   
-   
- * 多表查询分类
-   
-   
-   
-   
+(2) 使用Runnable接口的方式来定义一个线程
+
+1
+2
+3
+4
+5
+6
+7
+8
 
 
-
-
-内连接
-
-
-
-
-
-外连接
-
-
-
-
-
-自连接
-
-
-
-
-
-联合查询
-
-
-
-
-
-子查询概述
-
-
-
-
-
-标量子查询
-
-
-
-
-
-列子查询
-
-
-
-
-
-行子查询
-
-
-
-
-
-表子查询
+class MyThread implements Runnable{
+    @Override
+    publ
             
         </div>
     </div>
@@ -411,21 +367,21 @@ data c
         
         
     </div>
-    <a href="/2025/08/07/SQL%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/" class="go-post">阅读全文</a>
+    <a href="/2025/03/24/%E6%9C%8D%E5%8A%A1/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
-    <a href="/2025/08/06/SQL%E5%AD%97%E6%AE%B5%E7%BA%A6%E6%9D%9F/">
-        <h2 class="post-title">SQL字段约束</h2>
+    <a href="/2025/03/19/%E4%BD%BF%E7%94%A8%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/">
+        <h2 class="post-title">使用网络技术(Java)</h2>
     </a>
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-SQL/">
+            <a href="/categories/Android-Java%E7%89%88/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                数据库(SQL)
+                Android(Java版)
             </a>
         </span>
         
@@ -433,7 +389,7 @@ data c
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2025/8/6
+            2025/3/19
         </span>
         
         
@@ -441,13 +397,32 @@ data c
     <div class="description">
         <div class="content" v-pre>
             
-            概述
+            WebView
+可以利用其嵌入一个浏览器
+
+1.在布局文件中引入WebView控件
+
+2.获取该控件实例并设置浏览器属性
+
+3.用setWebViewClient使目标网页在WebView显示
+
+4.调用loadUrl方法传入网址并获取权限
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
 
 
-外键约束
-
-
-外键删除更新行为
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+   
             
         </div>
     </div>
@@ -456,21 +431,21 @@ data c
         
         
     </div>
-    <a href="/2025/08/06/SQL%E5%AD%97%E6%AE%B5%E7%BA%A6%E6%9D%9F/" class="go-post">阅读全文</a>
+    <a href="/2025/03/19/%E4%BD%BF%E7%94%A8%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
-    <a href="/2025/08/05/SQL%E5%87%BD%E6%95%B0%E7%AF%87/">
-        <h2 class="post-title">SQL函数篇</h2>
+    <a href="/2025/03/18/%E6%89%8B%E6%9C%BA%E5%A4%9A%E5%AA%92%E4%BD%93/">
+        <h2 class="post-title">手机多媒体(Java)</h2>
     </a>
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-SQL/">
+            <a href="/categories/Android-Java%E7%89%88/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                数据库(SQL)
+                Android(Java版)
             </a>
         </span>
         
@@ -478,7 +453,7 @@ data c
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2025/8/5
+            2025/3/18
         </span>
         
         
@@ -486,16 +461,78 @@ data c
     <div class="description">
         <div class="content" v-pre>
             
-            字符串函数
+            通知(进阶)
+1.创建通知通道并请求通知权限
 
+2.用getSystemService()获取一个NotificationManager对通知进行管理
 
-数值函数
+3.创建Notification对象并进行一些基础设置
 
+4.用notify()显示通知
 
-日期函数
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
 
-
-流程函数
             
         </div>
     </div>
@@ -504,34 +541,31 @@ data c
         
         
     </div>
-    <a href="/2025/08/05/SQL%E5%87%BD%E6%95%B0%E7%AF%87/" class="go-post">阅读全文</a>
+    <a href="/2025/03/18/%E6%89%8B%E6%9C%BA%E5%A4%9A%E5%AA%92%E4%BD%93/" class="go-post">阅读全文</a>
 </div>
 
         <div class="page-current">
     
-    <a class="page-num" href="/page/2/">
+    <a class="page-num" href="/page/9/">
         <i class="fa-solid fa-caret-left fa-fw"></i>
     </a>
     <a class="page-num" href="/">1</a>
     <span class="page-omit">...</span>
     
-    <span class="current">3</span>
+    <span class="current">10</span>
     
-    <a class="page-num" href="/page/4">
-        4
+    <a class="page-num" href="/page/11">
+        11
     </a>
     
     
-    <a class="page-num" href="/page/5">
-        5
+    <a class="page-num" href="/page/12">
+        12
     </a>
     
     
-    <span class="page-omit">...</span>
-    <a class="page-num" href="/page/12">12</a>
     
-    
-    <a class="page-num" href="/page/4/">
+    <a class="page-num" href="/page/11/">
         <i class="fa-solid fa-caret-right fa-fw"></i>
     </a>
     

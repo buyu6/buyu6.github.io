@@ -160,17 +160,17 @@
 
 
 <div class="post">
-    <a href="/2025/08/20/%E5%A6%82%E4%BD%95%E7%BB%99%E9%A1%B9%E7%9B%AE%E5%BC%95%E5%85%A5AI%E5%8A%A9%E6%89%8B/">
-        <h2 class="post-title">如何给项目引入AI助手</h2>
+    <a href="/2025/03/11/%E5%86%85%E5%AE%B9%E6%8F%90%E4%BE%9B%E5%99%A8/">
+        <h2 class="post-title">内容提供器(Java)</h2>
     </a>
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/AI/">
+            <a href="/categories/Android-Java%E7%89%88/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                AI
+                Android(Java版)
             </a>
         </span>
         
@@ -178,7 +178,7 @@
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2025/8/20
+            2025/3/11
         </span>
         
         
@@ -186,9 +186,185 @@
     <div class="description">
         <div class="content" v-pre>
             
-            这里拿Gemini进行示范
- * 先根据返回的JSON数据格式写出数据模型
+            运行时权限
+危险权限表格
+
+
+运行时申请权限(以打电话为例)
+1.先借助ContextCompat.checkSelfPermission()方法判断用户是否进行了授权。
+
+checkSelfPermission()接收两个参数，第一个是Context，第二个是具体的权限名
+
+2.使用方法的返回值和PackageManager.PERMISSION_GRANTED作比较，不等表示未授权，相等表示已授权
+
+3.把打电话的逻辑封装在**call()方法当中如果授权直接执行该方法，如果未授权，利用ActivityCompat.requestPermissions()**方法向用户申请授权，**req
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2025/03/11/%E5%86%85%E5%AE%B9%E6%8F%90%E4%BE%9B%E5%99%A8/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2025/03/11/Git/">
+        <h2 class="post-title">Git</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/Git/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Git
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/3/11
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            创建代码仓库
+首先配置身份，利用：
+
+git config --global user.name " "
+
+git config --global user.email " "
+
+可以利用git config --list对配置信息进行查看
+
+然后进入到想要创建仓库的相应项目文件中利用 cd 
+
+然后在该目录中输入git init
+
+项目创建完成后会在目录中生成一个隐藏的**.git文件夹，这个文件夹用来记录本地所有的Git操作，可以通过ls -al**命令来查看
+
+如果想删除该仓库，只需删除这个文件夹即可
+
+
+
+
+提交本地代码
+可以使用add和commit提交
+
+add是先将想要提交的代码添
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2025/03/11/Git/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2025/03/07/try-catch%E5%92%8Cfinally/">
+        <h2 class="post-title">try,catch和finally</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/Android-Java%E7%89%88/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Android(Java版)
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/3/7
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            在 Java 中，try、catch 和 finally 是异常处理机制的核心部分。它们用于捕获、处理异常，并确保无论是否发生异常，某些代码都会被执行。下面是对它们的详细解释：
+
+try块
+try 块用于包含可能会抛出异常的代码。如果 try 块中的代码抛出了异常，程序会立即跳转到匹配的 catch 块进行处理。
+
+1
+2
+3
+
+
+try{
+    //可能抛出异常的代码
+}
+
+
+ * try 中的代码是你认为可能会发生异常的部分。例如，读取文件、连接数据库等操作可能会抛出异常。
    
+   
+   
+   
+   
+
+catch块
+catch 块用于捕获和处理异常。如果 try 块中的代码
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2025/03/07/try-catch%E5%92%8Cfinally/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2025/03/06/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">
+        <h2 class="post-title">数据存储(Java)</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/Android-Java%E7%89%88/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Android(Java版)
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/3/6
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            文件存储
+数据存储
+1.新建save方法，运用openFileOutput接收(“文件名”，保存模式（强制覆盖：MODE_PRIVATE,增添追加：MODE_APPEND）)，openFileOutput方法返回的是FileOutputStream对象，通过BufferedWriter将其写入到文件中。
+
+2.重写onDestroy()方法，确保销毁前一定会调用save方法。
 
 1
 2
@@ -196,14 +372,40 @@
 4
 5
 6
-
-
-//AI的api调用请求体和响应体json格式不相同需要区别开来
-data class GeminiRequestBody(val contents:List<Content>)
-data class GeminiResponseBody(val candidates: List<Candidate>)
-data class Candidate(val content: Content)
-data class Content(val parts:List<Part>)
-data c
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+4
             
         </div>
     </div>
@@ -212,21 +414,21 @@ data c
         
         
     </div>
-    <a href="/2025/08/20/%E5%A6%82%E4%BD%95%E7%BB%99%E9%A1%B9%E7%9B%AE%E5%BC%95%E5%85%A5AI%E5%8A%A9%E6%89%8B/" class="go-post">阅读全文</a>
+    <a href="/2025/03/06/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
-    <a href="/2025/08/09/%E4%BA%8B%E5%8A%A1%E7%AF%87/">
-        <h2 class="post-title">事务篇</h2>
+    <a href="/2025/03/03/%E5%B9%BF%E6%92%AD%E6%9C%BA%E5%88%B6/">
+        <h2 class="post-title">广播机制(Java)</h2>
     </a>
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-SQL/">
+            <a href="/categories/Android-Java%E7%89%88/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                数据库(SQL)
+                Android(Java版)
             </a>
         </span>
         
@@ -234,7 +436,7 @@ data c
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2025/8/9
+            2025/3/3
         </span>
         
         
@@ -242,45 +444,22 @@ data c
     <div class="description">
         <div class="content" v-pre>
             
-            简介
+            广播机制简介
+标准广播
 
 
- * 默认MYSQL事务是自动提交的，所以需要手动开启事务，手动提交事务，有异常手动回滚事务
-
-
-
-
-事务操作
- * 方法一
-   
-   
-   
-   
- * 方法二
-   
-   
-   
-   
-
-
-
-
-事务四大特性
+有序广播
 
 
 
 
 
-并发事务问题
+接收系统广播
+动态注册监听网络变化
+简易版
+首先先创建一个类，按例子来是建立一个内部类，并在里面重写父类的onReceive()方法。
 
-
-
-
-
-事务隔离级别
-
-
-注意：事务隔离级别越高，安全性越高，性能越低
+然后在onCreate()方法中首先创建一个IntentFilter的实例，并给他添加一个值为”android.net.conn.CONNECTIVITY_CHANGE”的action，为什么添加这个值，就是因为当网络状态发生变化时，系统发出的正是一条值为”android.net.conn.CONNECTIVITY_CHANGE”的广播，也就是说想监听什么广播就要添加相应的action。接下来创建内部类实例然后
             
         </div>
     </div>
@@ -289,249 +468,27 @@ data c
         
         
     </div>
-    <a href="/2025/08/09/%E4%BA%8B%E5%8A%A1%E7%AF%87/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2025/08/07/SQL%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/">
-        <h2 class="post-title">SQL多表查询</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-SQL/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                数据库(SQL)
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/8/7
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            多表关系
- * 一对多
-   
-   
-   
-   
- * 多对多
-   
-   
-   
-   
- * 一对一
-   
-   
-   
-   
-
-
-
-
-多表查询概述
- * 笛卡尔积
-   
-   在数学中，两个集合A,B的所有组合情况(多表查询中，需要消除无效的笛卡尔积)
-   
-   
- * 多表查询分类
-   
-   
-   
-   
-
-
-
-
-内连接
-
-
-
-
-
-外连接
-
-
-
-
-
-自连接
-
-
-
-
-
-联合查询
-
-
-
-
-
-子查询概述
-
-
-
-
-
-标量子查询
-
-
-
-
-
-列子查询
-
-
-
-
-
-行子查询
-
-
-
-
-
-表子查询
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2025/08/07/SQL%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2025/08/06/SQL%E5%AD%97%E6%AE%B5%E7%BA%A6%E6%9D%9F/">
-        <h2 class="post-title">SQL字段约束</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-SQL/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                数据库(SQL)
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/8/6
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            概述
-
-
-外键约束
-
-
-外键删除更新行为
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2025/08/06/SQL%E5%AD%97%E6%AE%B5%E7%BA%A6%E6%9D%9F/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2025/08/05/SQL%E5%87%BD%E6%95%B0%E7%AF%87/">
-        <h2 class="post-title">SQL函数篇</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-SQL/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                数据库(SQL)
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/8/5
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            字符串函数
-
-
-数值函数
-
-
-日期函数
-
-
-流程函数
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2025/08/05/SQL%E5%87%BD%E6%95%B0%E7%AF%87/" class="go-post">阅读全文</a>
+    <a href="/2025/03/03/%E5%B9%BF%E6%92%AD%E6%9C%BA%E5%88%B6/" class="go-post">阅读全文</a>
 </div>
 
         <div class="page-current">
     
-    <a class="page-num" href="/page/2/">
+    <a class="page-num" href="/page/10/">
         <i class="fa-solid fa-caret-left fa-fw"></i>
     </a>
     <a class="page-num" href="/">1</a>
     <span class="page-omit">...</span>
     
-    <span class="current">3</span>
+    <span class="current">11</span>
     
-    <a class="page-num" href="/page/4">
-        4
+    <a class="page-num" href="/page/12">
+        12
     </a>
     
     
-    <a class="page-num" href="/page/5">
-        5
-    </a>
     
     
-    <span class="page-omit">...</span>
-    <a class="page-num" href="/page/12">12</a>
-    
-    
-    <a class="page-num" href="/page/4/">
+    <a class="page-num" href="/page/12/">
         <i class="fa-solid fa-caret-right fa-fw"></i>
     </a>
     

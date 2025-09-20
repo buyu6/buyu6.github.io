@@ -160,17 +160,17 @@
 
 
 <div class="post">
-    <a href="/2025/08/20/%E5%A6%82%E4%BD%95%E7%BB%99%E9%A1%B9%E7%9B%AE%E5%BC%95%E5%85%A5AI%E5%8A%A9%E6%89%8B/">
-        <h2 class="post-title">如何给项目引入AI助手</h2>
+    <a href="/2025/04/24/UI%E5%BC%80%E5%8F%91-Kotlin/">
+        <h2 class="post-title">UI开发(Kotlin)</h2>
     </a>
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/AI/">
+            <a href="/categories/Android-Kotlin%E7%89%88/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                AI
+                Android(Kotlin版)
             </a>
         </span>
         
@@ -178,7 +178,7 @@
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2025/8/20
+            2025/4/24
         </span>
         
         
@@ -186,9 +186,87 @@
     <div class="description">
         <div class="content" v-pre>
             
-            这里拿Gemini进行示范
- * 先根据返回的JSON数据格式写出数据模型
-   
+            常用控件
+TextView
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+
+<TextView
+        android:id="@+id/textView"//定义唯一标识符
+        android:layout_width="match_parent"//控件宽度
+        android:layout_height="wrap_content"//控件高度
+        android:gravity="center"//文字位置
+        android:textColor="@color/red"//文字颜色
+        android:textSize="2
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2025/04/24/UI%E5%BC%80%E5%8F%91-Kotlin/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2025/04/20/Kotlin%E5%AE%9A%E4%B9%89%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95/">
+        <h2 class="post-title">Kotlin定义静态方法</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/Kotlin/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Kotlin
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/4/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            类静态方法
+kotlin特有，有与静态方法同样的语法特点但并非静态方法
+
+静态方法特点是可以直接使用(类.方法)的形式调用
+
+单例类
+1
+2
+3
+4
+5
+
+
+object Util{
+    fun doAction(){
+        println("do action")
+    }
+}
+
+
+单例类中所以方法皆可以视为静态方法
+
+如果只想某一方法变为静态方法可以使用companion object{}
 
 1
 2
@@ -196,14 +274,17 @@
 4
 5
 6
+7
+8
+9
+10
 
 
-//AI的api调用请求体和响应体json格式不相同需要区别开来
-data class GeminiRequestBody(val contents:List<Content>)
-data class GeminiResponseBody(val candidates: List<Candidate>)
-data class Candidate(val content: Content)
-data class Content(val parts:List<Part>)
-data c
+class Util{
+    fun doAction1(){
+        println("do action1")
+    }
+
             
         </div>
     </div>
@@ -212,21 +293,21 @@ data c
         
         
     </div>
-    <a href="/2025/08/20/%E5%A6%82%E4%BD%95%E7%BB%99%E9%A1%B9%E7%9B%AE%E5%BC%95%E5%85%A5AI%E5%8A%A9%E6%89%8B/" class="go-post">阅读全文</a>
+    <a href="/2025/04/20/Kotlin%E5%AE%9A%E4%B9%89%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
-    <a href="/2025/08/09/%E4%BA%8B%E5%8A%A1%E7%AF%87/">
-        <h2 class="post-title">事务篇</h2>
+    <a href="/2025/04/20/%E6%B4%BB%E5%8A%A8-1/">
+        <h2 class="post-title">活动(Kotlin)</h2>
     </a>
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-SQL/">
+            <a href="/categories/Android-Kotlin%E7%89%88/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                数据库(SQL)
+                Android(Kotlin版)
             </a>
         </span>
         
@@ -234,7 +315,7 @@ data c
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2025/8/9
+            2025/4/20
         </span>
         
         
@@ -242,45 +323,39 @@ data c
     <div class="description">
         <div class="content" v-pre>
             
-            简介
+            Toast
+1.一种提醒方式
+
+2.用法
+
+1
+2
+3
+4
 
 
- * 默认MYSQL事务是自动提交的，所以需要手动开启事务，手动提交事务，有异常手动回滚事务
-
-
-
-
-事务操作
- * 方法一
-   
-   
-   
-   
- * 方法二
-   
-   
-   
-   
-
-
-
-
-事务四大特性
+val button1: Button = findViewById(R.id.button1)
+           button1.setOnClickListener {
+               Toast.makeText(this,"You clicked out",Toast.LENGTH_SHORT).show()
+           }
 
 
 
 
 
-并发事务问题
+ViewBinding
+1.先在build.gradle.kts(app)中导入ViewBinding
 
+2.声明该类型
 
+3.绑定布局
 
-
-
-事务隔离级别
-
-
-注意：事务隔离级别越高，安全性越高，性能越低
+1
+2
+3
+4
+5
+6
             
         </div>
     </div>
@@ -289,21 +364,21 @@ data c
         
         
     </div>
-    <a href="/2025/08/09/%E4%BA%8B%E5%8A%A1%E7%AF%87/" class="go-post">阅读全文</a>
+    <a href="/2025/04/20/%E6%B4%BB%E5%8A%A8-1/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
-    <a href="/2025/08/07/SQL%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/">
-        <h2 class="post-title">SQL多表查询</h2>
+    <a href="/2025/04/19/Kotlin%E6%A0%87%E5%87%86%E5%87%BD%E6%95%B0/">
+        <h2 class="post-title">Kotlin标准函数</h2>
     </a>
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-SQL/">
+            <a href="/categories/Kotlin/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                数据库(SQL)
+                Kotlin
             </a>
         </span>
         
@@ -311,7 +386,7 @@ data c
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2025/8/7
+            2025/4/19
         </span>
         
         
@@ -319,90 +394,42 @@ data c
     <div class="description">
         <div class="content" v-pre>
             
-            多表关系
- * 一对多
-   
-   
-   
-   
- * 多对多
-   
-   
-   
-   
- * 一对一
-   
-   
-   
-   
+            with
+作用：可以在连续调用同一个对象的多个方法时让代码变得更简便
+
+标准形式：
+
+1
+2
+3
+4
 
 
+val result = with (obj){
+    //这里是obj的上下文
+    "value"//with函数返回值
+}
 
 
-多表查询概述
- * 笛卡尔积
-   
-   在数学中，两个集合A,B的所有组合情况(多表查询中，需要消除无效的笛卡尔积)
-   
-   
- * 多表查询分类
-   
-   
-   
-   
+实例：
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
 
 
-
-
-内连接
-
-
-
-
-
-外连接
-
-
-
-
-
-自连接
-
-
-
-
-
-联合查询
-
-
-
-
-
-子查询概述
-
-
-
-
-
-标量子查询
-
-
-
-
-
-列子查询
-
-
-
-
-
-行子查询
-
-
-
-
-
-表子查询
+val list= listOf("Apple","Banana","Pear")
+    val result=with(StringBuilder()){
+        append("Start eating fruits.\n")
+        for(fruit in list){
+ 
             
         </div>
     </div>
@@ -411,21 +438,21 @@ data c
         
         
     </div>
-    <a href="/2025/08/07/SQL%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/" class="go-post">阅读全文</a>
+    <a href="/2025/04/19/Kotlin%E6%A0%87%E5%87%86%E5%87%BD%E6%95%B0/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
-    <a href="/2025/08/06/SQL%E5%AD%97%E6%AE%B5%E7%BA%A6%E6%9D%9F/">
-        <h2 class="post-title">SQL字段约束</h2>
+    <a href="/2025/04/15/Kotlin%E8%AF%AD%E6%B3%95/">
+        <h2 class="post-title">Kotlin语法</h2>
     </a>
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-SQL/">
+            <a href="/categories/Kotlin/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                数据库(SQL)
+                Kotlin
             </a>
         </span>
         
@@ -433,7 +460,7 @@ data c
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2025/8/6
+            2025/4/15
         </span>
         
         
@@ -441,13 +468,34 @@ data c
     <div class="description">
         <div class="content" v-pre>
             
-            概述
+            变量和函数
+变量
+1.由val和var声明变量，其中val声明不可变变量，var声明可变变量(建议所有变量开始由val修饰，后根据需要选择用var修饰)
+
+2.也可以显示的声明变量类型，如val a : Int = 10
+
+3.数据类型：
 
 
-外键约束
+
+函数
+1.标准形式：
+
+1
+2
+3
 
 
-外键删除更新行为
+fun methodName(param1: Int, param2: Int):Int{
+return 0
+}
+
+
+2.语法糖：
+
+当一个函数只有一行代码时，可以直接将那行代码直接写在函数定义的尾部用等号连接
+
+fun largeNumber(num1: Int, num2: Int) = max(num1,n
             
         </div>
     </div>
@@ -456,74 +504,26 @@ data c
         
         
     </div>
-    <a href="/2025/08/06/SQL%E5%AD%97%E6%AE%B5%E7%BA%A6%E6%9D%9F/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2025/08/05/SQL%E5%87%BD%E6%95%B0%E7%AF%87/">
-        <h2 class="post-title">SQL函数篇</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-SQL/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                数据库(SQL)
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/8/5
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            字符串函数
-
-
-数值函数
-
-
-日期函数
-
-
-流程函数
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2025/08/05/SQL%E5%87%BD%E6%95%B0%E7%AF%87/" class="go-post">阅读全文</a>
+    <a href="/2025/04/15/Kotlin%E8%AF%AD%E6%B3%95/" class="go-post">阅读全文</a>
 </div>
 
         <div class="page-current">
     
-    <a class="page-num" href="/page/2/">
+    <a class="page-num" href="/page/8/">
         <i class="fa-solid fa-caret-left fa-fw"></i>
     </a>
     <a class="page-num" href="/">1</a>
     <span class="page-omit">...</span>
     
-    <span class="current">3</span>
+    <span class="current">9</span>
     
-    <a class="page-num" href="/page/4">
-        4
+    <a class="page-num" href="/page/10">
+        10
     </a>
     
     
-    <a class="page-num" href="/page/5">
-        5
+    <a class="page-num" href="/page/11">
+        11
     </a>
     
     
@@ -531,7 +531,7 @@ data c
     <a class="page-num" href="/page/12">12</a>
     
     
-    <a class="page-num" href="/page/4/">
+    <a class="page-num" href="/page/10/">
         <i class="fa-solid fa-caret-right fa-fw"></i>
     </a>
     

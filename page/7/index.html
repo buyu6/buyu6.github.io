@@ -160,17 +160,17 @@
 
 
 <div class="post">
-    <a href="/2025/08/20/%E5%A6%82%E4%BD%95%E7%BB%99%E9%A1%B9%E7%9B%AE%E5%BC%95%E5%85%A5AI%E5%8A%A9%E6%89%8B/">
-        <h2 class="post-title">如何给项目引入AI助手</h2>
+    <a href="/2025/05/11/%E6%B3%9B%E5%9E%8B%E5%92%8C%E5%A7%94%E6%89%98/">
+        <h2 class="post-title">泛型和委托</h2>
     </a>
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/AI/">
+            <a href="/categories/Kotlin/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                AI
+                Kotlin
             </a>
         </span>
         
@@ -178,7 +178,7 @@
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2025/8/20
+            2025/5/11
         </span>
         
         
@@ -186,24 +186,161 @@
     <div class="description">
         <div class="content" v-pre>
             
-            这里拿Gemini进行示范
- * 先根据返回的JSON数据格式写出数据模型
+            泛型
+定义泛型类
+ * 语法结构
    
+   1
+   2
+   3
+   4
+   5
+   6
+   
+   
+   //T代指泛型是一种约定俗成
+   class MyClass<T> {
+       fun method(param:T):T{
+           return param
+       }
+   }
+   
+   
+   
+ * 调用
+   
+   1
+   2
+   3
+   
+   
+   val myClass=MyClass<Int>()
+      val result=myClass.method(123)
+      println(result)
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2025/05/11/%E6%B3%9B%E5%9E%8B%E5%92%8C%E5%A7%94%E6%89%98/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2025/05/11/Kotlin%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0/">
+        <h2 class="post-title">Kotlin内置函数</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/Kotlin/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Kotlin
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/5/11
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            内置函数
+ * use
+   
+   可以保证Lambda表达式中的所有代码执行完毕后自动将外层的流关闭，这样就不用再编写finally语句手动关闭了
+   
+   
+ * forEachLine
+   
+   它会将读取的每行内容回调到Lambda表达式，在lambda中完成拼接逻辑
+   
+   
+ * arrayOf
+   
+   用于便捷创建数组
+   
+   
+ * by lazy
+   
+   懒加载技术，可以先不执行，第一次调用时再执行其中的逻辑
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2025/05/11/Kotlin%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2025/05/11/%E6%8E%A2%E7%A9%B6ContentProvider-Kotlin/">
+        <h2 class="post-title">探究ContentProvider(Kotlin)</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/Android-Kotlin%E7%89%88/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Android(Kotlin版)
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/5/11
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            运行时权限
+权限机制
+ * 分类
+   
+   普通权限和危险权限（还包括一些特殊权限但使用不多，不参与讨论）
+   
+   
+ * 危险权限
+   
+   
+   
+   
+ * 特点
+   
+   普通权限直接在AndroidManifest.xml中声明即可
+   
+   危险权限需要进行运行时权限处理
+   
+   原则上用户一旦同意某一个权限申请，同组的其它权限会自动授权，但不要基于此规则来实现任何逻辑功能
+   
+   
+
+运行时申请权限
+1.在AndroidManifest.xml中声明权限
 
 1
-2
-3
-4
-5
-6
 
 
-//AI的api调用请求体和响应体json格式不相同需要区别开来
-data class GeminiRequestBody(val contents:List<Content>)
-data class GeminiResponseBody(val candidates: List<Candidate>)
-data class Candidate(val content: Content)
-data class Content(val parts:List<Part>)
-data c
+<uses-permission android:name="android.
             
         </div>
     </div>
@@ -212,21 +349,21 @@ data c
         
         
     </div>
-    <a href="/2025/08/20/%E5%A6%82%E4%BD%95%E7%BB%99%E9%A1%B9%E7%9B%AE%E5%BC%95%E5%85%A5AI%E5%8A%A9%E6%89%8B/" class="go-post">阅读全文</a>
+    <a href="/2025/05/11/%E6%8E%A2%E7%A9%B6ContentProvider-Kotlin/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
-    <a href="/2025/08/09/%E4%BA%8B%E5%8A%A1%E7%AF%87/">
-        <h2 class="post-title">事务篇</h2>
+    <a href="/2025/05/08/Kotlin%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%E7%9A%84%E5%BA%94%E7%94%A8/">
+        <h2 class="post-title">Kotlin高阶函数的应用</h2>
     </a>
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-SQL/">
+            <a href="/categories/Kotlin/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                数据库(SQL)
+                Kotlin
             </a>
         </span>
         
@@ -234,7 +371,7 @@ data c
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2025/8/9
+            2025/5/8
         </span>
         
         
@@ -242,45 +379,35 @@ data c
     <div class="description">
         <div class="content" v-pre>
             
-            简介
-
-
- * 默认MYSQL事务是自动提交的，所以需要手动开启事务，手动提交事务，有异常手动回滚事务
-
-
-
-
-事务操作
- * 方法一
+            简化SharedPreferences的用法
+ * 通过扩展函数方式像其中添加open函数
    
    
+ * 接收函数类型
+   
+   1
+   2
+   3
+   4
+   5
    
    
- * 方法二
+   fun SharedPreferences.open(block:SharedPreferences.Editor.()->Unit){
+       val editor=edit()
+       editor.block()
+       editor.apply()
+   }
    
    
+   1
+   2
+   3
+   4
+   5
+   6
    
    
-
-
-
-
-事务四大特性
-
-
-
-
-
-并发事务问题
-
-
-
-
-
-事务隔离级别
-
-
-注意：事务隔离级别越高，安全性越高，性能越低
+   //调用
             
         </div>
     </div>
@@ -289,21 +416,21 @@ data c
         
         
     </div>
-    <a href="/2025/08/09/%E4%BA%8B%E5%8A%A1%E7%AF%87/" class="go-post">阅读全文</a>
+    <a href="/2025/05/08/Kotlin%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%E7%9A%84%E5%BA%94%E7%94%A8/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
-    <a href="/2025/08/07/SQL%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/">
-        <h2 class="post-title">SQL多表查询</h2>
+    <a href="/2025/05/08/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8-Kotlin/">
+        <h2 class="post-title">数据存储(Kotlin)</h2>
     </a>
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-SQL/">
+            <a href="/categories/Android-Kotlin%E7%89%88/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                数据库(SQL)
+                Android(Kotlin版)
             </a>
         </span>
         
@@ -311,7 +438,7 @@ data c
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2025/8/7
+            2025/5/8
         </span>
         
         
@@ -319,90 +446,32 @@ data c
     <div class="description">
         <div class="content" v-pre>
             
-            多表关系
- * 一对多
+            文件存储
+存储数据
+ * 通过openFileOutput()得到FileOutputStream对象
    
    
+ * 借助它构建一个OutputStreamWriter对象在借助这个构建一个BufferedWriter对象
    
    
- * 多对多
+ * 利用BufferedWriter将内容写入文件
+   
+   1
+   2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+   11
    
    
-   
-   
- * 一对一
-   
-   
-   
-   
-
-
-
-
-多表查询概述
- * 笛卡尔积
-   
-   在数学中，两个集合A,B的所有组合情况(多表查询中，需要消除无效的笛卡尔积)
-   
-   
- * 多表查询分类
-   
-   
-   
-   
-
-
-
-
-内连接
-
-
-
-
-
-外连接
-
-
-
-
-
-自连接
-
-
-
-
-
-联合查询
-
-
-
-
-
-子查询概述
-
-
-
-
-
-标量子查询
-
-
-
-
-
-列子查询
-
-
-
-
-
-行子查询
-
-
-
-
-
-表子查询
+   private fun save(inputText: String) {
+           try {
+              val outp
             
         </div>
     </div>
@@ -411,119 +480,26 @@ data c
         
         
     </div>
-    <a href="/2025/08/07/SQL%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2025/08/06/SQL%E5%AD%97%E6%AE%B5%E7%BA%A6%E6%9D%9F/">
-        <h2 class="post-title">SQL字段约束</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-SQL/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                数据库(SQL)
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/8/6
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            概述
-
-
-外键约束
-
-
-外键删除更新行为
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2025/08/06/SQL%E5%AD%97%E6%AE%B5%E7%BA%A6%E6%9D%9F/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2025/08/05/SQL%E5%87%BD%E6%95%B0%E7%AF%87/">
-        <h2 class="post-title">SQL函数篇</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-SQL/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                数据库(SQL)
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/8/5
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            字符串函数
-
-
-数值函数
-
-
-日期函数
-
-
-流程函数
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2025/08/05/SQL%E5%87%BD%E6%95%B0%E7%AF%87/" class="go-post">阅读全文</a>
+    <a href="/2025/05/08/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8-Kotlin/" class="go-post">阅读全文</a>
 </div>
 
         <div class="page-current">
     
-    <a class="page-num" href="/page/2/">
+    <a class="page-num" href="/page/6/">
         <i class="fa-solid fa-caret-left fa-fw"></i>
     </a>
     <a class="page-num" href="/">1</a>
     <span class="page-omit">...</span>
     
-    <span class="current">3</span>
+    <span class="current">7</span>
     
-    <a class="page-num" href="/page/4">
-        4
+    <a class="page-num" href="/page/8">
+        8
     </a>
     
     
-    <a class="page-num" href="/page/5">
-        5
+    <a class="page-num" href="/page/9">
+        9
     </a>
     
     
@@ -531,7 +507,7 @@ data c
     <a class="page-num" href="/page/12">12</a>
     
     
-    <a class="page-num" href="/page/4/">
+    <a class="page-num" href="/page/8/">
         <i class="fa-solid fa-caret-right fa-fw"></i>
     </a>
     

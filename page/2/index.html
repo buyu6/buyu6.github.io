@@ -158,18 +158,274 @@
     <div id="home-posts">
         
 
+
 <div class="post">
-    <a href="/2025/08/20/%E5%A6%82%E4%BD%95%E7%BB%99%E9%A1%B9%E7%9B%AE%E5%BC%95%E5%85%A5AI%E5%8A%A9%E6%89%8B/">
-        <h2 class="post-title">如何给项目引入AI助手</h2>
+    <a href="/2025/08/26/%E5%8E%9F%E7%A0%81%E8%A1%A5%E7%A0%81%E5%8F%8D%E7%A0%81/">
+        <h2 class="post-title">原码补码反码</h2>
     </a>
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/AI/">
+            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%BA%95%E5%B1%82/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                AI
+                计算机底层
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/8/26
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            三者关系
+
+
+原码的弊端
+
+
+反码出现的目的
+解决原码不能计算负数的问题
+
+反码的弊端
+负数计算时结果不跨0没有任何问题，但是结果跨0会和实际结果有1的偏差
+
+补码出现的目的
+解决反码计算时的跨0问题
+
+注意：
+
+ * 计算机中数据的存储及运算都是以补码的形式进行的，补码完美解决了二进制负数的运算问题
+   
+   
+ * 原码反码的范围是-127~+127
+   
+   
+ * 补码的范围是-128~+127
+   
+   
+
+运算符
+
+
+左移一次相当于乘2
+
+右移一次相当于除2
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2025/08/26/%E5%8E%9F%E7%A0%81%E8%A1%A5%E7%A0%81%E5%8F%8D%E7%A0%81/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2025/08/25/%E8%BF%90%E7%AE%97%E7%AC%A6/">
+        <h2 class="post-title">运算符</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/Java/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Java
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/8/25
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            运算符与表达式
+
+
+算术运算符
++（加），-（减），*（乘），/（除），%（取模/取余）
+
+如果有小数参与运算，结果有可能不准确
+
+类型转换
+ * 隐式转换（自动类型提升）
+   
+   定义：把取值范围小的数据转成取值范围大的数据
+   
+   提升规则：
+   
+    1. 取值范围小的和取值范围大的进行运算，小的会先转成大的再进行运算
+    2. byte，short，char三种类型数据进行运算会优先转成int类型再进行运算
+   
+   
+ * 强制转换
+   
+   定义：把取值范围大的数据赋值给取值范围小的变量
+   
+   格式：目标数据类型 变量=（目标数据类型）被强制转
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2025/08/25/%E8%BF%90%E7%AE%97%E7%AC%A6/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2025/08/23/Java%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/">
+        <h2 class="post-title">Java基础概念</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/Java/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Java
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/8/23
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            注释
+注释的定义
+ * 注释是在程序指定位置添加的说明性信息
+ * 对代码的解释，不参与编译
+
+分类
+ * 单行注释 格式//注释信息
+ * 多行注释 格式/* 注释信息 */
+ * 文档注释 格式/**注释信息*/
+
+
+
+
+关键字
+特点及定义
+ * 被java赋予特定含义的英文单词
+ * 关键字字母全部小写
+
+class
+ * 用于创建或定义一个类
+ * 类是java最基本的组成单元
+
+
+
+
+字面量
+分类
+
+
+‘\t’制表符
+在打印的时候，把前面字符串的长度补齐到8，或者8的整数倍。最少补1个空格，最多补8个。
+
+
+
+
+数据类型
+分类
+基本数据类型和引用数据类型
+
+基本数据类型
+
+
+ * l
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2025/08/23/Java%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2025/08/23/Java%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%9A%84%E5%8E%9F%E7%90%86/">
+        <h2 class="post-title">Java跨平台的原理</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/Java/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Java
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/8/23
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            * 通过虚拟机实现的
+ * Java语言不是直接运行在操作系统里面的，而是运行在虚拟机中
+ * 针对于不同的操作系统，安装不同的虚拟机即可
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2025/08/23/Java%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%9A%84%E5%8E%9F%E7%90%86/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2025/08/20/CMD/">
+        <h2 class="post-title">CMD</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/Java/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Java
             </a>
         </span>
         
@@ -185,24 +441,15 @@
     <div class="description">
         <div class="content" v-pre>
             
-            这里拿Gemini进行示范
- * 先根据返回的JSON数据格式写出数据模型
-   
-
-1
-2
-3
-4
-5
-6
-
-
-//AI的api调用请求体和响应体json格式不相同需要区别开来
-data class GeminiRequestBody(val contents:List<Content>)
-data class GeminiResponseBody(val candidates: List<Candidate>)
-data class Candidate(val content: Content)
-data class Content(val parts:List<Part>)
-data c
+            常见CMD命令
+ * 盘符名称+冒号切换盘符
+ * dir查看当前路径下内容(隐藏的也会展示出来)
+ * cd+目录进入单级目录
+ * **cd 目录1\目录2\ **进入多级目录
+ * **cd ..**回退上一级目录
+ * **cd \ **回退到盘符目录
+ * cls 清屏
+ * exit 退出命令窗口
             
         </div>
     </div>
@@ -211,613 +458,8 @@ data c
         
         
     </div>
-    <a href="/2025/08/20/%E5%A6%82%E4%BD%95%E7%BB%99%E9%A1%B9%E7%9B%AE%E5%BC%95%E5%85%A5AI%E5%8A%A9%E6%89%8B/" class="go-post">阅读全文</a>
+    <a href="/2025/08/20/CMD/" class="go-post">阅读全文</a>
 </div>
-
-<div class="post">
-    <a href="/2025/08/09/%E4%BA%8B%E5%8A%A1%E7%AF%87/">
-        <h2 class="post-title">事务篇</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-SQL/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                数据库(SQL)
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/8/9
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            简介
-
-
- * 默认MYSQL事务是自动提交的，所以需要手动开启事务，手动提交事务，有异常手动回滚事务
-
-
-
-
-事务操作
- * 方法一
-   
-   
-   
-   
- * 方法二
-   
-   
-   
-   
-
-
-
-
-事务四大特性
-
-
-
-
-
-并发事务问题
-
-
-
-
-
-事务隔离级别
-
-
-注意：事务隔离级别越高，安全性越高，性能越低
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2025/08/09/%E4%BA%8B%E5%8A%A1%E7%AF%87/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2025/08/07/SQL%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/">
-        <h2 class="post-title">SQL多表查询</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-SQL/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                数据库(SQL)
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/8/7
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            多表关系
- * 一对多
-   
-   
-   
-   
- * 多对多
-   
-   
-   
-   
- * 一对一
-   
-   
-   
-   
-
-
-
-
-多表查询概述
- * 笛卡尔积
-   
-   在数学中，两个集合A,B的所有组合情况(多表查询中，需要消除无效的笛卡尔积)
-   
-   
- * 多表查询分类
-   
-   
-   
-   
-
-
-
-
-内连接
-
-
-
-
-
-外连接
-
-
-
-
-
-自连接
-
-
-
-
-
-联合查询
-
-
-
-
-
-子查询概述
-
-
-
-
-
-标量子查询
-
-
-
-
-
-列子查询
-
-
-
-
-
-行子查询
-
-
-
-
-
-表子查询
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2025/08/07/SQL%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2025/08/06/SQL%E5%AD%97%E6%AE%B5%E7%BA%A6%E6%9D%9F/">
-        <h2 class="post-title">SQL字段约束</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-SQL/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                数据库(SQL)
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/8/6
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            概述
-
-
-外键约束
-
-
-外键删除更新行为
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2025/08/06/SQL%E5%AD%97%E6%AE%B5%E7%BA%A6%E6%9D%9F/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2025/08/05/SQL%E5%87%BD%E6%95%B0%E7%AF%87/">
-        <h2 class="post-title">SQL函数篇</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-SQL/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                数据库(SQL)
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/8/5
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            字符串函数
-
-
-数值函数
-
-
-日期函数
-
-
-流程函数
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2025/08/05/SQL%E5%87%BD%E6%95%B0%E7%AF%87/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2025/08/02/SQL%E5%9F%BA%E7%A1%80%E7%AF%87/">
-        <h2 class="post-title">SQL基础篇</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-SQL/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                数据库(SQL)
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/8/2
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            SQL通用语法及其分类
-通用语法
-
-
-分类
-
-
-
-
-
-DDL
-数据库操作
- * 查询
-   
-   1
-   2
-   
-   
-   show databases;#查询所有数据库
-   select database();#查询当前数据库
-   
-   
-   
- * 创建
-   
-   1
-   
-   
-   create database [IF NOT EXISTS] 数据库名 [DEFAULT CHARSET 字符集] [COLLATE 排列规则];
-   
-   
-   
- * 删除
-   
-   1
-   
-   
-   DROP DATABASE [IF EXISTS] 数
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2025/08/02/SQL%E5%9F%BA%E7%A1%80%E7%AF%87/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2025/07/06/%E8%87%AA%E5%AE%9A%E4%B9%89ViewGroup/">
-        <h2 class="post-title">自定义ViewGroup</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/%E8%87%AA%E5%AE%9A%E4%B9%89View/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                自定义View
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/7/6
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            作用
-类似于自定义布局
-
-职责
-ViewGroup相当于一个放置View的容器，并且我们在写布局xml的时候，会告诉容器（凡是以layout为开头的属性，都是为用于告诉容器的），我们的宽度（layout_width）、高度（layout_height）、对齐方式（layout_gravity）等；当然还有margin等；于是乎，ViewGroup的职能为：给childView计算出建议的宽和高和测量模式 ；决定childView的位置；为什么只是建议的宽和高，而不是直接确定呢，别忘了childView宽和高可以设置为wrap_content，这样只有childView才能计算出自己的宽和高。
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2025/07/06/%E8%87%AA%E5%AE%9A%E4%B9%89ViewGroup/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2025/07/05/%E8%87%AA%E5%AE%9A%E4%B9%89View-%E4%BA%8C/">
-        <h2 class="post-title">自定义View(二)</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/%E8%87%AA%E5%AE%9A%E4%B9%89View/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                自定义View
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/7/5
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            目的
-自定义View显示一张图片，下面包含图片的文本介绍
-
-实现
- * 自定义属性
-
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-
-
-<resources>
-    <attr name="titleText" format="string" />
-    <attr name="titleTextColor" format="color" />
-    <attr name="titleTextSize" format="dimension" />
-    <attr name="image" format="reference"/>
-    <
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2025/07/05/%E8%87%AA%E5%AE%9A%E4%B9%89View-%E4%BA%8C/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2025/07/04/%E8%87%AA%E5%AE%9A%E4%B9%89View(%E4%B8%80)/">
-        <h2 class="post-title">自定义View(一)</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/%E8%87%AA%E5%AE%9A%E4%B9%89View/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                自定义View
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/7/4
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            基本步骤
-自定义View的属性
- * format取值类型：
-   
-   格式类型含义说明reference资源引用，例如 @string/app_name、@drawable/iconstring字符串文本，例如 "Hello"integer整数，例如 42boolean布尔值，例如 true、falsecolor颜色值，例如 #FF0000 或 @color/primarydimension尺寸值，例如 16dp、12spfloat浮点数，例如 3.14enum枚举值（需配合 <enum> 使用）flag位标志（可多选，需配合 <flag> 使用）
-
-1
-2
-3
-4
-5
-6
-7
-8
-9
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2025/07/04/%E8%87%AA%E5%AE%9A%E4%B9%89View(%E4%B8%80)/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2025/06/27/%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7-Kotlin/">
-        <h2 class="post-title">高级技巧(Kotlin)</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/Android-Kotlin%E7%89%88/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Android(Kotlin版)
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/6/27
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            全局获取Context的技巧
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-
-
-class MyApplication : Application() {
-    companion object {
-        @SuppressLint("StaticFieldLeak")
-        lateinit var context: Context
-    }
-    override fun onCreate() {
-        super.onCreate()
-        context = applicationContext
-    }
-}
-
-
-1
-2
-
-
-<applica
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2025/06/27/%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7-Kotlin/" class="go-post">阅读全文</a>
-</div>
-
 
         <div class="page-current">
     
@@ -840,7 +482,7 @@ class MyApplication : Application() {
     
     
     <span class="page-omit">...</span>
-    <a class="page-num" href="/page/6">6</a>
+    <a class="page-num" href="/page/12">12</a>
     
     
     <a class="page-num" href="/page/3/">
@@ -849,6 +491,7 @@ class MyApplication : Application() {
     
 </div>
 
+    
     </div>
     
     <div id="home-card">

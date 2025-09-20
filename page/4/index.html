@@ -158,18 +158,19 @@
     <div id="home-posts">
         
 
+
 <div class="post">
-    <a href="/2025/05/11/%E6%B3%9B%E5%9E%8B%E5%92%8C%E5%A7%94%E6%89%98/">
-        <h2 class="post-title">泛型和委托</h2>
+    <a href="/2025/08/02/SQL%E5%9F%BA%E7%A1%80%E7%AF%87/">
+        <h2 class="post-title">SQL基础篇</h2>
     </a>
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/Kotlin/">
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-SQL/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                Kotlin
+                数据库(SQL)
             </a>
         </span>
         
@@ -177,7 +178,7 @@
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2025/5/11
+            2025/8/2
         </span>
         
         
@@ -185,37 +186,44 @@
     <div class="description">
         <div class="content" v-pre>
             
-            泛型
-定义泛型类
- * 语法结构
+            SQL通用语法及其分类
+通用语法
+
+
+分类
+
+
+
+
+
+DDL
+数据库操作
+ * 查询
    
    1
    2
-   3
-   4
-   5
-   6
    
    
-   //T代指泛型是一种约定俗成
-   class MyClass<T> {
-       fun method(param:T):T{
-           return param
-       }
-   }
+   show databases;#查询所有数据库
+   select database();#查询当前数据库
    
    
    
- * 调用
+ * 创建
    
    1
-   2
-   3
    
    
-   val myClass=MyClass<Int>()
-      val result=myClass.method(123)
-      println(result)
+   create database [IF NOT EXISTS] 数据库名 [DEFAULT CHARSET 字符集] [COLLATE 排列规则];
+   
+   
+   
+ * 删除
+   
+   1
+   
+   
+   DROP DATABASE [IF EXISTS] 数
             
         </div>
     </div>
@@ -224,21 +232,21 @@
         
         
     </div>
-    <a href="/2025/05/11/%E6%B3%9B%E5%9E%8B%E5%92%8C%E5%A7%94%E6%89%98/" class="go-post">阅读全文</a>
+    <a href="/2025/08/02/SQL%E5%9F%BA%E7%A1%80%E7%AF%87/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
-    <a href="/2025/05/11/Kotlin%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0/">
-        <h2 class="post-title">Kotlin内置函数</h2>
+    <a href="/2025/07/06/%E8%87%AA%E5%AE%9A%E4%B9%89ViewGroup/">
+        <h2 class="post-title">自定义ViewGroup</h2>
     </a>
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/Kotlin/">
+            <a href="/categories/%E8%87%AA%E5%AE%9A%E4%B9%89View/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                Kotlin
+                自定义View
             </a>
         </span>
         
@@ -246,7 +254,7 @@
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2025/5/11
+            2025/7/6
         </span>
         
         
@@ -254,25 +262,12 @@
     <div class="description">
         <div class="content" v-pre>
             
-            内置函数
- * use
-   
-   可以保证Lambda表达式中的所有代码执行完毕后自动将外层的流关闭，这样就不用再编写finally语句手动关闭了
-   
-   
- * forEachLine
-   
-   它会将读取的每行内容回调到Lambda表达式，在lambda中完成拼接逻辑
-   
-   
- * arrayOf
-   
-   用于便捷创建数组
-   
-   
- * by lazy
-   
-   懒加载技术，可以先不执行，第一次调用时再执行其中的逻辑
+            作用
+类似于自定义布局
+
+职责
+ViewGroup相当于一个放置View的容器，并且我们在写布局xml的时候，会告诉容器（凡是以layout为开头的属性，都是为用于告诉容器的），我们的宽度（layout_width）、高度（layout_height）、对齐方式（layout_gravity）等；当然还有margin等；于是乎，ViewGroup的职能为：给childView计算出建议的宽和高和测量模式 ；决定childView的位置；为什么只是建议的宽和高，而不是直接确定呢，别忘了childView宽和高可以设置为wrap_content，这样只有childView才能计算出自己的宽和高。
+
             
         </div>
     </div>
@@ -281,21 +276,21 @@
         
         
     </div>
-    <a href="/2025/05/11/Kotlin%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0/" class="go-post">阅读全文</a>
+    <a href="/2025/07/06/%E8%87%AA%E5%AE%9A%E4%B9%89ViewGroup/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
-    <a href="/2025/05/11/%E6%8E%A2%E7%A9%B6ContentProvider-Kotlin/">
-        <h2 class="post-title">探究ContentProvider(Kotlin)</h2>
+    <a href="/2025/07/05/%E8%87%AA%E5%AE%9A%E4%B9%89View-%E4%BA%8C/">
+        <h2 class="post-title">自定义View(二)</h2>
     </a>
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/Android-Kotlin%E7%89%88/">
+            <a href="/categories/%E8%87%AA%E5%AE%9A%E4%B9%89View/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                Android(Kotlin版)
+                自定义View
             </a>
         </span>
         
@@ -303,7 +298,7 @@
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2025/5/11
+            2025/7/5
         </span>
         
         
@@ -311,214 +306,12 @@
     <div class="description">
         <div class="content" v-pre>
             
-            运行时权限
-权限机制
- * 分类
-   
-   普通权限和危险权限（还包括一些特殊权限但使用不多，不参与讨论）
-   
-   
- * 危险权限
-   
-   
-   
-   
- * 特点
-   
-   普通权限直接在AndroidManifest.xml中声明即可
-   
-   危险权限需要进行运行时权限处理
-   
-   原则上用户一旦同意某一个权限申请，同组的其它权限会自动授权，但不要基于此规则来实现任何逻辑功能
-   
-   
+            目的
+自定义View显示一张图片，下面包含图片的文本介绍
 
-运行时申请权限
-1.在AndroidManifest.xml中声明权限
+实现
+ * 自定义属性
 
-1
-
-
-<uses-permission android:name="android.
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2025/05/11/%E6%8E%A2%E7%A9%B6ContentProvider-Kotlin/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2025/05/08/Kotlin%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%E7%9A%84%E5%BA%94%E7%94%A8/">
-        <h2 class="post-title">Kotlin高阶函数的应用</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/Kotlin/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Kotlin
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/5/8
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            简化SharedPreferences的用法
- * 通过扩展函数方式像其中添加open函数
-   
-   
- * 接收函数类型
-   
-   1
-   2
-   3
-   4
-   5
-   
-   
-   fun SharedPreferences.open(block:SharedPreferences.Editor.()->Unit){
-       val editor=edit()
-       editor.block()
-       editor.apply()
-   }
-   
-   
-   1
-   2
-   3
-   4
-   5
-   6
-   
-   
-   //调用
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2025/05/08/Kotlin%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%E7%9A%84%E5%BA%94%E7%94%A8/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2025/05/08/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8-Kotlin/">
-        <h2 class="post-title">数据存储(Kotlin)</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/Android-Kotlin%E7%89%88/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Android(Kotlin版)
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/5/8
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            文件存储
-存储数据
- * 通过openFileOutput()得到FileOutputStream对象
-   
-   
- * 借助它构建一个OutputStreamWriter对象在借助这个构建一个BufferedWriter对象
-   
-   
- * 利用BufferedWriter将内容写入文件
-   
-   1
-   2
-   3
-   4
-   5
-   6
-   7
-   8
-   9
-   10
-   11
-   
-   
-   private fun save(inputText: String) {
-           try {
-              val outp
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2025/05/08/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8-Kotlin/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2025/05/05/Kotlin%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0/">
-        <h2 class="post-title">Kotlin高阶函数</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/Kotlin/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Kotlin
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/5/5
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            高阶函数
-函数类型
-(String,Int)->Unit
-
-左边是函数接收参数类型，右边是返回值类型
-
-定义
-含有函数类型的就叫高阶函数
-
-实例1
 1
 2
 3
@@ -539,13 +332,12 @@
 18
 
 
-fun num1Andnum2(num1:Int,num2:Int,operation: (Int,Int)->Int):Int{
-    val result=operation(num1,num2)
-    return result
-}
-fun plus(num1:Int,num2:Int):Int{
-    return num1 + num2
-}
+<resources>
+    <attr name="titleText" format="string" />
+    <attr name="titleTextColor" format="color" />
+    <attr name="titleTextSize" format="dimension" />
+    <attr name="image" format="reference"/>
+    <
             
         </div>
     </div>
@@ -554,12 +346,66 @@ fun plus(num1:Int,num2:Int):Int{
         
         
     </div>
-    <a href="/2025/05/05/Kotlin%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0/" class="go-post">阅读全文</a>
+    <a href="/2025/07/05/%E8%87%AA%E5%AE%9A%E4%B9%89View-%E4%BA%8C/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
-    <a href="/2025/05/05/%E5%B9%BF%E6%92%AD%E6%9C%BA%E5%88%B6-Kotlin/">
-        <h2 class="post-title">广播机制(Kotlin)</h2>
+    <a href="/2025/07/04/%E8%87%AA%E5%AE%9A%E4%B9%89View(%E4%B8%80)/">
+        <h2 class="post-title">自定义View(一)</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/%E8%87%AA%E5%AE%9A%E4%B9%89View/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                自定义View
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/7/4
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            基本步骤
+自定义View的属性
+ * format取值类型：
+   
+   格式类型含义说明reference资源引用，例如 @string/app_name、@drawable/iconstring字符串文本，例如 "Hello"integer整数，例如 42boolean布尔值，例如 true、falsecolor颜色值，例如 #FF0000 或 @color/primarydimension尺寸值，例如 16dp、12spfloat浮点数，例如 3.14enum枚举值（需配合 <enum> 使用）flag位标志（可多选，需配合 <flag> 使用）
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2025/07/04/%E8%87%AA%E5%AE%9A%E4%B9%89View(%E4%B8%80)/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2025/06/27/%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7-Kotlin/">
+        <h2 class="post-title">高级技巧Kotlin</h2>
     </a>
     <div class="category-and-date">
         
@@ -576,7 +422,7 @@ fun plus(num1:Int,num2:Int):Int{
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2025/5/5
+            2025/6/27
         </span>
         
         
@@ -584,103 +430,7 @@ fun plus(num1:Int,num2:Int):Int{
     <div class="description">
         <div class="content" v-pre>
             
-            接收系统广播
-动态注册
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-
-
-class MainActivity : AppCompatActivity() {
-    // 声明广播接收器变量
-    lateinit var timeChangeReceiver:TimeChangeReceiver
-    // 声明视图绑定变量
-    private lateinit var binding:ActivityMainBinding
-
-    o
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2025/05/05/%E5%B9%BF%E6%92%AD%E6%9C%BA%E5%88%B6-Kotlin/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2025/05/01/Kotlin%E6%89%A9%E5%B1%95%E5%87%BD%E6%95%B0%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/">
-        <h2 class="post-title">Kotlin扩展函数和运算符重载</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/Kotlin/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Kotlin
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/5/1
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            扩展函数
-语法结构
-1
-2
-3
-
-
-fun ClassName.methodName(param1:Int,param2:Int):Int{
-return 0
-}
-
-
-实例
+            全局获取Context的技巧
 1
 2
 3
@@ -693,27 +443,23 @@ return 0
 10
 
 
-//构建扩展函数
-fun String.lettersCount():Int{
-    var count=0
-    for(char in this){
-        if(char.isLetter()){
-            count++
-        }
+class MyApplication : Application() {
+    companion object {
+        @SuppressLint("StaticFieldLeak")
+        lateinit var context: Context
     }
-    return count
+    override fun onCreate() {
+        super.onCreate()
+        context = applicationContext
+    }
 }
 
 
 1
 2
-3
-4
-5
 
 
-//调用
-fun main
+<applica
             
         </div>
     </div>
@@ -722,142 +468,8 @@ fun main
         
         
     </div>
-    <a href="/2025/05/01/Kotlin%E6%89%A9%E5%B1%95%E5%87%BD%E6%95%B0%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/" class="go-post">阅读全文</a>
+    <a href="/2025/06/27/%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7-Kotlin/" class="go-post">阅读全文</a>
 </div>
-
-<div class="post">
-    <a href="/2025/05/01/%E7%A2%8E%E7%89%87-1/">
-        <h2 class="post-title">碎片(Kotlin)</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/Android-Kotlin%E7%89%88/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Android(Kotlin版)
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/5/1
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            Fragment使用方式
-简单用法
-1.新建碎片布局
-
-2.新建碎片类继承Fragment并在碎片类中动态加载碎片布局
-
-3.将碎片引入活动布局
-
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-
-
-//左碎片布局
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2025/05/01/%E7%A2%8E%E7%89%87-1/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2025/04/25/Kotlin%E5%BB%B6%E8%BF%9F%E5%88%9D%E5%A7%8B%E5%8C%96%E5%92%8C%E5%AF%86%E5%B0%81%E7%B1%BB/">
-        <h2 class="post-title">Kotlin延迟初始化和密封类</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/Kotlin/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Kotlin
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/4/25
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            变量延迟初始化
-关键字
-lateinit
-
-作用
-如果一个变量是全局变量且初始化在后面的过程中进行时该变量不得不赋值为null，但如果这样进行后面调用其任何方法都需要进行判空处理相对麻烦，所以这里可以使用延迟初始化，就不需要将其赋值为null了
-
-注意
-使用延迟初始化时一定要保证后续某处对其完成了初始化
-
-还可以通过代码进行判断是否完成了初始化
-
-1
-2
-3
-4
-
-
-//::adapter.isInitialized表示已经初始化
-if(!::adapter.isInitialized){
-    adapter=MsgAdapter(msgList)
-}
-
-
-
-
-
-密封类
-关键字
-seale
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2025/04/25/Kotlin%E5%BB%B6%E8%BF%9F%E5%88%9D%E5%A7%8B%E5%8C%96%E5%92%8C%E5%AF%86%E5%B0%81%E7%B1%BB/" class="go-post">阅读全文</a>
-</div>
-
 
         <div class="page-current">
     
@@ -879,6 +491,9 @@ seale
     </a>
     
     
+    <span class="page-omit">...</span>
+    <a class="page-num" href="/page/12">12</a>
+    
     
     <a class="page-num" href="/page/5/">
         <i class="fa-solid fa-caret-right fa-fw"></i>
@@ -886,6 +501,7 @@ seale
     
 </div>
 
+    
     </div>
     
     <div id="home-card">

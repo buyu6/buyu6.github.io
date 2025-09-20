@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>高级技巧(Kotlin) | Auroraの秘密空间</title>
+    <title>高级技巧Kotlin | Auroraの秘密空间</title>
     <meta name="author" content="Aurora" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -134,7 +134,7 @@
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
             <div class="article">
     <div>
-        <h1>高级技巧(Kotlin)</h1>
+        <h1>高级技巧Kotlin</h1>
     </div>
     <div class="info">
         <span class="date">
@@ -159,7 +159,7 @@
     <div class="content" v-pre>
         <h1 id="全局获取Context的技巧"><a href="#全局获取Context的技巧" class="headerlink" title="全局获取Context的技巧"></a>全局获取Context的技巧</h1><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyApplication</span> : <span class="type">Application</span>() &#123;</span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> &#123;</span><br><span class="line">        <span class="meta">@SuppressLint(<span class="string">&quot;StaticFieldLeak&quot;</span>)</span></span><br><span class="line">        <span class="keyword">lateinit</span> <span class="keyword">var</span> context: Context</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate()</span><br><span class="line">        context = applicationContext</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;application</span><br><span class="line">        android:name=<span class="string">&quot;.MyApplication&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">application</span></span></span><br><span class="line"><span class="tag">         <span class="attr">android:name</span>=<span class="string">&quot;.MyApplication&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Toast.makeText(MyApplication.context, <span class="string">&quot;onCreate&quot;</span>, Toast.LENGTH_SHORT).show()</span><br></pre></td></tr></table></figure>
 
