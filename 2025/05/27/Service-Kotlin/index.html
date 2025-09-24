@@ -23,8 +23,6 @@
 
 <link href="/css/style.css?v=1.1.0" rel="stylesheet">
 
-<link href="/css/hl_theme/gruvbox-dark.css?v=1.1.0" rel="stylesheet">
-
 <link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
 
 <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
@@ -43,13 +41,14 @@
 
 <script src="/js/iconfont.js?v=1.1.0" ></script>
 
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 7.3.0"><link rel="stylesheet" href="/css/prism-dark.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 <div style="display: none">
   <input class="theme_disqus_on" value="false">
   <input class="theme_preload_comment" value="">
   <input class="theme_blog_path" value="">
   <input id="theme_shortcut" value="true" />
-  <input id="theme_highlight_on" value="true" />
+  <input id="theme_highlight_on" value="false" />
   <input id="theme_code_copy" value="true" />
 </div>
 
@@ -922,7 +921,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="多线程编程"><a href="#多线程编程" class="headerlink" title="多线程编程"></a>多线程编程</h1><h3 id="线程的四种形式"><a href="#线程的四种形式" class="headerlink" title="线程的四种形式"></a>线程的四种形式</h3><ul>
-<li><pre><code class="language-kotlin">class MyThread:Thread()&#123;
+<li><pre class="line-numbers language-language-kotlin"><code class="language-language-kotlin">class MyThread:Thread()&#123;
     override fun run()&#123;
         //编写具体逻辑
     &#125;
@@ -930,15 +929,15 @@
 //启动
 MyThread.start()
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- ```kotlin</span><br><span class="line">  class MyThread:Runnable&#123;</span><br><span class="line">      override fun run()&#123;</span><br><span class="line">          //编写具体逻辑</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  //启动</span><br><span class="line">  val myThread=MyThread()</span><br><span class="line">  Thread(myThread).start()</span><br></pre></td></tr></table></figure>
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-<li><pre><code class="language-kotlin">Thread&#123;
+<li><pre class="line-numbers language-language-kotlin"><code class="language-language-kotlin">Thread&#123;
     //编写具体逻辑
 &#125;.start()
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- ```kotlin</span><br><span class="line">  thread&#123;</span><br><span class="line">      //编写具体逻辑</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 
 **最后一种是Kotlin内置的顶层函数，更加简单方便**
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ul>
 <h3 id="在子线程中更新UI"><a href="#在子线程中更新UI" class="headerlink" title="在子线程中更新UI"></a>在子线程中更新UI</h3><ol>
@@ -1055,20 +1054,6 @@ MyThread.start()
 
         /*高亮代码块行号*/
         
-        $('pre code').each(function(){
-            var lines = $(this).text().trim().split('\n').length, widther='';
-            if (lines>99) {
-                widther = 'widther'
-            }
-            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
-            $(this).addClass('has-numbering ' + widther)
-                    .parent()
-                    .append($numbering);
-            for(var i=1;i<=lines;i++){
-                $numbering.append($('<li/>').text(i));
-            }
-        });
-        
 
         /*访问数量*/
         
@@ -1088,38 +1073,6 @@ MyThread.start()
 </script>
 
 <!--加入行号的高亮代码块样式-->
-
-<style>
-    pre{
-        position: relative;
-        margin-bottom: 24px;
-        border-radius: 10px;
-        border: 1px solid #e2dede;
-        background: #FFF;
-        overflow: hidden;
-    }
-    code.has-numbering{
-        margin-left: 30px;
-    }
-    code.has-numbering.widther{
-        margin-left: 35px;
-    }
-    .pre-numbering{
-        margin: 0;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 20px;
-        padding: 18px 3px 15px 5px;
-        border-right: 1px solid #C3CCD0;
-        text-align: right;
-        color: #AAA;
-        background-color: ;
-    }
-    .pre-numbering.widther {
-        width: 35px;
-    }
-</style>
 
 <!--自定义样式设置-->
 <style>
