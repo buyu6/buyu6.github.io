@@ -45,16 +45,14 @@ relative_link: false
 future: true
 syntax_highlighter: highlight.js
 highlight:
-    enable: false
-    style: github
-    line_number: true
-    auto_detect: false
-
-prismjs:
   enable: true
-  preprocess: true
   line_number: true
-  theme: tomorrow  # 可以换成 ghcolors, tomorrow, okaidia
+  auto_detect: false
+  tab_replace: ''
+  wrap: true
+  hljs: false 
+  theme: atom-one-dark
+
 
 
 
@@ -98,7 +96,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: hexo-theme-particlex
+theme: hexo-theme-3-hexo
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
@@ -110,3 +108,8 @@ deploy:
 auto_excerpt:
   enable: true
   length: 1
+prism_plugin:
+  mode: 'preprocess' # 'preprocess' 模式可以在生成静态文件时处理代码高亮，'runtime' 模式则是在浏览器端实时处理。推荐 'preprocess'。
+  theme: 'dark' # 主题样式，可以换成其他你喜欢的，例如 'default', 'coy', 'dark', 'funky', 'okaidia', 'solarizedlight', 'twilight' 等。
+  line_number: true # 是否显示行号。
+  custom_css: # 如果你需要自定义样式，可以在这里添加 CSS 文件路径。
