@@ -90,7 +90,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(61)</small>
+                <small>(63)</small>
             
         </div>
     </li>
@@ -245,6 +245,21 @@
             
         
     
+        
+            
+                
+    <li>
+        <div data-rel="Android进阶">
+            
+            Android进阶
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
 </ul>
 <div class="left-bottom">
     <div class="menus">
@@ -258,8 +273,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="61">
-<input type="hidden" id="yelog_site_word_count" value="64.7k">
+<input type="hidden" id="yelog_site_posts_number" value="63">
+<input type="hidden" id="yelog_site_word_count" value="66.5k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -312,7 +327,25 @@
     <nav id="title-list-nav">
         
         
-        <a  class="All "
+        <a  class="All Android进阶 "
+           href="/2025/09/28/Android%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Android多进程模式">Android多进程模式</span>
+            <span class="post-date" title="2025-09-28 22:31:44">2025/09/28</span>
+        </a>
+        
+        
+        <a  class="All Android进阶 "
+           href="/2025/09/27/Activity%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Activity启动模式">Activity启动模式</span>
+            <span class="post-date" title="2025-09-27 19:02:53">2025/09/27</span>
+        </a>
+        
+        
+        <a  class="All Android进阶 "
            href="/2025/09/26/Activity%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%85%A8%E9%9D%A2%E5%88%86%E6%9E%90/"
            data-tag=""
            data-author="" >
@@ -886,16 +919,24 @@
         
         
         
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Android进阶">Android进阶</a>
+            
+        </span>
+        
         
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-09-26 19:50:22'>2025-09-26 19:50</time>
+            Created At : <time class="date" title='Updated At: 2025-09-27 19:01:30'>2025-09-26 19:50</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:0</span>
+        <span>Count:462</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -914,7 +955,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B8%E5%9E%8B%E6%83%85%E5%86%B5%E4%B8%8B%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%88%86%E6%9E%90"><span class="toc-text">典型情况下的生命周期分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#onStart%E5%92%8ConResum%E3%80%81onPause%E5%92%8ConStop%E6%8F%8F%E8%BF%B0%E4%B8%8A%E5%B7%AE-%E4%B8%8D%E5%A4%9A%EF%BC%8C%E6%9C%AC%E8%B4%A8%E4%B8%8A%E6%9C%89%E5%95%A5%E4%B8%8D%E5%90%8C%EF%BC%9F"><span class="toc-text">onStart和onResum、onPause和onStop描述上差 不多，本质上有啥不同？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%81%87%E8%AE%BE%E5%BD%93%E5%89%8DActivity%E4%B8%BAA%EF%BC%8C%E6%96%B0%E6%89%93%E5%BC%80%E4%B8%80%E4%B8%AAActivity-B%EF%BC%8C%E9%82%A3%E4%B9%88B%E7%9A%84onResume%E5%92%8CA%E7%9A%84onPause%E5%93%AA%E4%B8%AA%E5%85%88%E6%89%A7%E8%A1%8C%EF%BC%9F"><span class="toc-text">假设当前Activity为A，新打开一个Activity B，那么B的onResume和A的onPause哪个先执行？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E6%83%85%E5%86%B5%E4%B8%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%88%86%E6%9E%90"><span class="toc-text">异常情况下生命周期分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%83%85%E5%86%B51%EF%BC%9A%E8%B5%84%E6%BA%90%E7%9B%B8%E5%85%B3%E7%9A%84%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%E5%8F%91%E7%94%9F%E6%94%B9%E5%8F%98%E5%AF%BC%E8%87%B4Activity%E8%A2%AB%E6%9D%80%E6%AD%BB%E5%B9%B6%E9%87%8D%E6%96%B0%E5%88%9B%E5%BB%BA"><span class="toc-text">情况1：资源相关的系统配置发生改变导致Activity被杀死并重新创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%83%85%E5%86%B52%EF%BC%9A%E8%B5%84%E6%BA%90%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3%E5%AF%BC%E8%87%B4%E4%BD%8E%E4%BC%98%E5%85%88%E7%BA%A7%E7%9A%84Activity%E8%A2%AB%E6%9D%80%E6%AD%BB"><span class="toc-text">情况2：资源内存不足导致低优先级的Activity被杀死</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -930,7 +971,33 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="典型情况下的生命周期分析"><a href="#典型情况下的生命周期分析" class="headerlink" title="典型情况下的生命周期分析"></a>典型情况下的生命周期分析</h1><h3 id="onStart和onResum、onPause和onStop描述上差-不多，本质上有啥不同？"><a href="#onStart和onResum、onPause和onStop描述上差-不多，本质上有啥不同？" class="headerlink" title="onStart和onResum、onPause和onStop描述上差 不多，本质上有啥不同？"></a>onStart和onResum、onPause和onStop描述上差 不多，本质上有啥不同？</h3><ul>
+<li>onStart和onStop是从Activity是否可见这个角度来回调的，onResum和onPause是从Activity是否位于前台这个角度来回调的</li>
+</ul>
+<h3 id="假设当前Activity为A，新打开一个Activity-B，那么B的onResume和A的onPause哪个先执行？"><a href="#假设当前Activity为A，新打开一个Activity-B，那么B的onResume和A的onPause哪个先执行？" class="headerlink" title="假设当前Activity为A，新打开一个Activity B，那么B的onResume和A的onPause哪个先执行？"></a>假设当前Activity为A，新打开一个Activity B，那么B的onResume和A的onPause哪个先执行？</h3><ul>
+<li>旧的Activity先onPause然后新的Activity再启动</li>
+</ul>
+<h1 id="异常情况下生命周期分析"><a href="#异常情况下生命周期分析" class="headerlink" title="异常情况下生命周期分析"></a>异常情况下生命周期分析</h1><h3 id="情况1：资源相关的系统配置发生改变导致Activity被杀死并重新创建"><a href="#情况1：资源相关的系统配置发生改变导致Activity被杀死并重新创建" class="headerlink" title="情况1：资源相关的系统配置发生改变导致Activity被杀死并重新创建"></a>情况1：资源相关的系统配置发生改变导致Activity被杀死并重新创建</h3><ul>
+<li>这种情况下会调用onSaveInstanceState和onRestoreInstanceState方法保存和恢复数据，系统自动为我们做了一些恢复工作</li>
+<li>系统只在Activity异常终止时候才会触发这个过程，其他情况都不触发</li>
+</ul>
+<h3 id="情况2：资源内存不足导致低优先级的Activity被杀死"><a href="#情况2：资源内存不足导致低优先级的Activity被杀死" class="headerlink" title="情况2：资源内存不足导致低优先级的Activity被杀死"></a>情况2：资源内存不足导致低优先级的Activity被杀死</h3><ul>
+<li><p>优先级从高到低分下面三类：</p>
+<ol>
+<li>前台Activity—–正在和用户交互，优先级最高</li>
+<li>可见但非前台—–比如Activity中弹出一个对话框，导致Activity可见但位于后台无法直接交互</li>
+<li>后台Activity——已经被暂停的Activity，优先级最低</li>
+</ol>
+</li>
+<li><p>系统会按照上述优先级杀死目标Activity所在的进程，并通过onSaveInstanceState和onRestoreInstanceState方法存储和恢复数据。如果一个进程中无四大组件执行，那么这个进程很快会被系统杀死，因此一些后台工作不适合脱离四大组件而独自运行在后台，这样很容易被杀死。比较好的方法是将后台工作放入Service中从而保证进程优先级，不会被轻易杀死。</p>
+</li>
+<li><p>修改Activity的configChanges属性值可以使Activity不被重建，比如给configChanges添加orientation这个值，可以让Activity旋转后也不重新创建</p>
+</li>
+<li><p><strong>configChanges项目及其含义</strong></p>
+<p><img src="/../img/img126.jpg"></p>
+</li>
+</ul>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 QQ邮箱3072420788@qq.com处。 </span>
     </div>
