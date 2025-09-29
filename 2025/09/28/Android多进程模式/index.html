@@ -90,7 +90,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(63)</small>
+                <small>(64)</small>
             
         </div>
     </li>
@@ -252,7 +252,7 @@
         <div data-rel="Android进阶">
             
             Android进阶
-            <small>(3)</small>
+            <small>(4)</small>
         </div>
         
     </li>
@@ -273,8 +273,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="63">
-<input type="hidden" id="yelog_site_word_count" value="66.5k">
+<input type="hidden" id="yelog_site_posts_number" value="64">
+<input type="hidden" id="yelog_site_word_count" value="67.6k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -325,6 +325,15 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All Android进阶 "
+           href="/2025/09/29/IPC%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IPC基础概念">IPC基础概念</span>
+            <span class="post-date" title="2025-09-29 19:19:33">2025/09/29</span>
+        </a>
         
         
         <a  class="All Android进阶 "
@@ -931,12 +940,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-09-28 22:46:49'>2025-09-28 22:31</time>
+            Created At : <time class="date" title='Updated At: 2025-09-29 19:18:19'>2025-09-28 22:31</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:313</span>
+        <span>Count:472</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -955,7 +964,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%90%AF%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%BC%8F%E3%80%81"><span class="toc-text">开启多线程模式、</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%90%AF%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%BC%8F%E3%80%81"><span class="toc-text">开启多线程模式、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6"><span class="toc-text">多进程模式的运行机制</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -987,6 +996,15 @@
 <ul>
 <li>进程名以“：”开头的属于当前应用的私有进程，其他应用的组件不可以和他跑在同一个进程中，而进程名不以“：”开头的属于全局进程，其他应用通过ShareUID方式可以和他跑在同一个进程中</li>
 <li>两个应用通过ShareUID跑在同一个进程中是有要求的，需要两个应用有相同的ShareUID并且签名相同才可以</li>
+</ul>
+<h3 id="多进程模式的运行机制"><a href="#多进程模式的运行机制" class="headerlink" title="多进程模式的运行机制"></a>多进程模式的运行机制</h3><p><strong>不同进程之间数据共享失败的原因</strong></p>
+<p>Android为每一个进程都分配了虚拟机，不同的虚拟机在内存分布上有不同的地址空间，这就导致在不同的虚拟机中访问同一个类的对象会产生多个副本</p>
+<p><strong>多进程造成的问题</strong></p>
+<ul>
+<li>静态成员和单例模式完全失效</li>
+<li>线程同步机制完全失效</li>
+<li>SharedPreferences的可靠性下降（SharedPreferences不支持两个进程同时去执行写操作，否则导致一定几率数据丢失 ）</li>
+<li>Application会多次创建</li>
 </ul>
 
       
