@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Binder连接池 | Auroraの秘密空间</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="Binder连接池 | Auroraの秘密空间">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="欢迎来到我博客，记录了自学习Android之后的计算机相关笔记 如果有发现错误可以联系我：  GitHub: [https:&#x2F;&#x2F;github.com&#x2F;buyu6&#x2F;buyu6.github.io]  邮箱: [yu2006059@gmail.com]">
+<meta property="og:type" content="website">
+<meta property="og:title" content="关于博客">
+<meta property="og:url" content="https://buyu6.github.io/about/index.html">
+<meta property="og:site_name" content="Auroraの秘密空间">
+<meta property="og:description" content="欢迎来到我博客，记录了自学习Android之后的计算机相关笔记 如果有发现错误可以联系我：  GitHub: [https:&#x2F;&#x2F;github.com&#x2F;buyu6&#x2F;buyu6.github.io]  邮箱: [yu2006059@gmail.com]">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-09-19T07:52:42.000Z">
+<meta property="article:modified_time" content="2025-09-19T08:08:37.830Z">
+<meta property="article:author" content="Aurora">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/picture.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"><link rel="stylesheet" href="/css/prism-dark.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="false" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/picture.jpg"/>
+</a>
+<div class="author">
+    <span>Aurora</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://buyu6.github.io/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(66)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="AI">
+            
+            AI
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Git">
+            
+            Git
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Kotlin">
+            
+            Kotlin
+            <small>(14)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Java">
+            
+            Java
+            <small>(7)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="计算机底层">
+            
+            计算机底层
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="自定义View">
+            
+            自定义View
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="数据库(SQL)">
+            
+            数据库(SQL)
+            <small>(5)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Android(Java版)">
+            
+            Android(Java版)
+            <small>(13)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Android(Kotlin版)">
+            
+            Android(Kotlin版)
+            <small>(12)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Android随笔">
+            
+            Android随笔
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Android进阶">
+            
+            Android进阶
+            <small>(6)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="66">
+<input type="hidden" id="yelog_site_word_count" value="76.3k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="/null">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="search shortcut key i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="switch to outline view shortcut key w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="return"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="case sensitive"></i>
+            <i class="iconfont icon-tag" data-title="label"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">outline</div>
+            <i class="iconfont icon-list" data-title="switch to article list"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="All Android进阶 "
+           href="/2025/10/16/Binder%E8%BF%9E%E6%8E%A5%E6%B1%A0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Binder连接池">Binder连接池</span>
+            <span class="post-date" title="2025-10-16 23:01:02">2025/10/16</span>
+        </a>
+        
+        
+        <a  class="All Android进阶 "
+           href="/2025/10/09/Android%E4%B8%AD%E7%9A%84IPC%E6%96%B9%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Android中的IPC方式">Android中的IPC方式</span>
+            <span class="post-date" title="2025-10-09 21:24:30">2025/10/09</span>
+        </a>
+        
+        
+        <a  class="All Android进阶 "
+           href="/2025/09/29/IPC%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IPC基础概念">IPC基础概念</span>
+            <span class="post-date" title="2025-09-29 19:19:33">2025/09/29</span>
+        </a>
+        
+        
+        <a  class="All Android进阶 "
+           href="/2025/09/28/Android%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Android多进程模式">Android多进程模式</span>
+            <span class="post-date" title="2025-09-28 22:31:44">2025/09/28</span>
+        </a>
+        
+        
+        <a  class="All Android进阶 "
+           href="/2025/09/27/Activity%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Activity启动模式">Activity启动模式</span>
+            <span class="post-date" title="2025-09-27 19:02:53">2025/09/27</span>
+        </a>
+        
+        
+        <a  class="All Android进阶 "
+           href="/2025/09/26/Activity%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%85%A8%E9%9D%A2%E5%88%86%E6%9E%90/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Activity生命周期全面分析">Activity生命周期全面分析</span>
+            <span class="post-date" title="2025-09-26 19:50:22">2025/09/26</span>
+        </a>
+        
+        
+        <a  class="All Java "
+           href="/2025/09/26/%E5%90%84%E9%9B%86%E5%90%88%E7%89%B9%E7%82%B9/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="各集合特点">各集合特点</span>
+            <span class="post-date" title="2025-09-26 19:14:51">2025/09/26</span>
+        </a>
+        
+        
+        <a  class="All Java "
+           href="/2025/09/25/%E7%BA%A2%E9%BB%91%E6%A0%91/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="红黑树">红黑树</span>
+            <span class="post-date" title="2025-09-25 20:50:52">2025/09/25</span>
+        </a>
+        
+        
+        <a  class="All Java "
+           href="/2025/09/18/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="正则表达式">正则表达式</span>
+            <span class="post-date" title="2025-09-18 21:28:52">2025/09/18</span>
+        </a>
+        
+        
+        <a  class="All Android随笔 "
+           href="/2025/09/14/%E7%99%BB%E9%99%86%E6%B3%A8%E5%86%8C%E6%95%B0%E6%8D%AE%E5%A4%87%E4%BB%BD-%E6%89%8B%E5%8A%A8%E5%A4%87%E4%BB%BD/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="登陆注册数据备份(手动备份)">登陆注册数据备份(手动备份)</span>
+            <span class="post-date" title="2025-09-14 14:40:47">2025/09/14</span>
+        </a>
+        
+        
+        <a  class="All Android随笔 "
+           href="/2025/09/06/%E5%88%86%E4%BA%AB%E5%8A%9F%E8%83%BD/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="分享功能">分享功能</span>
+            <span class="post-date" title="2025-09-06 18:56:24">2025/09/06</span>
+        </a>
+        
+        
+        <a  class="All 计算机底层 "
+           href="/2025/08/26/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="计算机中的数据存储">计算机中的数据存储</span>
+            <span class="post-date" title="2025-08-26 21:06:22">2025/08/26</span>
+        </a>
+        
+        
+        <a  class="All 计算机底层 "
+           href="/2025/08/26/%E5%8E%9F%E7%A0%81%E8%A1%A5%E7%A0%81%E5%8F%8D%E7%A0%81/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="原码补码反码">原码补码反码</span>
+            <span class="post-date" title="2025-08-26 21:03:48">2025/08/26</span>
+        </a>
+        
+        
+        <a  class="All Java "
+           href="/2025/08/25/%E8%BF%90%E7%AE%97%E7%AC%A6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="运算符">运算符</span>
+            <span class="post-date" title="2025-08-25 18:17:01">2025/08/25</span>
+        </a>
+        
+        
+        <a  class="All Java "
+           href="/2025/08/23/Java%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java基础概念">Java基础概念</span>
+            <span class="post-date" title="2025-08-23 21:38:00">2025/08/23</span>
+        </a>
+        
+        
+        <a  class="All Java "
+           href="/2025/08/23/Java%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%9A%84%E5%8E%9F%E7%90%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java跨平台的原理">Java跨平台的原理</span>
+            <span class="post-date" title="2025-08-23 21:14:18">2025/08/23</span>
+        </a>
+        
+        
+        <a  class="All Java "
+           href="/2025/08/20/CMD/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="CMD">CMD</span>
+            <span class="post-date" title="2025-08-20 20:31:38">2025/08/20</span>
+        </a>
+        
+        
+        <a  class="All AI "
+           href="/2025/08/20/%E5%A6%82%E4%BD%95%E7%BB%99%E9%A1%B9%E7%9B%AE%E5%BC%95%E5%85%A5AI%E5%8A%A9%E6%89%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="如何给项目引入AI助手">如何给项目引入AI助手</span>
+            <span class="post-date" title="2025-08-20 11:34:36">2025/08/20</span>
+        </a>
+        
+        
+        <a  class="All 数据库(SQL) "
+           href="/2025/08/09/%E4%BA%8B%E5%8A%A1%E7%AF%87/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="事务篇">事务篇</span>
+            <span class="post-date" title="2025-08-09 15:20:04">2025/08/09</span>
+        </a>
+        
+        
+        <a  class="All 数据库(SQL) "
+           href="/2025/08/07/SQL%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SQL多表查询">SQL多表查询</span>
+            <span class="post-date" title="2025-08-07 21:43:25">2025/08/07</span>
+        </a>
+        
+        
+        <a  class="All 数据库(SQL) "
+           href="/2025/08/06/SQL%E5%AD%97%E6%AE%B5%E7%BA%A6%E6%9D%9F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SQL字段约束">SQL字段约束</span>
+            <span class="post-date" title="2025-08-06 17:30:32">2025/08/06</span>
+        </a>
+        
+        
+        <a  class="All 数据库(SQL) "
+           href="/2025/08/05/SQL%E5%87%BD%E6%95%B0%E7%AF%87/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SQL函数篇">SQL函数篇</span>
+            <span class="post-date" title="2025-08-05 17:55:21">2025/08/05</span>
+        </a>
+        
+        
+        <a  class="All 数据库(SQL) "
+           href="/2025/08/02/SQL%E5%9F%BA%E7%A1%80%E7%AF%87/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SQL基础篇">SQL基础篇</span>
+            <span class="post-date" title="2025-08-02 17:20:11">2025/08/02</span>
+        </a>
+        
+        
+        <a  class="All 自定义View "
+           href="/2025/07/06/%E8%87%AA%E5%AE%9A%E4%B9%89ViewGroup/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="自定义ViewGroup">自定义ViewGroup</span>
+            <span class="post-date" title="2025-07-06 18:20:25">2025/07/06</span>
+        </a>
+        
+        
+        <a  class="All 自定义View "
+           href="/2025/07/05/%E8%87%AA%E5%AE%9A%E4%B9%89View-%E4%BA%8C/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="自定义View(二)">自定义View(二)</span>
+            <span class="post-date" title="2025-07-05 20:59:14">2025/07/05</span>
+        </a>
+        
+        
+        <a  class="All 自定义View "
+           href="/2025/07/04/%E8%87%AA%E5%AE%9A%E4%B9%89View(%E4%B8%80)/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="自定义View(一)">自定义View(一)</span>
+            <span class="post-date" title="2025-07-04 17:08:12">2025/07/04</span>
+        </a>
+        
+        
+        <a  class="All Android(Kotlin版) "
+           href="/2025/06/27/%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7-Kotlin/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="高级技巧Kotlin">高级技巧Kotlin</span>
+            <span class="post-date" title="2025-06-27 02:02:24">2025/06/27</span>
+        </a>
+        
+        
+        <a  class="All Kotlin "
+           href="/2025/06/27/Kotlin%E4%BD%BF%E7%94%A8DSL%E6%9E%84%E5%BB%BA%E4%B8%93%E6%9C%89%E8%AF%AD%E6%B3%95%E7%BB%93%E6%9E%84/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Kotlin使用DSL构建专有语法结构">Kotlin使用DSL构建专有语法结构</span>
+            <span class="post-date" title="2025-06-27 02:01:25">2025/06/27</span>
+        </a>
+        
+        
+        <a  class="All Android(Kotlin版) "
+           href="/2025/06/25/Jetpack/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Jetpack(Kotlin)">Jetpack(Kotlin)</span>
+            <span class="post-date" title="2025-06-25 18:30:24">2025/06/25</span>
+        </a>
+        
+        
+        <a  class="All Kotlin "
+           href="/2025/06/16/%E7%BC%96%E5%86%99%E5%A5%BD%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="编写好用的工具">编写好用的工具</span>
+            <span class="post-date" title="2025-06-16 02:41:33">2025/06/16</span>
+        </a>
+        
+        
+        <a  class="All Android(Kotlin版) "
+           href="/2025/06/15/%E6%9C%80%E7%BE%8EUI%E4%BD%93%E9%AA%8C-Material-Design-Kotlin/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="最美UI体验,Material Design(Kotlin)">最美UI体验,Material Design(Kotlin)</span>
+            <span class="post-date" title="2025-06-15 21:34:20">2025/06/15</span>
+        </a>
+        
+        
+        <a  class="All Kotlin "
+           href="/2025/06/05/Kotlin%E4%BD%BF%E7%94%A8%E5%8D%8F%E7%A8%8B%E7%BC%96%E5%86%99%E9%AB%98%E6%95%88%E7%9A%84%E5%B9%B6%E5%8F%91%E7%A8%8B%E5%BA%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Kotlin使用协程编写高效的并发程序">Kotlin使用协程编写高效的并发程序</span>
+            <span class="post-date" title="2025-06-05 21:42:16">2025/06/05</span>
+        </a>
+        
+        
+        <a  class="All Android(Kotlin版) "
+           href="/2025/06/04/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="网络技术(Kotlin)">网络技术(Kotlin)</span>
+            <span class="post-date" title="2025-06-04 16:47:59">2025/06/04</span>
+        </a>
+        
+        
+        <a  class="All Kotlin "
+           href="/2025/05/29/Kotlin%E6%B3%9B%E5%9E%8B%E7%9A%84%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Kotlin泛型的高级特性">Kotlin泛型的高级特性</span>
+            <span class="post-date" title="2025-05-29 19:25:42">2025/05/29</span>
+        </a>
+        
+        
+        <a  class="All Android(Kotlin版) "
+           href="/2025/05/27/Service-Kotlin/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Service(Kotlin)">Service(Kotlin)</span>
+            <span class="post-date" title="2025-05-27 22:16:33">2025/05/27</span>
+        </a>
+        
+        
+        <a  class="All Kotlin "
+           href="/2025/05/26/Kotlin%E7%9A%84infix%E5%87%BD%E6%95%B0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Kotlin的infix函数">Kotlin的infix函数</span>
+            <span class="post-date" title="2025-05-26 21:22:12">2025/05/26</span>
+        </a>
+        
+        
+        <a  class="All Android(Kotlin版) "
+           href="/2025/05/24/%E6%89%8B%E6%9C%BA%E5%A4%9A%E5%AA%92%E4%BD%93-Kotlin/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="手机多媒体(Kotlin)">手机多媒体(Kotlin)</span>
+            <span class="post-date" title="2025-05-24 23:49:21">2025/05/24</span>
+        </a>
+        
+        
+        <a  class="All Kotlin "
+           href="/2025/05/11/%E6%B3%9B%E5%9E%8B%E5%92%8C%E5%A7%94%E6%89%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="泛型和委托">泛型和委托</span>
+            <span class="post-date" title="2025-05-11 23:47:29">2025/05/11</span>
+        </a>
+        
+        
+        <a  class="All Kotlin "
+           href="/2025/05/11/Kotlin%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Kotlin内置函数">Kotlin内置函数</span>
+            <span class="post-date" title="2025-05-11 23:42:00">2025/05/11</span>
+        </a>
+        
+        
+        <a  class="All Android(Kotlin版) "
+           href="/2025/05/11/%E6%8E%A2%E7%A9%B6ContentProvider-Kotlin/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="探究ContentProvider(Kotlin)">探究ContentProvider(Kotlin)</span>
+            <span class="post-date" title="2025-05-11 22:08:37">2025/05/11</span>
+        </a>
+        
+        
+        <a  class="All Kotlin "
+           href="/2025/05/08/Kotlin%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%E7%9A%84%E5%BA%94%E7%94%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Kotlin高阶函数的应用">Kotlin高阶函数的应用</span>
+            <span class="post-date" title="2025-05-08 00:06:10">2025/05/08</span>
+        </a>
+        
+        
+        <a  class="All Android(Kotlin版) "
+           href="/2025/05/08/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8-Kotlin/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="数据存储(Kotlin)">数据存储(Kotlin)</span>
+            <span class="post-date" title="2025-05-08 00:01:07">2025/05/08</span>
+        </a>
+        
+        
+        <a  class="All Kotlin "
+           href="/2025/05/05/Kotlin%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Kotlin高阶函数">Kotlin高阶函数</span>
+            <span class="post-date" title="2025-05-05 22:05:41">2025/05/05</span>
+        </a>
+        
+        
+        <a  class="All Android(Kotlin版) "
+           href="/2025/05/05/%E5%B9%BF%E6%92%AD%E6%9C%BA%E5%88%B6-Kotlin/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="广播机制(Kotlin)">广播机制(Kotlin)</span>
+            <span class="post-date" title="2025-05-05 20:44:19">2025/05/05</span>
+        </a>
+        
+        
+        <a  class="All Kotlin "
+           href="/2025/05/01/Kotlin%E6%89%A9%E5%B1%95%E5%87%BD%E6%95%B0%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Kotlin扩展函数和运算符重载">Kotlin扩展函数和运算符重载</span>
+            <span class="post-date" title="2025-05-01 16:13:13">2025/05/01</span>
+        </a>
+        
+        
+        <a  class="All Android(Kotlin版) "
+           href="/2025/05/01/%E7%A2%8E%E7%89%87-1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="碎片(Kotlin)">碎片(Kotlin)</span>
+            <span class="post-date" title="2025-05-01 14:22:24">2025/05/01</span>
+        </a>
+        
+        
+        <a  class="All Kotlin "
+           href="/2025/04/25/Kotlin%E5%BB%B6%E8%BF%9F%E5%88%9D%E5%A7%8B%E5%8C%96%E5%92%8C%E5%AF%86%E5%B0%81%E7%B1%BB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Kotlin延迟初始化和密封类">Kotlin延迟初始化和密封类</span>
+            <span class="post-date" title="2025-04-25 21:41:59">2025/04/25</span>
+        </a>
+        
+        
+        <a  class="All Android(Kotlin版) "
+           href="/2025/04/24/UI%E5%BC%80%E5%8F%91-Kotlin/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="UI开发(Kotlin)">UI开发(Kotlin)</span>
+            <span class="post-date" title="2025-04-24 19:35:30">2025/04/24</span>
+        </a>
+        
+        
+        <a  class="All Kotlin "
+           href="/2025/04/20/Kotlin%E5%AE%9A%E4%B9%89%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Kotlin定义静态方法">Kotlin定义静态方法</span>
+            <span class="post-date" title="2025-04-20 22:51:42">2025/04/20</span>
+        </a>
+        
+        
+        <a  class="All Android(Kotlin版) "
+           href="/2025/04/20/%E6%B4%BB%E5%8A%A8-1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="活动(Kotlin)">活动(Kotlin)</span>
+            <span class="post-date" title="2025-04-20 09:55:22">2025/04/20</span>
+        </a>
+        
+        
+        <a  class="All Kotlin "
+           href="/2025/04/19/Kotlin%E6%A0%87%E5%87%86%E5%87%BD%E6%95%B0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Kotlin标准函数">Kotlin标准函数</span>
+            <span class="post-date" title="2025-04-19 21:56:44">2025/04/19</span>
+        </a>
+        
+        
+        <a  class="All Kotlin "
+           href="/2025/04/15/Kotlin%E8%AF%AD%E6%B3%95/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Kotlin语法">Kotlin语法</span>
+            <span class="post-date" title="2025-04-15 20:59:56">2025/04/15</span>
+        </a>
+        
+        
+        <a  class="All Android(Java版) "
+           href="/2025/03/28/%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="高级技巧(Java)">高级技巧(Java)</span>
+            <span class="post-date" title="2025-03-28 16:23:09">2025/03/28</span>
+        </a>
+        
+        
+        <a  class="All Android(Java版) "
+           href="/2025/03/25/Material-Design/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Material Design(Java)">Material Design(Java)</span>
+            <span class="post-date" title="2025-03-25 15:41:23">2025/03/25</span>
+        </a>
+        
+        
+        <a  class="All Android(Java版) "
+           href="/2025/03/24/%E6%9C%8D%E5%8A%A1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="服务(Java)">服务(Java)</span>
+            <span class="post-date" title="2025-03-24 19:36:08">2025/03/24</span>
+        </a>
+        
+        
+        <a  class="All Android(Java版) "
+           href="/2025/03/19/%E4%BD%BF%E7%94%A8%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="使用网络技术(Java)">使用网络技术(Java)</span>
+            <span class="post-date" title="2025-03-19 22:25:07">2025/03/19</span>
+        </a>
+        
+        
+        <a  class="All Android(Java版) "
+           href="/2025/03/18/%E6%89%8B%E6%9C%BA%E5%A4%9A%E5%AA%92%E4%BD%93/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="手机多媒体(Java)">手机多媒体(Java)</span>
+            <span class="post-date" title="2025-03-18 16:14:22">2025/03/18</span>
+        </a>
+        
+        
+        <a  class="All Android(Java版) "
+           href="/2025/03/11/%E5%86%85%E5%AE%B9%E6%8F%90%E4%BE%9B%E5%99%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="内容提供器(Java)">内容提供器(Java)</span>
+            <span class="post-date" title="2025-03-11 14:56:45">2025/03/11</span>
+        </a>
+        
+        
+        <a  class="All Git "
+           href="/2025/03/11/Git/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Git">Git</span>
+            <span class="post-date" title="2025-03-11 14:56:07">2025/03/11</span>
+        </a>
+        
+        
+        <a  class="All Android(Java版) "
+           href="/2025/03/07/try-catch%E5%92%8Cfinally/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="try,catch和finally">try,catch和finally</span>
+            <span class="post-date" title="2025-03-07 23:02:39">2025/03/07</span>
+        </a>
+        
+        
+        <a  class="All Android(Java版) "
+           href="/2025/03/06/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="数据存储(Java)">数据存储(Java)</span>
+            <span class="post-date" title="2025-03-06 19:32:12">2025/03/06</span>
+        </a>
+        
+        
+        <a  class="All Android(Java版) "
+           href="/2025/03/03/%E5%B9%BF%E6%92%AD%E6%9C%BA%E5%88%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="广播机制(Java)">广播机制(Java)</span>
+            <span class="post-date" title="2025-03-03 20:42:38">2025/03/03</span>
+        </a>
+        
+        
+        <a  class="All Android(Java版) "
+           href="/2025/02/26/%E7%A2%8E%E7%89%87/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="碎片(Java)">碎片(Java)</span>
+            <span class="post-date" title="2025-02-26 21:53:56">2025/02/26</span>
+        </a>
+        
+        
+        <a  class="All Android(Java版) "
+           href="/2025/02/25/UI%E5%BC%80%E5%8F%91/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="UI开发(Java)">UI开发(Java)</span>
+            <span class="post-date" title="2025-02-25 20:25:49">2025/02/25</span>
+        </a>
+        
+        
+        <a  class="All Android(Java版) "
+           href="/2025/02/24/%E6%B4%BB%E5%8A%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="活动(Java)">活动(Java)</span>
+            <span class="post-date" title="2025-02-24 21:02:40">2025/02/24</span>
+        </a>
+        
+        
+        <a  class="All Android(Java版) "
+           href="/2025/02/24/Android%E8%AE%A4%E8%AF%86%E4%BB%A5%E5%8F%8A%E5%85%A5%E9%97%A8/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Android认识以及入门">Android认识以及入门</span>
+            <span class="post-date" title="2025-02-24 20:28:01">2025/02/24</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="Toggle full screen shortcut key s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-Binder连接池" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">Binder连接池</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Android进阶">Android进阶</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2025-10-16 23:15:15'>2025-10-16 23:01</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>Count:1.5k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p><strong>先创建不同需求的AIDL接口</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">ICompute</span> &#123;</span><br><span class="line"><span class="comment">//计算加法的功能</span></span><br><span class="line">    <span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">ISecurityCenter</span> &#123;</span><br><span class="line"><span class="comment">//加密</span></span><br><span class="line">   String <span class="title function_">encrypt</span><span class="params">(String content)</span>;</span><br><span class="line">   <span class="comment">//解密</span></span><br><span class="line">   String <span class="title function_">decrypt</span><span class="params">(String password)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p><strong>对创建的接口进行实现</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ComputeImpl</span>  <span class="keyword">extends</span>  <span class="title class_">ICompute</span>.Stub&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> <span class="keyword">throws</span> RemoteException &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> a+b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SecurityCenterImpl</span> <span class="keyword">extends</span> <span class="title class_">ISecurityCenter</span>.Stub&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">char</span> SECRET_CODE=<span class="string">&#x27;^&#x27;</span>;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">encrypt</span><span class="params">(String content)</span> <span class="keyword">throws</span> RemoteException &#123;</span><br><span class="line">        <span class="type">char</span>[] chars = content.toCharArray();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; chars.length; i++) &#123;</span><br><span class="line">            <span class="comment">// 核心加密逻辑</span></span><br><span class="line">            chars[i] ^= SECRET_CODE;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">String</span>(chars);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">decrypt</span><span class="params">(String password)</span> <span class="keyword">throws</span> RemoteException &#123;</span><br><span class="line">        <span class="keyword">return</span> encrypt(password);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>为Binder连接池创建AIDL接口</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// IBinderPool.aidl</span></span><br><span class="line"><span class="keyword">package</span> com.example.contentprovider;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Declare any non-default types here with import statements</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">IBinderPool</span> &#123;</span><br><span class="line">    IBinder <span class="title function_">queryBinder</span><span class="params">(<span class="type">int</span> binderCode)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Binder连接池的具体实现</strong>(首先要去绑定远程服务，绑定成功后，客户端可以通过<strong>queryBinder</strong>方法去获取各自对应的Binder，拿到所需的Binder后，就可以进行各自的操作了)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> android.content.ComponentName;</span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.content.Intent;</span><br><span class="line"><span class="keyword">import</span> android.content.ServiceConnection;</span><br><span class="line"><span class="keyword">import</span> android.os.IBinder;</span><br><span class="line"><span class="keyword">import</span> android.os.RemoteException;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.CountDownLatch;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Binder连接池的客户端实现。</span></span><br><span class="line"><span class="comment"> * 这是一个采用单例模式设计的核心类，负责管理与远程BinderPoolService的连接，</span></span><br><span class="line"><span class="comment"> * 并作为客户端获取各种具体业务Binder的统一入口。</span></span><br><span class="line"><span class="comment"> * 它将异步的bindService过程封装成了同步的调用方式，简化了客户端的使用。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BinderPool</span> &#123;</span><br><span class="line">    <span class="comment">// 日志标签</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">TAG</span> <span class="operator">=</span> <span class="string">&quot;BinderPool&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Binder代号：无效Binder</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">BINDER_NONE</span> <span class="operator">=</span> -<span class="number">1</span>;</span><br><span class="line">    <span class="comment">// Binder代号：计算服务</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">BINDER_COMPUTE</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// Binder代号：安全中心服务</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">BINDER_SECURITY_CENTER</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 应用上下文，使用getApplicationContext()防止内存泄漏</span></span><br><span class="line">    <span class="keyword">private</span> Context mContext;</span><br><span class="line">    <span class="comment">// 远程Binder池服务的代理对象，用于调用远程方法</span></span><br><span class="line">    <span class="keyword">private</span> IBinderPool mBinderPool;</span><br><span class="line">    <span class="comment">// BinderPool的唯一静态实例，volatile关键字确保多线程下的可见性</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> BinderPool sInstance;</span><br><span class="line">    <span class="comment">// 同步辅助工具，用于在连接建立完成前阻塞线程</span></span><br><span class="line">    <span class="keyword">private</span> CountDownLatch mConnectBinderPoolCountDownLatch;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 私有构造函数，确保只能通过getInstance()方法获取实例（单例模式）。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> context 上下文对象</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">BinderPool</span><span class="params">(Context context)</span> &#123;</span><br><span class="line">        mContext = context.getApplicationContext();</span><br><span class="line">        <span class="comment">// 构造时立即开始连接服务</span></span><br><span class="line">        connectBinderPoolService();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取BinderPool的唯一实例（线程安全的双重检查锁定单例模式）。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> context 上下文对象</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> BinderPool的单例</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> BinderPool <span class="title function_">getInstance</span><span class="params">(Context context)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (sInstance == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="comment">// synchronized 锁就像一个单人房间，一次只允许一个线程进入，保证线程安全</span></span><br><span class="line">            <span class="keyword">synchronized</span> (BinderPool.class) &#123;</span><br><span class="line">                <span class="comment">// 第二次检查，防止多个线程同时通过第一次检查后重复创建实例</span></span><br><span class="line">                <span class="keyword">if</span> (sInstance == <span class="literal">null</span>) &#123;</span><br><span class="line">                    sInstance = <span class="keyword">new</span> <span class="title class_">BinderPool</span>(context);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sInstance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 同步连接远程服务的方法。</span></span><br><span class="line"><span class="comment">     * 该方法会阻塞调用线程，直到与服务的连接成功建立。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title function_">connectBinderPoolService</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 初始化一个计数为1的CountDownLatch，作为阻塞的“门闩”</span></span><br><span class="line">        mConnectBinderPoolCountDownLatch = <span class="keyword">new</span> <span class="title class_">CountDownLatch</span>(<span class="number">1</span>);</span><br><span class="line">        <span class="type">Intent</span> <span class="variable">service</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Intent</span>(mContext, BinderPoolService.class);</span><br><span class="line">        <span class="comment">// 异步绑定服务，绑定结果通过 mBinderPoolConnection 回调</span></span><br><span class="line">        mContext.bindService(service, mBinderPoolConnection, Context.BIND_AUTO_CREATE);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 阻塞当前线程，等待门闩被打开（即等待onServiceConnected中的countDown()被调用）</span></span><br><span class="line">            mConnectBinderPoolCountDownLatch.await();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 从Binder连接池中查询具体的业务Binder。</span></span><br><span class="line"><span class="comment">     * 这是提供给外部调用的核心方法。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> binderCode 业务Binder的代号（如 BINDER_COMPUTE）</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 对应的业务Binder接口；如果连接未建立或发生异常则返回null</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> IBinder <span class="title function_">queryBinder</span><span class="params">(<span class="type">int</span> binderCode)</span> &#123;</span><br><span class="line">        <span class="type">IBinder</span> <span class="variable">binder</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 确保连接池代理不为空，然后发起跨进程调用</span></span><br><span class="line">            <span class="keyword">if</span> (mBinderPool != <span class="literal">null</span>) &#123;</span><br><span class="line">                binder = mBinderPool.queryBinder(binderCode);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (RemoteException e) &#123;</span><br><span class="line">            <span class="comment">// 捕获远程调用异常</span></span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> binder;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * ServiceConnection的实现，用于监听与服务的连接状态。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">ServiceConnection</span> <span class="variable">mBinderPoolConnection</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ServiceConnection</span>() &#123;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 当与服务的连接成功建立时被回调（运行在主线程）。</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onServiceConnected</span><span class="params">(ComponentName name, IBinder service)</span> &#123;</span><br><span class="line">            <span class="comment">// 将返回的原始IBinder对象转换为我们定义的IBinderPool接口</span></span><br><span class="line">            mBinderPool = IBinderPool.Stub.asInterface(service);</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">// 设置死亡代理，监听远程Binder的死亡事件，增强健壮性</span></span><br><span class="line">                mBinderPool.asBinder().linkToDeath(mBinderPoolDeathRecipient, <span class="number">0</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (RemoteException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 连接成功，打开“门闩”，唤醒所有等待的线程</span></span><br><span class="line">            mConnectBinderPoolCountDownLatch.countDown();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 当与服务的连接意外断开时被回调（例如服务进程崩溃）。</span></span><br><span class="line"><span class="comment">         * 注意：正常解绑不会触发此方法。</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onServiceDisconnected</span><span class="params">(ComponentName name)</span> &#123;</span><br><span class="line">            <span class="comment">// 此处可以添加重连逻辑</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 死亡代理的实现。当远程服务进程意外死亡时，binderDied()方法会被回调。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> IBinder.<span class="type">DeathRecipient</span> <span class="variable">mBinderPoolDeathRecipient</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">IBinder</span>.DeathRecipient() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">binderDied</span><span class="params">()</span> &#123;</span><br><span class="line">            Log.w(TAG, <span class="string">&quot;binder died&quot;</span>);</span><br><span class="line">            <span class="comment">// 1. 解除之前与已死亡Binder的死亡监听</span></span><br><span class="line">            mBinderPool.asBinder().unlinkToDeath(mBinderPoolDeathRecipient, <span class="number">0</span>);</span><br><span class="line">            <span class="comment">// 2. 将持有的Binder代理置为空，防止误用</span></span><br><span class="line">            mBinderPool = <span class="literal">null</span>;</span><br><span class="line">            <span class="comment">// 3. 立即尝试重新连接服务，实现自动恢复</span></span><br><span class="line">            connectBinderPoolService();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 这是IBinderPool接口的服务端实现。</span></span><br><span class="line"><span class="comment">     * 它作为Binder连接池的“工厂”，根据客户端请求的binderCode，返回对应的具体业务Binder。</span></span><br><span class="line"><span class="comment">     * （通常这个类会放在服务端，这里放在一起是为了演示方便）</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">BinderPoolImpl</span> <span class="keyword">extends</span> <span class="title class_">IBinderPool</span>.Stub &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="title function_">BinderPoolImpl</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="built_in">super</span>();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> IBinder <span class="title function_">queryBinder</span><span class="params">(<span class="type">int</span> binderCode)</span> <span class="keyword">throws</span> RemoteException &#123;</span><br><span class="line">            <span class="type">IBinder</span> <span class="variable">binder</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">            <span class="comment">// 使用switch-case结构分发不同的Binder实现</span></span><br><span class="line">            <span class="keyword">switch</span> (binderCode) &#123;</span><br><span class="line">                <span class="keyword">case</span> BINDER_SECURITY_CENTER: &#123;</span><br><span class="line">                    <span class="comment">// 如果客户端请求安全中心，就创建一个SecurityCenterImpl实例</span></span><br><span class="line">                    binder = <span class="keyword">new</span> <span class="title class_">SecurityCenterImpl</span>();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">case</span> BINDER_COMPUTE: &#123;</span><br><span class="line">                    <span class="comment">// 如果客户端请求计算服务，就创建一个ComputeImpl实例</span></span><br><span class="line">                    binder = <span class="keyword">new</span> <span class="title class_">ComputeImpl</span>();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">default</span>:</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> binder;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>服务端实现</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BinderPoolService</span> <span class="keyword">extends</span> <span class="title class_">Service</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG=<span class="string">&quot;BinderPoolService&quot;</span>;</span><br><span class="line">    <span class="comment">//这一行代码的作用是创建并持有一个“Binder 管理员”的实例。</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//这个实例就是客户端在绑定服务后，第一个也是唯一一个直接交互的对象。</span></span><br><span class="line">    <span class="keyword">private</span> Binder mBinderPool=<span class="keyword">new</span> <span class="title class_">BinderPool</span>.BinderPoolImpl();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">BinderPoolService</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> IBinder <span class="title function_">onBind</span><span class="params">(Intent intent)</span> &#123;</span><br><span class="line">        Log.d(TAG, <span class="string">&quot;onBind: &quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> mBinderPool;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onDestroy</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onDestroy();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 QQ邮箱3072420788@qq.com处。 </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©BUYU2024
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="Toggle full screen shortcut key s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 1468px392px;
+        }
+        .nav.fullscreen {
+            margin-left: -1468px392px;
+        }
+        .nav-left {
+            width: 1468pxpx;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 1468px392px;
+            margin-left: -1468px392px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    #post {
+        background: url(/img/picture3.jpg);
+    }
+    
+    
+    #post .index {
+        background: url(/img/picture3.jpg);
+    }
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("/img/picture1.jpg");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
