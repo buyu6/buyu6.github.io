@@ -32,12 +32,12 @@
     /* 60vh - 70vh = 比较美观的大图展示高度 */
     height: 100vh !important; 
 }
+/* 默认鼠标 */
 body {
-    /* 如果你的文件在 source/images/mouse.cur，网页路径就是 /images/mouse.cur */
-    cursor: url('/cursor/mouse.cur'), auto;
+    cursor: url('/cursor/default.cur'), auto;
 }
 
-/* 可选：如果你希望鼠标移到链接上时也保持这个样式（或者换另一个样式） */
-a:hover {
-    cursor: url('/images/mouse.cur'), pointer;
+/* 链接/按钮手指 */
+a, img {
+    cursor: url('/cursor/pointer.cur'), pointer !important; /* 加上 !important 强制覆盖 */
 }
