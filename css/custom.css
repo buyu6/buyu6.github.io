@@ -1,0 +1,43 @@
+/* source/css/custom.css */
+#footer {
+    /* 1. 基础设置：保持图片铺满 */
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    /* 2. 核心：底部只显示图片的“脚” */
+    background-position: bottom center;
+    
+    /* 3. 【修改点】去掉圆角，变回直角 */
+    border-radius: 0; 
+    /* 或者直接删掉之前写的 border-top-left-radius 那些代码 */
+    
+    /* 4. 过渡动画保持不变 */
+    transition: background-image 0.2s ease-in-out;
+}
+
+/* 文字颜色保持黑色 */
+#footer-wrap {
+    color: #000000;
+    text-shadow: none;
+}
+#footer-wrap a {
+    color: #000000;
+}
+/* =========================
+   文章页顶部 (Post Header) 高度调整
+   ========================= */
+#page-header.post-bg {
+    /* 默认通常是 400px，改用 vh 单位 */
+    /* 50vh = 屏幕高度的一半 */
+    /* 60vh - 70vh = 比较美观的大图展示高度 */
+    height: 100vh !important; 
+}
+body {
+    /* 如果你的文件在 source/images/mouse.cur，网页路径就是 /images/mouse.cur */
+    cursor: url('/cursor/mouse.cur'), auto;
+}
+
+/* 可选：如果你希望鼠标移到链接上时也保持这个样式（或者换另一个样式） */
+a:hover {
+    cursor: url('/images/mouse.cur'), pointer;
+}

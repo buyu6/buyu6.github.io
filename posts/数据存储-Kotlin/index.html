@@ -1,0 +1,276 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>数据存储(Kotlin) | Auroraの世界</title><meta name="author" content="Aurora"><meta name="copyright" content="Aurora"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="文件存储存储数据 通过openFileOutput()得到FileOutputStream对象  借助它构建一个OutputStreamWriter对象在借助这个构建一个BufferedWriter对象  利用BufferedWriter将内容写入文件 1234567891011private fun save(inputText: String) &#123;        try &#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据存储(Kotlin)">
+<meta property="og:url" content="https://buyu6.github.io/posts/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8-Kotlin/index.html">
+<meta property="og:site_name" content="Auroraの世界">
+<meta property="og:description" content="文件存储存储数据 通过openFileOutput()得到FileOutputStream对象  借助它构建一个OutputStreamWriter对象在借助这个构建一个BufferedWriter对象  利用BufferedWriter将内容写入文件 1234567891011private fun save(inputText: String) &#123;        try &#123;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://buyu6.github.io/bgImg/bg61.jpg">
+<meta property="article:published_time" content="2025-05-07T16:01:07.000Z">
+<meta property="article:modified_time" content="2025-12-19T15:26:46.253Z">
+<meta property="article:author" content="Aurora">
+<meta property="article:tag" content="Android, Kotlin, 个人博客, 学习笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://buyu6.github.io/bgImg/bg61.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "数据存储(Kotlin)",
+  "url": "https://buyu6.github.io/posts/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8-Kotlin/",
+  "image": "https://buyu6.github.io/bgImg/bg61.jpg",
+  "datePublished": "2025-05-07T16:01:07.000Z",
+  "dateModified": "2025-12-19T15:26:46.253Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Aurora",
+      "url": "https://buyu6.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/avatar.jpg"><link rel="canonical" href="https://buyu6.github.io/posts/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8-Kotlin/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css?v=5.5.3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '数据存储(Kotlin)',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="referrer" content="no-referrer-when-downgrade"><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 8.1.1"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/img/background.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">68</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/bgImg/bg61.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/avatar.jpg" alt="Logo"><span class="site-name">Auroraの世界</span></a><a class="nav-page-title" href="/"><span class="site-name">数据存储(Kotlin)</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">数据存储(Kotlin)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-07T16:01:07.000Z" title="发表于 2025-05-08 00:01:07">2025-05-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-12-19T15:26:46.253Z" title="更新于 2025-12-19 23:26:46">2025-12-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Android-Kotlin%E7%89%88/">Android(Kotlin版)</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="文件存储"><a href="#文件存储" class="headerlink" title="文件存储"></a>文件存储</h1><h3 id="存储数据"><a href="#存储数据" class="headerlink" title="存储数据"></a>存储数据</h3><ul>
+<li><p>通过openFileOutput()得到FileOutputStream对象</p>
+</li>
+<li><p>借助它构建一个OutputStreamWriter对象在借助这个构建一个BufferedWriter对象</p>
+</li>
+<li><p>利用BufferedWriter将内容写入文件</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">save</span><span class="params">(inputText: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">           <span class="keyword">val</span> output=openFileOutput(<span class="string">&quot;data&quot;</span>,Context.MODE_PRIVATE)</span><br><span class="line">            <span class="keyword">val</span> writer=BufferedWriter(OutputStreamWriter(output))</span><br><span class="line">            writer.use&#123;</span><br><span class="line">                it.write(inputText)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (e: IOException) &#123;</span><br><span class="line">            e.printStackTrace()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h3><ul>
+<li><p>通过openFileInput()方法获取了一个FileInputStream对象</p>
+</li>
+<li><p>利用它构建InputStreamReader()对象再借助这个构建BufferedReader对象</p>
+</li>
+<li><p>最后利用这个对象将文件一行行读取出来并拼接到StringBuilder对象中</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">load</span><span class="params">()</span></span>: String &#123;</span><br><span class="line">       <span class="keyword">val</span> content = StringBuilder()</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">               <span class="keyword">val</span> input=openFileInput(<span class="string">&quot;data&quot;</span>)</span><br><span class="line">               <span class="keyword">val</span> reader=BufferedReader(InputStreamReader(input))</span><br><span class="line">                   reader.use&#123;</span><br><span class="line">                       reader.forEachLine&#123;</span><br><span class="line">                           content.append(it)</span><br><span class="line">                       &#125;</span><br><span class="line">                   &#125;</span><br><span class="line">       &#125; <span class="keyword">catch</span> (e: IOException) &#123;</span><br><span class="line">           e.printStackTrace()       </span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> content.toString()</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h1 id="SharedPreferences"><a href="#SharedPreferences" class="headerlink" title="SharedPreferences"></a>SharedPreferences</h1><h3 id="存储数据-1"><a href="#存储数据-1" class="headerlink" title="存储数据"></a>存储数据</h3><ul>
+<li><p>得到SharedPreferences对象</p>
+<p>(1)Context类中的getSharedPreferences()方法得到（第一个参数是文件名，第二个是模式）</p>
+<p>(2)Activity类中的getPreferences()方法得到（只接收模式参数）</p>
+</li>
+<li><p>调用其edit()方法得到SharedPreferences.Editor对象</p>
+</li>
+<li><p>像这个对象中添加数据</p>
+</li>
+<li><p>调用apply()提交数据</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> editor=getSharedPreferences(<span class="string">&quot;data&quot;</span>, Context.MODE_PRIVATE).edit()</span><br><span class="line">editor.putString(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;Tom&quot;</span>)</span><br><span class="line">editor.putInt(<span class="string">&quot;age&quot;</span>,<span class="number">28</span>)</span><br><span class="line">editor.putBoolean(<span class="string">&quot;married&quot;</span>,<span class="literal">false</span>)</span><br><span class="line">editor.apply()</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="读取数据-1"><a href="#读取数据-1" class="headerlink" title="读取数据"></a>读取数据</h3><ul>
+<li><p>得到SharedPreferences对象</p>
+</li>
+<li><p>调用get系列方法获取数据</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> prefs=getSharedPreferences(<span class="string">&quot;data&quot;</span>,Context.MODE_PRIVATE)</span><br><span class="line">            <span class="keyword">val</span> name=prefs.getString(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;&quot;</span>)</span><br><span class="line">            <span class="keyword">val</span> age=prefs.getInt(<span class="string">&quot;age&quot;</span>,<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">val</span> married=prefs.getBoolean(<span class="string">&quot;married&quot;</span>,<span class="literal">false</span>)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h1 id="SQLite数据库"><a href="#SQLite数据库" class="headerlink" title="SQLite数据库"></a>SQLite数据库</h1><h3 id="创建和升级"><a href="#创建和升级" class="headerlink" title="创建和升级"></a>创建和升级</h3><ul>
+<li><p><strong>创建</strong></p>
+<ol>
+<li>新建一个类继承自SQLiteOpenHelper</li>
+<li>建立表格</li>
+<li>在onCreate方法中使用execSQL()方法在数据库中创建表格</li>
+<li>在活动中使用writableDatabase方法创建数据库</li>
+</ol>
+</li>
+<li><p><strong>升级</strong></p>
+<ol>
+<li>在帮助类中建立新的表格或作出一些更改</li>
+<li>如果建立新的表格需要在oncreate方法中用execSQL()方法创建表格</li>
+<li>在onUpgrade()方法中使用execSQL()方法进行更新再调用onCreate()</li>
+<li>活动中数据库版本号改为比原来大的数字</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyDatabaseHelper</span>(<span class="keyword">val</span> context:Context,name:String,version: <span class="built_in">Int</span>) :SQLiteOpenHelper(context,name,<span class="literal">null</span>,version)&#123;</span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">val</span> createBook=<span class="string">&quot;create table Book(&quot;</span>+</span><br><span class="line">           <span class="string">&quot;id integer primary key autoincrement,&quot;</span>+</span><br><span class="line">           <span class="string">&quot;author text,&quot;</span>+</span><br><span class="line">           <span class="string">&quot;price real,&quot;</span>+</span><br><span class="line">           <span class="string">&quot;pages integer,&quot;</span>+</span><br><span class="line">           <span class="string">&quot;name text)&quot;</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> createCategory=<span class="string">&quot;create table Category(&quot;</span>+</span><br><span class="line">            <span class="string">&quot;id integer primary key autoincrement,&quot;</span>+</span><br><span class="line">            <span class="string">&quot;category_name text,&quot;</span>+</span><br><span class="line">            <span class="string">&quot;category_code integer)&quot;</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(db: <span class="type">SQLiteDatabase</span>)</span></span> &#123;</span><br><span class="line">        db.execSQL(createBook)</span><br><span class="line">        db.execSQL(createCategory)</span><br><span class="line">        Toast.makeText(context,<span class="string">&quot;Create succeeded&quot;</span>,Toast.LENGTH_SHORT).show()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onUpgrade</span><span class="params">(db: <span class="type">SQLiteDatabase</span>, oldVersion: <span class="type">Int</span>, newVersion: <span class="type">Int</span>)</span></span> &#123;</span><br><span class="line">         db.execSQL(<span class="string">&quot;drop table if exists Book&quot;</span>)</span><br><span class="line">        db.execSQL(<span class="string">&quot;drop table if exists Category&quot;</span>)</span><br><span class="line">        onCreate(db)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加，更新，删除，查询"><a href="#添加，更新，删除，查询" class="headerlink" title="添加，更新，删除，查询"></a>添加，更新，删除，查询</h3><ul>
+<li><p><strong>添加</strong></p>
+<ol>
+<li><p>调用SQLiteOpenHelper的writableDatabase方法获取SQLiteDataBase对象</p>
+</li>
+<li><p>利用ContentValues()对象组装数据</p>
+</li>
+<li><p>利用insert方法插入数据</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">binding.addData.setOnClickListener &#123;</span><br><span class="line">            <span class="comment">//获取SQLiteDatabase对象</span></span><br><span class="line">            <span class="keyword">val</span> db=dbHelper.writableDatabase</span><br><span class="line">            <span class="comment">//组装第一条数据</span></span><br><span class="line">            <span class="keyword">val</span> values1=ContentValues().apply &#123;</span><br><span class="line">                put(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;The Da Vinci Code&quot;</span>)</span><br><span class="line">                put(<span class="string">&quot;author&quot;</span>,<span class="string">&quot;Dan Brown&quot;</span>)</span><br><span class="line">                put(<span class="string">&quot;pages&quot;</span>,<span class="number">454</span>)</span><br><span class="line">                put(<span class="string">&quot;price&quot;</span>,<span class="number">16.96</span>)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//插入第一条数据</span></span><br><span class="line">            db.insert(<span class="string">&quot;Book&quot;</span>,<span class="literal">null</span>,values1)</span><br><span class="line">            <span class="comment">//组装第二条数据</span></span><br><span class="line">            <span class="keyword">val</span> values2=ContentValues().apply &#123;</span><br><span class="line">                put(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;The Lost Symbol&quot;</span>)</span><br><span class="line">                put(<span class="string">&quot;author&quot;</span>,<span class="string">&quot;Dan Brown&quot;</span>)</span><br><span class="line">                put(<span class="string">&quot;pages&quot;</span>,<span class="number">510</span>)</span><br><span class="line">                put(<span class="string">&quot;price&quot;</span>,<span class="number">19.95</span>)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//插入第二条数据</span></span><br><span class="line">            db.insert(<span class="string">&quot;Book&quot;</span>,<span class="literal">null</span>,values2)</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p><strong>更新</strong></p>
+<ol>
+<li><p>获取SQLiteDataBase对象</p>
+</li>
+<li><p>获取ContentValues对象</p>
+</li>
+<li><p>指定更新的数据</p>
+</li>
+<li><p>利用update更新数据</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">binding.updateData.setOnClickListener &#123;</span><br><span class="line">            <span class="comment">//获取SQLiteDatabase对象</span></span><br><span class="line">            <span class="keyword">val</span> db=dbHelper.writableDatabase</span><br><span class="line">            <span class="keyword">val</span> value=ContentValues()</span><br><span class="line">            value.put(<span class="string">&quot;price&quot;</span>,<span class="number">10.99</span>)</span><br><span class="line">            db.update(<span class="string">&quot;Book&quot;</span>,value,<span class="string">&quot;name=?&quot;</span>,arrayOf(<span class="string">&quot;The Da Vinci Code&quot;</span>))</span><br><span class="line">        Toast.makeText(<span class="keyword">this</span>,<span class="string">&quot;更新成功&quot;</span>,Toast.LENGTH_SHORT).show()</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p><strong>删除</strong></p>
+<ol>
+<li><p>获取SQLiteDataBase对象</p>
+</li>
+<li><p>利用delete删除数据</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">binding.deleteData.setOnClickListener &#123;</span><br><span class="line">            <span class="comment">//获取SQLiteDatabase对象</span></span><br><span class="line">            <span class="keyword">val</span> db=dbHelper.writableDatabase</span><br><span class="line">            db.delete(<span class="string">&quot;Book&quot;</span>,<span class="string">&quot;pages&gt;?&quot;</span>,arrayOf(<span class="string">&quot;500&quot;</span>))</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>,<span class="string">&quot;删除成功&quot;</span>,Toast.LENGTH_SHORT).show()</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p><strong>查询</strong></p>
+<ol>
+<li><p>获取SQLiteDataBase对象 </p>
+</li>
+<li><p>调用query方法查询数据</p>
+</li>
+<li><p>查询后得到Cursor对象,遍历查询每一行数据在循环中通过Cursor的getColumnIndex()方法索引</p>
+</li>
+<li><p>查询完成后关闭Cursor</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">binding.queryData.setOnClickListener &#123;</span><br><span class="line">           <span class="comment">//获取SQLiteDatabase对象</span></span><br><span class="line">           <span class="keyword">val</span> db=dbHelper.writableDatabase</span><br><span class="line">           <span class="comment">//查询Book中所有数据</span></span><br><span class="line">           <span class="keyword">val</span> cursor=db.query(<span class="string">&quot;Book&quot;</span>,<span class="literal">null</span>,<span class="literal">null</span>,<span class="literal">null</span>,<span class="literal">null</span>,<span class="literal">null</span>,<span class="literal">null</span>)</span><br><span class="line">           <span class="keyword">if</span>(cursor.moveToFirst())&#123;</span><br><span class="line">               <span class="keyword">do</span>&#123;<span class="comment">//遍历Cursor对象，取出数据并打印</span></span><br><span class="line">                   <span class="keyword">val</span> name=cursor.getString(cursor.getColumnIndex(<span class="string">&quot;name&quot;</span>))</span><br><span class="line">                   <span class="keyword">val</span> author=cursor.getString(cursor.getColumnIndex(<span class="string">&quot;author&quot;</span>))</span><br><span class="line">                   <span class="keyword">val</span> pages=cursor.getInt(cursor.getColumnIndex(<span class="string">&quot;pages&quot;</span>))</span><br><span class="line">                   <span class="keyword">val</span> price=cursor.getDouble(cursor.getColumnIndex(<span class="string">&quot;price&quot;</span>))</span><br><span class="line">                   Log.d(<span class="string">&quot;MainActivity&quot;</span>, <span class="string">&quot;book name is <span class="variable">$name</span> &quot;</span>)</span><br><span class="line">                   Log.d(<span class="string">&quot;MainActivity&quot;</span>, <span class="string">&quot;book author is <span class="variable">$author</span> &quot;</span>)</span><br><span class="line">                   Log.d(<span class="string">&quot;MainActivity&quot;</span>, <span class="string">&quot;book pages is <span class="variable">$pages</span> &quot;</span>)</span><br><span class="line">                   Log.d(<span class="string">&quot;MainActivity&quot;</span>, <span class="string">&quot;book price is <span class="variable">$price</span> &quot;</span>)</span><br><span class="line">               &#125;<span class="keyword">while</span> (cursor.moveToNext())</span><br><span class="line">     </span><br><span class="line">           &#125;</span><br><span class="line">           cursor.close()</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+<h3 id="SQL操作数据库"><a href="#SQL操作数据库" class="headerlink" title="SQL操作数据库"></a>SQL操作数据库</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//添加数据</span></span><br><span class="line">db.execSQL(<span class="string">&quot;insert into Book(name,author,pages,price) values(?,?,?,?)&quot;</span>,</span><br><span class="line">          arrayOf(<span class="string">&quot;The Da Vinci Code&quot;</span>,<span class="string">&quot;Dan Brown&quot;</span>,<span class="string">&quot;454&quot;</span>,<span class="string">&quot;16.96&quot;</span>)</span><br><span class="line">          )</span><br><span class="line">db.execSQL(<span class="string">&quot;insert into Book(name,author,pages,price) values(?,?,?,?)&quot;</span>,</span><br><span class="line">          arrayOf(<span class="string">&quot;The Lost Symbol&quot;</span>,<span class="string">&quot;Dan Brown&quot;</span>,<span class="string">&quot;510&quot;</span>,<span class="string">&quot;19.95&quot;</span>)</span><br><span class="line">          )</span><br><span class="line"><span class="comment">//更新数据</span></span><br><span class="line">db.execSQL(<span class="string">&quot;update Book set price=? where name=? &quot;</span>,arrayOf(<span class="string">&quot;10.99&quot;</span>,<span class="string">&quot;The Da Vinci Code&quot;</span>))</span><br><span class="line"><span class="comment">//删除数据</span></span><br><span class="line">db.execSQL(<span class="string">&quot;delete from book where pages&gt;?&quot;</span>,arrayOf(<span class="string">&quot;500&quot;</span>))</span><br><span class="line"><span class="comment">//查询数据</span></span><br><span class="line"><span class="keyword">val</span> cursor=db.rawQuery(<span class="string">&quot;select * from Book&quot;</span>,<span class="literal">null</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用事务"><a href="#使用事务" class="headerlink" title="使用事务"></a>使用事务</h3><p><strong>特点</strong>：操作要失败一起失败要成功一起成功</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">binding.replaceData.setOnClickListener &#123;</span><br><span class="line">           <span class="comment">//获取SQLiteDatabase对象</span></span><br><span class="line">           <span class="keyword">val</span> db=dbHelper.writableDatabase</span><br><span class="line">           <span class="comment">//开启事务</span></span><br><span class="line">           db.beginTransaction()</span><br><span class="line">           <span class="keyword">try</span> &#123;</span><br><span class="line">               db.delete(<span class="string">&quot;Book&quot;</span>,<span class="literal">null</span>,<span class="literal">null</span>)</span><br><span class="line">               <span class="comment">/*if(true)&#123;</span></span><br><span class="line"><span class="comment">                   //手动抛出异常，让事务失败</span></span><br><span class="line"><span class="comment">                   throw NullPointerException()</span></span><br><span class="line"><span class="comment">               &#125;*/</span></span><br><span class="line">               <span class="keyword">val</span> values=ContentValues().apply &#123;</span><br><span class="line">                   put(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;Game of Thrones&quot;</span>)</span><br><span class="line">                   put(<span class="string">&quot;author&quot;</span>,<span class="string">&quot;George Martin&quot;</span>)</span><br><span class="line">                   put(<span class="string">&quot;pages&quot;</span>,<span class="number">720</span>)</span><br><span class="line">                   put(<span class="string">&quot;price&quot;</span>,<span class="number">20.85</span>)</span><br><span class="line">               &#125;</span><br><span class="line">               db.insert(<span class="string">&quot;Book&quot;</span>,<span class="literal">null</span>,values)</span><br><span class="line">               <span class="comment">//事务已经执行成功</span></span><br><span class="line">               db.setTransactionSuccessful()</span><br><span class="line">           &#125;<span class="keyword">catch</span> (e:Exception)&#123;</span><br><span class="line">               e.printStackTrace()</span><br><span class="line">           &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">               <span class="comment">//结束事务</span></span><br><span class="line">               db.endTransaction()</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="升级数据库最佳写法"><a href="#升级数据库最佳写法" class="headerlink" title="升级数据库最佳写法"></a>升级数据库最佳写法</h3><p>每进行一次更新都在onUpgrade()方法中加入一个if判断语句</p>
+<p>这样就算跨版本升级也不会出现数据丢失</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyDatabaseHelper</span>(<span class="keyword">val</span> context:Context,name:String,version: <span class="built_in">Int</span>) :SQLiteOpenHelper(context,name,<span class="literal">null</span>,version)&#123;</span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">val</span> createBook=<span class="string">&quot;create table Book(&quot;</span>+</span><br><span class="line">           <span class="string">&quot;id integer primary key autoincrement,&quot;</span>+</span><br><span class="line">           <span class="string">&quot;author text,&quot;</span>+</span><br><span class="line">           <span class="string">&quot;price real,&quot;</span>+</span><br><span class="line">           <span class="string">&quot;pages integer,&quot;</span>+</span><br><span class="line">           <span class="string">&quot;name text,&quot;</span>+</span><br><span class="line">           <span class="string">&quot;category_id)&quot;</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> createCategory=<span class="string">&quot;create table Category(&quot;</span>+</span><br><span class="line">            <span class="string">&quot;id integer primary key autoincrement,&quot;</span>+</span><br><span class="line">            <span class="string">&quot;category_name text,&quot;</span>+</span><br><span class="line">            <span class="string">&quot;category_code integer)&quot;</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(db: <span class="type">SQLiteDatabase</span>)</span></span> &#123;</span><br><span class="line">        db.execSQL(createBook)</span><br><span class="line">        db.execSQL(createCategory)</span><br><span class="line">        Toast.makeText(context,<span class="string">&quot;Create succeeded&quot;</span>,Toast.LENGTH_SHORT).show()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onUpgrade</span><span class="params">(db: <span class="type">SQLiteDatabase</span>, oldVersion: <span class="type">Int</span>, newVersion: <span class="type">Int</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(oldVersion&lt;=<span class="number">1</span>)&#123;</span><br><span class="line">            db.execSQL(createCategory)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(oldVersion&lt;=<span class="number">2</span>)&#123;</span><br><span class="line">            db.execSQL(<span class="string">&quot;alter table Book add column category_id integer&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://buyu6.github.io">Aurora</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://buyu6.github.io/posts/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8-Kotlin/">https://buyu6.github.io/posts/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8-Kotlin/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://buyu6.github.io" target="_blank">Auroraの世界</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/bgImg/bg61.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/Kotlin%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%E7%9A%84%E5%BA%94%E7%94%A8/" title="Kotlin高阶函数的应用"><img class="cover" src="/bgImg/bg30.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">Kotlin高阶函数的应用</div></div><div class="info-2"><div class="info-item-1">简化SharedPreferences的用法 通过扩展函数方式像其中添加open函数  接收函数类型 12345fun SharedPreferences.open(block:SharedPreferences.Editor.()-&gt;Unit)&#123;    val editor=edit()    editor.block()    editor.apply()&#125;  123456//调用getSharedPreferences(&quot;data&quot;,Context.MODE_PRIVATE).open&#123;    putString(&quot;name&quot;,&quot;Tom&quot;)    putInt(&quot;age&quot;,19)    putBoolean(&quot;married&quot;,false)&#125;  Android Studio自带扩展可以直接使用： 12345getSharedPreferences(&quot;data&quot;,Context.MODE_PRIVATE).edi...</div></div></div></a><a class="pagination-related" href="/posts/Kotlin%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0/" title="Kotlin高阶函数"><img class="cover" src="/bgImg/bg29.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Kotlin高阶函数</div></div><div class="info-2"><div class="info-item-1">高阶函数函数类型(String,Int)-&gt;Unit 左边是函数接收参数类型，右边是返回值类型 定义含有函数类型的就叫高阶函数 实例1123456789101112131415161718fun num1Andnum2(num1:Int,num2:Int,operation: (Int,Int)-&gt;Int):Int&#123;    val result=operation(num1,num2)    return result&#125;fun plus(num1:Int,num2:Int):Int&#123;    return num1 + num2&#125;fun minus(num1:Int,num2:Int):Int&#123;    return num1-num2&#125;fun main()&#123;    val num1=100    val num2=50    val result1=num1Andnum2(num1,num2,::plus)    val result2= num1Andnum2(num1,num2,::minus) ...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Aurora</div><div class="author-info-description">分享学习历程，编程技术以及笔记随笔等</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">68</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/buyu6"><i class="fab fa-github"></i><span>My GitHub</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/buyu6" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:yu2006059@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8"><span class="toc-number">1.</span> <span class="toc-text">文件存储</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE"><span class="toc-number">1.1.</span> <span class="toc-text">存储数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="toc-number">1.2.</span> <span class="toc-text">读取数据</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SharedPreferences"><span class="toc-number">2.</span> <span class="toc-text">SharedPreferences</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE-1"><span class="toc-number">2.1.</span> <span class="toc-text">存储数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE-1"><span class="toc-number">2.2.</span> <span class="toc-text">读取数据</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SQLite%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">3.</span> <span class="toc-text">SQLite数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%92%8C%E5%8D%87%E7%BA%A7"><span class="toc-number">3.1.</span> <span class="toc-text">创建和升级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%EF%BC%8C%E6%9B%B4%E6%96%B0%EF%BC%8C%E5%88%A0%E9%99%A4%EF%BC%8C%E6%9F%A5%E8%AF%A2"><span class="toc-number">3.2.</span> <span class="toc-text">添加，更新，删除，查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">3.3.</span> <span class="toc-text">SQL操作数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E4%BA%8B%E5%8A%A1"><span class="toc-number">3.4.</span> <span class="toc-text">使用事务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%87%E7%BA%A7%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9C%80%E4%BD%B3%E5%86%99%E6%B3%95"><span class="toc-number">3.5.</span> <span class="toc-text">升级数据库最佳写法</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/%E5%B0%86%E5%85%A8%E6%99%AF%E5%9B%BE%E5%BA%94%E7%94%A8%E5%88%B0%E9%A1%B9%E7%9B%AE%E7%9A%84%E6%96%B9%E6%B3%95/" title="将全景图应用到项目的方法"><img src="/bgImg/bg1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="将全景图应用到项目的方法"/></a><div class="content"><a class="title" href="/posts/%E5%B0%86%E5%85%A8%E6%99%AF%E5%9B%BE%E5%BA%94%E7%94%A8%E5%88%B0%E9%A1%B9%E7%9B%AE%E7%9A%84%E6%96%B9%E6%B3%95/" title="将全景图应用到项目的方法">将全景图应用到项目的方法</a><time datetime="2025-11-03T11:04:53.000Z" title="发表于 2025-11-03 19:04:53">2025-11-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/IPC%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9/" title="IPC的优缺点"><img src="/bgImg/bg2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="IPC的优缺点"/></a><div class="content"><a class="title" href="/posts/IPC%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9/" title="IPC的优缺点">IPC的优缺点</a><time datetime="2025-10-17T13:46:17.000Z" title="发表于 2025-10-17 21:46:17">2025-10-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/Binder%E8%BF%9E%E6%8E%A5%E6%B1%A0/" title="Binder连接池"><img src="/bgImg/bg3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Binder连接池"/></a><div class="content"><a class="title" href="/posts/Binder%E8%BF%9E%E6%8E%A5%E6%B1%A0/" title="Binder连接池">Binder连接池</a><time datetime="2025-10-16T15:01:02.000Z" title="发表于 2025-10-16 23:01:02">2025-10-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/Android%E4%B8%AD%E7%9A%84IPC%E6%96%B9%E5%BC%8F/" title="Android中的IPC方式"><img src="/bgImg/bg4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Android中的IPC方式"/></a><div class="content"><a class="title" href="/posts/Android%E4%B8%AD%E7%9A%84IPC%E6%96%B9%E5%BC%8F/" title="Android中的IPC方式">Android中的IPC方式</a><time datetime="2025-10-09T13:24:30.000Z" title="发表于 2025-10-09 21:24:30">2025-10-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/IPC%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" title="IPC基础概念"><img src="/bgImg/bg5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="IPC基础概念"/></a><div class="content"><a class="title" href="/posts/IPC%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" title="IPC基础概念">IPC基础概念</a><time datetime="2025-09-29T11:19:33.000Z" title="发表于 2025-09-29 19:19:33">2025-09-29</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By Aurora</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.3"></script><script src="/js/main.js?v=5.5.3"></script><div class="js-pjax"></div><script src="/js/auto_footer.js"></script><script>document.addEventListener("DOMContentLoaded", function() { var script = document.querySelector('script[src*="busuanzi.ibruce.info"]'); if (script) { script.remove(); } });</script><script async src="https://sdn.geekzu.org/ajax/ajax/libs/busuanzi/2.3/busuanzi.pure.mini.js"></script><script async data-pjax src="https://sdn.geekzu.org/ajax/ajax/libs/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.3"></script></div></div></body></html>
