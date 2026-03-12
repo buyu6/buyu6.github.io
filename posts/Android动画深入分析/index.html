@@ -1,0 +1,270 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Android动画深入分析 | Auroraの世界</title><meta name="author" content="Aurora"><meta name="copyright" content="Aurora"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="View动画View动画的种类 View动画的四种变化：平移动画，缩放动画，旋转动画和透明度动画。这四种变化对应着Animation的四个子类分别是TranslateAnimation,ScaleAnimation,RotateAnimation和AlphaAnimation。对于View动画来说，建议采用XML来定义，可读性更好  要使用View动画，首先要创建动画的XML文件，这个文件的路径为">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android动画深入分析">
+<meta property="og:url" content="https://buyu6.github.io/posts/Android%E5%8A%A8%E7%94%BB%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90/index.html">
+<meta property="og:site_name" content="Auroraの世界">
+<meta property="og:description" content="View动画View动画的种类 View动画的四种变化：平移动画，缩放动画，旋转动画和透明度动画。这四种变化对应着Animation的四个子类分别是TranslateAnimation,ScaleAnimation,RotateAnimation和AlphaAnimation。对于View动画来说，建议采用XML来定义，可读性更好  要使用View动画，首先要创建动画的XML文件，这个文件的路径为">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://buyu6.github.io/bgImg/bg1.jpg">
+<meta property="article:published_time" content="2026-03-07T10:58:55.000Z">
+<meta property="article:modified_time" content="2026-03-12T13:12:33.583Z">
+<meta property="article:author" content="Aurora">
+<meta property="article:tag" content="Android, Kotlin, 个人博客, 学习笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://buyu6.github.io/bgImg/bg1.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Android动画深入分析",
+  "url": "https://buyu6.github.io/posts/Android%E5%8A%A8%E7%94%BB%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90/",
+  "image": "https://buyu6.github.io/bgImg/bg1.jpg",
+  "datePublished": "2026-03-07T10:58:55.000Z",
+  "dateModified": "2026-03-12T13:12:33.583Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Aurora",
+      "url": "https://buyu6.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/avatar.jpg"><link rel="canonical" href="https://buyu6.github.io/posts/Android%E5%8A%A8%E7%94%BB%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css?v=5.5.3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Android动画深入分析',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="referrer" content="no-referrer-when-downgrade"><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 8.1.1"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/img/background.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">74</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/bgImg/bg1.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/avatar.jpg" alt="Logo"><span class="site-name">Auroraの世界</span></a><a class="nav-page-title" href="/"><span class="site-name">Android动画深入分析</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Android动画深入分析</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-03-07T10:58:55.000Z" title="发表于 2026-03-07 18:58:55">2026-03-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-03-12T13:12:33.583Z" title="更新于 2026-03-12 21:12:33">2026-03-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Android%E8%BF%9B%E9%98%B6/">Android进阶</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="View动画"><a href="#View动画" class="headerlink" title="View动画"></a>View动画</h1><h2 id="View动画的种类"><a href="#View动画的种类" class="headerlink" title="View动画的种类"></a>View动画的种类</h2><ul>
+<li><p>View动画的四种变化：平移动画，缩放动画，旋转动画和透明度动画。这四种变化对应着Animation的四个子类分别是TranslateAnimation,ScaleAnimation,RotateAnimation和AlphaAnimation。对于View动画来说，建议采用XML来定义，可读性更好</p>
+</li>
+<li><p>要使用View动画，首先要创建动画的XML文件，这个文件的路径为：res&#x2F;anim&#x2F;filename.xml。View动画是有固定语法的：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:interpolator</span>=<span class="string">&quot;@android:anim/accelerate_decelerate_interpolator&quot;</span>//<span class="attr">插值器</span>，<span class="attr">影响动画的速度</span>，<span class="attr">这个是默认值</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:shareInterpolator</span>=<span class="string">&quot;true&quot;</span>//<span class="attr">表示集合中动画是否和集合共用一个插值器</span></span></span><br><span class="line"><span class="tag">    &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">alpha</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:fromAlpha</span>=<span class="string">&quot;1.0&quot;</span>//<span class="attr">表示透明度起始值</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:toAlpha</span>=<span class="string">&quot;1.0&quot;</span>//<span class="attr">表示透明度结束值</span></span></span><br><span class="line"><span class="tag">        /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scale</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:fromXScale</span>=<span class="string">&quot;0.0&quot;</span>//<span class="attr">水平方向缩放起始值</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:toXScale</span>=<span class="string">&quot;1.0&quot;</span>//<span class="attr">水平方向缩放结束值</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:fromYScale</span>=<span class="string">&quot;0.0&quot;</span>//<span class="attr">竖直方向缩放起始值</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:toYScale</span>=<span class="string">&quot;1.0&quot;</span>//<span class="attr">竖直方向缩放结束值</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:pivotX</span>=<span class="string">&quot;float&quot;</span>//<span class="attr">缩放的轴点X坐标会影响缩放效果</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:pivotY</span>=<span class="string">&quot;float&quot;</span>/&gt;</span>//缩放的轴点Y坐标会影响缩放效果</span><br><span class="line">//轴点默认为中心点</span><br><span class="line">    <span class="tag">&lt;<span class="name">translate</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:fromYDelta</span>=<span class="string">&quot;0.0&quot;</span>//<span class="attr">Y起始值</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:fromXDelta</span>=<span class="string">&quot;0.0&quot;</span>//<span class="attr">X起始值</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:toXDelta</span>=<span class="string">&quot;1.0&quot;</span>//<span class="attr">X结束值</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:toYDelta</span>=<span class="string">&quot;1.0&quot;</span>/&gt;</span>//Y结束值</span><br><span class="line">    <span class="tag">&lt;<span class="name">rotate</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:fromDegrees</span>=<span class="string">&quot;0&quot;</span>//<span class="attr">旋转开始的角度</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:toDegrees</span>=<span class="string">&quot;180&quot;</span>//<span class="attr">旋转结束的角度</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:pivotY</span>=<span class="string">&quot;float&quot;</span>//<span class="attr">旋转轴点的x坐标</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:pivotX</span>=<span class="string">&quot;float&quot;</span>/&gt;</span>//旋转轴点的y坐标</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>android:duration&#x2F;&#x2F;动画持续时间</p>
+<p>android:fillAfter&#x2F;&#x2F;动画结束以后View是否留在结束位置，true停留false不停</p>
+<ul>
+<li><p>如何应用动画</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Button button=(Button) findViewById(R.id.button1);</span><br><span class="line">Animation animation=AnimationUtils.loadAnimation(<span class="built_in">this</span>,R.anim.animation_test);</span><br><span class="line">button.startAnimation(animation);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="帧动画"><a href="#帧动画" class="headerlink" title="帧动画"></a>帧动画</h2><ul>
+<li><p>帧动画是顺序播放一组预先定义好的图片类似于电影播放。使用AnimationDrawable来使用帧动画。</p>
+</li>
+<li><p>用法：</p>
+<ol>
+<li><p>先定义一个AnimationDrawable</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">animation-list</span> <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:oneshot</span>=<span class="string">&quot;false&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">&quot;@drawable/avatar1&quot;</span> <span class="attr">android:duration</span>=<span class="string">&quot;500&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">&quot;@drawable/avatar2&quot;</span> <span class="attr">android:duration</span>=<span class="string">&quot;500&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">&quot;@drawable/avatar3&quot;</span> <span class="attr">android:duration</span>=<span class="string">&quot;500&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">animation-list</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">binding.button1.setBackgroundResource(R.drawable.frame_animation);</span><br><span class="line">AnimationdDrawable drawable=(AnimationdDrawable) binding.button1.getBackground();</span><br><span class="line">drawable.start();</span><br></pre></td></tr></table></figure>
+
+<p><strong>尽量避免使用过多尺寸较大的图片不然容易引起OOM</strong></p>
+</li>
+</ol>
+<h1 id="View动画的特殊使用场景"><a href="#View动画的特殊使用场景" class="headerlink" title="View动画的特殊使用场景"></a>View动画的特殊使用场景</h1><h2 id="LayoutAnimation"><a href="#LayoutAnimation" class="headerlink" title="LayoutAnimation"></a>LayoutAnimation</h2><ul>
+<li><p>这个作用于ViewGroup，为其指定一个动画，这样当他的子元素出厂时都会具备这种效果，这种效果常常被用在ListView上面</p>
+</li>
+<li><p>实现步骤</p>
+<ol>
+<li><p>定义LayoutAnimation</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//res/anim/anim_layout.xml</span><br><span class="line"><span class="tag">&lt;<span class="name">layoutAnimation</span></span></span><br><span class="line"><span class="tag">     <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span></span><br><span class="line"><span class="tag">     <span class="attr">android:delay</span>=<span class="string">&quot;0.5&quot;</span></span></span><br><span class="line"><span class="tag">     <span class="attr">android:animationOrder</span>=<span class="string">&quot;normal&quot;</span></span></span><br><span class="line"><span class="tag">     <span class="attr">android:animation</span>=<span class="string">&quot;@anim/anim_item&quot;</span>            /&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>为子元素指定出场动画</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span></span><br><span class="line"><span class="tag">	<span class="attr">android:duration</span>=<span class="string">&quot;300&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:interpolator</span>=<span class="string">&quot;@android:anim/accelerate_decelerate_interpolator&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:shareInterpolator</span>=<span class="string">&quot;true&quot;</span></span></span><br><span class="line"><span class="tag">    &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">alpha</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:fromAlpha</span>=<span class="string">&quot;1.0&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:toAlpha</span>=<span class="string">&quot;1.0&quot;</span></span></span><br><span class="line"><span class="tag">        /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scale</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:fromXScale</span>=<span class="string">&quot;0.0&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:toXScale</span>=<span class="string">&quot;1.0&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:fromYScale</span>=<span class="string">&quot;0.0&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:toYScale</span>=<span class="string">&quot;1.0&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:pivotX</span>=<span class="string">&quot;float&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:pivotY</span>=<span class="string">&quot;float&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">translate</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:fromYDelta</span>=<span class="string">&quot;0.0&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:fromXDelta</span>=<span class="string">&quot;0.0&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:toXDelta</span>=<span class="string">&quot;1.0&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:toYDelta</span>=<span class="string">&quot;1.0&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">rotate</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:fromDegrees</span>=<span class="string">&quot;0&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:toDegrees</span>=<span class="string">&quot;180&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:pivotY</span>=<span class="string">&quot;float&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:pivotX</span>=<span class="string">&quot;float&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>为ViewGroup指定android:layoutAnimation属性</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ListView</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:id</span>=<span class="string">&quot;@+id/list&quot;</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:layoutAnimation</span>=<span class="string">&quot;@anim/anim_layout&quot;</span></span></span><br><span class="line"><span class="tag">          <span class="attr">......</span></span></span><br><span class="line"><span class="tag">          <span class="attr">......</span></span></span><br><span class="line"><span class="tag">          <span class="attr">......</span></span></span><br><span class="line"><span class="tag">          /&gt;</span></span><br><span class="line">      </span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Activity的切换方式"><a href="#Activity的切换方式" class="headerlink" title="Activity的切换方式"></a>Activity的切换方式</h2><ul>
+<li><p>Activity有默认的切换效果，但是这个效果我们可以自定义，主要用到overridePendingTransition(int enterAnim,int exitAnim)这个方法，<strong>这个方法必须在startActivity或者finish之后调用才可以生效</strong>它的参数含义：</p>
+<ol>
+<li>enterAnim，Activity被打开时所需要的动画资源id</li>
+<li>exitAnim，Activity被暂停时所需要的动画资源id</li>
+</ol>
+</li>
+<li><p>实现：</p>
+<ol>
+<li><p>启动</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Intent intent=<span class="keyword">new</span> <span class="title class_">Intent</span>(<span class="built_in">this</span>,TestActivity.class);</span><br><span class="line">startActivity(intent);</span><br><span class="line">overridePendingTransition(R.anim.enter_anim,R.anim.exit_anim);</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>退出</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">finish</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="built_in">super</span>.finish();</span><br><span class="line">    overridePendingTransition(R.anim.enter_anim,R.anim.exit_anim);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+<h1 id="使用属性动画"><a href="#使用属性动画" class="headerlink" title="使用属性动画"></a>使用属性动画</h1><ul>
+<li><p><strong>ValueAnimator</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ValueAnimator</span> <span class="variable">colorAnim</span> <span class="operator">=</span> ObjectAnimator.ofInt(<span class="built_in">this</span>, <span class="string">&quot;backgroundColor&quot;</span>, <span class="comment">/*Red*/</span><span class="number">0xFFFF8080</span>, <span class="comment">/*Blue*/</span><span class="number">0xFF8080FF</span>);</span><br><span class="line">colorAnim.setDuration(<span class="number">3000</span>);</span><br><span class="line">colorAnim.setEvaluator(<span class="keyword">new</span> <span class="title class_">ArgbEvaluator</span>());</span><br><span class="line">colorAnim.setRepeatCount(ValueAnimator.INFINITE); <span class="comment">// 无限循环</span></span><br><span class="line">colorAnim.setRepeatMode(ValueAnimator.REVERSE);  <span class="comment">// 反转效果</span></span><br><span class="line">colorAnim.start();</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p><strong>ObjectAnimator</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ObjectAnimator.ofFloat(myObject, <span class="string">&quot;translationY&quot;</span>, -myObject.getHeight()).start();<span class="comment">//负数代表向上移动</span></span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p><strong>AnimatorSet</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">AnimatorSet</span> <span class="variable">set</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AnimatorSet</span>();</span><br><span class="line">set.playTogether(</span><br><span class="line">    ObjectAnimator.ofFloat(myView, <span class="string">&quot;rotationX&quot;</span>, <span class="number">0</span>, <span class="number">360</span>),</span><br><span class="line">    ObjectAnimator.ofFloat(myView, <span class="string">&quot;rotationY&quot;</span>, <span class="number">0</span>, <span class="number">180</span>),</span><br><span class="line">    ObjectAnimator.ofFloat(myView, <span class="string">&quot;rotation&quot;</span>, <span class="number">0</span>, -<span class="number">90</span>),</span><br><span class="line">    ObjectAnimator.ofFloat(myView, <span class="string">&quot;translationX&quot;</span>, <span class="number">0</span>, <span class="number">90</span>),</span><br><span class="line">    ObjectAnimator.ofFloat(myView, <span class="string">&quot;translationY&quot;</span>, <span class="number">0</span>, <span class="number">90</span>),</span><br><span class="line">    ObjectAnimator.ofFloat(myView, <span class="string">&quot;scaleX&quot;</span>, <span class="number">1</span>, <span class="number">1.5f</span>),</span><br><span class="line">    ObjectAnimator.ofFloat(myView, <span class="string">&quot;scaleY&quot;</span>, <span class="number">1</span>, <span class="number">0.5f</span>),</span><br><span class="line">    ObjectAnimator.ofFloat(myView, <span class="string">&quot;alpha&quot;</span>, <span class="number">1</span>, <span class="number">0.25f</span>, <span class="number">1</span>)</span><br><span class="line">);</span><br><span class="line">set.setDuration(<span class="number">5</span> * <span class="number">1000</span>).start();</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="使用动画的注意事项"><a href="#使用动画的注意事项" class="headerlink" title="使用动画的注意事项"></a>使用动画的注意事项</h1><ol>
+<li><p>OOM 问题</p>
+<p>主要发生在帧动画里，图片数量多且图片较大时就容易出现这种情况，在实际开发中应尽量避免使用复杂的帧动画。</p>
+</li>
+<li><p>内存泄漏</p>
+<p>属性动画中的无限循环动画。这类动画需要在Activity退出时及时停止不然会造成内存泄漏。必须在 <code>onPause()</code> 或 <code>onDestroy()</code> 中调用 <code>anim.cancel()</code> 停止动画。</p>
+</li>
+<li><p>兼容性问题</p>
+<p>动画在 <strong>Android 3.0 (API 11)</strong> 以下的系统上可能存在无法正常工作的情况，需做好适配。</p>
+</li>
+<li><p>View动画的问题</p>
+<p>View 动画只是影像的改变，<strong>不是真正改变 View 的状态</strong>。有时候动画完成后，调用 <code>setVisibility(View.GONE)</code> 可能失效。这个时候只要调用view.clearAnimation()清除View动画即可解决</p>
+</li>
+<li><p>不要使用px</p>
+<p>动画中尽量不要使用px，尽量用dp</p>
+</li>
+<li><p>动画元素的交互</p>
+<p>这是 <strong>View 动画</strong> 与 <strong>属性动画</strong> 的本质区别：</p>
+<ul>
+<li><strong>View 动画：</strong> 移动后，<strong>点击事件仍在原位</strong>。视觉在 A 点，点击响应还在起始点。</li>
+<li><strong>属性动画：</strong> 从 Android 3.0 开始，属性动画移动后，<strong>点击事件随之移动</strong>。视觉在 B 点，点击响应也在 B 点。</li>
+</ul>
+</li>
+<li><p>硬件加速</p>
+<p>建议使用动画时开启硬件加速，这能显著提高动画的流畅度，减少卡顿。</p>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://buyu6.github.io">Aurora</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://buyu6.github.io/posts/Android%E5%8A%A8%E7%94%BB%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90/">https://buyu6.github.io/posts/Android%E5%8A%A8%E7%94%BB%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://buyu6.github.io" target="_blank">Auroraの世界</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/bgImg/bg1.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/posts/%E5%B0%86apiKey%E8%97%8F%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD/" title="将apiKey藏在项目中"><img class="cover" src="/bgImg/bg73.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">将apiKey藏在项目中</div></div><div class="info-2"><div class="info-item-1"> 由于如果将API直接写到项目中去上传到github上容易被发现所有需要将其藏起来，主要是以下几步：  先在根目录创建api_keys.properties用来存放apiKey  在根目录的build.gradle.kts中添加插件 1id (&quot;com.google.android.libraries.mapsplatform.secrets-gradle-plugin&quot;) version &quot;2.0.1&quot; apply false  在app级的build.gradle.kts中加入插件 1id (&quot;com.google.android.libraries.mapsplatform.secrets-gradle-plugin&quot;)  在android{}闭包后面添加一串代码表示读取位置 123456secrets &#123;    propertiesFileName = &quot;api_keys.properties&quot;    //忽略sdk.dir等系统属性只生成你需要的key    ignoreList....</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Aurora</div><div class="author-info-description">分享学习历程，编程技术以及笔记随笔等</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">74</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/buyu6"><i class="fab fa-github"></i><span>My GitHub</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/buyu6" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:yu2006059@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#View%E5%8A%A8%E7%94%BB"><span class="toc-number">1.</span> <span class="toc-text">View动画</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#View%E5%8A%A8%E7%94%BB%E7%9A%84%E7%A7%8D%E7%B1%BB"><span class="toc-number">1.1.</span> <span class="toc-text">View动画的种类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%A7%E5%8A%A8%E7%94%BB"><span class="toc-number">1.2.</span> <span class="toc-text">帧动画</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#View%E5%8A%A8%E7%94%BB%E7%9A%84%E7%89%B9%E6%AE%8A%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">2.</span> <span class="toc-text">View动画的特殊使用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#LayoutAnimation"><span class="toc-number">2.1.</span> <span class="toc-text">LayoutAnimation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Activity%E7%9A%84%E5%88%87%E6%8D%A2%E6%96%B9%E5%BC%8F"><span class="toc-number">2.2.</span> <span class="toc-text">Activity的切换方式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%B1%9E%E6%80%A7%E5%8A%A8%E7%94%BB"><span class="toc-number">3.</span> <span class="toc-text">使用属性动画</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%8A%A8%E7%94%BB%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">4.</span> <span class="toc-text">使用动画的注意事项</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/Android%E5%8A%A8%E7%94%BB%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90/" title="Android动画深入分析"><img src="/bgImg/bg1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Android动画深入分析"/></a><div class="content"><a class="title" href="/posts/Android%E5%8A%A8%E7%94%BB%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90/" title="Android动画深入分析">Android动画深入分析</a><time datetime="2026-03-07T10:58:55.000Z" title="发表于 2026-03-07 18:58:55">2026-03-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/%E5%B0%86apiKey%E8%97%8F%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD/" title="将apiKey藏在项目中"><img src="/bgImg/bg73.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="将apiKey藏在项目中"/></a><div class="content"><a class="title" href="/posts/%E5%B0%86apiKey%E8%97%8F%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD/" title="将apiKey藏在项目中">将apiKey藏在项目中</a><time datetime="2026-02-22T14:42:48.000Z" title="发表于 2026-02-22 22:42:48">2026-02-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/RemoteViews/" title="RemoteViews"><img src="/bgImg/bg72.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RemoteViews"/></a><div class="content"><a class="title" href="/posts/RemoteViews/" title="RemoteViews">RemoteViews</a><time datetime="2026-02-10T11:07:50.000Z" title="发表于 2026-02-10 19:07:50">2026-02-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/View%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/" title="View的工作原理"><img src="/bgImg/bg71.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="View的工作原理"/></a><div class="content"><a class="title" href="/posts/View%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/" title="View的工作原理">View的工作原理</a><time datetime="2026-02-07T09:38:35.000Z" title="发表于 2026-02-07 17:38:35">2026-02-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/%E7%AE%97%E6%B3%95%E4%B8%93%E9%A2%98/" title="算法专题"><img src="/bgImg/bg70.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="算法专题"/></a><div class="content"><a class="title" href="/posts/%E7%AE%97%E6%B3%95%E4%B8%93%E9%A2%98/" title="算法专题">算法专题</a><time datetime="2026-01-30T14:48:52.000Z" title="发表于 2026-01-30 22:48:52">2026-01-30</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Aurora</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.3"></script><script src="/js/main.js?v=5.5.3"></script><div class="js-pjax"></div><script src="/js/auto_footer.js"></script><script>document.addEventListener("DOMContentLoaded", function() { var script = document.querySelector('script[src*="busuanzi.ibruce.info"]'); if (script) { script.remove(); } });</script><script async src="https://sdn.geekzu.org/ajax/ajax/libs/busuanzi/2.3/busuanzi.pure.mini.js"></script><script async data-pjax src="https://sdn.geekzu.org/ajax/ajax/libs/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.3"></script></div></div></body></html>
